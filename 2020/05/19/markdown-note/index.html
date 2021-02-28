@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Blogger for Nathaniel"><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>Markdown编辑器语法指南 | Nathaniel</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.svg"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Nathaniel" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">Nathaniel</a></h1></div><p class="m-desc">Nathaniel's Bloggers</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">Markdown编辑器语法指南</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/05/19/markdown-note/">2020-05-19</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/blog/">blog</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code>如果你只想高亮语句中的某个函数名或关键字，可以使用 `function_name()` 实现
+
+通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="支持的语言"><a href="#支持的语言" class="headerlink" title="支持的语言"></a>支持的语言</h3><pre><code>actionscript, apache, bash, clojure, cmake, coffeescript, cpp, cs, css, d, delphi, django, erlang, go, haskell, html, http, ini, java, javascript, json, lisp, lua, markdown, matlab, nginx, objectivec, perl, php, python, r, ruby, scala, smalltalk, sql, tex, vbscript, xml
+
+也可以使用 4 空格缩进，再贴上代码，实现相同的的效果
+
+    def g(x):
+        yield from range(x, 0, -1)
+    yield from range(x)
+</code></pre>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><pre><code>文章内容较多时，可以用标题分段：
+
+标题1
+======
+标题2
+-----
+## 大标题 ##
+### 小标题 ###
+</code></pre>
+<h2 id="粗斜体"><a href="#粗斜体" class="headerlink" title="粗斜体"></a>粗斜体</h2><pre><code>*斜体文本*    _斜体文本_
+**粗体文本**    __粗体文本__
+***粗斜体文本***    ___粗斜体文本___
+</code></pre>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="常用链接方法"><a href="#常用链接方法" class="headerlink" title="常用链接方法"></a>常用链接方法</h3><pre><code>文字链接 [链接名称](http://链接网址)
+网址链接 &lt;http://链接网址&gt;
+</code></pre>
+<h3 id="高级链接技巧"><a href="#高级链接技巧" class="headerlink" title="高级链接技巧"></a>高级链接技巧</h3><pre><code>这个链接用 1 作为网址变量 [Google][1].
+这个链接用 yahoo 作为网址变量 [Yahoo!][yahoo].
+然后在文档的结尾为变量赋值（网址）
+
+  [1]: http://www.google.com/
+  [yahoo]: http://www.yahoo.com/
+</code></pre>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="普通无序列表"><a href="#普通无序列表" class="headerlink" title="普通无序列表"></a>普通无序列表</h3><pre><code>- 列表文本前使用 [减号+空格]
++ 列表文本前使用 [加号+空格]
+* 列表文本前使用 [星号+空格]
+</code></pre>
+<h3 id="普通有序列表"><a href="#普通有序列表" class="headerlink" title="普通有序列表"></a>普通有序列表</h3><pre><code>1. 列表前使用 [数字+空格]
+2. 我们会自动帮你添加数字
+7. 不用担心数字不对，显示的时候会自动把这行的 7 纠正为 3
+</code></pre>
+<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><pre><code>1.列出所有元素：
+- 无序列表元素 A
+    1. 元素 A 的有序子列表
+    - 前面加四个空格
+2.列表里的多段换行：
+前面必须加四个空格，
+这样换行，整体的格式不会乱
+3.列表里引用：
+&gt; 前面空一行
+&gt; 仍然需要在 
+&gt; 前面加四个空格
+4.列表里代码段：
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">前面四个空格，之后按代码语法 &#96;&#96;&#96; 书写</span><br></pre></td></tr></table></figure>
+    或者直接空八个，引入代码块
+</code></pre>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><h3 id="普通引用"><a href="#普通引用" class="headerlink" title="普通引用"></a>普通引用</h3><pre><code>&gt; 引用文本前使用 [大于号+空格]
+&gt; 折行可以不加，新起一行都要加上哦
+</code></pre>
+<h3 id="引用里嵌套引用"><a href="#引用里嵌套引用" class="headerlink" title="引用里嵌套引用"></a>引用里嵌套引用</h3><pre><code>&gt; 最外层引用
+&gt; &gt; 多一个 &gt; 嵌套一层引用
+&gt; &gt; &gt; 可以嵌套很多层
+</code></pre>
+<h3 id="引用里嵌套列表"><a href="#引用里嵌套列表" class="headerlink" title="引用里嵌套列表"></a>引用里嵌套列表</h3><pre><code>&gt; - 这是引用里嵌套的一个列表
+&gt; - 还可以有子列表
+&gt;     * 子列表需要从 - 之后延后四个空格开始
+</code></pre>
+<h3 id="引用里嵌套代码块"><a href="#引用里嵌套代码块" class="headerlink" title="引用里嵌套代码块"></a>引用里嵌套代码块</h3><pre><code>&gt;     同样的，在前面加四个空格形成代码块
+&gt;  
+&gt; <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">或者使用 &#96;&#96;&#96; 形成代码块</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><pre><code>跟链接的方法区别在于前面加了个感叹号 !，这样是不是觉得好记多了呢？
+
+![图片名称](http://图片网址)
+当然，你也可以像网址那样对图片网址使用变量
+这个链接用 1 作为网址变量 [Google][1].
+然后在文档的结尾位变量赋值（网址）
+ [1]: http://www.google.com/logo.png
+也可以使用 HTML 的图片语法来自定义图片的宽高大小
+&lt;img src=&quot;htt://example.com/sample.png&quot; width=&quot;400&quot; height=&quot;100&quot;&gt;
+</code></pre>
+<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><pre><code>如果另起一行，只需在当前行结尾加 2 个空格
+
+在当前行的结尾加 2 个空格  
+这行就会新起一行
+如果是要起一个新段落，只需要空出一行即可。
+</code></pre>
+<h2 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h2><pre><code>如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行：
+
+前面的段落
+---
+后面的段落
+</code></pre>
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><pre><code>行内 HTML 元素
+
+目前只支持部分段内 HTML 元素效果，
+包括 &lt;kdb&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt; ，如
+</code></pre>
+<h2 id="键位显示"><a href="#键位显示" class="headerlink" title="键位显示"></a>键位显示</h2><pre><code>使用 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt; 重启电脑
+</code></pre>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><pre><code>使用 &lt;pre&gt;&lt;/pre&gt; 元素同样可以形成代码块
+</code></pre>
+<h2 id="粗斜体-1"><a href="#粗斜体-1" class="headerlink" title="粗斜体"></a>粗斜体</h2><pre><code>&lt;b&gt; Markdown 在此处同样适用，如 *加粗* &lt;/b&gt;
+</code></pre>
+<h2 id="符号转义"><a href="#符号转义" class="headerlink" title="符号转义"></a>符号转义</h2><pre><code>如果你的描述中需要用到 markdown 的符号，比如 _ # * 等，但又不想它被转义，这时候可以在这些符号前加反斜杠，如 \_ \# \* 进行避免。
+
+\_不想这里的文本变斜体\_
+\*\*不想这里的文本被加粗\*\*
+</code></pre>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><pre><code>支持 jsfiddle、gist、runjs、优酷视频，直接填写 url，在其之后会自动添加预览点击会展开相关内容。
+http://&#123;url_of_the_fiddle&#125;/embedded/[&#123;tabs&#125;/[&#123;style&#125;]]/
+https://gist.github.com/&#123;gist_id&#125;
+http://runjs.cn/detail/&#123;id&#125;
+http://v.youku.com/v_show/id_&#123;video_id&#125;.html
+</code></pre>
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><pre><code>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：
+
+$$ x = &#123;-b \pm \sqrt&#123;b^2-4ac&#125; \over 2a&#125;. $$
+
+$$
+    x \href&#123;why-equal.html&#125;&#123;=&#125; y^2 + 1
+$$
+
+同时也支持 HTML 属性，如：
+
+$$ (x+1)^2 = \class&#123;hidden&#125;&#123;(x+1)(x+1)&#125; $$
+
+$$
+(x+1)^2 = \cssId&#123;step1&#125;&#123;\style&#123;visibility:hidden&#125;&#123;(x+1)(x+1)&#125;&#125;
+$$
+</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Nathaniel</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/05/19/markdown-note/">http://yumore.github.io/2020/05/19/markdown-note/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://yumore.github.io">Nathaniel的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/markdown/">markdown</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">支持的语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%97%E6%96%9C%E4%BD%93"><span class="toc-number">3.</span> <span class="toc-text">粗斜体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%93%BE%E6%8E%A5%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">常用链接方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E6%8E%A5%E6%8A%80%E5%B7%A7"><span class="toc-number">4.2.</span> <span class="toc-text">高级链接技巧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">5.1.</span> <span class="toc-text">普通无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">5.2.</span> <span class="toc-text">普通有序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97"><span class="toc-number">5.3.</span> <span class="toc-text">列表嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%BC%95%E7%94%A8"><span class="toc-number">6.1.</span> <span class="toc-text">普通引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%BC%95%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">引用里嵌套引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8"><span class="toc-number">6.3.</span> <span class="toc-text">引用里嵌套列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">6.4.</span> <span class="toc-text">引用里嵌套代码块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-number">7.</span> <span class="toc-text">图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C"><span class="toc-number">8.</span> <span class="toc-text">换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-number">9.</span> <span class="toc-text">分隔符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">10.</span> <span class="toc-text">高级技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%AE%E4%BD%8D%E6%98%BE%E7%A4%BA"><span class="toc-number">11.</span> <span class="toc-text">键位显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">12.</span> <span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%97%E6%96%9C%E4%BD%93-1"><span class="toc-number">13.</span> <span class="toc-text">粗斜体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%BD%AC%E4%B9%89"><span class="toc-number">14.</span> <span class="toc-text">符号转义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-number">15.</span> <span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F"><span class="toc-number">16.</span> <span class="toc-text">公式</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/07/19/MariaDB-on-CentOS/">&lt; 在CentOS7中安装MariaDB</a><a class="next" href="/2020/03/27/using-raspberry/">树莓派的使用笔记 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">Nathaniel</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>

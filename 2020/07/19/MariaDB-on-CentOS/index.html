@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Blogger for Nathaniel"><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>在CentOS7中安装MariaDB | Nathaniel</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.svg"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Nathaniel" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">Nathaniel</a></h1></div><p class="m-desc">Nathaniel's Bloggers</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">在CentOS7中安装MariaDB</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/07/19/MariaDB-on-CentOS/">2020-07-19</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/blog/">blog</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># yum -y install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装完成MariaDB，首先启动MariaDB"><a href="#安装完成MariaDB，首先启动MariaDB" class="headerlink" title="安装完成MariaDB，首先启动MariaDB"></a>安装完成MariaDB，首先启动MariaDB</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl start mariadb</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl enable mariadb</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="接下来进行MariaDB的相关简单配置"><a href="#接下来进行MariaDB的相关简单配置" class="headerlink" title="接下来进行MariaDB的相关简单配置"></a>接下来进行MariaDB的相关简单配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mysql_secure_installation</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="首先是设置密码，会提示先输入密码"><a href="#首先是设置密码，会提示先输入密码" class="headerlink" title="首先是设置密码，会提示先输入密码"></a>首先是设置密码，会提示先输入密码</h3><pre><code>* Enter current password for root (enter for none):&lt;–初次运行直接回车
+* Set root password? [Y/n] &lt;– 是否设置root用户密码，输入y并回车或直接回车
+* New password: &lt;– 设置root用户的密码
+* Re-enter new password: &lt;– 再输入一次你设置的密码
+* Remove anonymous users? [Y/n] &lt;– 是否删除匿名用户，回车
+* Disallow root login remotely? [Y/n] &lt;–是否禁止root远程登录,回车,
+* Remove test database and access to it? [Y/n] &lt;– 是否删除test数据库，回车
+* Reload privilege tables now? [Y/n] &lt;– 是否重新加载权限表，回车
+</code></pre>
+<h3 id="初始化MariaDB完成，接下来测试登录"><a href="#初始化MariaDB完成，接下来测试登录" class="headerlink" title="初始化MariaDB完成，接下来测试登录"></a>初始化MariaDB完成，接下来测试登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mysql -u root -p password</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置MariaDB的字符集"><a href="#配置MariaDB的字符集" class="headerlink" title="配置MariaDB的字符集"></a>配置MariaDB的字符集</h3><pre><code>文件/etc/my.cnf
+vi /etc/my.cnf
+在[mysqld]标签下添加
+    init_connect=&#39;SET collation_connection = utf8_unicode_ci&#39;
+    init_connect=&#39;SET NAMES utf8&#39;
+    character-set-server=utf8
+    collation-server=utf8_unicode_ci
+    skip-character-set-client-handshake
+
+vi /etc/my.cnf.d/client.cnf
+在[client]中添加
+    default-character-set=utf8
+
+vi /etc/my.cnf.d/mysql-clients.cnf
+在[mysql]中添加
+    default-character-set=utf8
+
+全部配置完成，重启mariadb
+    systemctl restart mariadb
+
+之后进入MariaDB查看字符集
+
+mysql&gt; show variables like &quot;%character%&quot;;show variables like &quot;%collation%&quot;;
+显示为
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8                       |
+| character_set_connection | utf8                       |
+| character_set_database   | utf8                       |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8                       |
+| character_set_server     | utf8                       |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+8 rows in set (0.00 sec)
+
++----------------------+-----------------+
+| Variable_name        | Value           |
++----------------------+-----------------+
+| collation_connection | utf8_unicode_ci |
+| collation_database   | utf8_unicode_ci |
+| collation_server     | utf8_unicode_ci |
++----------------------+-----------------+
+3 rows in set (0.00 sec)
+
+字符集配置完成。
+</code></pre>
+<h3 id="添加用户，设置权限"><a href="#添加用户，设置权限" class="headerlink" title="添加用户，设置权限"></a>添加用户，设置权限</h3><pre><code>创建用户命令
+mysql&gt;create user username@localhost identified by &#39;password&#39;;
+
+直接创建用户并授权的命令
+mysql&gt;grant all on *.* to username@localhost indentified by &#39;password&#39;;
+
+授予外网登陆权限
+mysql&gt;grant all privileges on *.* to username@&#39;%&#39; identified by &#39;password&#39;;
+
+授予权限并且可以授权
+mysql&gt;grant all privileges on *.* to username@&#39;hostname&#39; identified by &#39;password&#39; with grant option;
+
+简单的用户和权限配置基本就这样了。
+
+其中只授予部分权限把 其中 all privileges或者all改为select,insert,update,delete,create,drop,index,alter,grant,references,reload,shutdown,process,file其中一部分。
+</code></pre>
+<p>ß</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Nathaniel</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/07/19/MariaDB-on-CentOS/">http://yumore.github.io/2020/07/19/MariaDB-on-CentOS/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://yumore.github.io">Nathaniel的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tags"></i><a href="/tags/CentOS/">CentOS</a><a href="/tags/MariaDB/">MariaDB</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">安装命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90MariaDB%EF%BC%8C%E9%A6%96%E5%85%88%E5%90%AF%E5%8A%A8MariaDB"><span class="toc-number">2.</span> <span class="toc-text">安装完成MariaDB，首先启动MariaDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">设置开机启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%BF%9B%E8%A1%8CMariaDB%E7%9A%84%E7%9B%B8%E5%85%B3%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">接下来进行MariaDB的相关简单配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%98%AF%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%EF%BC%8C%E4%BC%9A%E6%8F%90%E7%A4%BA%E5%85%88%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">首先是设置密码，会提示先输入密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96MariaDB%E5%AE%8C%E6%88%90%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%B5%8B%E8%AF%95%E7%99%BB%E5%BD%95"><span class="toc-number">6.</span> <span class="toc-text">初始化MariaDB完成，接下来测试登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEMariaDB%E7%9A%84%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">7.</span> <span class="toc-text">配置MariaDB的字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%EF%BC%8C%E8%AE%BE%E7%BD%AE%E6%9D%83%E9%99%90"><span class="toc-number">8.</span> <span class="toc-text">添加用户，设置权限</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/19/kotlin-learning/">&lt; Kotlin笔记</a><a class="next" href="/2020/05/19/markdown-note/">Markdown编辑器语法指南 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">Nathaniel</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
