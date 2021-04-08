@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Blogger for Nathaniel"><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>Android问题集锦 | Nathaniel</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.svg"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Nathaniel" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">Nathaniel</a></h1></div><p class="m-desc">Nathaniel's Bloggers</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">Android问题集锦</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/04/08/android-problem-collection/">2021-04-08</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/blog/">blog</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>一些问题集锦，采取Q-A的形式或者表格形式，用于列出问题描述-问题原因-解决方案</p>
+<h2 id="java-lang-IllegalStateException"><a href="#java-lang-IllegalStateException" class="headerlink" title="java.lang.IllegalStateException"></a>java.lang.IllegalStateException</h2><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>错误描述</th>
+<th>闪退原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Not allowed to start service Intent { }: app is in background uid</td>
+<td>Android 8.0 + 不允许后台启动 Service</td>
+<td>可以使用 JobIntentService</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Only fullscreen opaque activities can request orientation</td>
+<td>透明的 Dialog 样式的 Activity 在Android 8.0 版本的系统 不允许设置朝向</td>
+<td>在代码中或者Manifest中去掉朝向相关的代码</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fragment not attached to a context</td>
+<td>Fragment 页面已经关闭，但 Fragment 里的定时任务或网络请求还在运行，任务完成后进行 UI 操作（内存泄漏）</td>
+<td>通过架构层面解决内存泄漏问题，将View层和Model解耦；View 层发起的定时任务或网络请求页面关闭是要取消。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fragment already added</td>
+<td>相同的 Fragment 重复添加到 Activity</td>
+<td><a href="pages/FragmentAlreadyAdd.md">Solution</a></td>
+</tr>
+</tbody></table>
+<h2 id="android-app-RemoteServiceException"><a href="#android-app-RemoteServiceException" class="headerlink" title="android.app.RemoteServiceException"></a>android.app.RemoteServiceException</h2><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>错误描述</th>
+<th>闪退原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Context.startForegroundService() did not then call Service.startForeground()</td>
+<td>为了解决Android 8.0 + 不允许后台启动 Service 的问题，大家可能搜索到的解决方案是使用 startForegroundService ，但是没有在后面调用 Service.startForeground()</td>
+<td>JobIntentService</td>
+</tr>
+</tbody></table>
+<h2 id="java-lang-NullPointException"><a href="#java-lang-NullPointException" class="headerlink" title="java.lang.NullPointException"></a>java.lang.NullPointException</h2><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>错误描述</th>
+<th>闪退原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Attempt to invoke virtual method on a null object reference</td>
+<td>使用空对象调用其成员方法或者属性</td>
+<td>1，尽量使用 Kotin 能解决绝大部分的空指针；2，通过聚检测代码，如 findbugs、lint等工具。</td>
+</tr>
+</tbody></table>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Nathaniel</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/04/08/android-problem-collection/">http://yumore.github.io/2021/04/08/android-problem-collection/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://yumore.github.io">Nathaniel的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tags"></i><a href="/tags/Android/">Android</a><a href="/tags/Problem/">Problem</a><a href="/tags/Q-A/">Q-A</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang-IllegalStateException"><span class="toc-number">2.</span> <span class="toc-text">java.lang.IllegalStateException</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-app-RemoteServiceException"><span class="toc-number">3.</span> <span class="toc-text">android.app.RemoteServiceException</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang-NullPointException"><span class="toc-number">4.</span> <span class="toc-text">java.lang.NullPointException</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/03/29/android-interview-addition/">问题集锦 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">Nathaniel</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
