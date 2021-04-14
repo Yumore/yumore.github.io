@@ -1,6 +1,678 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Blogger for Nathaniel"><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>Kotlin笔记 | Nathaniel</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.svg"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Nathaniel" type="application/atom+xml">
-</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
-</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">Nathaniel</a></h1></div><p class="m-desc">Nathaniel's Bloggers</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">Kotlin笔记</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/19/kotlin-learning/">2020-08-19</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/blog/">blog</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kotlin笔记 | Nathaniel</title>
+  <meta name="keywords" content=" Android , Kotlin ">
+  <meta name="description" content="Kotlin笔记 | Nathaniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="啪叽没了惊不惊喜意不意外开不开心">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://yumore.github.io/about/index.html">
+<meta property="og:site_name" content="Nathaniel">
+<meta property="og:description" content="啪叽没了惊不惊喜意不意外开不开心">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yumore.github.io/about/about.png">
+<meta property="article:published_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:modified_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:author" content="Nathaniel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yumore.github.io/about/about.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Nathaniel" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Nathaniel</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/Yumore"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:nathanwriitng@126.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=448216285&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(21)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="工具">
+                        
+                        工具
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="测试">
+                        
+                        测试
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="开发规范">
+                        
+                        开发规范
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="面试">
+                        
+                        面试
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="软技能">
+                        
+                        软技能
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Android">
+                        
+                        Android
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="blog">
+                        
+                        blog
+                        <small>(14)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="21">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://yumore.github.io">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>架构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软技能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CentOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dart</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FFmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Interview</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Keep Live</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kotlin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MacOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nodejs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Optimistic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Problem</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Q-A</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Raspbian</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="All blog "
+           href="/2020/11/20/ffmpeg-build/"
+           data-tag="Android,FFmpeg,MacOS"
+           data-author="" >
+            <span class="post-title" title="MacOS下基于NDK编译FFmpeg">MacOS下基于NDK编译FFmpeg</span>
+            <span class="post-date" title="2020-11-20 15:28:59">2020/11/20</span>
+        </a>
+        
+        <a id="top" class="All blog "
+           href="/2020/11/19/dart-gRPC/"
+           data-tag="dart,gRPC"
+           data-author="" >
+            <span class="post-title" title="Dart-gPRC">Dart-gPRC</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        <a id="top" class="All blog "
+           href="/2020/10/19/hexo-for-node/"
+           data-tag="hexo,nodejs"
+           data-author="" >
+            <span class="post-title" title="Node环境下Hexo的搭建">Node环境下Hexo的搭建</span>
+            <span class="post-date" title="2020-10-19 15:28:59">2020/10/19</span>
+        </a>
+        
+        <a id="top" class="All blog "
+           href="/2020/09/19/keep-app-alive/"
+           data-tag="Android,Keep Live"
+           data-author="" >
+            <span class="post-title" title="Android保活技术实现">Android保活技术实现</span>
+            <span class="post-date" title="2020-09-19 15:28:59">2020/09/19</span>
+        </a>
+        
+        <a id="top" class="All blog "
+           href="/2020/08/19/kotlin-learning/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
+            <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2021/04/08/android-problem-collection/"
+           data-tag="Android,Problem,Q-A"
+           data-author="" >
+            <span class="post-title" title="Android问题集锦">Android问题集锦</span>
+            <span class="post-date" title="2021-04-08 11:04:47">2021/04/08</span>
+        </a>
+        
+        <a  class="All Android "
+           href="/2021/03/29/android-interview-addition/"
+           data-tag="Android,Interview"
+           data-author="" >
+            <span class="post-title" title="问题集锦">问题集锦</span>
+            <span class="post-date" title="2021-03-29 14:01:47">2021/03/29</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2021/03/19/android-optimization/"
+           data-tag="Android,Optimistic"
+           data-author="" >
+            <span class="post-title" title="Android性能优化">Android性能优化</span>
+            <span class="post-date" title="2021-03-19 11:04:47">2021/03/19</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2021/03/08/update-git-shell-v2/"
+           data-tag="Shell,运维"
+           data-author="" >
+            <span class="post-title" title="update-git-shell-v2">update-git-shell-v2</span>
+            <span class="post-date" title="2021-03-08 10:29:37">2021/03/08</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2021/03/01/kotlin-notes/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin学习笔记">Kotlin学习笔记</span>
+            <span class="post-date" title="2021-03-01 10:28:59">2021/03/01</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2021/02/24/fragment-data-activity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Fragment和Activity通信">Fragment和Activity通信</span>
+            <span class="post-date" title="2021-02-24 11:40:28">2021/02/24</span>
+        </a>
+        
+        <a  class="All 软技能 "
+           href="/2021/02/22/keep-your-mind/"
+           data-tag="软技能"
+           data-author="" >
+            <span class="post-title" title="灵魂之力—自控力的强大威力">灵魂之力—自控力的强大威力</span>
+            <span class="post-date" title="2021-02-22 10:43:00">2021/02/22</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2021/02/14/update-git-shell/"
+           data-tag="Shell,Git"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库">shell 批量更新多个git仓库</span>
+            <span class="post-date" title="2021-02-14 12:26:56">2021/02/14</span>
+        </a>
+        
+        <a  class="All 面试 "
+           href="/2021/01/27/android-interview/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android高级面试题">Android高级面试题</span>
+            <span class="post-date" title="2021-01-27 16:01:47">2021/01/27</span>
+        </a>
+        
+        <a  class="All 工具 "
+           href="/2020/10/19/android-studio/"
+           data-tag="AndroidStudio"
+           data-author="" >
+            <span class="post-title" title="Android Studio 使用问题">Android Studio 使用问题</span>
+            <span class="post-date" title="2020-10-19 16:01:47">2020/10/19</span>
+        </a>
+        
+        <a  class="All 测试 "
+           href="/2020/08/29/app-test-helper/"
+           data-tag="APP,测试"
+           data-author="" >
+            <span class="post-title" title="手机APP测试">手机APP测试</span>
+            <span class="post-date" title="2020-08-29 16:01:47">2020/08/29</span>
+        </a>
+        
+        <a  class="All Android "
+           href="/2020/08/28/android-architecture/"
+           data-tag="Android,架构"
+           data-author="" >
+            <span class="post-title" title="Android 架构技术演进">Android 架构技术演进</span>
+            <span class="post-date" title="2020-08-28 14:01:47">2020/08/28</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2020/07/19/MariaDB-on-CentOS/"
+           data-tag="CentOS,MariaDB"
+           data-author="" >
+            <span class="post-title" title="在CentOS7中安装MariaDB">在CentOS7中安装MariaDB</span>
+            <span class="post-date" title="2020-07-19 15:28:59">2020/07/19</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2020/05/19/markdown-note/"
+           data-tag="markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown编辑器语法指南">Markdown编辑器语法指南</span>
+            <span class="post-date" title="2020-05-19 15:28:59">2020/05/19</span>
+        </a>
+        
+        <a  class="All blog "
+           href="/2020/03/27/using-raspberry/"
+           data-tag="Linux,Raspbian"
+           data-author="" >
+            <span class="post-title" title="树莓派的使用笔记">树莓派的使用笔记</span>
+            <span class="post-date" title="2020-03-27 00:16:31">2020/03/27</span>
+        </a>
+        
+        <a  class="All 开发规范 "
+           href="/2019/05/01/constraint-for-android/"
+           data-tag="Android,开发规范"
+           data-author="" >
+            <span class="post-title" title="关于Android的开发规范">关于Android的开发规范</span>
+            <span class="post-date" title="2019-05-01 15:29:59">2019/05/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-kotlin-learning" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Kotlin笔记</h1>
+    
+    <div class="article-meta">
+        
+        <span class="top"><a>置顶</a></span>
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="blog">blog</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Android</a>
+            
+            <a class="color2">Kotlin</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2020-08-19 15:28:59'>2020-08-19 15:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-text">基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%88Numbers%EF%BC%89"><span class="toc-text">数值类型（Numbers）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%EF%BC%88Characters%EF%BC%89"><span class="toc-text">字符类型（Characters）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%88Strings%EF%BC%89"><span class="toc-text">字符串类型（Strings）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B%EF%BC%88Boolean%EF%BC%89"><span class="toc-text">布尔类型（Boolean）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%88Arrays%EF%BC%89"><span class="toc-text">数组类型（Arrays）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E-amp-%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-text">类的声明 &amp; 实例化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">主构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A1%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">次构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">类的属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">可见性修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-amp-%E9%87%8D%E5%86%99"><span class="toc-text">继承 &amp; 重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-text">特殊类说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="toc-text">其他语法糖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Kotlin%E4%B8%AD%EF%BC%8C%E5%AD%98%E5%9C%A8%E7%BB%93%E6%9E%84%E7%9B%B8%E7%AD%89-amp-%E5%BC%95%E7%94%A8%E7%9B%B8%E7%AD%89-%E4%B8%A4%E7%A7%8D%E7%9B%B8%E7%AD%89%E5%88%A4%E6%96%AD%E3%80%82"><span class="toc-text">在Kotlin中，存在结构相等 &amp; 引用相等 两种相等判断。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Java%E4%B8%AD%EF%BC%8CNullPointerException%E5%BC%82%E5%B8%B8%E5%8D%81%E5%88%86%E5%B8%B8%E8%A7%81"><span class="toc-text">在Java中，NullPointerException异常十分常见</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
 <li>简洁：相对于Java，代码量减少</li>
 <li>安全： 在编译期处理了可能出现空针的异常，若产生空针异常，编译不通过，避免了在运行时出现空针异常</li>
 <li>互操作性：因Kotlin是基于JVM的语言，所以可与Java互相调用，故在同一个项目中可以存在Java和Kotlin混编</li>
@@ -516,42 +1188,195 @@ enum class Color(rgb: Int) &#123;
 <p>// 注：安全调用符还可以链式调用<br>a?.b?.c?.d<br>// 假设a不为null，才继续往下调用，以此类推<br>// 若该链式调用中任何一个属性为null，整个表达式都会返回null。<br>// 若只对非空值执行某个操作，可与let一起使用<br>a?.b?.let { println(it) }</p>
 </li>
 </ul>
-</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Nathaniel</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/19/kotlin-learning/">http://yumore.github.io/2020/08/19/kotlin-learning/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://yumore.github.io">Nathaniel的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tags"></i><a href="/tags/Android/">Android</a><a href="/tags/Kotlin/">Kotlin</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%88Numbers%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">数值类型（Numbers）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%EF%BC%88Characters%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">字符类型（Characters）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%88Strings%EF%BC%89"><span class="toc-number">3.2.3.</span> <span class="toc-text">字符串类型（Strings）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B%EF%BC%88Boolean%EF%BC%89"><span class="toc-number">3.2.4.</span> <span class="toc-text">布尔类型（Boolean）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%88Arrays%EF%BC%89"><span class="toc-number">3.2.5.</span> <span class="toc-text">数组类型（Arrays）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E-amp-%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-number">3.3.1.</span> <span class="toc-text">类的声明 &amp; 实例化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">3.3.2.</span> <span class="toc-text">主构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A1%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">3.3.3.</span> <span class="toc-text">次构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">3.3.4.</span> <span class="toc-text">类的属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">3.3.5.</span> <span class="toc-text">可见性修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-amp-%E9%87%8D%E5%86%99"><span class="toc-number">3.3.6.</span> <span class="toc-text">继承 &amp; 重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-number">3.3.7.</span> <span class="toc-text">特殊类说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="toc-number">3.5.</span> <span class="toc-text">其他语法糖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Kotlin%E4%B8%AD%EF%BC%8C%E5%AD%98%E5%9C%A8%E7%BB%93%E6%9E%84%E7%9B%B8%E7%AD%89-amp-%E5%BC%95%E7%94%A8%E7%9B%B8%E7%AD%89-%E4%B8%A4%E7%A7%8D%E7%9B%B8%E7%AD%89%E5%88%A4%E6%96%AD%E3%80%82"><span class="toc-number">3.6.</span> <span class="toc-text">在Kotlin中，存在结构相等 &amp; 引用相等 两种相等判断。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Java%E4%B8%AD%EF%BC%8CNullPointerException%E5%BC%82%E5%B8%B8%E5%8D%81%E5%88%86%E5%B8%B8%E8%A7%81"><span class="toc-number">3.7.</span> <span class="toc-text">在Java中，NullPointerException异常十分常见</span></a></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/28/android-architecture/">&lt; Android 架构技术演进</a><a class="next" href="/2020/07/19/MariaDB-on-CentOS/">在CentOS7中安装MariaDB &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
-.night .v[data-class=v] a:hover { color: #216C73 !important; }
-.night .v[data-class=v] li { list-style: inherit; }
-.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
-.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
-.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
-.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
-.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
-.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
-.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
-.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
-.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
-.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
-.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
-</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
-var verify = 'false' == true ? true : false;
-var GUEST_INFO = ['nick','mail','link'];
-var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-  return GUEST_INFO.indexOf(item) > -1
-});
-guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
-window.valine = new Valine({
-  el:'#vcomment',
-  notify:notify,
-  verify:verify,
-  appId:'',
-  appKey:'',
-  lang: 'zh-cn',
-  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
-  avatar:'identicon',
-  guest_info:guest_info,
-  pageSize:'10'
-})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">Nathaniel</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-    search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
