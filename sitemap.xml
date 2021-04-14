@@ -298,6 +298,13 @@
   </url>
   
   <url>
+    <loc>http://yumore.github.io/tags/Optimistic/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yumore.github.io/tags/Kotlin/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
@@ -313,13 +320,6 @@
   
   <url>
     <loc>http://yumore.github.io/tags/Shell/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/%E8%BF%90%E7%BB%B4/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -354,14 +354,14 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/%E9%9D%A2%E8%AF%95/</loc>
+    <loc>http://yumore.github.io/tags/%E8%BF%90%E7%BB%B4/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/Optimistic/</loc>
+    <loc>http://yumore.github.io/tags/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
