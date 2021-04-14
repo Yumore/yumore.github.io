@@ -172,21 +172,14 @@
 
   
   <url>
-    <loc>http://yumore.github.io/tags/CentOS/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/MariaDB/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yumore.github.io/tags/Android/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/Interview/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -200,7 +193,14 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/Interview/</loc>
+    <loc>http://yumore.github.io/tags/CentOS/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/MariaDB/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -263,6 +263,13 @@
   </url>
   
   <url>
+    <loc>http://yumore.github.io/tags/Optimistic/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yumore.github.io/tags/hexo/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
@@ -271,20 +278,6 @@
   
   <url>
     <loc>http://yumore.github.io/tags/nodejs/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/FFmpeg/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/MacOS/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -326,14 +319,35 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/Keep-Live/</loc>
+    <loc>http://yumore.github.io/tags/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/Optimistic/</loc>
+    <loc>http://yumore.github.io/tags/Git/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/FFmpeg/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/MacOS/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/Keep-Live/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -353,31 +367,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://yumore.github.io/tags/Git/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>http://yumore.github.io/categories/blog/</loc>
+    <loc>http://yumore.github.io/categories/Android/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yumore.github.io/categories/Android/</loc>
+    <loc>http://yumore.github.io/categories/blog/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
