@@ -968,7 +968,7 @@ private Activity performLaunchActivity(ActivityClientRecord r, Intent customInte
 <li>可以从 startActivityForResult 中接收到返回结果，但是View不能</li>
 <li>只能在 Activity 保存其状态（用户离开 Activity）之前使用 commit() 提交事务。如果您试图在该时间点后提交，则会引发异常。 这是因为如需恢复 Activity，则提交后的状态可能会丢失。 对于丢失提交无关紧要的情况，请使用 commitAllowingStateLoss()。</li>
 </ul>
-<h2 id="生命周期-1"><a href="#生命周期-1" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="https://developer.android.google.cn/images/fragment_lifecycle.png"><img src="https://developer.android.google.cn/images/activity_fragment_lifecycle.png"></p>
+<h2 id="生命周期-1"><a href="#生命周期-1" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="https://developer.android.google.cn/images/fragment_lifecycle.png" alt="image"><br><img src="https://developer.android.google.cn/images/activity_fragment_lifecycle.png" alt="image"></p>
 <h2 id="与Activity通信"><a href="#与Activity通信" class="headerlink" title="与Activity通信"></a>与Activity通信</h2><p>执行此操作的一个好方法是，在片段内定义一个回调接口，并要求宿主 Activity 实现它。</p>
 <pre><code class="java">public static class FragmentA extends ListFragment &#123;
     ...
@@ -1058,7 +1058,7 @@ private void handleCreateService(CreateServiceData data) &#123;
     &#125;
 &#125;
 </code></pre>
-<h2 id="生命周期-2"><a href="#生命周期-2" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/456/format/webp"></p>
+<h2 id="生命周期-2"><a href="#生命周期-2" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="https://upload-images.jianshu.io/upload_images/944365-cf5c1a9d2dddaaca.png"></p>
 <table>
 <thead>
 <tr>
@@ -1079,7 +1079,7 @@ private void handleCreateService(CreateServiceData data) &#123;
 <td>如果系统在 onStartCommand() 返回后终止服务，则会重建服务，并通过传递给服务的最后一个 Intent 调用 onStartCommand()。任何挂起 Intent 均依次传递。这适用于主动执行应该立即恢复的作业（例如下载文件）的服务</td>
 </tr>
 </tbody></table>
-<h2 id="启用前台服务"><a href="#启用前台服务" class="headerlink" title="启用前台服务"></a>启用前台服务</h2><pre><code class="java">&lt;uses-permission android:name=&quot;android.permission.FOREGROUND_SERVICE&quot;/&gt;
+<h2 id="启用前台服务"><a href="#启用前台服务" class="headerlink" title="启用前台服务"></a>启用前台服务</h2><pre><code class="xml">&lt;uses-permission android:name=&quot;android.permission.FOREGROUND_SERVICE&quot;/&gt;
 </code></pre>
 <pre><code class="java">Notification notification = new Notification(icon, text, System.currentTimeMillis());
 Intent notificationIntent = new Intent(this, ExampleActivity.class);
@@ -1148,7 +1148,7 @@ mCursor = getContentResolver().query(
 <ul>
 <li>ContentProvider 屏蔽了数据存储的细节，内部实现透明化，用户只需关心 uri 即可(是否匹配)</li>
 <li>ContentProvider 能实现不同 app 的数据共享，sql 只能是自己程序才能访问</li>
-<li>Contentprovider 还能增删本地的文件,xml等信息</li>
+<li>ContentProvider 还能增删本地的文件,xml等信息</li>
 </ul>
 </blockquote>
 <h1 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h1><table>
@@ -1182,7 +1182,7 @@ mCursor = getContentResolver().query(
 <li>layout: 判断是否需要重新计算 View 的位置，需要的话则计算</li>
 <li>draw: 判断是否需要重新绘制 View，需要的话则重绘制</li>
 </ul>
-<p><img src="https://img-blog.csdn.net/20180510164327114"></p>
+<p><img src="https://img-blog.csdn.net/20180510164327114" alt="image"></p>
 <h2 id="MeasureSpec"><a href="#MeasureSpec" class="headerlink" title="MeasureSpec"></a>MeasureSpec</h2><p>MeasureSpec表示的是一个32位的整形值，它的高2位表示测量模式SpecMode，低30位表示某种测量模式下的规格大小SpecSize。MeasureSpec 是 View 类的一个静态内部类，用来说明应该如何测量这个 View</p>
 <table>
 <thead>
