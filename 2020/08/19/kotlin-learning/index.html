@@ -1206,12 +1206,10 @@ enum class Color(rgb: Int) &#123;
 <li>安全调用操作符</li>
 </ol>
 </li>
-<li><p> 作用：表示如果若不为null才继续调用</p>
-</li>
-<li><p>*/<br>b?.length<br>// 表示：若b不为null，才调用b.length</p>
-<p>// 注：安全调用符还可以链式调用<br>a?.b?.c?.d<br>// 假设a不为null，才继续往下调用，以此类推<br>// 若该链式调用中任何一个属性为null，整个表达式都会返回null。<br>// 若只对非空值执行某个操作，可与let一起使用<br>a?.b?.let { println(it) }</p>
-</li>
+<li> 作用：表示如果若不为null才继续调用</li>
+<li>*/<br>b?.length<br>// 表示：若b不为null，才调用b.length</li>
 </ul>
+<p> // 注：安全调用符还可以链式调用<br> a?.b?.c?.d<br> // 假设a不为null，才继续往下调用，以此类推<br> // 若该链式调用中任何一个属性为null，整个表达式都会返回null。<br> // 若只对非空值执行某个操作，可与let一起使用<br>a?.b?.let { println(it) }</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nathanwriting@126.com 联系我。 </span>

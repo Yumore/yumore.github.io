@@ -1638,9 +1638,9 @@ boolean bool; false/true 1字节
   (*env)-&gt;DeleteLocalRef(env,str_arg);  
 &#125;  
 </code></pre>
-<h4 id="如何在jni中注册native函数，有几种注册方式？"><a href="#如何在jni中注册native函数，有几种注册方式？" class="headerlink" title="如何在jni中注册native函数，有几种注册方式？"></a>如何在jni中注册native函数，有几种注册方式？</h4></li>
+</li>
 </ul>
-<h4 id="so-的加载流程是怎样的，生命周期是怎样的？"><a href="#so-的加载流程是怎样的，生命周期是怎样的？" class="headerlink" title="so 的加载流程是怎样的，生命周期是怎样的？"></a>so 的加载流程是怎样的，生命周期是怎样的？</h4><p>这个要从 java 层去看源码分析，是从 ClassLoader 的 PathList 中去找到目标路径加载的，同时 so 是通过 mmap 加载映射到虚拟空间的。生命周期加载库和卸载库时分别调用 JNI_OnLoad 和 JNI_OnUnload() 方法。</p>
+<h4 id="如何在jni中注册native函数，有几种注册方式？"><a href="#如何在jni中注册native函数，有几种注册方式？" class="headerlink" title="如何在jni中注册native函数，有几种注册方式？"></a>如何在jni中注册native函数，有几种注册方式？</h4><h4 id="so-的加载流程是怎样的，生命周期是怎样的？"><a href="#so-的加载流程是怎样的，生命周期是怎样的？" class="headerlink" title="so 的加载流程是怎样的，生命周期是怎样的？"></a>so 的加载流程是怎样的，生命周期是怎样的？</h4><p>这个要从 java 层去看源码分析，是从 ClassLoader 的 PathList 中去找到目标路径加载的，同时 so 是通过 mmap 加载映射到虚拟空间的。生命周期加载库和卸载库时分别调用 JNI_OnLoad 和 JNI_OnUnload() 方法。</p>
 <h2 id="三、Android优秀三方库源码"><a href="#三、Android优秀三方库源码" class="headerlink" title="三、Android优秀三方库源码"></a>三、Android优秀三方库源码</h2><h3 id="1、你项目中用到哪些开源库？说说其实现原理？"><a href="#1、你项目中用到哪些开源库？说说其实现原理？" class="headerlink" title="1、你项目中用到哪些开源库？说说其实现原理？"></a>1、你项目中用到哪些开源库？说说其实现原理？</h3><h4 id="一、网络底层框架：OkHttp实现原理"><a href="#一、网络底层框架：OkHttp实现原理" class="headerlink" title="一、网络底层框架：OkHttp实现原理"></a>一、<a target="_blank" rel="noopener" href="https://juejin.im/post/5e1be39b6fb9a02fcd130d1f">网络底层框架：OkHttp实现原理</a></h4><h5 id="这个库是做什么用的？"><a href="#这个库是做什么用的？" class="headerlink" title="这个库是做什么用的？"></a>这个库是做什么用的？</h5><p>网络底层库，它是基于http协议封装的一套请求客户端，虽然它也可以开线程，但根本上它更偏向真正的请求，跟HttpClient, HttpUrlConnection的职责是一样的。其中封装了网络请求get、post等底层操作的实现。</p>
 <h5 id="为什么要在项目中使用这个库？"><a href="#为什么要在项目中使用这个库？" class="headerlink" title="为什么要在项目中使用这个库？"></a>为什么要在项目中使用这个库？</h5><ul>
 <li>OkHttp 提供了对最新的 HTTP 协议版本 HTTP/2 和 SPDY 的支持，这使得对同一个主机发出的所有请求都可以共享相同的套接字连接。</li>
@@ -1868,18 +1868,13 @@ adb backup -noapk com.your.packagename
 </ul>
 <p>具体为：</p>
 <ul>
-<li><p>1、ImageLoader作为一个单例，提供了加载图片到指定控件的方法：直接从内存缓存中获取对象，如果没有则用一个ThreadPoolExecutor去执行Runnable任务来加载图片。ThreadPoolExecutor的创建需要指定核心线程数CPU数+1，最大线程数CPU数*2+1，线程闲置超市时长10s,这几个关键数据，还可以加入ThreadFactory参数来创建定制化的线程。</p>
-</li>
-<li><p>2、ImageLoader的具体实现loadBitmap：先从内存缓存LruCache中加载，如果为空再从磁盘缓存中加载，加载成功后记得存入内存缓存，如果为空则从网络中直接下载输出流到磁盘缓存，然后再从磁盘中加载，如果为空并且磁盘缓存没有被创建的话，直接通过BitmapFactory的decodeStream获取网络请求的输入流获取Bitmap对象。</p>
-</li>
-<li><p>3、v4包的LruCache可以兼容到2.2版本，LruCache采用LinkedHashMap存储缓存对象。创建对象只需要提供缓存容量并重写sizeOf方法：作用是计算缓存对象的大小。有时需要重写entryRemoved方法，用于回收一些资源。</p>
-</li>
-<li><p>4、DiskLruCache通过open方法创建，设置缓存路径，缓存容量。缓存添加通过Editor对象创建输出流，下载资源到输出流完成后，commit，如果失败则abort撤回。然后刷新磁盘缓存。缓存查找通过Snapshot对象获取输入流，获取FileDescriptor，通过FileDescriptor解析出Bitmap对象。</p>
-</li>
-<li><p>5、列表中需要加载图片的时候，当列表在滑动中不进行图片加载，当滑动停止后再去加载图片。</p>
-<h5 id="Bitmap在decode的时候申请的内存如何复用，释放时机"><a href="#Bitmap在decode的时候申请的内存如何复用，释放时机" class="headerlink" title="Bitmap在decode的时候申请的内存如何复用，释放时机"></a>Bitmap在decode的时候申请的内存如何复用，释放时机</h5></li>
+<li>1、ImageLoader作为一个单例，提供了加载图片到指定控件的方法：直接从内存缓存中获取对象，如果没有则用一个ThreadPoolExecutor去执行Runnable任务来加载图片。ThreadPoolExecutor的创建需要指定核心线程数CPU数+1，最大线程数CPU数*2+1，线程闲置超市时长10s,这几个关键数据，还可以加入ThreadFactory参数来创建定制化的线程。</li>
+<li>2、ImageLoader的具体实现loadBitmap：先从内存缓存LruCache中加载，如果为空再从磁盘缓存中加载，加载成功后记得存入内存缓存，如果为空则从网络中直接下载输出流到磁盘缓存，然后再从磁盘中加载，如果为空并且磁盘缓存没有被创建的话，直接通过BitmapFactory的decodeStream获取网络请求的输入流获取Bitmap对象。</li>
+<li>3、v4包的LruCache可以兼容到2.2版本，LruCache采用LinkedHashMap存储缓存对象。创建对象只需要提供缓存容量并重写sizeOf方法：作用是计算缓存对象的大小。有时需要重写entryRemoved方法，用于回收一些资源。</li>
+<li>4、DiskLruCache通过open方法创建，设置缓存路径，缓存容量。缓存添加通过Editor对象创建输出流，下载资源到输出流完成后，commit，如果失败则abort撤回。然后刷新磁盘缓存。缓存查找通过Snapshot对象获取输入流，获取FileDescriptor，通过FileDescriptor解析出Bitmap对象。</li>
+<li>5、列表中需要加载图片的时候，当列表在滑动中不进行图片加载，当滑动停止后再去加载图片。</li>
 </ul>
-<h5 id="图片库对比"><a href="#图片库对比" class="headerlink" title="图片库对比"></a>图片库对比</h5><p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/29363321/picasso-v-s-imageloader-v-s-fresco-vs-glide">http://stackoverflow.com/questions/29363321/picasso-v-s-imageloader-v-s-fresco-vs-glide</a></p>
+<h5 id="Bitmap在decode的时候申请的内存如何复用，释放时机"><a href="#Bitmap在decode的时候申请的内存如何复用，释放时机" class="headerlink" title="Bitmap在decode的时候申请的内存如何复用，释放时机"></a>Bitmap在decode的时候申请的内存如何复用，释放时机</h5><h5 id="图片库对比"><a href="#图片库对比" class="headerlink" title="图片库对比"></a>图片库对比</h5><p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/29363321/picasso-v-s-imageloader-v-s-fresco-vs-glide">http://stackoverflow.com/questions/29363321/picasso-v-s-imageloader-v-s-fresco-vs-glide</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.trinea.cn/android/android-image-cache-compare/">http://www.trinea.cn/android/android-image-cache-compare/</a></p>
 <h5 id="Fresco与Glide的对比："><a href="#Fresco与Glide的对比：" class="headerlink" title="Fresco与Glide的对比："></a>Fresco与Glide的对比：</h5><p>Glide：相对轻量级，用法简单优雅，支持Gif动态图，适合用在那些对图片依赖不大的App中。<br>Fresco：采用匿名共享内存来保存图片，也就是Native堆，有效的的避免了OOM，功能强大，但是库体积过大，适合用在对图片依赖比较大的App中。</p>
 <p>Fresco的整体架构如下图所示：</p>
@@ -2117,12 +2112,10 @@ adb backup -noapk com.your.packagename
 <p>加载so主要用到了System类的load和loadLibrary方法，最终都会调用到nativeLoad方法。其会调用JavaVMExt的LoadNativeLibrary函数来加载so。</p>
 <p>so修复主要有两个方案：</p>
 <ul>
-<li><p>1、将so补丁插入到NativeLibraryElement数组的前部，让so补丁的路径先被返回和加载。</p>
-</li>
-<li><p>2、调用System的load方法来接管so的加载入口。</p>
-<h4 id="为什么选用插件化？"><a href="#为什么选用插件化？" class="headerlink" title="为什么选用插件化？"></a>为什么选用插件化？</h4></li>
+<li>1、将so补丁插入到NativeLibraryElement数组的前部，让so补丁的路径先被返回和加载。</li>
+<li>2、调用System的load方法来接管so的加载入口。</li>
 </ul>
-<p>在Android传统开发中，一旦应用的代码被打包成APK并被上传到各个应用市场，我们就不能修改应用的源码了，只能通过服务器来控制应用中预留的分支代码。但是很多时候我们无法预知需求和突然发生的情况，也就不能提前在应用代码中预留分支代码，这时就需要采用动态加载技术，即在程序运行时，动态加载一些程序中原本不存在的可执行文件并运行这些文件里的代码逻辑。其中可执行文件包括动态链接库so和dex相关文件（dex以及包含dex的jar/apk文件）。随着应用开发技术和业务的逐步发展，动态加载技术派生出两个技术：热修复和插件化。其中热修复技术主要用来修复Bug，而插件化技术则主要用于解决应用越来越庞大以及功能模块的解耦。详细点说，就是为了解决以下几种情况：</p>
+<h4 id="为什么选用插件化？"><a href="#为什么选用插件化？" class="headerlink" title="为什么选用插件化？"></a>为什么选用插件化？</h4><p>在Android传统开发中，一旦应用的代码被打包成APK并被上传到各个应用市场，我们就不能修改应用的源码了，只能通过服务器来控制应用中预留的分支代码。但是很多时候我们无法预知需求和突然发生的情况，也就不能提前在应用代码中预留分支代码，这时就需要采用动态加载技术，即在程序运行时，动态加载一些程序中原本不存在的可执行文件并运行这些文件里的代码逻辑。其中可执行文件包括动态链接库so和dex相关文件（dex以及包含dex的jar/apk文件）。随着应用开发技术和业务的逐步发展，动态加载技术派生出两个技术：热修复和插件化。其中热修复技术主要用来修复Bug，而插件化技术则主要用于解决应用越来越庞大以及功能模块的解耦。详细点说，就是为了解决以下几种情况：</p>
 <ul>
 <li>1、业务复杂、模块耦合：随着业务越来越复杂，应用程序的工程和功能模块数量会越来越多，一个应用可能由几十甚至几百人来协同开发，其中的一个工程可能就由一个小组来进行开发维护，如果功能模块间的耦合度较高，修改一个模块会影响其它功能模块，势必会极大地增加沟通成本。</li>
 <li>2、应用间的接入：当一个应用需要接入其它应用时，如淘宝，为了将流量引流到其它的淘宝应用如：飞猪旅游、口碑外卖、聚划算等等应用，如使用常规技术有两个问题：可能要维护多个版本的问题或单个应用体积将会非常庞大的问题。</li>
@@ -2512,11 +2505,11 @@ adb backup -noapk com.your.packagename
     &#125;
 &#125;;
 </code></pre>
-<h3 id="8、如何实现一个推送，消息推送原理？推送到达率的问题？"><a href="#8、如何实现一个推送，消息推送原理？推送到达率的问题？" class="headerlink" title="8、如何实现一个推送，消息推送原理？推送到达率的问题？"></a>8、如何实现一个推送，消息推送原理？推送到达率的问题？</h3></li>
+</li>
 </ul>
 </li>
 </ol>
-<p>一：客户端不断的查询服务器，检索新内容，也就是所谓的pull 或者轮询方式。</p>
+<h3 id="8、如何实现一个推送，消息推送原理？推送到达率的问题？"><a href="#8、如何实现一个推送，消息推送原理？推送到达率的问题？" class="headerlink" title="8、如何实现一个推送，消息推送原理？推送到达率的问题？"></a>8、如何实现一个推送，消息推送原理？推送到达率的问题？</h3><p>一：客户端不断的查询服务器，检索新内容，也就是所谓的pull 或者轮询方式。</p>
 <p>二：客户端和服务器之间维持一个TCP/IP长连接，服务器向客户端push。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/clh604/article/details/20167263">https://blog.csdn.net/clh604/article/details/20167263</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/45202dcd5688">https://www.jianshu.com/p/45202dcd5688</a></p>
