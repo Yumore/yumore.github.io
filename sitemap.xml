@@ -207,13 +207,6 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2021-04-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yumore.github.io/tags/Interview/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
@@ -221,7 +214,7 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/%E9%9D%A2%E8%AF%95/</loc>
+    <loc>http://yumore.github.io/tags/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -256,6 +249,13 @@
   </url>
   
   <url>
+    <loc>http://yumore.github.io/tags/%E9%9D%A2%E8%AF%95/</loc>
+    <lastmod>2021-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yumore.github.io/tags/APP/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
@@ -264,6 +264,13 @@
   
   <url>
     <loc>http://yumore.github.io/tags/%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2021-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -284,13 +291,6 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
-    <lastmod>2021-04-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yumore.github.io/tags/hexo/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
@@ -305,28 +305,7 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/tags/Optimistic/</loc>
-    <lastmod>2021-04-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yumore.github.io/tags/%E8%BD%AF%E6%8A%80%E8%83%BD/</loc>
-    <lastmod>2021-04-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/Keep-Live/</loc>
-    <lastmod>2021-04-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yumore.github.io/tags/Kotlin/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -341,6 +320,20 @@
   
   <url>
     <loc>http://yumore.github.io/tags/MacOS/</loc>
+    <lastmod>2021-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/Kotlin/</loc>
+    <lastmod>2021-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yumore.github.io/tags/Optimistic/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -388,6 +381,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://yumore.github.io/tags/Keep-Live/</loc>
+    <lastmod>2021-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -405,14 +405,14 @@
   </url>
   
   <url>
-    <loc>http://yumore.github.io/categories/%E9%9D%A2%E8%AF%95/</loc>
+    <loc>http://yumore.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yumore.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://yumore.github.io/categories/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
