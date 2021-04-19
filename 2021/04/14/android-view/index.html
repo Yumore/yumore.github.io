@@ -129,7 +129,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(22)</small>
+                <small>(23)</small>
             
         </div>
     </li>
@@ -182,7 +182,7 @@
                     <div data-rel="面试">
                         
                         面试
-                        <small>(1)</small>
+                        <small>(2)</small>
                         
                     </div>
                     
@@ -252,8 +252,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="22">
-<input type="hidden" id="yelog_site_word_count" value="160.2k">
+<input type="hidden" id="yelog_site_posts_number" value="23">
+<input type="hidden" id="yelog_site_word_count" value="179.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -463,6 +463,14 @@
            data-author="" >
             <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
             <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        <a  class="All 面试 "
+           href="/2021/04/18/android-knowledge/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-18 16:01:47">2021/04/18</span>
         </a>
         
         <a  class="All blog "
@@ -731,37 +739,65 @@
 <li>如果你有一个复杂的UI，你应该考虑写一个自定义的ViewGroup来执行他的layout操作。与内置的view不同，自定义的view可以使得程序仅仅测量这一部分，这避免了遍历整个view的层级结构来计算大小。这个PieChart</li>
 <li>例子展示了如何继承ViewGroup作为自定义view的一部分。PieChart有子views，但是它从来不测量它们。而是根据他自身的layout法则，直接设置它们的大小。</li>
 </ul>
-<h3 id="08-DecorView被加载到Window中"><a href="#08-DecorView被加载到Window中" class="headerlink" title="08.DecorView被加载到Window中"></a>08.DecorView被加载到Window中</h3><ul>
-<li><p>从Activity的startActivity开始，最终调用到ActivityThread的handleLaunchActivity方法来创建Activity，相关核心代码如下：</p>
+<h3 id="08-DecorView被加载到Window中"><a href="#08-DecorView被加载到Window中" class="headerlink" title="08.DecorView被加载到Window中"></a>08.DecorView被加载到Window中</h3><p>从Activity的startActivity开始，最终调用到ActivityThread的handleLaunchActivity方法来创建Activity，相关核心代码如下：</p>
 <pre><code class="java">private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) &#123;
+    // ....
+    // 创建Activity，会调用Activity的onCreate方法
+    // 从而完成DecorView的创建
+    Activity a = performLaunchActivity(r, customIntent);
+    if (a != null) &#123;
+        r.createdConfig = new Configuration(mConfiguration);
+        Bundle oldState = r.state;
+        handleResumeActivity(r.tolen, false, r.isForward, !r.activity..mFinished &amp;&amp; !r.startsNotResumed);
+    &#125;
+&#125;
 
-  ....
-  // 创建Activity，会调用Activity的onCreate方法
-  // 从而完成DecorView的创建
-  Activity a = performLaunchActivity(r, customIntent);
-  if (a != null) &#123;
-      r.createdConfig = new Configuration(mConfiguration);
-      Bundle oldState = r.state;
-      handleResumeActivity(r.tolen, false, r.isForward, !r.activity..mFinished &amp;&amp; !r.startsNotResumed);
-  &#125;
+final void handleResumeActivity(IBinder token, boolean clearHide, boolean isForward, boolean reallyResume) &#123;
+    unscheduleGcIdler();
+    mSomeActivitiesChanged = true;
+    // 调用Activity的onResume方法
+    ActivityClientRecord r = performResumeActivity(token, clearHide);
+    if (r != null) &#123;
+        final Activity a = r.activity;
+        // ...
+        if (r.window == null &amp;&amp;&amp; !a.mFinished &amp;&amp; willBeVisible) &#123;
+            r.window = r.activity.getWindow();
+            // 得到DecorView
+            View decor = r.window.getDecorView();
+            decor.setVisibility(View.INVISIBLE);
+            // 得到了WindowManager，WindowManager是一个接口
+            // 并且继承了接口ViewManager
+            ViewManager wm = a.getWindowManager();
+            WindowManager.LayoutParams l = r.window.getAttributes();
+            a.mDecor = decor;
+            l.type = WindowManager.LayoutParams.TYPE_BASE_APPLICATION;
+            l.softInputMode |= forwardBit;
+            if (a.mVisibleFromClient) &#123;
+                a.mWindowAdded = true;
+                // WindowManager的实现类是WindowManagerImpl，
+                // 所以实际调用的是WindowManagerImpl的addView方法
+                wm.addView(decor, l);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+public final class WindowManagerImpl implements WindowManager &#123;
+    private final WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();
+    
+    // ...
+    
+    @Override
+    public void addView(@NonNull View view, @NonNull ViewGroup.LayoutParams params) &#123;
+        applyDefaultToken(params);
+        mGlobal.addView(view, params, mDisplay, mParentWindow);
+    &#125;
+    
+    // ...
 &#125;
 </code></pre>
-</li>
-</ul>
-<p>final void handleResumeActivity(IBinder token, boolean clearHide, boolean isForward, boolean reallyResume) {<br>    unscheduleGcIdler();<br>    mSomeActivitiesChanged = true;<br>    // 调用Activity的onResume方法<br>    ActivityClientRecord r = performResumeActivity(token, clearHide);<br>    if (r != null) {<br>        final Activity a = r.activity;<br>        …<br>        if (r.window == null &amp;&amp;&amp; !a.mFinished &amp;&amp; willBeVisible) {<br>            r.window = r.activity.getWindow();<br>            // 得到DecorView<br>            View decor = r.window.getDecorView();<br>            decor.setVisibility(View.INVISIBLE);<br>            // 得到了WindowManager，WindowManager是一个接口<br>            // 并且继承了接口ViewManager<br>            ViewManager wm = a.getWindowManager();<br>            WindowManager.LayoutParams l = r.window.getAttributes();<br>            a.mDecor = decor;<br>            l.type = WindowManager.LayoutParams.TYPE_BASE_APPLICATION;<br>            l.softInputMode |= forwardBit;<br>            if (a.mVisibleFromClient) {<br>                a.mWindowAdded = true;<br>                // WindowManager的实现类是WindowManagerImpl，<br>                // 所以实际调用的是WindowManagerImpl的addView方法<br>                wm.addView(decor, l);<br>            }<br>        }<br>    }<br>}</p>
-<p>public final class WindowManagerImpl implements WindowManager {<br>    private final WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();<br>    …</p>
-<pre><code>@Override
-public void addView(@NonNull View view, @NonNull ViewGroup.LayoutParams params) &#123;
-    applyDefaultToken(params);
-    mGlobal.addView(view, params, mDisplay, mParentWindow);
-&#125;
-...
-</code></pre>
-<p>}</p>
-<pre><code>- 在了解View绘制的整体流程之前，我们必须先了解下ViewRoot和DecorView的概念。ViewRoot对应于ViewRootImpl类，它是连接WindowManager和DecorView的纽带，View的三大流程均是通过ViewRoot来完成的。在ActivityThread中，当Activity对象被创建完毕后，会将DecorView添加到Window中，同时会创建ViewRootImpl对象，并将ViewRootImpl对象和DecorView建立关联，相关源码如下所示：
-
-```java
-// WindowManagerGlobal的addView方法
+<p>在了解View绘制的整体流程之前，我们必须先了解下ViewRoot和DecorView的概念。ViewRoot对应于ViewRootImpl类，它是连接WindowManager和DecorView的纽带，View的三大流程均是通过ViewRoot来完成的。在ActivityThread中，当Activity对象被创建完毕后，会将DecorView添加到Window中，同时会创建ViewRootImpl对象，并将ViewRootImpl对象和DecorView建立关联，相关源码如下所示：</p>
+<pre><code class="java">// WindowManagerGlobal的addView方法
 public void addView(View view, ViewGroup.LayoutParams params, Display display, Window parentWindow) &#123;
     ...
     ViewRootImpl root;
@@ -1066,8 +1102,7 @@ public int getMinimumWidth() &#123;
 <p>如果View没有设置背景，那么返回android:minWidth这个属性所指定的值，这个值可以为0；如果View设置了背景，则返回android:minWidth和背景的最小宽度这两者中的最大值。</p>
 <p>3.自定义View时手动处理wrap_content时的情形</p>
 <p>直接继承View的控件需要重写onMeasure方法并设置wrap_content时的自身大小，否则在布局中使用wrap_content就相当于使用match_parent。解决方式如下：</p>
-<pre><code class="java">protected void onMeasure(int widthMeasureSpec, 
-int height MeasureSpec) &#123;
+<pre><code class="java">protected void onMeasure(int widthMeasureSpec, int height MeasureSpec) &#123;
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
     int widtuhSpecSize = MeasureSpec.getSize(widthMeasureSpec);
