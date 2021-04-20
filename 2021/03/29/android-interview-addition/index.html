@@ -253,7 +253,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="23">
-<input type="hidden" id="yelog_site_word_count" value="184.2k">
+<input type="hidden" id="yelog_site_word_count" value="190.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -661,7 +661,7 @@
     </div>
     <div class="article-meta">
         
-        <span>Count:14.8k</span>
+        <span>Count:21k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -680,7 +680,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6"><span class="toc-text">问题集锦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ArrayList%E3%80%81LinkedList%E3%80%81HashMap%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="toc-text">1.ArrayList、LinkedList、HashMap线程安全和替代方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E6%95%B0%E7%BB%84%E5%8A%A8%E6%80%81%E6%89%A9%E5%AE%B9"><span class="toc-text">1.1 数组动态扩容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E5%8A%A8%E6%80%81%E6%89%A9%E5%AE%B9%E7%9A%84%E9%9B%86%E5%90%88"><span class="toc-text">1.2动态扩容的集合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SharePreferences%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88MMKV%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E2%80%93MMKV%E4%BD%BF%E7%94%A8Ashmem%E5%8C%BF%E5%90%8D%E5%86%85%E5%AD%98"><span class="toc-text">2.SharePreferences线程安全和替代方案MMKV及底层原理–MMKV使用Ashmem匿名内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-OOM-JVM%E5%AF%BC%E8%87%B4%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="toc-text">3.OOM-JVM导致的内存泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%9C%BA%E6%99%AF"><span class="toc-text">内存泄漏场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-text">解决思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="toc-text">代码优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM%E5%A0%86%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%90%8E%EF%BC%8C%E5%85%B6%E4%BB%96%E7%BA%BF%E7%A8%8B%E5%8F%AF%E5%90%A6%E7%BB%A7%E7%BB%AD%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-text">JVM堆内存溢出后，其他线程可否继续工作？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-OkHttp%E5%8F%8A%E9%BB%98%E8%AE%A4%E6%8B%A6%E6%88%AA%E5%99%A8%EF%BC%8C%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">4.OkHttp及默认拦截器，与自定义拦截器的执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%8E%B7%E5%8F%96%E5%AE%9E%E4%BE%8B%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="toc-text">5.线程池获取实例的方法和参数列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-OKHttp%E5%92%8CHtttpURLConnection%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">6.OKHttp和HtttpURLConnection的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Binder%E5%8E%9F%E7%90%86%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8"><span class="toc-text">7.Binder原理及为什么采用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-TCP%E5%92%8CUDP%E5%9C%A8%E6%8A%A5%E6%96%87%E4%B8%8A%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.TCP和UDP在报文上有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88ScreenMatch-SmallWidth"><span class="toc-text">9.屏幕适配方案ScreenMatch(SmallWidth)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Kotlin%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-text">10.Kotlin协程实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-synchronized%E5%92%8Cvolatile%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">11.synchronized和volatile的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-HashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%93%88%E5%B8%8C%E7%A2%B0%E6%92%9E%E5%8F%8A%E6%89%A9%E5%AE%B9%E6%96%B9%E6%A1%88"><span class="toc-text">12.HashMap的实现和哈希碰撞及扩容方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BroadcastReceiver%E4%B8%8ELocalBroadcastManager%E5%BA%94%E7%94%A8%E5%8F%8A%E5%8C%BA%E5%88%AB"><span class="toc-text">BroadcastReceiver与LocalBroadcastManager应用及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0-DiskLRUCache%E5%AE%9E%E7%8E%B0-LRU%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%EF%BC%89"><span class="toc-text">13.缓存实现 DiskLRUCache实现  LRU数据结构（双向链表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3"><span class="toc-text">AOP编程思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%82%B2%E8%A7%82%E9%94%81%E3%80%81%E4%B9%90%E8%A7%82%E9%94%81%E3%80%81%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81%E3%80%81%E8%87%AA%E6%97%8B%E9%94%81%E3%80%81%E5%81%8F%E5%90%91%E9%94%81%E3%80%81%E8%BD%BB%E9%87%8F-%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81%E3%80%81%E8%AF%BB%E5%86%99%E9%94%81%E3%80%81%E5%90%84%E7%A7%8D%E9%94%81%E5%8F%8A%E5%85%B6Java%E5%AE%9E%E7%8E%B0"><span class="toc-text">14.悲观锁、乐观锁、可重入锁、自旋锁、偏向锁、轻量&#x2F;重量级锁、读写锁、各种锁及其Java实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARouter%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">ARouter源码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-text">注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Launcher%E8%A2%AB%E6%9D%80%E6%AD%BB"><span class="toc-text">Launcher被杀死</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Camera1-Camera2-CameraX%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-text">Camera1 Camera2 CameraX的演进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%B1%BB"><span class="toc-text">核心类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraManager"><span class="toc-text">CameraManager</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraDevice"><span class="toc-text">CameraDevice</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraCharacteristics"><span class="toc-text">CameraCharacteristics</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CaptureRequest"><span class="toc-text">CaptureRequest</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CaptureRequest-Builder"><span class="toc-text">CaptureRequest.Builder</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraCaptureSession"><span class="toc-text">CameraCaptureSession</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ImageReader"><span class="toc-text">ImageReader</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MediaCodec-MediaMuxer"><span class="toc-text">MediaCodec MediaMuxer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SurfaceView-TextureView-SurfaceTexture%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">SurfaceView TextureView SurfaceTexture等的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SurfaceView"><span class="toc-text">SurfaceView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TextureView"><span class="toc-text">TextureView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SurfaceTexture"><span class="toc-text">SurfaceTexture</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GLSurfaceView"><span class="toc-text">GLSurfaceView</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA%E5%AE%9E%E7%8E%B0"><span class="toc-text">自定义相机实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SurfaceView%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">SurfaceView生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89View%E9%9C%80%E8%A6%81%E9%87%8D%E5%86%99%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">自定义View需要重写的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89View%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%88%B0view%E7%9A%84%E5%AE%BD%E9%AB%98"><span class="toc-text">自定义View什么时候可以获取到view的宽高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onTouchEvent-%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BD%9C%E7%94%A8"><span class="toc-text">onTouchEvent()返回值作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84Http-Https%E8%AF%B7%E6%B1%82"><span class="toc-text">一次完整的Http&#x2F;Https请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glide%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="toc-text">Glide缓存机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SharedPreferences-apply%E5%92%8Ccommit%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">SharedPreferences apply和commit的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message%E7%9A%84%E6%BA%90%E7%A0%81"><span class="toc-text">Message的源码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6"><span class="toc-text">问题集锦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ArrayList%E3%80%81LinkedList%E3%80%81HashMap%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="toc-text">1.ArrayList、LinkedList、HashMap线程安全和替代方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E6%95%B0%E7%BB%84%E5%8A%A8%E6%80%81%E6%89%A9%E5%AE%B9"><span class="toc-text">1.1 数组动态扩容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E5%8A%A8%E6%80%81%E6%89%A9%E5%AE%B9%E7%9A%84%E9%9B%86%E5%90%88"><span class="toc-text">1.2动态扩容的集合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SharePreferences%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88MMKV%E5%8F%8A%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E2%80%93MMKV%E4%BD%BF%E7%94%A8Ashmem%E5%8C%BF%E5%90%8D%E5%86%85%E5%AD%98"><span class="toc-text">2.SharePreferences线程安全和替代方案MMKV及底层原理–MMKV使用Ashmem匿名内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-OOM-JVM%E5%AF%BC%E8%87%B4%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="toc-text">3.OOM-JVM导致的内存泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%9C%BA%E6%99%AF"><span class="toc-text">内存泄漏场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-text">解决思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="toc-text">代码优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM%E5%A0%86%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%90%8E%EF%BC%8C%E5%85%B6%E4%BB%96%E7%BA%BF%E7%A8%8B%E5%8F%AF%E5%90%A6%E7%BB%A7%E7%BB%AD%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-text">JVM堆内存溢出后，其他线程可否继续工作？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-OkHttp%E5%8F%8A%E9%BB%98%E8%AE%A4%E6%8B%A6%E6%88%AA%E5%99%A8%EF%BC%8C%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">4.OkHttp及默认拦截器，与自定义拦截器的执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%8E%B7%E5%8F%96%E5%AE%9E%E4%BE%8B%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="toc-text">5.线程池获取实例的方法和参数列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-OKHttp%E5%92%8CHtttpURLConnection%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">6.OKHttp和HtttpURLConnection的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Binder%E5%8E%9F%E7%90%86%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8"><span class="toc-text">7.Binder原理及为什么采用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-TCP%E5%92%8CUDP%E5%9C%A8%E6%8A%A5%E6%96%87%E4%B8%8A%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-text">8.TCP和UDP在报文上有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88ScreenMatch-SmallWidth"><span class="toc-text">9.屏幕适配方案ScreenMatch(SmallWidth)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Kotlin%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-text">10.Kotlin协程实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-synchronized%E5%92%8Cvolatile%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">11.synchronized和volatile的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-HashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%93%88%E5%B8%8C%E7%A2%B0%E6%92%9E%E5%8F%8A%E6%89%A9%E5%AE%B9%E6%96%B9%E6%A1%88"><span class="toc-text">12.HashMap的实现和哈希碰撞及扩容方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BroadcastReceiver%E4%B8%8ELocalBroadcastManager%E5%BA%94%E7%94%A8%E5%8F%8A%E5%8C%BA%E5%88%AB"><span class="toc-text">BroadcastReceiver与LocalBroadcastManager应用及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0-DiskLRUCache%E5%AE%9E%E7%8E%B0-LRU%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%EF%BC%89"><span class="toc-text">13.缓存实现 DiskLRUCache实现  LRU数据结构（双向链表）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3"><span class="toc-text">AOP编程思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%82%B2%E8%A7%82%E9%94%81%E3%80%81%E4%B9%90%E8%A7%82%E9%94%81%E3%80%81%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81%E3%80%81%E8%87%AA%E6%97%8B%E9%94%81%E3%80%81%E5%81%8F%E5%90%91%E9%94%81%E3%80%81%E8%BD%BB%E9%87%8F-%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81%E3%80%81%E8%AF%BB%E5%86%99%E9%94%81%E3%80%81%E5%90%84%E7%A7%8D%E9%94%81%E5%8F%8A%E5%85%B6Java%E5%AE%9E%E7%8E%B0"><span class="toc-text">14.悲观锁、乐观锁、可重入锁、自旋锁、偏向锁、轻量&#x2F;重量级锁、读写锁、各种锁及其Java实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARouter%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">ARouter源码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-text">注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Launcher%E8%A2%AB%E6%9D%80%E6%AD%BB"><span class="toc-text">Launcher被杀死</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Camera1-Camera2-CameraX%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-text">Camera1 Camera2 CameraX的演进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Camera1"><span class="toc-text">Camera1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Camera2"><span class="toc-text">Camera2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multi-Camera"><span class="toc-text">Multi-Camera</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CameraX"><span class="toc-text">CameraX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%B1%BB"><span class="toc-text">核心类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraManager"><span class="toc-text">CameraManager</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraDevice"><span class="toc-text">CameraDevice</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraCharacteristics"><span class="toc-text">CameraCharacteristics</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CaptureRequest"><span class="toc-text">CaptureRequest</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CaptureRequest-Builder"><span class="toc-text">CaptureRequest.Builder</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CameraCaptureSession"><span class="toc-text">CameraCaptureSession</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ImageReader"><span class="toc-text">ImageReader</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MediaCodec-MediaMuxer"><span class="toc-text">MediaCodec MediaMuxer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SurfaceView-TextureView-SurfaceTexture%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">SurfaceView TextureView SurfaceTexture等的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SurfaceView"><span class="toc-text">SurfaceView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TextureView"><span class="toc-text">TextureView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SurfaceTexture"><span class="toc-text">SurfaceTexture</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GLSurfaceView"><span class="toc-text">GLSurfaceView</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E6%9C%BA%E5%AE%9E%E7%8E%B0"><span class="toc-text">自定义相机实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SurfaceView%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">SurfaceView生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89View%E9%9C%80%E8%A6%81%E9%87%8D%E5%86%99%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">自定义View需要重写的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89View%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%88%B0view%E7%9A%84%E5%AE%BD%E9%AB%98"><span class="toc-text">自定义View什么时候可以获取到view的宽高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onTouchEvent-%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BD%9C%E7%94%A8"><span class="toc-text">onTouchEvent()返回值作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84Http-Https%E8%AF%B7%E6%B1%82"><span class="toc-text">一次完整的Http&#x2F;Https请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E4%B8%8EHTTPS%E7%9A%84%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="toc-text">HTTP与HTTPS的不同点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTPS%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-text">HTTPS的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTPS%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B"><span class="toc-text">HTTPS请求过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTPS%E4%BC%98%E5%8C%96"><span class="toc-text">HTTPS优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glide%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="toc-text">Glide缓存机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glide%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="toc-text">Glide内存优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8-%E5%BC%B1%E5%BA%94%E7%94%A8-%E8%BD%AF%E5%BC%95%E7%94%A8-%E8%99%9A%E5%BC%95%E7%94%A8"><span class="toc-text">强引用 弱应用 软引用 虚引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SharedPreferences-apply%E5%92%8Ccommit%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">SharedPreferences apply和commit的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message%E7%9A%84%E6%BA%90%E7%A0%81"><span class="toc-text">Message的源码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1212,7 +1212,72 @@ public void killBackgroundProcesses(String packageName) &#123;
     &#125;
 &#125;
 </code></pre>
-<h3 id="Camera1-Camera2-CameraX的演进"><a href="#Camera1-Camera2-CameraX的演进" class="headerlink" title="Camera1 Camera2 CameraX的演进"></a>Camera1 Camera2 CameraX的演进</h3><table>
+<h3 id="Camera1-Camera2-CameraX的演进"><a href="#Camera1-Camera2-CameraX的演进" class="headerlink" title="Camera1 Camera2 CameraX的演进"></a>Camera1 Camera2 CameraX的演进</h3><h4 id="Camera1"><a href="#Camera1" class="headerlink" title="Camera1"></a>Camera1</h4><blockquote>
+<ul>
+<li>  Camera1 的开发中，打开相机，设置参数的过程是同步的，就跟用户实际使用camera的操作步骤一样。但是如果有耗时情况发生时，会导致整个调用线程等待；</li>
+<li>  开发者如果想要个性化设置camera效果，无法手动设置调整参数，需要依靠第三方算法对于回调的数据进行处理（NV21）。而且不同手机的回调数据效果都是不一样的，采用第三方算法调整，通常效果不好；</li>
+<li>  开发者所能获取的Camera状态信息有限；</li>
+</ul>
+<p>camera1 的开发过程比较简单，对于常规视频采集，如果只要一般的预览功能，是没问题的，然而如果想要挖掘Camera更多的功能，camera1无法满足，于是有了camera2.</p>
+</blockquote>
+<h4 id="Camera2"><a href="#Camera2" class="headerlink" title="Camera2"></a>Camera2</h4><blockquote>
+<ul>
+<li>  Camera2 的开发中，camera的生命周期都是异步的，即发送请求，等待回调的client-service模式；</li>
+<li>  系统： Android L+；</li>
+<li>  这里的关键回调主要是三个：</li>
+</ul>
+<p>  （1）CameraDevice.StateCallback ///比如线程A发送打开相机请求, 线程B中收到相机状态回调，线程B中与cameraDevice建立会话，设置参数，数据回调处理；</p>
+<p>  （2）CameraCaptureSession.StateCallback ///与CameraDevice建立会话后，收到的会话状态回调；</p>
+<p>  （3）ImageReader.OnImageAvailableListener // 开发者可以直接获取并且操作的数据回调；</p>
+<ul>
+<li>  通过跟相机建立的会话，可以更加精细的调整Camera参数：比如ISO感光度，曝光时间，曝光补偿……；</li>
+<li>  如果开发者想要更多自己的定制，也可以直接使用回调数据（YUV488）；</li>
+<li>  MultiCamera的支持；</li>
+</ul>
+</blockquote>
+<h4 id="Multi-Camera"><a href="#Multi-Camera" class="headerlink" title="Multi-Camera"></a>Multi-Camera</h4><blockquote>
+<ul>
+<li>  系统：Android P+；</li>
+<li>  目前支持的multi-camera的设备： Pixel 3， mate20 系列；</li>
+<li>  Multi-Camera 新功能：</li>
+</ul>
+<p>  （1）更好的光学变焦：之前的方式通常使用数码变焦或者是单个摄像头的光学变焦来达到变焦的效果， 通过多摄像头的变焦方式，无论远景还是近景，都可以采到更好质量的数据。</p>
+<p>  （2）景深计算：通过多摄像头的景深不同，可以得到每一帧图片中不同物体的景深，从而更好的区分前景或者后景。应用范围：背景虚化，背景替换，现实增强。</p>
+<p>  （3）更广的视角：更广的视角带来鱼眼镜头的畸变效果，畸变矫正功能。<br>  CaptureRequest.DISTORTION_CORRECTION_MODE</p>
+<p>  （4）人脸识别功能：跟畸变效果一样，自带人脸识别功能。应用范围：人脸裁剪，人脸特效。<br>  CaptureResult.STATISTICS_FACE_DETECT_MODE</p>
+<p>  （5）多路流同时采集：场景包括（单摄像头输出多流，多摄像头输出多流）</p>
+<pre><code class="java">normalOutputConfigImageReader.setPhysicalCameraId(normalLensId)
+wideOutputConfigImageReader.setPhysicalCameraId(wideAngleId)
+params.previewBuilder?.addTarget(normalSurface)
+params.previewBuilder?.addTarget(wideSurface)
+</code></pre>
+<ul>
+<li>  带来的问题：更耗内存，更耗电</li>
+<li>  趋势：单个手机中，支持更多的摄像头</li>
+</ul>
+<p>  Camera2 虽然给开发者带来了相机的更多可玩性，然而android的碎片化，导致很多设备的兼容性问题频繁发生。尤其国内的手机厂商，对camera2 的支持程度各不相同，</p>
+<p>  所以Camera2的开发难度更多的是在兼容性，于是有了CameraX。</p>
+</blockquote>
+<h4 id="CameraX"><a href="#CameraX" class="headerlink" title="CameraX"></a>CameraX</h4><blockquote>
+<ul>
+<li>  系统：Android L+</li>
+<li>  Jetpack 内的一套Camera开发支持库。</li>
+<li>  特点：</li>
+</ul>
+<ol>
+<li> 更简单易用的API，更少的代码量，使开发者更专注业务的个性化实现。比如：对采集到图片做分析处理。</li>
+<li> 更好的兼容性，减少不同设备适配烦恼：包括宽高比、屏幕方向、旋转、预览大小和高分辨率图片大小。</li>
+<li> 数据分析: 开发者依然可以对数据进行个性化处理。</li>
+<li> 第三方Camera特效拓展：对于一些手机厂商特定实现的camera特效，开发者也可以使用。</li>
+<li> Code Sample 1（CameraX的常规使用）</li>
+</ol>
+<p>  （1）CameraX 创建UseCaseConfig; //已经提前实现好各种UseCase（preview,ImageCapture,ImageAnalysis…）对应不同的UseCaseConfig, 开发者重要专注自己的业务。</p>
+<p>  （2）创建对应UseCase</p>
+<p>  （3）CameraX bindToLifecycle(LifeCycleOwner, UseCases) //CameraX 会观察生命周期以确定何时打开相机、何时创建拍摄会话以及何时停止和关闭。</p>
+<p>  （4）CameraX unbind(UseCase)</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82010550">参考链接:知乎-Camera进化</a></p>
+<table>
 <thead>
 <tr>
 <th></th>
@@ -1641,7 +1706,7 @@ public class CameraActivity extends BaseActivity &#123;
 <li>onMeasure:当测量控件宽高时回调,当调用了requestLayout()也会回调onMeasure.在这里一定可以通过getMeasuredHeight()和getMeasuredWidth()来获取控件的高和宽,但不一定可以通过getHeight()和getWidth()来获取控件宽高,因为getHeight()和getWidth()必须要等onLayout方法回调之后才能确定.</li>
 <li>onSizeChanged:当控件的宽高发生变化时回调,和onMeasure一样,一定可以通过getMeasuredHeight()和getMeasuredWidth()来获取控件的高和宽,因为它是在onMeasure方法执行之后和onLayout方法之前回调的.</li>
 <li>onLayout:当确定控件的位置时回调,当调用了requestLayout()也会回调onLayout.在这里一定可以通过getHeight()和getWidth()获取控件的宽高,同时由于onMeasure方法比onLayout方法先执行,所以在这里也可以通过getMeasuredHeight()和getMeasuredWidth()来获取控件的高和宽.</li>
-<li>addOnGlobalLayoutListener:当View的位置确定完后会回调改监听方法,它是紧接着onLayout方法执行而执行的,只要onLayout方法调用了,那么addOnGlobalLayoutListener的监听器就会监听到.在这里getMeasuredHeight()和getMeasuredWidth()和getHeight()和getWidth()都可以获取到宽高. </li>
+<li>addOnGlobalLayoutListener:当View的位置确定完后会回调改监听方法,它是紧接着onLayout方法执行而执行的,只要onLayout方法调用了,那么addOnGlobalLayoutListener的监听器就会监听到.在这里getMeasuredHeight()和getMeasuredWidth()和getHeight()和getWidth()都可以获取到宽高.</li>
 <li>onWindowFocusChanged:当View的焦点发送改变时回调,在这里getMeasuredHeight()和getMeasuredWidth()和getHeight()和getWidth()都可以获取到宽高.Activity也可以通过重写该方法来判断当前的焦点是否发送改变了;需要注意的是这里View获取焦点和失去焦点都会回调.</li>
 </ol>
 <p>那么,上面分析了那么多方法来获取控件的宽高,那到底用哪一种呢?</p>
@@ -1652,8 +1717,181 @@ public class CameraActivity extends BaseActivity &#123;
 </ol>
 <h3 id="onTouchEvent-返回值作用"><a href="#onTouchEvent-返回值作用" class="headerlink" title="onTouchEvent()返回值作用"></a>onTouchEvent()返回值作用</h3><p>true表示已经消耗了<br>false表示没有操作完，继续分发</p>
 <h3 id="一次完整的Http-Https请求"><a href="#一次完整的Http-Https请求" class="headerlink" title="一次完整的Http/Https请求"></a>一次完整的Http/Https请求</h3><p><img src="https://pic1.zhimg.com/80/v2-4a9996d1f96058dc50a49caa8ddb5b90_1440w.jpg" alt="image"></p>
-<h3 id="Glide缓存机制"><a href="#Glide缓存机制" class="headerlink" title="Glide缓存机制"></a>Glide缓存机制</h3><p>WeakReference + Lrucache + DiskLrucache</p>
-<h3 id="SharedPreferences-apply和commit的区别"><a href="#SharedPreferences-apply和commit的区别" class="headerlink" title="SharedPreferences apply和commit的区别"></a>SharedPreferences apply和commit的区别</h3><h3 id="Message的源码"><a href="#Message的源码" class="headerlink" title="Message的源码"></a>Message的源码</h3>
+<h4 id="HTTP与HTTPS的不同点"><a href="#HTTP与HTTPS的不同点" class="headerlink" title="HTTP与HTTPS的不同点"></a>HTTP与HTTPS的不同点</h4><ul>
+<li>  1、HTTPS需要用到CA申请证书。</li>
+<li>  2、HTTP是超文本传输协议，信息是明文的；HTTPS则是具有安全性的SSL加密传输协议。</li>
+<li>  3、HTTPS和HTTP使用的是完全不同的连接方式，用的端口也不一样，HTTP是80,HTTPS是443。</li>
+<li>  4、HTTP的连接很简单，是无状态的，HTTPS是HTTP+SSL协议构建的，可进行加密传输、身份认证的网络协议，比HTTP协议安全。</li>
+</ul>
+<h4 id="HTTPS的优势"><a href="#HTTPS的优势" class="headerlink" title="HTTPS的优势"></a>HTTPS的优势</h4><ul>
+<li>  1、内容加密，建立一个信息的安全通道，来保证数据传输过程的安全性。</li>
+<li>  2、身份认证，确认网站的真是性。</li>
+<li>  3、数据完整性，防止内容被第三方冒充或者篡改。</li>
+</ul>
+<h4 id="HTTPS请求过程"><a href="#HTTPS请求过程" class="headerlink" title="HTTPS请求过程"></a>HTTPS请求过程</h4><p>HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。</p>
+<p><img src="http://jiaxf.github.io/img/http&https.png" alt="image"></p>
+<p>HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。</p>
+<p><img src="http://jiaxf.github.io/img/https%E8%BF%87%E7%A8%8B.png" alt="image"></p>
+<blockquote>
+<p>  1、浏览器发起往服务器的 443 端口发起请求，请求携带了浏览器支持的加密算法和哈希算法。<br>  2、服务器收到请求，选择浏览器支持的加密算法和哈希算法。<br>  3、服务器将数字证书返回给浏览器，这里的数字证书可以是向某个可靠机构申请的，也可以是自制的。<br>      （注释：证书包括以下这些内容：1. 证书序列号。2. 证书过期时间。3. 站点组织名。4. 站点DNS主机名。5. 站点公钥。6. 证书颁发者名。7. 证书签名。因为证书是要给大家用的，所以不需要加密传输）<br>  4、浏览器进入数字证书认证环节，这一部分是浏览器内置的 TSL 完成的：<br>      4.1 首先浏览器会从内置的证书列表中索引，找到服务器下发证书对应的机构，如果没有找到，此时就会提示用户该证书是不是由权威机构颁发，是不可信任的。如果查到了对应的机构，则取出该机构颁发的公钥。<br>      4.2 用机构的证书公钥解密得到证书的内容和证书签名，内容包括网站的网址、网站的公钥、证书的有效期等。浏览器会先验证证书签名的合法性（验证过程类似上面 Bob 和 Susan 的通信）。<br>      签名通过后，浏览器验证证书记录的网址是否和当前网址是一致的，不一致会提示用户。如果网址一致会检查证书有效期，证书过期了也会提示用户。这些都通过认证时，浏览器就可以安全使用证书中的网站公钥了。<br>      4.3 浏览器生成一个随机数 R，并使用网站公钥对 R 进行加密。<br>  5、浏览器将加密的 R 传送给服务器。<br>  6、服务器用自己的私钥解密得到 R。<br>  7、服务器以 R 为密钥使用了对称加密算法加密网页内容并传输给浏览器。<br>  8、浏览器以 R 为密钥使用之前约定好的解密算法获取网页内容。</p>
+<p>  数字证书如何认证？ 首先你的证书会在https握手过程中被传递到浏览器，浏览器从你的证书中找到了颁发者，从颁发者的证书（如果你电脑上有的话）又找到了CA的证书<br>  （CA证书会在操作系统安装时就安装好，所以每个人电脑上都有根证书），使用CA证书中带的公钥来对颁发者证书做验签，一旦匹配，说明你电脑上的颁发者证书不是伪造的，<br>  同理，再用颁发者证书中的公钥去验证你的证书，以此证明你的证书不是伪造的。这样整个链状的验证，从而确保你的证书一定是直接或间接从CA签发的，<br>  这样浏览器地址栏会显示一个绿色的盾牌，表示你的网站能通过证书验证。<br>  如果你的电脑上没有颁发者证书（断链）或者你自己本身就是自签名证书（自己做CA，但是要记得，人家电脑上并没有装你的自签名根证书），那么浏览器会报警提示不能验证证书，问你是否还需要继续。</p>
+</blockquote>
+<p><img src="http://jiaxf.github.io/img/zhengshu.png" alt="image"></p>
+<p><img src="http://jiaxf.github.io/img/https%E4%BC%A0%E8%BE%93.png" alt="image"></p>
+<blockquote>
+<p>  HTTPS 连接大致上可以划分为两个部分，第一个是建立连接时时的非对称加密握手，第二个是握手后的对称加密报文传输。<br>  在最差的情况下，也就是不做任何的优化措施，HTTPS 建立连立连接可能会比HTTP 慢上几百毫秒甚至几秒，这其中既有网络耗时，也有计算耗时，就会让人产生“打开一个 HTTPS 网站好慢啊”的感觉。</p>
+</blockquote>
+<h4 id="HTTPS优化"><a href="#HTTPS优化" class="headerlink" title="HTTPS优化"></a>HTTPS优化</h4><p><img src="http://jiaxf.github.io/img/https%E4%BC%98%E5%8C%96.png" alt="image"></p>
+<ul>
+<li><p>  硬件优化</p>
+</li>
+<li><p>  更快的CPU</p>
+</li>
+<li><p>  SSL加速卡 如：阿里的Tengine</p>
+</li>
+<li><p>  SSL加速服务器</p>
+</li>
+<li><p>  软件优化</p>
+</li>
+<li><p>  软件升级 如：Linux 内核由 2.x 升级到 4.x，把 把 Nginx 由 1.6 升级到 1.16，把 OpenSSL 由 1.0.1 升级到 1.1.0/1.1.1。</p>
+</li>
+<li><p>  协议优化</p>
+</li>
+<li><p>  采用 TLS1.3</p>
+</li>
+<li><p>  握手时使用的密钥交换协议应当尽量选用椭圆曲线的 ECDHE 算法。它不仅运算速度快，安全性高，还支持“False Start”</p>
+</li>
+<li><p>  椭圆曲线也要选择高性能的曲线，最好是 x25519，次优选择是 P-256。对称加密算法方面，也可以选用“AES_128_GCM”，它能比“AES_256_GCM”略快一点点。</p>
+</li>
+<li><p>  证书优化</p>
+</li>
+<li><p>  采用选择椭圆曲线（ECDSA）证书而不是 RSA 证书，因为 224 位的 ECC 相当于 2048 位的 RSA，节约带宽和计算量</p>
+</li>
+<li><p>  “OCSP Stapling”（OCSP 装订），它可以让服务器预先访问 CA 获取 OCSP 响应，然后在握手时随着证书一起发给客户端，免去了客户端连接 CA 服务器查询的时间。</p>
+</li>
+<li><p>  会话复用</p>
+</li>
+<li><p>  会话复用的效果类似 Cache，前提是客户端必须之前成功建立连接，后面就可以用“Session ID”“Session Ticket”等凭据跳过密钥交换、证书验证等步骤，直接开始加密通信。</p>
+</li>
+</ul>
+<h3 id="Glide缓存机制"><a href="#Glide缓存机制" class="headerlink" title="Glide缓存机制"></a>Glide缓存机制</h3><p><strong>Glide5大磁盘缓存策略</strong><br><code>DiskCacheStrategy.DATA</code>: 只缓存原始图片；<br><code>DiskCacheStrategy.RESOURCE</code>:只缓存转换过后的图片；<br><code>DiskCacheStrategy.ALL</code>:既缓存原始图片，也缓存转换过后的图片；对于远程图片，缓存 <code>DATA</code>和 <code>RESOURCE</code>；对于本地图片，只缓存 <code>RESOURCE</code>；<br><code>DiskCacheStrategy.NONE</code>：不缓存任何内容；<br><code>DiskCacheStrategy.AUTOMATIC</code>：默认策略，尝试对本地和远程图片使用最佳的策略。当下载网络图片时，使用<code>DATA</code>；对于本地图片，使用<code>RESOURCE</code>；</p>
+<pre><code class="java">// key是为了解决缓存图片的唯一性
+// Engine#load()
+//生成缓存key
+EngineKey key = keyFactory.buildKey(model, signature, width, height, transformations,
+        resourceClass, transcodeClass, options);
+</code></pre>
+<p>内存缓存逻辑：首先通过<code>loadFromActiveResources</code>从弱引用读取；如果没有再通过<code>loadFromCache</code>从LruCache读取；2者中的任意一个获取到数据就会调用<code>onResourceReady</code>就是将资源回调给ImageView去加载。</p>
+<p><strong>Glide缓存分为<code>弱引用(WeakReference) + LruCache + DiskLruCache</code>，其中读取数据的顺序是：弱引用 &gt; LruCache &gt; DiskLruCache&gt;网络；写入缓存的顺序是：网络 –&gt; DiskLruCache–&gt; LruCache–&gt;弱引用</strong></p>
+<p><strong>内存缓存分为弱引用的和 LruCache ，其中正在使用的图片使用弱引用缓存，暂时不使用的图片用 LruCache缓存，这一点是通过 图片引用计数器（acquired变量）来实现的，详情可以看内存缓存的小结。</strong></p>
+<p><strong>磁盘缓存就是通过DiskLruCache实现的，根据缓存策略的不同会获取到不同类型的缓存图片。它的逻辑是：先从转换后的缓存中取；没有的话再从原始的（没有转换过的）缓存中拿数据；再没有的话就从网络加载图片数据，获取到数据之后，再依次缓存到磁盘和弱引用。</strong></p>
+<h3 id="Glide内存优化"><a href="#Glide内存优化" class="headerlink" title="Glide内存优化"></a>Glide内存优化</h3><blockquote>
+<p>  首先，内存总量有限，必须限制图片加载的内存</p>
+<p>  弱引用</p>
+<p>  这个大家都懂，好多第三方加载组件也体现了这个思路。</p>
+<p>  最早，大家将Bitmap用弱引用管理起来，当内存不足时，系统会自动GC回收掉部分引用，从而达到内存管理的目的。 这种方式很简单，组件本身不管理图片内存，而是交给GC，有GC来自动回收内存。</p>
+<p>  这种方法会有几个问题：</p>
+<p>  应用占有的内存量会不断攀升，知道内存不足时，出现断崖时的内存回收</p>
+<p>  GC的时间可能会比较长，造成界面会有明显的卡顿。</p>
+<p>  GC回收的内存，没有区分，可能回收了最近在使用的Bitmap，造成二次加载。</p>
+<p>  最严重的，新的Android系统开始每次GC都会回收弱引用，这就使内存缓存没有用处。</p>
+<p>  强引用+LRU算法</p>
+<p>  基于以上问题，有些组件开始用强引用+LRU算法的方式处理图片加载的问题，其思路大概是：</p>
+<p>  给定一个固定图片缓存大小，将所有的使用的Bitmap用强引用的方式管理起来，并利用LRU算法，将旧的Bitmap释放，新的bitmap增加。</p>
+<p>  这样，图片缓存不会无限制的增长，内存量也能处在一个较理想的范围，申请和释放。UIL就是采用这种方法。</p>
+<p>  但这个思路也会有问题：</p>
+<p>  图片缓存的内存不会无限制增长，但会周期性的释放和申请。特别是对于一个长列表页面，图片会不断的申请，不断的释放。因为最终的内存释放还是GC去处理，快速滑动时，会造成大量的图片申请内存，大量的图片释放，系统的GC会很频繁，就产生了所谓的内存抖动。</p>
+<p>  内存的抖动同样也会造成界面卡顿，在快速滑动时，会非常明显。</p>
+<p>  提到界面卡顿，我要说明下卡顿的原因。</p>
+<p>  人眼能识别的帧数是一秒24帧，就是所若一个屏幕以每秒24帧显示时，人眼是看不出什么的，感觉很流畅。但若少于24帧，我们就能感觉出卡顿，不流畅。 最佳的帧数是每秒60帧，再高就没有任何意义了，一般显卡会跟屏幕的刷新速率保持一致，大部分都是60hz。</p>
+<p>  那我们来计算下，最高60帧，1000ms/60帧=16ms/帧，最低24帧，1000ms/24帧=42ms，也就是说每次ui线程里面的计算最佳的情况是少于16ms，最高则不能超过42ms。</p>
+<p>  以ListView为例，getView的运行时间不能大于42ms, 推荐大家用<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/JakeWharton/hugo">hugo</a>统计运行时间，很方便。</p>
+<p>  特殊情况下，即便是不大于42ms，接近也会造成卡顿，因为还会有其他的函数运行。</p>
+<p>  在这种情况下，若出现内存抖动，就会频繁的暂停进程，释放内存，极易出现卡顿。</p>
+<p>  GLide的BitmapPool</p>
+<p>  Glide对这个环节做了非常好的优化，解决了内存抖动的问题。</p>
+<p>  Glide构建了一个BitmapPool，Bitmap申请和回收都是透过BitmapPool来处理的。新加载图片时，会先从BitmapPool里面找有没有相应大小的Bitmap，有则直接使用，没有才会申请新的Bitmap；回收时，则会提交给BitmapPool, 供下次使用。</p>
+<p>  这种方式极大的减少了Bitmap的申请和回收操作，使得GC频度降低了很多。</p>
+<p>  图片与显示区域大小一致</p>
+<p>  图片加载最终的目的是显示到界面上，因此若是图片缓存的尺寸大于显示区域的尺寸是没有必要的。不光是造成内存浪费，占用较大的内存，而且会造成图片解析速度比较慢。</p>
+<p>  因此，不管是UIL，Glide和Freso等等都建议ImageView需要给定固定的长和宽，这样图片加载时，就可以根据显示区域的大小，加载最小的图片，又不会造成损失。</p>
+<p>  另外，七牛的云服务提供了imageView2参数，可以给定长宽，在网络加载层次上就可以降低加载的图片尺寸，提高加载速度。</p>
+<p>  另外，UIL，Glide都将缩放后的图片缓存到本地，下次加载时直接从磁盘缓存加载，也会有比原始尺寸加载更好的速度。</p>
+<p>  图片的加载优化有很多内容可以做，比如现在的图片加载，都是等将要显示时开始加载，这样图片可能需要等待一下才能加载出来，我们是不是可以提前加载呢？</p>
+</blockquote>
+<h3 id="强引用-弱应用-软引用-虚引用"><a href="#强引用-弱应用-软引用-虚引用" class="headerlink" title="强引用 弱应用 软引用 虚引用"></a>强引用 弱应用 软引用 虚引用</h3><ol>
+<li> 强引用</li>
+</ol>
+<blockquote>
+<p>  强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾收器绝不会回收它。当内存空间不足，Java虚拟机宁愿抛出<code>OutOfMmoryError</code>错误，使程序异常终止，也不会靠随意回收具有强引用对象来解决内存不足的问题。</p>
+</blockquote>
+<ol>
+<li> 软引用</li>
+</ol>
+<blockquote>
+<p>  软引用是用来描述一些还有用但并非必须的对象。对于软引用关联着的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围进行第二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常。</p>
+<p>  软引用关联的对象不会被<code>GC</code>回收。<code>JVM</code>在分配空间时，若果<code>Heap</code>空间不足，就会进行相应的<code>GC</code>，但是这次<code>GC</code>并不会收集软引用关联的对象，但是在JVM发现就算进行了一次回收后还是不足（<code>Allocation Failure</code>），<code>JVM</code>会尝试第二次<code>GC</code>，回收软引用关联的对象。</p>
+<p>  像这种如果内存充足，<code>GC</code>时就保留，内存不够，<code>GC</code>再来收集的功能很适合用在缓存的引用场景中。在使用缓存时有一个原则，如果缓存中有就从缓存获取，如果没有就从数据库中获取，缓存的存在是为了加快计算速度，如果因为缓存导致了内存不足进而整个程序崩溃，那就得不偿失了。</p>
+</blockquote>
+<ol start="3">
+<li> 弱引用</li>
+</ol>
+<blockquote>
+<p>  弱引用也是用来描述非必须对象的，他的强度比软引用更弱一些，被弱引用关联的对象，在垃圾回收时，如果这个对象只被弱引用关联（没有任何强引用关联他），那么这个对象就会被回收。</p>
+<p>  设计 <code>WeakHashMap</code>类是为了解决一个有趣的问题。如果有一个值，对应的键已经不再 使用了， 将会出现什么情况呢？ 假定对某个键的最后一次引用已经消亡，不再有任何途径引 用这个值的对象了。但是，由于在程序中的任何部分没有再出现这个键，所以，这个键 / 值 对无法从映射中删除。为什么垃圾回收器不能够删除它呢？ 难道删除无用的对象不是垃圾回 收器的工作吗？</p>
+<p>  遗憾的是，事情没有这样简单。垃圾回收器跟踪活动的对象。只要映射对象是活动的， 其中的所有桶也是活动的， 它们不能被回收。因此，需要由程序负责从长期存活的映射表中 删除那些无用的值。 或者使用 <code>WeakHashMap</code>完成这件事情。当对键的唯一引用来自散列条<br>  目时， 这一数据结构将与垃圾回收器协同工作一起删除键 / 值对。</p>
+<p>  下面是这种机制的内部运行情况。<code>WeakHashMap</code> 使用弱引用（<code>weak references</code>) 保存键。 <code>WeakReference</code> 对象将引用保存到另外一个对象中，在这里，就是散列键。对于这种类型的 对象，垃圾回收器用一种特有的方式进行处理。通常，如果垃圾回收器发现某个特定的对象 已经没有他人引用了，就将其回收。然而， 如果某个对象只能由 <code>WeakReference</code> 引用， 垃圾 回收器仍然回收它，但要将引用这个对象的弱引用放人队列中。<code>WeakHashMap</code>将周期性地检 查队列， 以便找出新添加的弱引用。一个弱引用进人队列意味着这个键不再被他人使用， 并 且已经被收集起来。于是， <code>WeakHashMap</code>将删除对应的条目。</p>
+<p>  除了<code>WeakHashMap</code>使用了弱引用，<code>ThreadLocal</code>类中也是用了弱引用。</p>
+</blockquote>
+<ol start="4">
+<li> 虚引用</li>
+</ol>
+<blockquote>
+<p>  一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来获取一个对象的实例。为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。虚引用和弱引用对关联对象的回收都不会产生影响，如果只有虚引用活着弱引用关联着对象，那么这个对象就会被回收。它们的不同之处在于弱引用的<code>get</code>方法，虚引用的<code>get</code>方法始终返回<code>null</code>,弱引用可以使用<code>ReferenceQueue</code>,虚引用必须配合<code>ReferenceQueue</code>使用。</p>
+<p>  <code>jdk</code>中直接内存的回收就用到虚引用，由于<code>jvm</code>自动内存管理的范围是堆内存，而直接内存是在堆内存之外（其实是内存映射文件，自行去理解虚拟内存空间的相关概念），所以直接内存的分配和回收都是有<code>Unsafe</code>类去操作，<code>java</code>在申请一块直接内存之后，会在堆内存分配一个对象保存这个堆外内存的引用，这个对象被垃圾收集器管理，一旦这个对象被回收，相应的用户线程会收到通知并对直接内存进行清理工作。</p>
+</blockquote>
+<h3 id="SharedPreferences-apply和commit的区别"><a href="#SharedPreferences-apply和commit的区别" class="headerlink" title="SharedPreferences apply和commit的区别"></a>SharedPreferences apply和commit的区别</h3><p>commit特点如下</p>
+<blockquote>
+<ol>
+<li> 存储的过程是原子操作</li>
+<li> commit方法有返回值，设置成功为ture，否则为false</li>
+<li> 同时对一个SharedPreferences设置值最后一次的设置会直接覆盖前次值</li>
+<li> 如果不关心设置成功与否，并且是在主线程设置值，建议用apply方法</li>
+</ol>
+</blockquote>
+<p>apply特点如下</p>
+<blockquote>
+<ol>
+<li> 存储的过程也是原子操作</li>
+<li> apply没有返回值，存储是否成功无从知道。</li>
+<li> apply写入过程分两步，第一步先同步写入内存，第二部在异步写入物理磁盘。并且写入的过程会阻塞同一个SharedPreferences对象的其他写入操作。</li>
+</ol>
+</blockquote>
+<p>原子操作的意思是”不可中断的一个或一系列操作”,通俗的讲一个操作一旦开始，在结束前不会被打断。比如常见的++i操作就不具有原子性，因为它实际上包含了3个步骤，1-读取i的值，2-对读取的i值加1，3-写入加1后的值。单独看此三个步骤都是原子操作，但组合起来就是非原子操作了。</p>
+<p>总结<br>commit相对于apply效率较低，commit直接是向物理介质写入内容，而apply是先同步将内容提交到内存，然后在异步的向物理介质写入内容。这样做显然提高了效率。</p>
+<h3 id="Message的源码"><a href="#Message的源码" class="headerlink" title="Message的源码"></a>Message的源码</h3><pre><code class="java">public Object obj; // 用来保存对象
+public Messenger replyTo; // 回复跨进程的Messenger
+public int sendingUid = -1; // Messenger发送时使用
+
+static final int FLAG_IN_USE = 1 &lt;&lt; 0; // 正在使用标志值
+static final int FLAG_ASYNCHRONOUS = 1 &lt;&lt; 1; // 异步标志值
+static final int FLAGS_TO_CLEAR_ON_COPY_FROM = FLAG_IN_USE;
+
+int flags; // 消息标志，上面三个常量 FLAG_* 用在这里
+long when; // 估计和arg1、arg2性质一样，存时间戳
+
+Bundle data;    // 存放Bundle
+Handler target; // 存放Handler实例，用于判断是哪个Handler发送的Message
+Runnable callback; // 消息的回调操作
+Message next;   // 消息池用链表的方式存储
+
+private static final Object sPoolSync = new Object(); // 消息池同步公用标志
+private static Message sPool; // 消息池
+private static int sPoolSize = 0; // 消息池已缓存数量
+private static final int MAX_POOL_SIZE = 50; // 消息池最大容量
+private static boolean gCheckRecycle = true; // 该版本系统是否支持回收标志位
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nathanwriting@126.com 联系我。 </span>
     </div>
@@ -1667,7 +1905,7 @@ public class CameraActivity extends BaseActivity &#123;
 
 <div class="article_copyright">
     <p><span class="copy-title">Title:</span>问题集锦</p>
-    <p><span class="copy-title">Count:</span><span class="post-count">14.8k</span></p>
+    <p><span class="copy-title">Count:</span><span class="post-count">21k</span></p>
     <p><span class="copy-title">Author:</span><a  title="Nathaniel">Nathaniel</a></p>
     <p><span class="copy-title">Created At:</span>2021-03-29, 14:01:47</p>
     <p><span class="copy-title">Updated At:</span>2021-03-29, 14:01:47</p>
