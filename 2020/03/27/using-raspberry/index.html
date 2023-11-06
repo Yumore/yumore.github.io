@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>树莓派的使用笔记 | Nathaniel</title>
+  <meta name="keywords" content=" Linux , Raspbian ">
+  <meta name="description" content="树莓派的使用笔记 | Nathaniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Nathaniel">
+<meta property="og:description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/about.png">
+<meta property="article:published_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:modified_time" content="2023-11-06T14:59:19.000Z">
+<meta property="article:author" content="Nathaniel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/about.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Nathaniel</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具">
+            
+            工具
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="测试">
+            
+            测试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发规范">
+            
+            开发规范
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软技能">
+            
+            软技能
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android">
+            
+            Android
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="blog">
+            
+            blog
+            <small>(33)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Interview">
+            
+            Interview
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>架构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软技能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CentOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dart</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FFmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flutter</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Keep Live</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kotlin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MacOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mvx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nodejs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Optimistic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Powershell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Problem</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Q-A</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Raspbian</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>View</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/03/29/android-interview-addition/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="面试问题集锦">面试问题集锦</span>
+            <span class="post-date" title="2021-03-29 14:01:47">2021/03/29</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 blog "
+           href="/2021/03/01/kotlin-notes/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin学习笔记">Kotlin学习笔记</span>
+            <span class="post-date" title="2021-03-01 10:28:59">2021/03/01</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 软技能 "
+           href="/2021/02/22/keep-your-mind/"
+           data-tag="软技能"
+           data-author="" >
+            <span class="post-title" title="灵魂之力—自控力的强大威力">灵魂之力—自控力的强大威力</span>
+            <span class="post-date" title="2021-02-22 10:43:00">2021/02/22</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/01/27/android-interview/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android高级面试题">Android高级面试题</span>
+            <span class="post-date" title="2021-01-27 16:01:47">2021/01/27</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/04/18/android-knowledge/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-18 16:01:47">2021/04/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/20222/09/18/powershell-ohmyzsh/"
+           data-tag="Powershell"
+           data-author="" >
+            <span class="post-title" title="Powershell美化">Powershell美化</span>
+            <span class="post-date" title="20222-09-18 16:52:00">20222/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/11/20/flutter-interview/"
+           data-tag="Android,Flutter"
+           data-author="" >
+            <span class="post-title" title="Flutter 学习笔记">Flutter 学习笔记</span>
+            <span class="post-date" title="2022-11-20 15:28:59">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/10/05/git-config/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="git_config">git_config</span>
+            <span class="post-date" title="2022-10-05 07:15:36">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/09/28/Ubuntu-Using/"
+           data-tag="Ubuntu"
+           data-author="" >
+            <span class="post-title" title="Ubuntu日常使用">Ubuntu日常使用</span>
+            <span class="post-date" title="2022-09-28 13:10:27">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android扩展知识点">Android扩展知识点</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/C++%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="C++知识点汇总">C++知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Gradle%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Gradle知识点汇总">Gradle知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Kotlin%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Kotlin知识点汇总">Kotlin知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Java知识点汇总">Java知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E5%BC%80%E6%BA%90%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="开源源码库分析">开源源码库分析</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/android-view/"
+           data-tag="Android,View"
+           data-author="" >
+            <span class="post-title" title="View绘制流程">View绘制流程</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Framework%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Framework知识点汇总">Framework知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="网络知识汇总">网络知识汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见设计模式汇总">常见设计模式汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见算法汇总">常见算法汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="性能优化知识点汇总">性能优化知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="音视频知识点汇总">音视频知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/08/android-problem-collection/"
+           data-tag="Android,Problem,Q-A"
+           data-author="" >
+            <span class="post-title" title="Android问题集锦">Android问题集锦</span>
+            <span class="post-date" title="2021-04-08 11:04:47">2021/04/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/19/android-optimization/"
+           data-tag="Android,Optimistic"
+           data-author="" >
+            <span class="post-title" title="Android性能优化">Android性能优化</span>
+            <span class="post-date" title="2021-03-19 11:04:47">2021/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/08/update-git-shell-v2/"
+           data-tag="Shell,运维"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库 v2">shell 批量更新多个git仓库 v2</span>
+            <span class="post-date" title="2021-03-08 10:29:37">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/24/fragment-data-activity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Fragment和Activity通信">Fragment和Activity通信</span>
+            <span class="post-date" title="2021-02-24 11:40:28">2021/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/14/update-git-shell/"
+           data-tag="Shell,Git"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库">shell 批量更新多个git仓库</span>
+            <span class="post-date" title="2021-02-14 12:26:56">2021/02/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/20/ffmpeg-build/"
+           data-tag="Android,FFmpeg,MacOS"
+           data-author="" >
+            <span class="post-title" title="MacOS下基于NDK编译FFmpeg">MacOS下基于NDK编译FFmpeg</span>
+            <span class="post-date" title="2020-11-20 15:28:59">2020/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/android-mvx/"
+           data-tag="android,mvx"
+           data-author="" >
+            <span class="post-title" title="Android-UI架构演进">Android-UI架构演进</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/dart-gRPC/"
+           data-tag="dart,gRPC"
+           data-author="" >
+            <span class="post-title" title="Dart-gPRC">Dart-gPRC</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具 "
+           href="/2020/10/19/android-studio/"
+           data-tag="AndroidStudio"
+           data-author="" >
+            <span class="post-title" title="Android Studio 使用问题">Android Studio 使用问题</span>
+            <span class="post-date" title="2020-10-19 16:01:47">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/10/19/hexo-for-node/"
+           data-tag="hexo,nodejs"
+           data-author="" >
+            <span class="post-title" title="Node环境下Hexo的搭建">Node环境下Hexo的搭建</span>
+            <span class="post-date" title="2020-10-19 15:28:59">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/09/19/keep-app-alive/"
+           data-tag="Android,Keep Live"
+           data-author="" >
+            <span class="post-title" title="Android保活技术实现">Android保活技术实现</span>
+            <span class="post-date" title="2020-09-19 15:28:59">2020/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 测试 "
+           href="/2020/08/29/app-test-helper/"
+           data-tag="APP,测试"
+           data-author="" >
+            <span class="post-title" title="手机APP测试">手机APP测试</span>
+            <span class="post-date" title="2020-08-29 16:01:47">2020/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Android "
+           href="/2020/08/28/android-architecture/"
+           data-tag="Android,架构"
+           data-author="" >
+            <span class="post-title" title="Android 架构技术演进">Android 架构技术演进</span>
+            <span class="post-date" title="2020-08-28 14:01:47">2020/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/08/19/kotlin-learning/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
+            <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/07/19/MariaDB-on-CentOS/"
+           data-tag="CentOS,MariaDB"
+           data-author="" >
+            <span class="post-title" title="在CentOS7中安装MariaDB">在CentOS7中安装MariaDB</span>
+            <span class="post-date" title="2020-07-19 15:28:59">2020/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/05/19/markdown-note/"
+           data-tag="Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown编辑器语法指南">Markdown编辑器语法指南</span>
+            <span class="post-date" title="2020-05-19 15:28:59">2020/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/03/27/using-raspberry/"
+           data-tag="Linux,Raspbian"
+           data-author="" >
+            <span class="post-title" title="树莓派的使用笔记">树莓派的使用笔记</span>
+            <span class="post-date" title="2020-03-27 00:16:31">2020/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发规范 "
+           href="/2019/05/01/constraint-for-android/"
+           data-tag="Android,开发规范"
+           data-author="" >
+            <span class="post-title" title="关于Android的开发规范">关于Android的开发规范</span>
+            <span class="post-date" title="2019-05-01 15:29:59">2019/05/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-using-raspberry" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">树莓派的使用笔记</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="blog">blog</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+            <a class="color4">Raspbian</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-11-06 22:59:18'>2020-03-27 00:16</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFssh"><span class="toc-text">开启ssh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5WiFi"><span class="toc-text">自动连接WiFi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%BA%90"><span class="toc-text">修改源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%A1%8C%E9%9D%A2%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7"><span class="toc-text">安装桌面监视工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E6%B3%A8-stretch-%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="toc-text">备注 - stretch 设置自启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Mariadb"><span class="toc-text">安装Mariadb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85NodeJS"><span class="toc-text">安装NodeJS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Samba"><span class="toc-text">安装Samba</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98"><span class="toc-text">挂载磁盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%9B%BA%E4%BB%B6"><span class="toc-text">更新固件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Dashboard"><span class="toc-text">安装Dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Tomcat"><span class="toc-text">安装Tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AF64%E4%BD%8D%E5%86%85%E6%A0%B8"><span class="toc-text">开启64位内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFBBR-TCP%E5%8A%A0%E9%80%9F"><span class="toc-text">开启BBR TCP加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8Estretch-%E5%8D%87%E7%BA%A7%E7%9A%84%E5%88%B0buster"><span class="toc-text">从stretch 升级的到buster</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="开启ssh"><a href="#开启ssh" class="headerlink" title="开启ssh"></a>开启ssh</h2><pre><code>在最新的树莓派系统中，默认是关闭了SSH功能，我们现在将SSH开启！
+在boot盘下新建一个文件，名称为SSH,注意没有后缀名！且文件名为大写！
+</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch SSH</span><br></pre></td></tr></table></figure>
+
+<h2 id="自动连接WiFi"><a href="#自动连接WiFi" class="headerlink" title="自动连接WiFi"></a>自动连接WiFi</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开机前连接，在boot分区下创建wpa_supplicant.conf</span></span><br><span class="line">nano wpa_supplicant.conf</span><br><span class="line">country=CN</span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line">	</span><br><span class="line">network=&#123;</span><br><span class="line">		ssid=&quot;WiFi名&quot;</span><br><span class="line">		psk=&quot;WiFi密码&quot;</span><br><span class="line">		key_mgmt=WPA-PSK</span><br><span class="line">		priority=1</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开机后连接</span></span><br><span class="line">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 添加内容：</span></span></span><br><span class="line">network=&#123;</span><br><span class="line">	    ssid=&quot;WiFi name&quot;</span><br><span class="line">	    psk=&quot;12345678&quot;</span><br><span class="line">		key_mgmt=WPA-PSK</span><br><span class="line">		priority=5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改源"><a href="#修改源" class="headerlink" title="修改源"></a>修改源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 删除原文件所有内容，用以下内容取代：</span></span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib</span><br><span class="line"></span><br><span class="line">sudo nano /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 删除原文件所有内容，用以下内容取代：</span></span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</span><br><span class="line">sudo apt clean &amp;&amp; sudo apt autoclean &amp;&amp; sudo aptitude update &amp;&amp; sudo apt dist-upgrade -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装桌面监视工具"><a href="#安装桌面监视工具" class="headerlink" title="安装桌面监视工具"></a>安装桌面监视工具</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install conky -y</span><br><span class="line">conky -b &amp;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">自定义样式</span></span><br><span class="line">sudo nano ~/.config/.conkyrc</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行查看效果</span> </span><br><span class="line">conky -b -c /home/pi/.config/.conkyrc &amp;</span><br><span class="line">xcompmgr &amp;</span><br><span class="line">cd /etc/xdg/lxsession/LXDE-pi</span><br><span class="line">sudo nano autostart</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加</span></span><br><span class="line">xcompmgr</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建桌面快捷方式</span></span><br><span class="line">sudo nano /etc/xdg/autostart/conky.desktop</span><br><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Name=conky</span><br><span class="line">Comment=runs conky</span><br><span class="line">NoDisplay=true</span><br><span class="line">Exec=conky -b -c /home/pi/.config/.conkyrc</span><br><span class="line">NotShowIn=GNOME;KDE;XFCE;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 重启生效</span></span></span><br><span class="line">sudo reboot now</span><br></pre></td></tr></table></figure>
+
+<h3 id="备注-stretch-设置自启动"><a href="#备注-stretch-设置自启动" class="headerlink" title="备注 - stretch 设置自启动"></a>备注 - stretch 设置自启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /usr/bin/conky.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/sh</span></span><br><span class="line">(sleep 10s &amp;&amp; conky) &amp;</span><br><span class="line">exit 0</span><br><span class="line"></span><br><span class="line">[Desktop Entry]</span><br><span class="line">Name=conky</span><br><span class="line">Type=Application</span><br><span class="line">Exec=sh /usr/bin/conky.sh</span><br><span class="line">Terminal=false</span><br><span class="line">Comment=system monitoring tool.Categories=Utility;</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Mariadb"><a href="#安装Mariadb" class="headerlink" title="安装Mariadb"></a>安装Mariadb</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mariadb-server mariadb-client -y</span><br><span class="line">sudo systemctl start mysql</span><br><span class="line">sudo mysql_secure_installation</span><br><span class="line">sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">bind-address           = 127.0.0.1</span></span><br><span class="line">sudo systemctl restart mysql</span><br><span class="line">sudo mysql -u root -p</span><br><span class="line">USE mysql;</span><br><span class="line">UPDATE user SET plugin=&#x27;mysql_native_password&#x27; WHERE User=&#x27;root&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line">exit;</span><br><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt purge node nodejs npm</span><br><span class="line">curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -</span><br><span class="line">sudo apt install nodejs</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">sudo npm install -g npm nrm n yarn</span><br></pre></td></tr></table></figure>
+<h2 id="安装Samba"><a href="#安装Samba" class="headerlink" title="安装Samba"></a>安装Samba</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install samba samba-common-bin</span><br><span class="line">sudo smbpasswd -a pi</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置</span></span><br><span class="line">sudo nano /etc/samba/smb.conf</span><br><span class="line">[pi]</span><br><span class="line">path = /data</span><br><span class="line">valid users = pi</span><br><span class="line">browseable = Yes</span><br><span class="line">writeable = Yes</span><br><span class="line">writelist = pi</span><br><span class="line">create mask = 0777</span><br><span class="line">directory mask = 0777</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启服务</span></span><br><span class="line">sudo systemctl restart smbd</span><br></pre></td></tr></table></figure>
+
+<h2 id="挂载磁盘"><a href="#挂载磁盘" class="headerlink" title="挂载磁盘"></a>挂载磁盘</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l</span><br><span class="line">sudo mkfs.exfat /dev/sda</span><br><span class="line">sudo mount /dev/sda /extra</span><br><span class="line">sudo apt-get install fuse-utils ntfs-3g</span><br><span class="line">sudo nano /etc/fstab</span><br><span class="line">sudo mount -o uid=pi,gid=pi /dev/sdb /backup</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新固件"><a href="#更新固件" class="headerlink" title="更新固件"></a>更新固件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo rpi-update</span><br><span class="line">sudo apt-get install ca-certificates</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">同步时间</span></span><br><span class="line">sudo apt-get install ntpdate</span><br><span class="line">sudo ntpdate -u ntp.ubuntu.com</span><br><span class="line">sudo UPDATE_SELF=0 rpi-update</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Dashboard"><a href="#安装Dashboard" class="headerlink" title="安装Dashboard"></a>安装Dashboard</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装服务环境</span></span><br><span class="line">sudo apt install -y git nginx default-jdk</span><br><span class="line"></span><br><span class="line">sudo apt install -y -t buster php7.3-fpm php7.3-curl php7.3-gd php7.3-intl php7.3-mbstring php7.3-mysql php7.3-imap php7.3-opcache php7.3-sqlite3 php7.3-xml php7.3-xmlrpc php7.3-zip php7.3-fpm php7.3-cli php7.3-curl php7.3-gd php7.3-cgi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置nginx</span></span><br><span class="line">sudo nano /etc/nginx/sites-available/default</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">	index  index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~ .*\.php(\/.*)*$ &#123;</span><br><span class="line">    #fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">    fastcgi_pass unix:/var/run/php7-fpm.sock;</span><br><span class="line">    fastcgi_index index.php;</span><br><span class="line">    include fastcgi_params;</span><br><span class="line">    set $real_script_name $fastcgi_script_name;</span><br><span class="line">    if ($fastcgi_script_name ~ &quot;(.+?\.php)(/.*)&quot;) &#123;</span><br><span class="line">        set $real_script_name $1;</span><br><span class="line">        set $path_info $2;</span><br><span class="line">    &#125;</span><br><span class="line">    fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;</span><br><span class="line">    fastcgi_param SCRIPT_NAME $real_script_name;</span><br><span class="line">    fastcgi_param PATH_INFO $path_info;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sudo systemctl enable nginx</span><br><span class="line">sudo systemctl restart nginx</span><br><span class="line">sudo systemctl restart php7.3-fpm</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载配置信息</span></span><br><span class="line">sudo nginx reload -s</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 下载Dashboard源码</span></span></span><br><span class="line">cd /var/www/html</span><br><span class="line">sudo git clone https://github.com/spoonysonny/pi-dashboard.git dashboard</span><br><span class="line">sudo chown -R www-data dashboard</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tomcat9* openssl</span><br></pre></td></tr></table></figure>
+<h2 id="开启64位内核"><a href="#开启64位内核" class="headerlink" title="开启64位内核"></a>开启64位内核</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /boot/config.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 添加</span></span></span><br><span class="line">arm_64bit=1</span><br></pre></td></tr></table></figure>
+
+<h2 id="开启BBR-TCP加速"><a href="#开启BBR-TCP加速" class="headerlink" title="开启BBR TCP加速"></a>开启BBR TCP加速</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c &#x27;echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf&#x27;</span><br><span class="line">sudo bash -c &#x27;echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf&#x27;</span><br><span class="line">sudo sysctl -p</span><br><span class="line">sudo reboot</span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line">net.ipv4.tcp_available_congestion_control = bbr cubic reno</span><br><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">sudo apt full-upgrade</span><br><span class="line">sudo apt install rp-bookshelf</span><br><span class="line">sudo apt install mage</span><br><span class="line">rpi-update</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改swap分区</span></span><br><span class="line">sudo nano /etc/dphys-swapfile</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改CONF_SWAPSIZE的值</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">刷新分区</span></span><br><span class="line">sudo /etc/init.d/dphys-swapfile restart</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看大小</span></span><br><span class="line">free -h</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装屏幕设置</span></span><br><span class="line">sudo apt-get install screensaver</span><br><span class="line">sudo nano /etc/lightdm/lightdm.conf</span><br><span class="line"></span><br><span class="line">--------</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭锁频</span></span><br><span class="line">sudo vi /etc/lightdm/lightdm.conf</span><br><span class="line">取消其中的注释　</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">xserver-command=X</span></span><br><span class="line">并修改为</span><br><span class="line">xserver-command=X -s 0 -dpms</span><br><span class="line">-s # –设置屏幕保护不启用</span><br><span class="line">dpms 关闭电源节能管理</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启树莓派</span></span><br><span class="line">sudo reboot</span><br><span class="line">--------</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">鼠标不移动时自动隐藏光标</span></span><br><span class="line">sudo apt-get install unclutter</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">开机自动设置</span></span><br><span class="line">sudo echo &quot;@unclutter -idle 1 -root&quot; &gt;&gt; /etc/xdg/lxsession/LXDE/autostart</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">永久待机禁用休眠</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在/etc/profile.d目录下新建Screen.sh</span></span><br><span class="line">sudo nano /etc/profile.d/Screen.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">添加执行权限</span></span><br><span class="line">sudo chmod +x /etc/profile.d/Screen.sh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Screen.sh文件内输入</span></span><br><span class="line">xset dpms 0 0 0</span><br><span class="line">xset s off</span><br><span class="line">-----------------------------</span><br><span class="line">指令	说明</span><br><span class="line">xset s off	禁用屏幕保护</span><br><span class="line">xset s 3600 3600	设置空闲时间为1小时</span><br><span class="line">xset -dpms	关闭 DPMS</span><br><span class="line">xset s off -dpms	禁用 DPMS 并阻止屏幕进入空闲</span><br><span class="line">xset dpms force on	从休眠中自动醒过来</span><br><span class="line">xset dpms force off	立即关闭屏幕</span><br><span class="line">xset dpms force standby	强制屏幕进入待命状态</span><br><span class="line">xset dpms force suspend	强制屏幕进入暂停状态</span><br><span class="line">-------------------------------</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">屏蔽彩虹屏</span></span><br><span class="line">sudo nano /boot/config.txt</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在config.txt中添加一行disable_splash=1，字面上的意思就是取消启动界面</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">屏蔽开机滚动代码</span></span><br><span class="line">sudo nano /boot/cmdline.txt</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将console=tty1修改成console=tty3（是将开机的滚动代码指向tty3，从而开机时的tty1没有代码。2016年9月以后的raspbian镜像tty1无需更改成tty3），并添加一句loglevel=3</span></span><br><span class="line">dwc_otg.lpm_enable=0 console=serial0,115200 console=tty3 root=PARTUUID=cd48578f-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet init=/usr/lib/raspi-config/init_resize.sh splash plymouth.ignore-serial-consoles logo.nologo loglevel=3</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更换启动主题背景图片</span></span><br><span class="line">/usr/share/plymouth/themes/pix/splash.png</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将选中图片重命名为splash.png 替换即可</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装VSCode</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">https://packagecloud.io/headmelted/codebuilds</span></span><br><span class="line">curl -s https://packagecloud.io/install/repositories/headmelted/codebuilds/script.deb.sh | sudo bash</span><br><span class="line">sudo apt-get install code-oss=1.29.0-1539702238</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Python3.6.4编译安装</span></span><br><span class="line">sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev sqlite3 libssl-dev bzip2 libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载源码包 https://www.python.org/ftp/python/</span></span><br><span class="line">wget Python-3.6.4.tgzhttps://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz</span><br><span class="line">tar zxvf Python-3.6.4.tgz</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译安装</span></span><br><span class="line">cd Python-3.6.4</span><br><span class="line">sudo ./configure –-with-ssl</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看安装</span></span><br><span class="line">sudo ls -al /usr/local/bin/python*</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看Python版本</span></span><br><span class="line">python3 --version</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">找到匹配的python3.6</span></span><br><span class="line">whereis python3.6</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查询Python3.6的位置</span></span><br><span class="line">which python3.6</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">把3链接移到3.5.3上。也可以直接<span class="built_in">rm</span>删除</span></span><br><span class="line">sudo mv /usr/bin/python3 /usr/bin/python3.5.3</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">建立软连接</span></span><br><span class="line">sudo ln -s /usr/local/bin/python3.6 /usr/bin/python3</span><br><span class="line">sudo rm /usr/bin/lsb_release</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解除root限制</span></span><br><span class="line">sudo passwd --unlock root</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装中文字体</span></span><br><span class="line">sudo apt-get install fonts-wqy-zenhei fonts-wqy-microhei</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装Python3.8.3</span></span><br><span class="line">sudo apt-get install -y build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libssl-dev libnspr4-dev libnss3-dev expat</span><br><span class="line">apt-get install libxml2-dev libxslt1-dev libjpeg-dev zlib1g-dev</span><br><span class="line">wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz </span><br><span class="line">sudo tar xf Python-3.8.3.tar.xz -C /usr/local/src/</span><br><span class="line">cd /usr/local/src/Python-3.8.3/</span><br><span class="line">sudo  ./configure --prefix=/usr/local/python38 --enable-optimizations &amp;&amp; sudo make  -j 4 &amp;&amp; sudo make install</span><br><span class="line">sudo  ./configure --prefix=/usr/local/python38 &amp;&amp; sudo make &amp;&amp; sudo make install</span><br><span class="line">sudo ln -s /usr/local/python38/bin/python3.8 /usr/bin/python38</span><br><span class="line">sudo ln -s /usr/local/python38/bin/pip /usr/bin/pip38</span><br><span class="line">sudo python38 -m pip install --upgrade pip</span><br><span class="line">pip38 install wheel beautifulsoup4 bs4 certifi chardet Click emoji Flask Flask-Dropzone Flask-Login Flask-SocketIO idna itsdangerous Jinja2 lxml MarkupSafe psutil pymongo PyMySQL python-engineio python-socketio redis requests selenium six soupsieve urllib3 Werkzeug xmltodict youtube-dl pysocks telethon lxml Pillow</span><br><span class="line">pip38 install scrapy</span><br><span class="line">ln -s /usr/local/python38/bin/scrapy /usr/bin/scrapy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改pip源</span></span><br><span class="line">sudo nano /etc/pip.conf</span><br><span class="line">[global]</span><br><span class="line">timeout = 6000</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">extra-index-url=https://www.piwheels.org/simple/</span><br><span class="line">[install]</span><br><span class="line">use-mirrors = true</span><br><span class="line">mirrors = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">trusted-host = mirrors.aliyun.com</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开发工具</span></span><br><span class="line">sudo apt install git gcc g++ make cmake build-essential</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">jpeg png tiff 等图像格式工具包</span></span><br><span class="line">sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng-dev</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">视频格式工具包</span></span><br><span class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev</span><br><span class="line">sudo apt-get install libxvidcore-dev libx264-dev</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">GUI库</span></span><br><span class="line">sudo apt-get install libfontconfig1-dev libcairo2-dev</span><br><span class="line">sudo apt-get install libgdk-pixbuf2.0-dev libpango1.0-dev</span><br><span class="line">sudo apt-get install libgtk2.0-dev libgtk-3-dev</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">数值优化函数包</span></span><br><span class="line">sudo apt-get install libatlas-base-dev gfortran</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">header files and a static library <span class="keyword">for</span> Python</span></span><br><span class="line">sudo apt-get install python3-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">搭建Dart环境</span></span><br><span class="line">wget https://storage.googleapis.com/dart-archive/channels/stable/release/2.6.0/sdk/dartsdk-linux-arm-release.zip</span><br><span class="line">unzip dartsdk-linux-arm-release.zip</span><br><span class="line">./dart-sdk/bin/dart --version</span><br></pre></td></tr></table></figure>
+<h2 id="从stretch-升级的到buster"><a href="#从stretch-升级的到buster" class="headerlink" title="从stretch 升级的到buster"></a>从stretch 升级的到buster</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -rl stretch /etc/apt/ | sudo xargs sed -i &#x27;s/stretch/buster/g&#x27;</span><br><span class="line">sudo apt update &amp;&amp; sudo apt dist-upgrade -y</span><br><span class="line">sudo reboot now</span><br></pre></td></tr></table></figure>
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

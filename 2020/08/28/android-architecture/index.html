@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Android 架构技术演进 | Nathaniel</title>
+  <meta name="keywords" content=" Android , 架构 ">
+  <meta name="description" content="Android 架构技术演进 | Nathaniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Nathaniel">
+<meta property="og:description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/about.png">
+<meta property="article:published_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:modified_time" content="2023-11-06T14:59:19.000Z">
+<meta property="article:author" content="Nathaniel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/about.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Nathaniel</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具">
+            
+            工具
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="测试">
+            
+            测试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发规范">
+            
+            开发规范
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软技能">
+            
+            软技能
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android">
+            
+            Android
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="blog">
+            
+            blog
+            <small>(33)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Interview">
+            
+            Interview
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>架构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软技能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CentOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dart</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FFmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flutter</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Keep Live</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kotlin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MacOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mvx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nodejs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Optimistic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Powershell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Problem</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Q-A</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Raspbian</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>View</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/03/29/android-interview-addition/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="面试问题集锦">面试问题集锦</span>
+            <span class="post-date" title="2021-03-29 14:01:47">2021/03/29</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 blog "
+           href="/2021/03/01/kotlin-notes/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin学习笔记">Kotlin学习笔记</span>
+            <span class="post-date" title="2021-03-01 10:28:59">2021/03/01</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 软技能 "
+           href="/2021/02/22/keep-your-mind/"
+           data-tag="软技能"
+           data-author="" >
+            <span class="post-title" title="灵魂之力—自控力的强大威力">灵魂之力—自控力的强大威力</span>
+            <span class="post-date" title="2021-02-22 10:43:00">2021/02/22</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/01/27/android-interview/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android高级面试题">Android高级面试题</span>
+            <span class="post-date" title="2021-01-27 16:01:47">2021/01/27</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/04/18/android-knowledge/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-18 16:01:47">2021/04/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/20222/09/18/powershell-ohmyzsh/"
+           data-tag="Powershell"
+           data-author="" >
+            <span class="post-title" title="Powershell美化">Powershell美化</span>
+            <span class="post-date" title="20222-09-18 16:52:00">20222/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/11/20/flutter-interview/"
+           data-tag="Android,Flutter"
+           data-author="" >
+            <span class="post-title" title="Flutter 学习笔记">Flutter 学习笔记</span>
+            <span class="post-date" title="2022-11-20 15:28:59">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/10/05/git-config/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="git_config">git_config</span>
+            <span class="post-date" title="2022-10-05 07:15:36">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/09/28/Ubuntu-Using/"
+           data-tag="Ubuntu"
+           data-author="" >
+            <span class="post-title" title="Ubuntu日常使用">Ubuntu日常使用</span>
+            <span class="post-date" title="2022-09-28 13:10:27">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android扩展知识点">Android扩展知识点</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/C++%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="C++知识点汇总">C++知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Gradle%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Gradle知识点汇总">Gradle知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Kotlin%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Kotlin知识点汇总">Kotlin知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Java知识点汇总">Java知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E5%BC%80%E6%BA%90%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="开源源码库分析">开源源码库分析</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/android-view/"
+           data-tag="Android,View"
+           data-author="" >
+            <span class="post-title" title="View绘制流程">View绘制流程</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Framework%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Framework知识点汇总">Framework知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="网络知识汇总">网络知识汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见设计模式汇总">常见设计模式汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见算法汇总">常见算法汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="性能优化知识点汇总">性能优化知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="音视频知识点汇总">音视频知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/08/android-problem-collection/"
+           data-tag="Android,Problem,Q-A"
+           data-author="" >
+            <span class="post-title" title="Android问题集锦">Android问题集锦</span>
+            <span class="post-date" title="2021-04-08 11:04:47">2021/04/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/19/android-optimization/"
+           data-tag="Android,Optimistic"
+           data-author="" >
+            <span class="post-title" title="Android性能优化">Android性能优化</span>
+            <span class="post-date" title="2021-03-19 11:04:47">2021/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/08/update-git-shell-v2/"
+           data-tag="Shell,运维"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库 v2">shell 批量更新多个git仓库 v2</span>
+            <span class="post-date" title="2021-03-08 10:29:37">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/24/fragment-data-activity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Fragment和Activity通信">Fragment和Activity通信</span>
+            <span class="post-date" title="2021-02-24 11:40:28">2021/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/14/update-git-shell/"
+           data-tag="Shell,Git"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库">shell 批量更新多个git仓库</span>
+            <span class="post-date" title="2021-02-14 12:26:56">2021/02/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/20/ffmpeg-build/"
+           data-tag="Android,FFmpeg,MacOS"
+           data-author="" >
+            <span class="post-title" title="MacOS下基于NDK编译FFmpeg">MacOS下基于NDK编译FFmpeg</span>
+            <span class="post-date" title="2020-11-20 15:28:59">2020/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/android-mvx/"
+           data-tag="android,mvx"
+           data-author="" >
+            <span class="post-title" title="Android-UI架构演进">Android-UI架构演进</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/dart-gRPC/"
+           data-tag="dart,gRPC"
+           data-author="" >
+            <span class="post-title" title="Dart-gPRC">Dart-gPRC</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具 "
+           href="/2020/10/19/android-studio/"
+           data-tag="AndroidStudio"
+           data-author="" >
+            <span class="post-title" title="Android Studio 使用问题">Android Studio 使用问题</span>
+            <span class="post-date" title="2020-10-19 16:01:47">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/10/19/hexo-for-node/"
+           data-tag="hexo,nodejs"
+           data-author="" >
+            <span class="post-title" title="Node环境下Hexo的搭建">Node环境下Hexo的搭建</span>
+            <span class="post-date" title="2020-10-19 15:28:59">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/09/19/keep-app-alive/"
+           data-tag="Android,Keep Live"
+           data-author="" >
+            <span class="post-title" title="Android保活技术实现">Android保活技术实现</span>
+            <span class="post-date" title="2020-09-19 15:28:59">2020/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 测试 "
+           href="/2020/08/29/app-test-helper/"
+           data-tag="APP,测试"
+           data-author="" >
+            <span class="post-title" title="手机APP测试">手机APP测试</span>
+            <span class="post-date" title="2020-08-29 16:01:47">2020/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Android "
+           href="/2020/08/28/android-architecture/"
+           data-tag="Android,架构"
+           data-author="" >
+            <span class="post-title" title="Android 架构技术演进">Android 架构技术演进</span>
+            <span class="post-date" title="2020-08-28 14:01:47">2020/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/08/19/kotlin-learning/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
+            <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/07/19/MariaDB-on-CentOS/"
+           data-tag="CentOS,MariaDB"
+           data-author="" >
+            <span class="post-title" title="在CentOS7中安装MariaDB">在CentOS7中安装MariaDB</span>
+            <span class="post-date" title="2020-07-19 15:28:59">2020/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/05/19/markdown-note/"
+           data-tag="Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown编辑器语法指南">Markdown编辑器语法指南</span>
+            <span class="post-date" title="2020-05-19 15:28:59">2020/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/03/27/using-raspberry/"
+           data-tag="Linux,Raspbian"
+           data-author="" >
+            <span class="post-title" title="树莓派的使用笔记">树莓派的使用笔记</span>
+            <span class="post-date" title="2020-03-27 00:16:31">2020/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发规范 "
+           href="/2019/05/01/constraint-for-android/"
+           data-tag="Android,开发规范"
+           data-author="" >
+            <span class="post-title" title="关于Android的开发规范">关于Android的开发规范</span>
+            <span class="post-date" title="2019-05-01 15:29:59">2019/05/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-android-architecture" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Android 架构技术演进</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Android">Android</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Android</a>
+            
+            <a class="color3">架构</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-11-06 22:59:19'>2020-08-28 14:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-%E5%BC%80%E5%8F%91%E5%9C%A8%E7%BA%BF%E4%B9%9E%E8%AE%A8"><span class="toc-text">Android 开发在线乞讨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91-Android-%E6%9E%B6%E6%9E%84%E5%B9%B4%E9%99%90"><span class="toc-text">互联网 Android 架构年限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Teambition-%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF"><span class="toc-text">Teambition 招聘信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-text">常见的软件架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-text">分层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">事件驱动架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84"><span class="toc-text">微内核架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="toc-text">微服务架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVX-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-text">MVX 软件架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-MVC-MVP-MVVM"><span class="toc-text">关于 MVC-MVP-MVVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC"><span class="toc-text">MVC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVP"><span class="toc-text">MVP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM"><span class="toc-text">MVVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Jetpack-MVP-MVVM-%E5%BC%80%E5%8F%91"><span class="toc-text">使用 Jetpack+MVP&#x2F;MVVM 开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-%E5%BC%80%E5%8F%91%E6%8A%80%E8%83%BD%E7%82%B9"><span class="toc-text">Android 开发技能点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E9%87%8D%E6%9E%84-12-%E6%9D%A1%E5%86%9B%E8%A7%84"><span class="toc-text">架构重构 12 条军规</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%BB%BA%E8%AE%AE"><span class="toc-text">个人建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E6%88%98"><span class="toc-text">开发中的实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TrackerM-%E4%BB%8E-MVP-%E5%88%B0-MVVM-%E7%9A%84%E8%BF%9B%E5%8C%96"><span class="toc-text">TrackerM 从 MVP 到 MVVM 的进化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flutter-%E5%BC%80%E5%8F%91"><span class="toc-text">Flutter 开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E-Module-%E9%9B%86%E6%88%90"><span class="toc-text">环境搭建与 Module 集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="toc-text">问题处理</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Android-开发在线乞讨"><a href="#Android-开发在线乞讨" class="headerlink" title="Android 开发在线乞讨"></a>Android 开发在线乞讨</h3><p><img src="/images/android_learning.jpeg" alt="Android开发心路历程"></p>
+<h3 id="互联网-Android-架构年限"><a href="#互联网-Android-架构年限" class="headerlink" title="互联网 Android 架构年限"></a>互联网 Android 架构年限</h3><p><img src="/images/android_level.png" alt="Android路线图"></p>
+<h3 id="Teambition-招聘信息"><a href="#Teambition-招聘信息" class="headerlink" title="Teambition 招聘信息"></a>Teambition 招聘信息</h3><p><img src="/images/android_teambition.png" alt="Teambition招聘"></p>
+<h2 id="常见的软件架构"><a href="#常见的软件架构" class="headerlink" title="常见的软件架构"></a>常见的软件架构</h2><h3 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h3><pre><code>    一般采用四层结构，各层之间职能明确，分工清晰
+    · 表现层-用户界面
+    · 业务层-业务逻辑
+    · 服务层-给业务层提供服务-可以省略
+    · 持久层-数据提供
+    · 数据库层-数据存储
+</code></pre>
+<h3 id="事件驱动架构"><a href="#事件驱动架构" class="headerlink" title="事件驱动架构"></a>事件驱动架构</h3><pre><code>    分布式异步架构，基于事件，高度解耦，开发测试难度大
+</code></pre>
+<h3 id="微内核架构"><a href="#微内核架构" class="headerlink" title="微内核架构"></a>微内核架构</h3><pre><code>    插件架构，例如Eclipse/IDEA/VSCode 等
+</code></pre>
+<h3 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h3><pre><code>    REST/SOAP
+</code></pre>
+<h3 id="MVX-软件架构"><a href="#MVX-软件架构" class="headerlink" title="MVX 软件架构"></a>MVX 软件架构</h3><pre><code>    表现层，只适用软件架构，不使用系统架构
+</code></pre>
+<h2 id="关于-MVC-MVP-MVVM"><a href="#关于-MVC-MVP-MVVM" class="headerlink" title="关于 MVC-MVP-MVVM"></a>关于 MVC-MVP-MVVM</h2><h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p><img src="https://raw.githubusercontent.com/Draveness/analyze/master/contents/architecture/images/mvx/MVC-App-Arch.jpg" alt="MVC在前端的应用"><br><img src="https://raw.githubusercontent.com/Draveness/analyze/master/contents/architecture/images/mvx/MVC-MVC.jpg" alt="MVC在各端的表现"></p>
+<pre><code>    View：XML布局文件
+    Model：实体模型（数据的获取、存储、数据状态变化）
+    Controller：对应于Activity，处理数据、业务和UI
+</code></pre>
+<hr>
+<pre><code>    优点：结构清晰，低耦合，有利于组件重用；
+    缺点：Activity/Fragment中代码较多，结构比较复杂；
+</code></pre>
+<hr>
+<ol>
+<li>用户可以向 View 发送指令（DOM 事件），再由 View 直接要求 Model 改变状态。</li>
+<li>用户也可以直接向 Controller 发送指令（改变 URL 触发 hashChange 事件），再由 Controller 发送给 View。</li>
+<li>Controller 非常薄，只起到路由的作用，而 View 非常厚，业务逻辑都部署在 View。所以，Backbone 索性取消了 Controller，只保留一个 Router（路由器） 。</li>
+</ol>
+<hr>
+<p>MVP 就能很好地解决这个问题，其核心理念是通过一个抽象的 View 接口（不是真正的 View 层）将 Presenter 与真正的 View 层进行解耦。Persenter 持有该 View 接口，对该接口进行操作，而不是直接操作 View 层。这样就可以把视图操作和业务逻辑解耦，从而让 Activity 成为真正的 View 层。</p>
+<p>但 MVP 也存在一些弊端：</p>
+<ol>
+<li>Presenter（以下简称 P）层与 View（以下简称 V）层是通过接口进行交互的，接口粒度不好控制。粒度太小，就会存在大量接口的情况，使代码太过碎版化；粒度太大，解耦效果不好。同时对于 UI 的输入和数据的变化，需要手动调用 V 层或者 P 层相关的接口，相对来说缺乏自动性、监听性。如果数据的变化能自动响应到 UI、UI 的输入能自动更新到数据，那该多好！</li>
+<li>MVP 是以 UI 为驱动的模型，更新 UI 都需要保证能获取到控件的引用，同时更新 UI 的时候要考虑当前是否是 UI 线程，也要考虑 Activity 的生命周期（是否已经销毁等）。</li>
+<li>MVP 是以 UI 和事件为驱动的传统模型，数据都是被动地通过 UI 控件做展示，但是由于数据的时变性，我们更希望数据能转被动为主动，希望数据能更有活性，由数据来驱动 UI。</li>
+<li>V 层与 P 层还是有一定的耦合度。一旦 V 层某个 UI 元素更改，那么对应的接口就必须得改，数据如何映射到 UI 上、事件监听接口这些都需要转变，牵一发而动全身。如果这一层也能解耦就更好了。</li>
+<li>复杂的业务同时也可能会导致 P 层太大，代码臃肿的问题依然不能解决。</li>
+</ol>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p><img src="https://raw.githubusercontent.com/Draveness/analyze/master/contents/architecture/images/mvx/Standard-MVP.jpg" alt="MVP标准结构"><br><img src="https://raw.githubusercontent.com/Draveness/analyze/master/contents/architecture/images/mvx/PassIve-View.jpg" alt="MVP被动方式"><br><img src="https://www.ruanyifeng.com/blogimg/asset/2015/bg2015020109.png" alt="真实使用"></p>
+<pre><code>    Module:数据处理层
+    View:视图层
+    Prsenter:代理层，解决view层和controller层的耦合
+</code></pre>
+<hr>
+<pre><code>    优点：结构清晰，低耦合，代码易维护，适合多人团队；
+    缺点：结构比较复杂，问题追踪需要逐层排查；
+</code></pre>
+<hr>
+<ol>
+<li>各部分之间的通信，都是双向的。</li>
+<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter 非常厚，所有逻辑都部署在那里。</li>
+</ol>
+<hr>
+<p>个人习惯：</p>
+<pre><code>    |-viewer
+            |-XXXViewer
+    |-contract
+            |-XXXContract
+    |-presenter
+            |-XXXPresenter
+</code></pre>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p><img src="https://www.ruanyifeng.com/blogimg/asset/2015/bg2015020110.png" alt="MVVM标准结构"></p>
+<pre><code>    Module:数据处理层
+    View:视图层
+    ViewModule:代替Presenter,实现数据的实时更新(LiveData/DataBinding)
+</code></pre>
+<hr>
+<ol>
+<li>MVVM 模式中，数据是独立于 UI 的。<br>数据和业务逻辑处于一个独立的 ViewModel 中，ViewModel 只需要关注数据和业务逻辑，不需要和 UI 或者控件打交道。UI 想怎么处理数据都由 UI 自己决定，ViewModel 不涉及任何和 UI 相关的事，也不持有 UI 控件的引用。即便是控件改变了（比如：TextView 换成 EditText），ViewModel 也几乎不需要更改任何代码。它非常完美的解耦了 View 层和 ViewModel，解决了上面我们所说的 MVP 的痛点。</li>
+<li>更新 UI<br>在 MVVM 中，数据发生变化后，我们在工作线程直接修改（在数据是线程安全的情况下）ViewModel 的数据即可，不用再考虑要切到主线程更新 UI 了，这些事情相关框架都帮我们做了。</li>
+<li>团队协作<br>MVVM 的分工是非常明显的，由于 View 和 ViewModel 之间是松散耦合的：一个是处理业务和数据、一个是专门的 UI 处理。所以，完全由两个人分工来做，一个做 UI（XML 和 Activity）一个写 ViewModel，效率更高。</li>
+<li>可复用性<br>一个 ViewModel 可以复用到多个 View 中。同样的一份数据，可以提供给不同的 UI 去做展示。对于版本迭代中频繁的 UI 改动，更新或新增一套 View 即可。如果想在 UI 上做 A&#x2F;B Testing，那 MVVM 是你不二选择。</li>
+<li>单元测试<br>有些同学一看到单元测试，可能脑袋都大。是啊，写成一团浆糊的代码怎么可能做单元测试？如果你们以代码太烂无法写单元测试而逃避，那可真是不好的消息了。这时候，你需要 MVVM 来拯救。<br>我们前面说过了，ViewModel 层做的事是数据处理和业务逻辑，View 层中关注的是 UI，两者完全没有依赖。不管是 UI 的单元测试还是业务逻辑的单元测试，都是低耦合的。在 MVVM 中数据是直接绑定到 UI 控件上的（部分数据是可以直接反映出 UI 上的内容），那么我们就可以直接通过修改绑定的数据源来间接做一些 Android UI 上的测试。<br>通过上面的简述以及模式的对比，我们可以发现 MVVM 的优势还是非常明显的。虽然目前 Android 开发中可能真正在使用 MVVM 的很少，但是值得我们去做一些探讨和调研。</li>
+</ol>
+<h3 id="使用-Jetpack-MVP-MVVM-开发"><a href="#使用-Jetpack-MVP-MVVM-开发" class="headerlink" title="使用 Jetpack+MVP&#x2F;MVVM 开发"></a>使用 Jetpack+MVP&#x2F;MVVM 开发</h3><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMjQzNjc0MC0yMmFiMDhlOWM3ZWQwMGFl?x-oss-process=image/format,png" alt="Jetpack开发"></p>
+<h3 id="Android-开发技能点"><a href="#Android-开发技能点" class="headerlink" title="Android 开发技能点"></a>Android 开发技能点</h3><p><img src="/images/android_skill.svg" alt="Android开发技能"></p>
+<h3 id="架构重构-12-条军规"><a href="#架构重构-12-条军规" class="headerlink" title="架构重构 12 条军规"></a>架构重构 12 条军规</h3><p>借鉴自 Uber 技术主管 Raffi Krikorian 在 O’Reilly Software Architecture Conferences 上谈及的架构重构 12 条军规</p>
+<ol>
+<li>明确重构的目的和必要性</li>
+<li>定义重构完成的界限</li>
+<li>持续渐进式重构</li>
+<li>确定当前的架构状态</li>
+<li>不要忽略数据的重要性</li>
+<li>管理好技术债务</li>
+<li>远离那些虚华的东西（过于追求热门的技术栈）</li>
+<li>做好准备面对压力</li>
+<li>了解当前业务</li>
+<li>做好面对非技术因素的准备</li>
+<li>时刻注意代码质量</li>
+<li>团队一致，做好准备</li>
+</ol>
+<h3 id="个人建议"><a href="#个人建议" class="headerlink" title="个人建议"></a>个人建议</h3><ol>
+<li>如果能将新增逻辑拆分成独立模块就直接使用单独模块</li>
+<li>在抽离新的模块的时候要注意资源的整合，模块的高内聚，低耦合</li>
+<li>单独的逻辑尽量组件化实现高内聚</li>
+</ol>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f667ea3e4a11">代码重构之道</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/39844696">微信 Android 客户端架构之路</a></p>
+<h2 id="开发中的实战"><a href="#开发中的实战" class="headerlink" title="开发中的实战"></a>开发中的实战</h2><p><img src="/images/tracker-m.svg" alt="TrackerM的模块关系图"></p>
+<pre><code>    对比 vipon 代码库和 TrackerM 代码库说明 MVP 开发的便利
+</code></pre>
+<h3 id="TrackerM-从-MVP-到-MVVM-的进化"><a href="#TrackerM-从-MVP-到-MVVM-的进化" class="headerlink" title="TrackerM 从 MVP 到 MVVM 的进化"></a>TrackerM 从 MVP 到 MVVM 的进化</h3><pre><code>    后期会将代码逐渐迁移到MVVM
+</code></pre>
+<h2 id="Flutter-开发"><a href="#Flutter-开发" class="headerlink" title="Flutter 开发"></a>Flutter 开发</h2><h3 id="环境搭建与-Module-集成"><a href="#环境搭建与-Module-集成" class="headerlink" title="环境搭建与 Module 集成"></a>环境搭建与 Module 集成</h3><ol>
+<li>git clone <a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a>:flutter&#x2F;flutter.git</li>
+<li>add {flutter}&#x2F;bin to path</li>
+<li>flutter doctor -v</li>
+<li>flutter channel master</li>
+<li>flutter create -t module {moduleName}</li>
+<li>cd {moduleName}</li>
+<li>git init</li>
+<li>cd .android</li>
+<li>flutter packages get</li>
+<li>cd .. &amp;&amp; cd .ios</li>
+<li>flutter packages get</li>
+<li>cd ..</li>
+<li>git remote add origin {flutterRepository}</li>
+<li>git push origin master</li>
+<li>cd {iOSProject}</li>
+<li>git submodule add {flutterRepository}</li>
+<li>git submodule update</li>
+</ol>
+<hr>
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>如果遇到找不到 android studio 路径<br>flutter config –android-studio-dir&#x3D;”&#x2F;Applications&#x2F;AndroidStudio.app&#x2F;Contents”<br>Windows 下配置到安装目录的绝对路径 D:\AndroidStudio<br>macOS 下配置&#x2F;Applications&#x2F;AndroidStudio.app&#x2F;Contents 即可</p>
+<hr>
+<ol>
+<li>edit setting.gradle</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setBinding(<span class="keyword">new</span> Binding([<span class="attr">gradle:</span> <span class="variable language_">this</span>]))</span><br><span class="line">evaluate(<span class="keyword">new</span> File(</span><br><span class="line"><span class="string">&#x27;&#123;flutterModule&#125;/.android/include_flutter.groovy&#x27;</span></span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>{AndroidProject}&#x2F;app&#x2F;build.gradle</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation project(<span class="string">&#x27;:flutter&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Activity</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">findViewById(R.id.open_filter_btn).setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">             <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line">             intent.setClass(MainActivity.<span class="built_in">this</span>, FlutterActivity.class);</span><br><span class="line">             startActivity(intent);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>FlutterActivity</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FlutterActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">             <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">             setContentView(R.layout.activity_flutter);</span><br><span class="line">             <span class="keyword">final</span> <span class="type">FlutterView</span> <span class="variable">flutterView</span> <span class="operator">=</span> Flutter.createView(<span class="built_in">this</span>, getLifecycle(), <span class="string">&quot;route1&quot;</span>);</span><br><span class="line">             <span class="keyword">final</span> <span class="type">FrameLayout</span> <span class="variable">layout</span> <span class="operator">=</span> findViewById(R.id.flutter_container);</span><br><span class="line">             layout.addView(flutterView);</span><br><span class="line">             <span class="keyword">final</span> FlutterView.FirstFrameListener[] listeners = <span class="keyword">new</span> <span class="title class_">FlutterView</span>.FirstFrameListener[<span class="number">1</span>];</span><br><span class="line">             listeners[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">FlutterView</span>.FirstFrameListener() &#123;</span><br><span class="line">             <span class="meta">@Override</span></span><br><span class="line">             <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onFirstFrame</span><span class="params">()</span> &#123;</span><br><span class="line">                     layout.setVisibility(View.VISIBLE);</span><br><span class="line">             &#125;</span><br><span class="line">             &#125;;</span><br><span class="line">             flutterView.addFirstFrameListener(listeners[<span class="number">0</span>]);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

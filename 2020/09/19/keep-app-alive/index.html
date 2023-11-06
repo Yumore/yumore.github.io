@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Android保活技术实现 | Nathaniel</title>
+  <meta name="keywords" content=" Android , Keep Live ">
+  <meta name="description" content="Android保活技术实现 | Nathaniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Nathaniel">
+<meta property="og:description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/about.png">
+<meta property="article:published_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:modified_time" content="2023-11-06T14:59:19.000Z">
+<meta property="article:author" content="Nathaniel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/about.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Nathaniel</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具">
+            
+            工具
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="测试">
+            
+            测试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发规范">
+            
+            开发规范
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软技能">
+            
+            软技能
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android">
+            
+            Android
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="blog">
+            
+            blog
+            <small>(33)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Interview">
+            
+            Interview
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>架构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软技能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CentOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dart</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FFmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flutter</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Keep Live</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kotlin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MacOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mvx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nodejs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Optimistic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Powershell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Problem</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Q-A</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Raspbian</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>View</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/03/29/android-interview-addition/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="面试问题集锦">面试问题集锦</span>
+            <span class="post-date" title="2021-03-29 14:01:47">2021/03/29</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 blog "
+           href="/2021/03/01/kotlin-notes/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin学习笔记">Kotlin学习笔记</span>
+            <span class="post-date" title="2021-03-01 10:28:59">2021/03/01</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 软技能 "
+           href="/2021/02/22/keep-your-mind/"
+           data-tag="软技能"
+           data-author="" >
+            <span class="post-title" title="灵魂之力—自控力的强大威力">灵魂之力—自控力的强大威力</span>
+            <span class="post-date" title="2021-02-22 10:43:00">2021/02/22</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/01/27/android-interview/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android高级面试题">Android高级面试题</span>
+            <span class="post-date" title="2021-01-27 16:01:47">2021/01/27</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/04/18/android-knowledge/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-18 16:01:47">2021/04/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/20222/09/18/powershell-ohmyzsh/"
+           data-tag="Powershell"
+           data-author="" >
+            <span class="post-title" title="Powershell美化">Powershell美化</span>
+            <span class="post-date" title="20222-09-18 16:52:00">20222/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/11/20/flutter-interview/"
+           data-tag="Android,Flutter"
+           data-author="" >
+            <span class="post-title" title="Flutter 学习笔记">Flutter 学习笔记</span>
+            <span class="post-date" title="2022-11-20 15:28:59">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/10/05/git-config/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="git_config">git_config</span>
+            <span class="post-date" title="2022-10-05 07:15:36">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/09/28/Ubuntu-Using/"
+           data-tag="Ubuntu"
+           data-author="" >
+            <span class="post-title" title="Ubuntu日常使用">Ubuntu日常使用</span>
+            <span class="post-date" title="2022-09-28 13:10:27">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android扩展知识点">Android扩展知识点</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/C++%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="C++知识点汇总">C++知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Gradle%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Gradle知识点汇总">Gradle知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Kotlin%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Kotlin知识点汇总">Kotlin知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Java知识点汇总">Java知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E5%BC%80%E6%BA%90%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="开源源码库分析">开源源码库分析</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/android-view/"
+           data-tag="Android,View"
+           data-author="" >
+            <span class="post-title" title="View绘制流程">View绘制流程</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Framework%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Framework知识点汇总">Framework知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="网络知识汇总">网络知识汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见设计模式汇总">常见设计模式汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见算法汇总">常见算法汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="性能优化知识点汇总">性能优化知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="音视频知识点汇总">音视频知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/08/android-problem-collection/"
+           data-tag="Android,Problem,Q-A"
+           data-author="" >
+            <span class="post-title" title="Android问题集锦">Android问题集锦</span>
+            <span class="post-date" title="2021-04-08 11:04:47">2021/04/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/19/android-optimization/"
+           data-tag="Android,Optimistic"
+           data-author="" >
+            <span class="post-title" title="Android性能优化">Android性能优化</span>
+            <span class="post-date" title="2021-03-19 11:04:47">2021/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/08/update-git-shell-v2/"
+           data-tag="Shell,运维"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库 v2">shell 批量更新多个git仓库 v2</span>
+            <span class="post-date" title="2021-03-08 10:29:37">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/24/fragment-data-activity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Fragment和Activity通信">Fragment和Activity通信</span>
+            <span class="post-date" title="2021-02-24 11:40:28">2021/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/14/update-git-shell/"
+           data-tag="Shell,Git"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库">shell 批量更新多个git仓库</span>
+            <span class="post-date" title="2021-02-14 12:26:56">2021/02/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/20/ffmpeg-build/"
+           data-tag="Android,FFmpeg,MacOS"
+           data-author="" >
+            <span class="post-title" title="MacOS下基于NDK编译FFmpeg">MacOS下基于NDK编译FFmpeg</span>
+            <span class="post-date" title="2020-11-20 15:28:59">2020/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/android-mvx/"
+           data-tag="android,mvx"
+           data-author="" >
+            <span class="post-title" title="Android-UI架构演进">Android-UI架构演进</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/dart-gRPC/"
+           data-tag="dart,gRPC"
+           data-author="" >
+            <span class="post-title" title="Dart-gPRC">Dart-gPRC</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具 "
+           href="/2020/10/19/android-studio/"
+           data-tag="AndroidStudio"
+           data-author="" >
+            <span class="post-title" title="Android Studio 使用问题">Android Studio 使用问题</span>
+            <span class="post-date" title="2020-10-19 16:01:47">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/10/19/hexo-for-node/"
+           data-tag="hexo,nodejs"
+           data-author="" >
+            <span class="post-title" title="Node环境下Hexo的搭建">Node环境下Hexo的搭建</span>
+            <span class="post-date" title="2020-10-19 15:28:59">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/09/19/keep-app-alive/"
+           data-tag="Android,Keep Live"
+           data-author="" >
+            <span class="post-title" title="Android保活技术实现">Android保活技术实现</span>
+            <span class="post-date" title="2020-09-19 15:28:59">2020/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 测试 "
+           href="/2020/08/29/app-test-helper/"
+           data-tag="APP,测试"
+           data-author="" >
+            <span class="post-title" title="手机APP测试">手机APP测试</span>
+            <span class="post-date" title="2020-08-29 16:01:47">2020/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Android "
+           href="/2020/08/28/android-architecture/"
+           data-tag="Android,架构"
+           data-author="" >
+            <span class="post-title" title="Android 架构技术演进">Android 架构技术演进</span>
+            <span class="post-date" title="2020-08-28 14:01:47">2020/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/08/19/kotlin-learning/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
+            <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/07/19/MariaDB-on-CentOS/"
+           data-tag="CentOS,MariaDB"
+           data-author="" >
+            <span class="post-title" title="在CentOS7中安装MariaDB">在CentOS7中安装MariaDB</span>
+            <span class="post-date" title="2020-07-19 15:28:59">2020/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/05/19/markdown-note/"
+           data-tag="Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown编辑器语法指南">Markdown编辑器语法指南</span>
+            <span class="post-date" title="2020-05-19 15:28:59">2020/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/03/27/using-raspberry/"
+           data-tag="Linux,Raspbian"
+           data-author="" >
+            <span class="post-title" title="树莓派的使用笔记">树莓派的使用笔记</span>
+            <span class="post-date" title="2020-03-27 00:16:31">2020/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发规范 "
+           href="/2019/05/01/constraint-for-android/"
+           data-tag="Android,开发规范"
+           data-author="" >
+            <span class="post-title" title="关于Android的开发规范">关于Android的开发规范</span>
+            <span class="post-date" title="2019-05-01 15:29:59">2019/05/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-keep-app-alive" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Android保活技术实现</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="blog">blog</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Android</a>
+            
+            <a class="color5">Keep Live</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-11-06 22:59:18'>2020-09-19 15:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%B4%BB%E6%8A%80%E6%9C%AF%E9%98%B6%E6%AE%B5%E5%9B%9E%E9%A1%BE"><span class="toc-text">保活技术阶段回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BF%9D%E6%B4%BB%EF%BC%9F"><span class="toc-text">什么是保活？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0"><span class="toc-text">如何实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ebinder"><span class="toc-text">关于binder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8binder"><span class="toc-text">使用binder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB%E5%8E%9F%E7%90%86"><span class="toc-text">进程保活原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90TIM"><span class="toc-text">分析TIM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E6%B8%85%E7%90%86%E7%9C%8B%E7%8E%B0%E8%B1%A1%EF%BC%8C%E6%8E%92%E6%9F%A5%E5%88%9D%E6%AD%A5%E6%80%80%E7%96%91"><span class="toc-text">一键清理看现象，排查初步怀疑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Studio%E6%96%AD%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-text">Android Studio断点分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90callingPid-0"><span class="toc-text">分析callingPid&#x3D;0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%AD%E7%A7%98"><span class="toc-text">揭秘</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90"><span class="toc-text">深入分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%B1%82%E8%A7%84%E5%BE%8B"><span class="toc-text">寻求规律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8Esignal%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90"><span class="toc-text">从signal角度来分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8strace%E5%88%86%E6%9E%90"><span class="toc-text">利用strace分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TIM%E6%97%A5%E5%BF%97"><span class="toc-text">TIM日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indicator%E6%96%87%E4%BB%B6"><span class="toc-text">indicator文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8Ecgroup%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90"><span class="toc-text">从cgroup角度来分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%96%E6%A0%B9%E9%97%AE%E5%BA%95"><span class="toc-text">剖根问底</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF%E5%BD%92%E7%BA%B3"><span class="toc-text">分析思路归纳</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%BB%A5%E4%B8%8A%E7%90%86%E8%AE%BA"><span class="toc-text">总结以上理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E6%9C%89%E5%85%B3IM-%E6%8E%A8%E9%80%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB-%E7%BD%91%E7%BB%9C%E4%BF%9D%E6%B4%BB%E6%96%B9%E6%88%90%E7%9A%84%E6%96%87%E7%AB%A0%E6%B1%87%E6%80%BB"><span class="toc-text">附录：有关IM&#x2F;推送的进程保活&#x2F;网络保活方成的文章汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%AE%9E%E7%8E%B0"><span class="toc-text">实际实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E5%B1%82%E5%A4%8D%E6%B4%BB%E8%BF%9B%E7%A8%8B"><span class="toc-text">Java 层复活进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-native-%E5%B1%82%E8%BF%9B%E8%A1%8C-binder-%E9%80%9A%E4%BF%A1"><span class="toc-text">在 native 层进行 binder 通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80-%E5%88%A9%E7%94%A8-libbinder-so-%E4%B8%8E-ActivityManagerService-%E9%80%9A%E4%BF%A1"><span class="toc-text">方式一 利用 libbinder.so 与 ActivityManagerService 通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%8F%96libbinder-so"><span class="toc-text">提取libbinder.so</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C-%E4%BD%BF%E7%94%A8-ioctl-%E4%B8%8E-binder-%E9%A9%B1%E5%8A%A8%E9%80%9A%E4%BF%A1"><span class="toc-text">方式二 使用 ioctl 与 binder 驱动通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Binder%E4%BB%8B%E7%BB%8D"><span class="toc-text">Binder介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ioctl%E5%87%BD%E6%95%B0"><span class="toc-text">ioctl函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPCThreadState-talkWithDriver"><span class="toc-text">IPCThreadState.talkWithDriver</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dev-binder"><span class="toc-text">&#x2F;dev&#x2F;binder</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E4%B8%AADemo%E8%AF%95%E4%B8%80%E4%B8%8B"><span class="toc-text">写个Demo试一下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binder-write-read%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85"><span class="toc-text">binder_write_read结构体数据封装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ioctl%E5%90%AF%E5%8A%A8Service%E5%88%86%E5%87%A0%E6%AD%A5%EF%BC%9F"><span class="toc-text">ioctl启动Service分几步？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B0%81%E8%A3%85Parcel%E6%95%B0%E6%8D%AE"><span class="toc-text">如何封装Parcel数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%88%B0BpBinder%E7%9A%84mHandle%E5%8F%A5%E6%9F%84"><span class="toc-text">如何获取到BpBinder的mHandle句柄</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E7%BB%AD%E5%86%99Demo%E8%AF%95%E4%B8%80%E4%B8%8B"><span class="toc-text">继续写Demo试一下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-text">最后</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>随着Android阵营的各大手机厂商对于续航的高度重视，两三年前的手机发布会更是把反保活作为一个系统的卖点，不断提出了各种反保活的方案，导致现在想实现应用保活简直难于上青天，甚至都需要一个团队来专门研究这个事情。<br>随着Android系统的不断升级，即时通讯网技术群和社区里的IM和推送开发的程序员们，对于进程保活这件事是越来越悲观，必竟系统对各种保活黑科技的限制越来越多了，想超越系统的挚肘，难度越来越大。</p>
+<p>但保活这件事就像“激情”之后的余味，总是让人欲罢不能，想放弃又不甘心。那么，除了像《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2881-1-1.html">2020年了，Android后台保活还有戏吗？看我如何优雅的实现！</a>》这样的正经白名单方式，不正经的“黑科技”是否还有发挥的余地？</p>
+<p>答案是肯定的，“黑科技”仍发挥的余地。不是“黑科技”不行，而是技术没到位。</p>
+<p>研究TIM的保活是一次偶然机会，发现在安全中心关闭了它的自启动功能的情况下， 一键清理、强力清理等各大招都无法彻底杀掉TIM，系统的自启动拦截也没能阻止TIM的永生。</p>
+<p>一直以来，App 进程保活都是各大厂商，特别是头部应用开发商永恒的追求。毕竟<strong>App 进程死了，就什么也干不了了</strong>；一旦 App 进程死亡，那就再也无法在用户的手机上开展任何业务，所有的商业模型在用户侧都没有立足之地了。<br>早期的 Android 系统不完善，导致 App 侧有很多空子可以钻，因此它们有着有着各种各样的姿势进行保活。</p>
+<p>譬如说在 Android 5.0 以前，App 内部通过 native 方式 fork 出来的进程是不受系统管控的，系统在杀 App 进程的时候，只会去杀 App 启动的 Java 进程；因此诞生了一大批“毒瘤”，他们通过 fork native 进程，在 App 的 Java 进程被杀死的时候通过 <code>am</code>命令拉起自己从而实现永生。</p>
+<p>那时候的 Android 可谓是魑魅横行，群魔乱舞；系统根本管不住应用，因此长期以来被人诟病耗电、卡顿。同时，系统的软弱导致了 Xposed 框架、阻止运行、绿色守护、黑域、冰箱等一系列管制系统后台进程的框架和 App 出现。</p>
+<p>不过，随着 Android 系统的发展，这一切都在往好的方向演变。Android 5.0 以上，系统杀进程以 <code>uid</code> 为标识，通过杀死整个进程组来杀进程，因此 native 进程也躲不过系统的法眼。</p>
+<p>Android 6.0 引入了待机模式(doze)，一旦用户拔下设备的电源插头，并在屏幕关闭后的一段时间内使其保持不活动状态，设备会进入低电耗模式，在该模式下设备会尝试让系统保持休眠状态。</p>
+<p>Android 7.0 加强了之前鸡肋的待机模式（不再要求设备静止状态），同时对开启了 Project Svelte，Project Svelte 是专门用来优化 Android 系统后台的项目，在 Android 7.0 上直接移除了一些隐式广播，App 无法再通过监听这些广播拉起自己。</p>
+<p>Android 8.0 进一步加强了应用后台执行限制：一旦应用进入已缓存状态时，如果没有活动的组件，系统将解除应用具有的所有唤醒锁。</p>
+<p>Android 9.0 新增Adaptive Battery（电量自适应）可以最大限度的降低后台占用，从而提升电池续航能力<br>        当你的麦克风、摄像头或传感器空闲时，应用程序将不再能够访问它们<br>        JobScheduler可以使用运营商提供的网络状态信号来改善网络相关作业的处理<br>        进一步改进了省电模式的功能并加入了<strong>应用待机分组</strong>，长时间不用的 App 会被打入冷宫；另外，系统监测到应用消耗过多资源时，系统会通知并询问用户是否需要限制该应用的后台活动。</p>
+<p>Android 10.0 更严格的权限，并限制了数据应用程序的使用。有关如何在应用程序中支持这些功能的详细信息                  </p>
+<p>另外，系统会限制未在前台运行的应用的某些行为，比如说应用的后台服务的访问受到限制，也无法使用 Mainifest 注册大部分隐式广播。</p>
+<p>然而，道高一尺，魔高一丈。系统在不断演进，保活方法也在不断发展。</p>
+<p>大约在 4 年前出现过一个 <a target="_blank" rel="noopener" href="https://github.com/Marswin/MarsDaemon">MarsDaemon</a>，这个库通过双进程守护的方式实现保活，一时间风头无两。不过好景不长，进入 Android 8.0 时代之后，这个库就逐渐消亡。</p>
+<p>一般来说，Android 进程保活分为两个方面：保持进程不被系统杀死。进程被系统杀死之后，可以重新复活。</p>
+<p>随着 Android 系统变得越来越完善，单单通过自己拉活自己逐渐变得不可能了；因此后面的所谓「保活」基本上是两条路：1. 提升自己进程的优先级，让系统不要轻易弄死自己；2. App 之间互相结盟，一个兄弟死了其他兄弟把它拉起来。</p>
+<p>当然，还有一种终极方法，那就是跟各大系统厂商建立 PY 关系，把自己加入系统内存清理的白名单；比如说国民应用微信。当然这条路一般人是没有资格走的。</p>
+<p>大约一年以前，大神 gityuan 在其<a target="_blank" rel="noopener" href="http://gityuan.com/2018/02/24/process-keep-forever/">博客</a>上公布了 TIM 使用的一种可以称之为「终极永生术」的保活方法；这种方法在当前 Android 内核的实现上可以大大提升进程的存活率。</p>
+<p>这种保活思路的实现原理，并且提供了一个参考实现 <a target="_blank" rel="noopener" href="https://github.com/tiann/Leoric">Leoric</a>。</p>
+<p>接下来就给大家分享一下这个终极保活黑科技的实现原理。保活的底层技术原理知己知彼，百战不殆。既然我们想要保活，那么首先得知道我们是怎么死的。</p>
+<p>一般来说，系统杀进程有两种方法，这两个方法都通过 ActivityManagerService 提供：killBackgroundProcessesforceStopPackage在原生系统上，很多时候杀进程是通过第一种方式，除非用户主动在 App 的设置界面点击「强制停止」。</p>
+<p>不过国内各厂商以及一加三星等 ROM 现在一般使用第二种方法。第一种方法太过温柔，根本治不住想要搞事情的应用。第二种方法就比较强力了，一般来说被 force-stop 之后，App 就只能乖乖等死了。因此，要实现保活，我们就得知道 force-stop 到底是如何运作的，可以跟踪一下系统的 <code>forceStopPackage</code> 这个方法的执行流程</p>
+<p>连微信这种超级APP，也要拜倒在反保活的石榴裙下，允许后台启动太费电，不允许后台启动就收不到消息。</p>
+<p>Android发现了一个保活野路子就堵一条，然而很多场景是有保活的强需求的，有木有考虑过我们开发者的感受，自己人何必为难自己人😭。</p>
+<p>这是一个Android设计的不合理的地方，路子可以堵，但还是有必要留一个统一的保活接口的。这个接口由Google实现也好，厂商来实现也好，总好过现在很笨拙的系统自启动管理或者是JobScheduler。</p>
+<p>从本质上来说，让应用开发者想尽各种办法去做保活，这个事情是没有意义的，保活的路子被封了，但保活还是需要做，保活的成本也提高了，简直浪费生命。<strong>Android的锅</strong>。</p>
+<p>保活是”应用的蜜罐，系统的肿瘤“，应用高保活率给自己赢得在线时长，甚至做各种应用想做而用户不期望的行为，给系统带来的是不必要的耗电，以及系统额外的性能负担。</p>
+<h2 id="保活技术阶段回顾"><a href="#保活技术阶段回顾" class="headerlink" title="保活技术阶段回顾"></a>保活技术阶段回顾</h2><p>Android保活技术的进化，可以分为几个阶段。<br><strong>第一个阶段：</strong><br>也就是各种“黑科技”盛行的时代，比如某Q搞出来的1像素、后台无声音乐（某运动计步APP就干过）等等。<br><strong>这个阶段的一些典型主要技术手段，可以看以下这几篇文章：</strong></p>
+<ul>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1135-1-1.html">应用保活终极总结(一)：Android6.0以下的双进程守护保活实践</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-438-1-1.html">Android进程保活详解：一篇文章解决你的所有疑问</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-210-1-1.html">微信团队原创分享：Android版微信后台保活实战分享(进程保活篇)</a>》</li>
+</ul>
+<p><strong>第二个阶段：</strong><br>到了Android 6.0时代以后，Android保活就开始有点技术难度了，之前的各种无脑保活方法开始慢慢失效。<br><strong>这个阶段的一些典型技术手段，可以读读以下这几篇文章：</strong></p>
+<ul>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1138-1-1.html">应用保活终极总结(二)：Android6.0及以上的保活实践(进程防杀篇)</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1140-1-1.html">应用保活终极总结(三)：Android6.0及以上的保活实践(被杀复活篇)</a>》</li>
+</ul>
+<p><strong>第三个阶段：</strong><br>进入Android 8.0时代，Android直接在系统层面进行了各种越来越严格的管控，可以用的保活手段越来越少，保活技术的发展方向已发分化为两个方向——要么用白名单的方式走正经的保活路径、要么越来越“黑”一“黑”到底（比如本文将要介绍的TIM的保活手段）。<br><strong>这个阶段可以用的保活已经手段不多了，以下几篇盘点了目前的一些技术可行性现状等：</strong></p>
+<ul>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1832-1-1.html">Android P正式版即将到来：后台应用保活、消息推送的真正噩梦</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2176-1-1.html">全面盘点当前Android后台保活方案的真实运行效果（截止2019年前）</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2881-1-1.html">2020年了，Android后台保活还有戏吗？看我如何优雅的实现！</a>》</li>
+</ul>
+<h2 id="什么是保活？"><a href="#什么是保活？" class="headerlink" title="什么是保活？"></a>什么是保活？</h2><p>保活就是在用户主动杀进程，或者系统基于当前内存不足状态而触发清理进程后，该进程设法让自己免于被杀的命运或者被杀后能立刻重生的手段。<br>保活是”应用的蜜罐，系统的肿瘤“，应用高保活率给自己赢得在线时长，甚至做各种应用想做而用户不期望的行为，给系统带来的是不必要的耗电，以及系统额外的性能负担。<br>保活方案一直就层出不穷，APP开发们不断地绞尽脑汁让自己的应用能存活得时间更长， 主要思路有以下两个。</p>
+<p><strong>提升进程优先级，降低被杀概率：</strong></p>
+<ul>
+<li>1）比如监听SCREEN_ON&#x2F;OFF广播，启动一像素的透明Activity；</li>
+<li>2）启动空通知，提升fg-service；</li>
+<li>… …</li>
+</ul>
+<p><strong>进程被杀后，重新拉起进程：</strong></p>
+<ul>
+<li>1）监听系统或者第3方广播拉起进程。但目前安全中心&#x2F;Whetstone已拦截；</li>
+<li>2）Native fork进程相互监听，监听到父进程被杀，则通过am命令启动进程。force-stop会杀整个进程组，所以这个方法几乎很难生效了。</li>
+</ul>
+<p><strong>规纳如下</strong></p>
+<ul>
+<li>提升进程优先级，降低被杀概率</li>
+<li>比如监听SCREEN_ON&#x2F;OFF广播 启动一像素的透明Activity</li>
+<li>启动空通知，提升fg-service</li>
+<li>进程被杀后，重新拉起进程</li>
+<li>监听系统或者第3方广播拉起进程。目前安全中心&#x2F;Whetstone已拦截</li>
+<li>Native fork进程相互监听，监听到父进程被杀，则通过am命令启动进程。force-stop会杀整个进程组，几乎很难生效</li>
+</ul>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><p>通过ioctl跟binder驱动交互，实现以最快的方式唤醒新的保活服务，最大程度防止保活失败。</p>
+<h3 id="关于binder"><a href="#关于binder" class="headerlink" title="关于binder"></a>关于binder</h3><p>如果从Android层开始，一层套一层，会让我们迷茫不知所措。而ioctl才是驱动整个binder运行的引擎。<br>我们可以不用binder，可以实现另外一种类似binder的机制，通过ioctl可以觉察到整个的数据流向，本来进程通信表面意思就是进程间传递数据，不围绕数据的流向，常常会迷失在大量的接口类中不知所措。</p>
+<h3 id="使用binder"><a href="#使用binder" class="headerlink" title="使用binder"></a>使用binder</h3><p>ioctl 根据第二个参数，确定BINDER WRITE READ，然后阅读相关的linux驱动源码，解析参数。<br>进程间传递数据发送方要把指针放在其中。binder_transaction_data，如果A进程要发送数据给B，那么填充方式就是在write_buffer中写入数据的指针。</p>
+<ul>
+<li><p>看上去binder是双工的，每一个进程通过调用ioctl既可以发送数据也可以收到数据，在ioctl执行前hook只能得到发送的数据，执行后即可得到接收的数据。所以binder的read_buffer就相当于socket的recvfrom write_buffer相当于socket的sendto*</p>
+</li>
+<li><p>进程之间的通信和进程服务之间的通信好像并不完全一样，而大部分资料介绍的几乎都是进程和服务之间的通信。这里通过A向B发送数据来看下binder底层是如何工作的。*</p>
+</li>
+<li><p>首先A生成<strong>write_buffer：</strong>binder_transaction_data，标记为BC_TRANSACTION，数据指针中保存实际的数据。调用ioctl，binder驱动保存数据后填充read_buffer为BR_TRANSACTION_COMPLETE，虽然数据还没有到B，但是已经到了驱动中，就算是成功了。*</p>
+</li>
+<li><p>然后通过某些方法告诉B可以接收数据了，测试发现，B填充的read_buffer中填充了<em><strong>BR_TRANSACTION_COMPLETE</strong> <strong>write_buffer中填充了BC_FREE_BUFFER是否有意义*？然后B调用ioctl，binder驱动填充</strong></em>read_buffer* ，标记为BR_REPLY 表示成功接收到了数据*</p>
+</li>
+</ul>
+<h3 id="进程保活原理"><a href="#进程保活原理" class="headerlink" title="进程保活原理"></a>进程保活原理</h3><p>Gityuan大佬曾放出了一份分析TIM的黑科技保活的博客 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021579231">史上最强Android保活思路：深入剖析腾讯TIM的进程永生技术</a><br>（后来不知道什么原因又删除了），顿时间掀起了一阵波澜，仿佛让开发者们又看到了应用保活的一丝希望。<br>Gityuan大佬通过超强的专业技术分析，为我们解开了TIM保活方案的终极奥义。</p>
+<p>后来，为数不多的维术大佬在Gityuan大佬的基础上，发布了博客 <a target="_blank" rel="noopener" href="http://weishu.me/2020/01/16/a-keep-alive-method-on-android">Android 黑科技保活实现原理揭秘</a><br>又进行了系统进程查杀相关的源码分析。为我们带来的结论是，Android系统杀应用的时候，会去杀进程组，<strong>循环 40 遍不停地杀进程，每次杀完之后等 5ms</strong>。</p>
+<p>引用维术的话语，原理如下：</p>
+<ol>
+<li>利用Linux文件锁的原理，使用2个进程互相监听各自的文件锁，来感知彼此的死亡。</li>
+<li>通过 fork 产生子进程，fork 的进程同属一个进程组，一个被杀之后会触发另外一个进程被杀，从而被文件锁感知。</li>
+</ol>
+<p>具体来说<br>    创建 2 个进程 p1, p2，这两个进程通过文件锁互相关联，一个被杀之后拉起另外一个；同时 p1 经过 2 次 fork 产生孤儿进程 c1，p2 经过 2 次 fork 产生孤儿进程 c2，c1 和 c2 之间建立文件锁关联。这样假设 p1 被杀，那么 p2 会立马感知到，然后 p1 和 c1 同属一个进程组，p1 被杀会触发 c1 被杀，c1 死后 c2 立马感受到从而拉起 p1，因此这四个进程三三之间形成了铁三角，从而保证了存活率。</p>
+<p>按照维术大佬的理论:<br>** 只要进程我复活的足够快，系统它就杀不死我 **</p>
+<p>维术大佬写了一个简单的实现： <a target="_blank" rel="noopener" href="https://github.com/tiann/Leoric">github.com&#x2F;tiann&#x2F;Leoric</a> 这个方案是当检测到进程被杀时，会通过JNI的方式，调用Java层的方法来复活进程。为了实现稳定的保活，尤其是系统杀进程只给了5ms复活的机会，使用JNI这种方式复活进程现在达不到最优的效果。</p>
+<h2 id="分析TIM"><a href="#分析TIM" class="headerlink" title="分析TIM"></a>分析TIM</h2><p>执行命令<code>adb shell ps | grep tencent.tim</code>，可见TIM共有4个进程， 其父进程都是Zygote</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps | grep tencent.tim</span><br><span class="line">u0_a146   27965 551   1230992 43964 SyS_epoll_ 00f6df4bf0 S com.tencent.tim:Daemon</span><br><span class="line">u0_a146   27996 551   1252492 54032 SyS_epoll_ 00f6df4bf0 S com.tencent.tim:MSF</span><br><span class="line">u0_a146   28364 551   1348616 89204 SyS_epoll_ 00f6df4bf0 S com.tencent.tim:mail</span><br><span class="line">u0_a146   31587 551   1406128 147976 SyS_epoll_ 00f6df4bf0 S com.tencent.tim</span><br></pre></td></tr></table></figure>
+
+<h3 id="一键清理看现象，排查初步怀疑"><a href="#一键清理看现象，排查初步怀疑" class="headerlink" title="一键清理看现象，排查初步怀疑"></a>一键清理看现象，排查初步怀疑</h3><p>以下是对TIM执行一键清理后的日志：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">12-21 21:12:20.265  1053  1075 I am_kill : [0,4892,com.tencent.tim:Daemon,5,stop com.tencent.tim: from pid 4617]</span><br><span class="line">12-21 21:12:20.272  1053  1075 I am_kill : [0,5276,com.tencent.tim:mail,2,stop com.tencent.tim: from pid 4617]</span><br><span class="line">12-21 21:12:20.305  1053  1075 I am_kill : [0,4928,com.tencent.tim,2,stop com.tencent.tim: from pid 4617]</span><br><span class="line">12-21 21:12:20.330  1053  1075 I am_kill : [0,4910,com.tencent.tim:MSF,0,stop com.tencent.tim: from pid 4617]</span><br><span class="line">12-21 21:13:59.920  1053  1466 I am_proc_start: [0,5487,10146,com.tencent.tim:MSF,service,com.tencent.tim/com.tencent.mobileqq.app.DaemonMsfService]</span><br><span class="line">12-21 21:13:59.984  1053  1604 I am_proc_start: [0,5516,10146,com.tencent.tim,content provider,com.tencent.tim/com.tencent.mqq.shared_file_accessor.ContentProviderImpl]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">MIUI</span></span><br><span class="line">``12-21 21:12:20.265 1053 1075 I am_kill : [0,4892,com.tencent.tim:Daemon,5,stop com.tencent.tim: from pid 4617]</span><br><span class="line">``12-21 21:12:20.272 1053 1075 I am_kill : [0,5276,com.tencent.tim:mail,2,stop com.tencent.tim: from pid 4617]</span><br><span class="line">``12-21 21:12:20.305 1053 1075 I am_kill : [0,4928,com.tencent.tim,2,stop com.tencent.tim: from pid 4617]</span><br><span class="line">``12-21 21:12:20.330 1053 1075 I am_kill : [0,4910,com.tencent.tim:MSF,0,stop com.tencent.tim: from pid 4617]</span><br><span class="line">``12-21 21:13:59.920 1053 1466 I am_proc_start: [0,5487,10146,com.tencent.tim:MSF,service,com.tencent.tim``/com``.tencent.mobileqq.app.DaemonMsfService]</span><br><span class="line">``12-21 21:13:59.984 1053 1604 I am_proc_start: [0,5516,10146,com.tencent.tim,content provider,com.tencent.tim``/com``.tencent.mqq.shared_file_accessor.ContentProviderImpl]</span><br></pre></td></tr></table></figure>
+
+<p>Force-stop是系统提供的杀进程最为彻底的方式，详见文章<a target="_blank" rel="noopener" href="http://gityuan.com/2016/10/22/force-stop/">Android进程绝杀技–forceStop</a>。从日志可以发现一键清理后TIM的4个进程全部都已被Force-stop。但进程com.tencent.tim:MSF立刻就被DaemonMsfService服务启动过程而拉起。</p>
+<p><code>问题1：</code>安全中心已配置了禁止TIM的自启动， 并且安全中心和系统都有对进程自启动以及级联启动的严格限制，为何会有漏网之鱼？</p>
+<p><strong>怀疑1</strong>： 是否安全中心自启动没能有效限制，以及微信&#x2F;QQ跟TIM有所级联，比如com.tencent.mobileqq.app.DaemonMsfService服务名中以com.tencent.mobileqq(QQ的包名)开头，经过dumpsys以及反复验证后排除了这种可能性，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">12-21 21:12:20.266  1053  1075 I AutoStartManagerService: MIUILOG- Reject RestartService packageName :com.tencent.tim uid : 10146</span><br><span class="line">12-21 21:12:20.291  1053  1075 I AutoStartManagerService: MIUILOG- Reject RestartService packageName :com.tencent.tim uid : 10146</span><br><span class="line">12-21 21:12:20.323  1053  1075 I AutoStartManagerService: MIUILOG- Reject RestartService packageName :com.tencent.tim uid : 10146</span><br><span class="line">12-21 21:12:20.323  1053  1075 I AutoStartManagerService: MIUILOG- Reject RestartService packageName :com.tencent.tim uid : 10146</span><br><span class="line">12-21 21:12:20.331  1053  1075 I AutoStartManagerService: MIUILOG- Reject RestartService packageName :com.tencent.tim uid : 10146</span><br><span class="line">12-21 21:12:20.332  1053  1075 I AutoStartManagerService: MIUILOG- Reject RestartService packageName :com.tencent.tim uid : 10146</span><br></pre></td></tr></table></figure>
+
+<p><strong>怀疑2</strong>： 是否在TIM进程被杀后, 收到BinderDied后的死亡回调过程中将Service再次拉起，这个情况也很快就被排除， 因为force-stop这种冷面强力杀手， 并不会等到死亡回调再去清理进程相关信息，而是直接连根拔起，并不会走到AMS的死亡回调。</p>
+<p><strong>怀疑3</strong>： TIM设置了alarm机制，在callApp为空符合特征， 但经过分析这里就是普通的startService, 非startServiceInPackage()， 也排除了这种可能性</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//启动DaemonAssistService时，callApp为空，只有通过PendingIntent方式才可能出现这种情况</span><br><span class="line">12-21 21:56:54.653 3181 3195 I am_start_service: [-1,NULL,10146,com.tencent.tim:Daemon,com.tencent.tim/com.tencent.mobileqq.app.DaemonAssistService,&#123;cmp=com.tencent.tim/com.tencent.mobileqq.app.DaemonAssistService&#125;]</span><br><span class="line">12-21 21:56:56.666 3181 3827 I am_start_service: [-1,NULL,10146,com.tencent.tim:MSF,com.tencent.tim/com.tencent.mobileqq.app.DaemonMsfService,&#123;cmp=com.tencent.tim/com.tencent.mobileqq.app.DaemonMsfService&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>既然排除以上3种可能，直接上断点来看看吧</p>
+<h3 id="Android-Studio断点分析"><a href="#Android-Studio断点分析" class="headerlink" title="Android Studio断点分析"></a>Android Studio断点分析</h3><p>一上断点就发现了意外的一幕：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim_1.png" alt="tim_1"></p>
+<p><code>问题2：</code>startService()的callingPid怎么可能等于0？</p>
+<h4 id="分析callingPid-0"><a href="#分析callingPid-0" class="headerlink" title="分析callingPid&#x3D;0"></a>分析callingPid&#x3D;0</h4><p>为什么说上面是意外的一幕呢？这需要对binder底层原理有一定深入理解，才能看出一些端倪，那就是此处callingPid&#x3D;0是不合理逻辑的。很多人可能不太理解为何就不合乎逻辑， 这要从Binder原理说起， startService()这个Binder call是属于同步binder调用， 对于binder调用过程，只有异步Binder调用的情况下callingPid&#x3D;0才会为空， 因为不需要reply应答数据给发送binder请求的那一端。 但如果是同步的，则必须要给出callingPid，否则无法将应答数据回传给发送方。 这是由Binder Driver所决定的，见如下Binder Driver核心代码：</p>
+<p>(1)Binder发起端：根据当前ONE_WAY来决定是否设置from线程</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">binder_transaction</span>(...) &#123;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (!reply &amp;&amp; !(tr-&gt;flags &amp; TF_ONE_WAY))</span><br><span class="line">	t-&gt;from = thread;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	t-&gt;from = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(2)Binder接收端： 根据from线程是否为空， 来决定sender_pid是否为0. 这便是Java层所说的callingPid</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">binder_thread_read</span>(...) &#123;</span><br><span class="line">...</span><br><span class="line">t_from = <span class="built_in">binder_get_txn_from</span>(t);</span><br><span class="line"><span class="keyword">if</span> (t_from) &#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">task_struct</span> *sender = t_from-&gt;proc-&gt;tsk;</span><br><span class="line"></span><br><span class="line">	tr.sender_pid = <span class="built_in">task_tgid_nr_ns</span>(sender,</span><br><span class="line">					<span class="built_in">task_active_pid_ns</span>(current));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	tr.sender_pid = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>上述代码表明</strong>： 同步的Binder调用的情况下则callingPid必定不等于0</p>
+<p>下面告诉大家如何看一个Binder调用是否同步， 如下图最后一个参数代表的是FLAG_ONEWAY值，等于0则代表的是同步， 等于1则代表的是异步。</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim1_2.png" alt="tim1_2"></p>
+<p>以上代码是framework的框架代码，startService最终都会调用到这里来，所以callingPid必然是不可能出现为0的情况，让我们看不透到底哪个进程把com.tencent.tim:Daemon拉起的。</p>
+<h4 id="揭秘"><a href="#揭秘" class="headerlink" title="揭秘"></a>揭秘</h4><p>从前面的分析来看callingPid是不可能为0的， 但从结果来看的确是0， 出现矛盾就一定有反常规存在，难道是存在同步的Binder调用，也存在同时callingPid&#x3D;0的case？答案是No.</p>
+<p>从源码角度来看是没有这种可能性存在，后面再进一步追踪flags值的变化，从如下的flags&#x3D;17，可以确定的是此处的startService的binder call是ONE_WAY的，这就可以确定的确是发起了异步的Binder调用，代码如下：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim_2.png" alt="tim_2"></p>
+<p>虽然callingPid&#x3D;0，但从callUid&#x3D;10146可以确定的一点是com.tencent.tim:Daemon进程是被来自TIM应用自身的某个进程所拉起的。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>通过前面的初步分析，先整理一下思路，有以下初步结论：</p>
+<ul>
+<li>TIM至少有4个进程，且都是由Zygote进程fork, 保活是通过startService被拉起</li>
+<li>排除 安全中心的对TIM限制自启动功能失效的情况</li>
+<li>排除 TIM进程被杀后的Binder死亡回调过程通过Service重新拉起进程</li>
+<li>排除 alarm机制 拉起进程</li>
+<li>从callingPid&#x3D;0，可以得出TIM没有走常规的系统框架中提供的startService()接口来启动服务，而是自定义的方式</li>
+<li>从callingUid&#x3D;10146, 可以得出TIM救活自己的方式，是通过TIM自身，而非系统或者第三方应用拉起</li>
+</ul>
+<p>到此不难得出一个猜想： 首先TIM应用能做到监听应用进程被杀的情况， 其次是TIM应用自身替换掉或者自定义一套Binder调用，主动跟Binder驱动进行数据交互。</p>
+<h2 id="深入分析"><a href="#深入分析" class="headerlink" title="深入分析"></a>深入分析</h2><h3 id="寻求规律"><a href="#寻求规律" class="headerlink" title="寻求规律"></a>寻求规律</h3><p>TIM应用有4个进程，不断反复地尝试杀TIM每一个进程后，观察自启动的情况后。 发现了一个规律：com.tencent.tim:Daemon和com.tencent.tim:MSF进程任一被杀，都会先把对方进程拉起，然后跟着自杀后，再重启。</p>
+<p>接下来就把范围锁定在这两个进程，然后来tracing信号处理情况。</p>
+<h3 id="从signal角度来分析"><a href="#从signal角度来分析" class="headerlink" title="从signal角度来分析"></a>从signal角度来分析</h3><p>打开signal开关</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; /d/tracing/events/signal/enable</span><br><span class="line">echo 1 &gt; /d/tracing/tracing_on</span><br></pre></td></tr></table></figure>
+
+<p>执行如下命令抓取tracing log</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /d/tracing/trace_pipe</span><br></pre></td></tr></table></figure>
+
+<p>日志如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//通过adb shell kill -9 10649,  将com.tencent.tim:Daemon进程杀掉</span><br><span class="line">sh-22775 [000] d..2 18844.276419: signal_generate: sig=9 errno=0 code=0 comm=cent.tim:Daemon pid=10649 grp=1 res=0</span><br><span class="line">// 线程Thread-89 将tencent.tim:MSF进程也杀掉了</span><br><span class="line">Thread-89-10712 [000] dn.2 18844.340735: signal_generate: sig=9 errno=0 code=0 comm=tencent.tim:MSF pid=10669 grp=1 res=0</span><br><span class="line">Binder:14682_4-14845 [000] d..2 18844.340779: signal_deliver: sig=9 errno=0 code=0 sa_handler=0 sa_flags=0</span><br><span class="line">Binder:14682_1-14694 [000] d..2 18844.341418: signal_deliver: sig=9 errno=0 code=0 sa_handler=0 sa_flags=0</span><br><span class="line">Binder:14682_2-14697 [000] d..2 18844.345075: signal_deliver: sig=9 errno=0 code=0 sa_handler=0 sa_flags=0</span><br><span class="line">tencent.tim:MSF-14682 [000] dn.2 18844.345115: signal_deliver: sig=9 errno=0 code=0 sa_handler=0 sa_flags=</span><br></pre></td></tr></table></figure>
+
+<p>从这里，可以发现com.tencent.tim:Daemon进程是由于其中一个线程Thread-89所杀，但从名字来看Thread-xxx，很明显是系统自动生成的编号。</p>
+<p><code>问题3：</code>进程内的名叫“Thread-89”的线程具有什么特点，如何做到把进程杀掉？<br>从下面的截图，可以看出MSF进程的这个特殊的线程当前在执行flock_lock操作，这个明显是一个文件加锁的操作， 这个方法很快就引起了我的注意。同理Daemon进程也有一个这样的线程， 离真相有近了一步。</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim_3_2.png" alt="tim_3_2"></p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim_3.png" alt="tim_3"></p>
+<p>再来看看调用栈情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Cmd line: com.tencent.tim:Daemon</span><br><span class="line">&quot;Thread-89&quot; prio=10 tid=12 Native</span><br><span class="line">| group=&quot;main&quot; sCount=1 dsCount=0 obj=0x32c07460 self=0xf3382000</span><br><span class="line">| sysTid=10712 nice=-8 cgrp=bg_non_interactive sched=0/0 handle=0xee824930</span><br><span class="line">| state=S schedstat=( 44972457 14188383 124 ) utm=1 stm=3 core=0 HZ=100</span><br><span class="line">| stack=0xee722000-0xee724000 stackSize=1038KB</span><br><span class="line">| held mutexes=</span><br><span class="line">kernel: __switch_to+0x74/0x8c</span><br><span class="line">kernel: flock_lock_file_wait+0x2a4/0x318</span><br><span class="line">kernel: SyS_flock+0x19c/0x1a8</span><br><span class="line">kernel: el0_svc_naked+0x20/0x28</span><br><span class="line">native: #00 pc 000423d4  /system/lib/libc.so (flock+8)</span><br><span class="line">native: #01 pc 0000195d  /data/app/com.tencent.tim-1/lib/arm/libdaemon_acc.so (_Z9lock_filePc+64)</span><br><span class="line">...</span><br><span class="line">native: #29 pc 0000191f  /data/app/com.tencent.tim-1/lib/arm/libdaemon_acc.so (_Z9lock_filePc+2)</span><br><span class="line">native: #30 pc 0000191d  /data/app/com.tencent.tim-1/lib/arm/libdaemon_acc.so (_Z9lock_filePc)</span><br><span class="line">native: #31 pc 0000191b  /data/app/com.tencent.tim-1/lib/arm/libdaemon_acc.so (_Z18notify_and_waitforPcS_+102)</span><br><span class="line">...</span><br><span class="line">native: #63 pc 000018d1  /data/app/com.tencent.tim-1/lib/arm/libdaemon_acc.so (_Z18notify_and_waitforPcS_+28)</span><br><span class="line">at com.libwatermelon.WaterDaemon.doDaemon2(Native method)</span><br><span class="line">at com.libwatermelon.strategy.WaterStrategy2$2.run(WaterStrategy2.java:111)</span><br></pre></td></tr></table></figure>
+
+<p>从这个线程的调用栈中的名字， notify_and_waitfor让我想到了这极有可能用于监听文件来获知进程是否存活。 为了进一步观察这个特殊线程的工作使命， 这里还不需要GDB, 祭出strace大招应该就差不多</p>
+<h3 id="利用strace分析"><a href="#利用strace分析" class="headerlink" title="利用strace分析"></a>利用strace分析</h3><p>strace -CttTip 22829 -CttTip 22793</p>
+<p>结果如下：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim7.png" alt="tim7"></p>
+<p><strong>flock基础知识简介:</strong></p>
+<p>flock是Linux文件锁，用于多个进程同时操作同一个文件时，通过加锁机制保证数据的完整，flock使用场景之一，便是用于检测进程是否存在。flock属于建议性的锁，而非强制性锁，只是进程可以直接操作正被另一个进程用flock锁住的文件， 原因在于flock只检测文件是否加锁，内核并不会强制阻塞其他进程的读写操作，这便是建议性锁的内核策略。</p>
+<p>方法原型： int flock(int fd, int operation)</p>
+<p>第一个参数是文件描述符，第二参数指定锁的类型，有以下3个可选值：</p>
+<ul>
+<li>LOCK_SH: 共享锁， 同一时间运行多个进程同时持有该共享锁</li>
+<li>LOCK_EX: 排它锁，只允许一个进程持有该锁</li>
+<li>LOCK_UN: 移除该进程的该文件所持有的锁</li>
+</ul>
+<p>从strace可以推测出：com.tencent.tim:MSF进程的监控线程执行排它锁LOCK_EX类型的flock，尝试去获取某个文件，而该文件已被com.tencent.tim:Daemon进程所持有，所以MSF进程会被阻塞知道锁的释放，而一旦Daemon进程被杀，系统就会回收所有资源(包括文件)，这是Linux内核负责完成的。</p>
+<p>当Daemon进程的文件被回收，就会释放flock， 从而MSF进程可以获取该锁，从而吐出“lock file success”的信息。 MSF得知Daemon进程被杀，然后执行一行ioctl(11, BINDER_WRITE_READ, 0xffffffffee823ed0) &#x3D; 0 &lt;0.000867&gt; ，</p>
+<p>这个应该就是TIM进程自身实现了一套执行startService的Binder调用，向Binder驱动发送 BINDER_WRITE_READ的ioctl命令。 再然后发送kill SIGKILL将自身MSF进程杀掉，同样的道理可以再次被拉起。</p>
+<p>分析到这里，看执行了writev操作， 应该就是Log操作， 有一个关键词到Watermelon吸引了我的注意力， 搜索Watermelon关键词，果然找到新的一片天地。</p>
+<h3 id="TIM日志"><a href="#TIM日志" class="headerlink" title="TIM日志"></a>TIM日志</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">//旧的MSF进程</span><br><span class="line">24538 24562 D Watermelon: lock file success  &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p2</span><br><span class="line">24538 24562 E Watermelon: Watch &gt;&gt;&gt;&gt;Daemon&lt;&lt;&lt;&lt;&lt; Daed !!</span><br><span class="line">24538 24562 E Watermelon: java_callback:onDaemonDead</span><br><span class="line">24538 24562 V Watermelon: onDaemonDead</span><br><span class="line">24576 24576 D Watermelon: lock file success  &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d1</span><br><span class="line">24576 24576 E Watermelon: Watch &gt;&gt;&gt;&gt;Daemon&lt;&lt;&lt;&lt;&lt; Daed !!</span><br><span class="line">24576 24576 E Watermelon: process exit</span><br><span class="line">//新daemon进程</span><br><span class="line">25103 25103 V Watermelon: initDaemon processName=com.tencent.tim:Daemon</span><br><span class="line">25103 25103 E Watermelon: onDaemonAssistantCreate</span><br><span class="line">25134 25134 D Watermelon: start daemon24=/data/user/0/com.tencent.tim/app_bin/daemon2</span><br><span class="line">//app_d进程</span><br><span class="line">25137 25137 D Watermelon: pipe read datasize &gt;&gt; 316 &lt;&lt;</span><br><span class="line">25137 25137 D Watermelon: indicator_self_path &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d1</span><br><span class="line">25137 25137 D Watermelon: observer_daemon_path &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/observer_p1</span><br><span class="line">25137 25137 I Watermelon: sIActivityManager==NULL</span><br><span class="line">25137 25137 I Watermelon: BpActivityManager init</span><br><span class="line">//新daemon</span><br><span class="line">25103 25120 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p2</span><br><span class="line">25103 25120 D Watermelon: lock file success  &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p2</span><br><span class="line">25137 25137 I Watermelon: BpActivityManager init end</span><br><span class="line">//app_d进程</span><br><span class="line">25137 25137 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d1</span><br><span class="line">25137 25137 D Watermelon: lock file success  &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d1</span><br><span class="line">//新MSF进程</span><br><span class="line">25119 25119 V Watermelon: initDaemon processName=com.tencent.tim:MSF</span><br><span class="line">25119 25119 V Watermelon: mConfigurations.PERSISTENT_CONFIG.PROCESS_NAME=com.tencent.tim:MSF</span><br><span class="line">25119 25119 E Watermelon: onPersistentCreate</span><br><span class="line">25153 25153 D Watermelon: start daemon24=/data/user/0/com.tencent.tim/app_bin/daemon2</span><br><span class="line">25119 25144 D Watermelon: pipe write len=324</span><br><span class="line">25159 25159 D Watermelon: pipe read datasize &gt;&gt; 324 &lt;&lt;</span><br><span class="line">25159 25159 D Watermelon: indicator_self_path &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p1</span><br><span class="line">25159 25159 D Watermelon: observer_daemon_path &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/observer_d1</span><br><span class="line">25159 25159 I Watermelon: sIActivityManager==NULL</span><br><span class="line">25159 25159 I Watermelon: BpActivityManager init</span><br><span class="line">25119 25144 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d2</span><br><span class="line">25119 25144 D Watermelon: lock file success  &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d2</span><br><span class="line">25159 25159 I Watermelon: BpActivityManager init end</span><br><span class="line">//各进程进入监听就绪状态</span><br><span class="line">25159 25159 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p1</span><br><span class="line">25159 25159 D Watermelon: lock file success  &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p1</span><br><span class="line">25119 25144 E Watermelon: Watched &gt;&gt;&gt;&gt;OBSERVER&lt;&lt;&lt;&lt; has been ready...</span><br><span class="line">25119 25144 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p2</span><br><span class="line">25159 25159 E Watermelon: Watched &gt;&gt;&gt;&gt;OBSERVER&lt;&lt;&lt;&lt; has been ready...</span><br><span class="line">25159 25159 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d1</span><br><span class="line">25137 25137 E Watermelon: Watched &gt;&gt;&gt;&gt;OBSERVER&lt;&lt;&lt;&lt; has been ready...</span><br><span class="line">25137 25137 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_p1</span><br><span class="line">25103 25120 E Watermelon: Watched &gt;&gt;&gt;&gt;OBSERVER&lt;&lt;&lt;&lt; has been ready...</span><br><span class="line">25103 25120 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d2</span><br></pre></td></tr></table></figure>
+
+<p>再从其中的截取核心片段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">25159 25159 I Watermelon: BpActivityManager init</span><br><span class="line">25119 25144 D Watermelon: start try to lock file &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d2</span><br><span class="line">25119 25144 D Watermelon: lock file success &gt;&gt; /data/user/0/com.tencent.tim/app_indicators/indicator_d2</span><br></pre></td></tr></table></figure>
+
+<p>不难看出：</p>
+<ul>
+<li>TIM自身通过向servicemanager查询来获取AMS的代理BpActivityManager， 然后自己去写startService通信过程的数据</li>
+<li>TIM通过两个进程通过flock来相互监听对方进程存活状态</li>
+<li>监听的文件有比如：&#x2F;data&#x2F;user&#x2F;0&#x2F;com.tencent.tim&#x2F;app_indicators&#x2F;indicator_d2</li>
+</ul>
+<h3 id="indicator文件"><a href="#indicator文件" class="headerlink" title="indicator文件"></a>indicator文件</h3><p>进一步查看TIM所监听的路径下&#x2F;data&#x2F;user&#x2F;0&#x2F;com.tencent.tim&#x2F;app_indicators&#x2F;， 发现有4个监听文件：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim4.png" alt="tim4"></p>
+<p><code>问题4：</code>为何需要4个indicator文件？</p>
+<p>进一步延伸：通过查看flock，再次发现新大陆，原来除了Daemon和MSF进程各有一个监听文件的线程， 还有两个由init进程作为父进程的app_d进程也监听文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb shell ps -t | grep -i flock</span><br><span class="line">u0_a146   <span class="number">10668</span> <span class="number">10649</span> <span class="number">1143304</span> <span class="number">85876</span> flock_lock <span class="number">00f</span>6e1e3d8 S Thread<span class="number">-85</span></span><br><span class="line">u0_a146   <span class="number">10712</span> <span class="number">10669</span> <span class="number">1158552</span> <span class="number">89664</span> flock_lock <span class="number">00f</span>6e1e3d8 S Thread<span class="number">-89</span></span><br><span class="line">u0_a146   <span class="number">10687</span> <span class="number">1</span>     <span class="number">12768</span>  <span class="number">564</span>   flock_lock <span class="number">00f</span>73113d8 S app_d</span><br><span class="line">u0_a146   <span class="number">10717</span> <span class="number">1</span>     <span class="number">12768</span>  <span class="number">560</span>   flock_lock <span class="number">00f</span>74353d8 S app_d</span><br></pre></td></tr></table></figure>
+
+<p>不难发现，以上几个进程&#x2F;线程的uid&#x3D;10146，进一步通过ps命名查找。</p>
+<p>再一次刷新对TIM应用的认识： 原来TIM有6个进程，其中还有2个是挂在init进程下，名字跟tencent没有关系，差点错过了这两个特殊的进程</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim5_2.png" alt="tim5_2"></p>
+<p>这两个app_d进程其实也是做着同样的相互监听的工作， 应该是备选方案。当有概率恰巧Daemon和MSF进程同时被杀而来不及互保的情况下，那么可以走紧急通道app_d 将TIM进程拉起。可谓是暗藏玄机， 6个进程中有4个进程可以相互保活， 以保证TIM进程永生。</p>
+<p><code>问题5：</code> 这4个进程到达是什么如何相互监听的呢？</p>
+<p>通过不断分析被杀与重启前后的规律与特征，得出进程与监听文件的关系图：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim5_3.png" alt="tim5_3"></p>
+<p>进一步揭露面纱，得到如下结论：</p>
+<ul>
+<li>Daemon与MSF两进程等待对方所持有的锁，两个app_d进程相互等待对方所持有的锁</li>
+<li>app_d1进程被杀， 则app_d2观察后通过拉起DaemonMsfService服务来启动MSF进程，然后跟着被杀</li>
+<li>app_d2进程被杀，则app_d1观察后通过拉起DaemonAssistService服务来启动Daemon进程，然后跟着被杀</li>
+<li>Daemon与MSF两进程， 如果杀掉其中一个，则另个一个进程观察后通过拉起服务方式来启动对方进程，然后跟着被杀；然后app_d两个进程也跟着重启</li>
+</ul>
+<p>另外，猜想：监测indicator_p1和indicator_p2的两个进程有关联，indicator_d1和indicator_d2的进程有关联，后面会验证。</p>
+<p>到这里又有出现新的疑问，Daemon进程死后，MSF进程通过flock能监测到该事件，可是app_d进程又是如何得知的呢？ app_d得知之后，又为何要再次自杀重启？</p>
+<h3 id="从cgroup角度来分析"><a href="#从cgroup角度来分析" class="headerlink" title="从cgroup角度来分析"></a>从cgroup角度来分析</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat cgroup.procs</span><br><span class="line"><span class="number">10649</span>    <span class="comment">//Daemon</span></span><br><span class="line"><span class="number">10687</span>    <span class="comment">//app_d</span></span><br><span class="line">cat cgroup.procs</span><br><span class="line"><span class="number">10669</span>   <span class="comment">//MSF</span></span><br><span class="line"><span class="number">10717</span>  <span class="comment">//app_d</span></span><br></pre></td></tr></table></figure>
+
+<p>从而，进一步获取更多关于TIM深层次的关联，通过查看cgroup发现，Daemon和app_d1是同一个group的， MSF和app_d2是同一个group的。</p>
+<p><code>问题6：</code> app_d到底是如何创建出来？又是如何成为init进程的子进程的？</p>
+<p>从进程创建与退出的角度来看看来看</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 5170（MSF进程） --&gt; 5192 --&gt; 5201(退出) --&gt; 5211（存活）</span></span><br><span class="line">tencent.tim:MSF<span class="number">-5170</span>  [<span class="number">001</span>] ..<span class="number">.1</span> <span class="number">55659.446062</span>: sched_process_fork: comm=tencent.tim:MSF pid=<span class="number">5170</span> child_comm=tencent.tim:MSF child_pid=<span class="number">519</span></span><br><span class="line">Thread<span class="number">-300</span><span class="number">-5192</span>  [<span class="number">000</span>] ..<span class="number">.1</span> <span class="number">55659.489621</span>: sched_process_fork: comm=Thread<span class="number">-300</span> pid=<span class="number">5192</span> child_comm=Thread<span class="number">-300</span> child_pid=<span class="number">5201</span></span><br><span class="line">&lt;...&gt;<span class="number">-5201</span>  [<span class="number">003</span>] ..<span class="number">.1</span>  <span class="number">55659.501074</span>: sched_process_exec: filename=/data/user/<span class="number">0</span>/com.tencent.tim/app_bin/daemon2 pid=<span class="number">5201</span> old_pid=<span class="number">5201</span></span><br><span class="line">daemon2<span class="number">-5201</span>  [<span class="number">009</span>] ..<span class="number">.1</span>  <span class="number">55659.533492</span>: sched_process_fork: comm=daemon2 pid=<span class="number">5201</span> child_comm=daemon2 child_pid=<span class="number">5211</span></span><br><span class="line">daemon2<span class="number">-5201</span>  [<span class="number">009</span>] ..<span class="number">.1</span>  <span class="number">55659.535169</span>: sched_process_exit: comm=daemon2 pid=<span class="number">5201</span> prio=<span class="number">120</span></span><br><span class="line">daemon2<span class="number">-5201</span>  [<span class="number">009</span>] d.<span class="number">.3</span>  <span class="number">55659.535341</span>: signal_generate: sig=<span class="number">17</span> errno=<span class="number">0</span> code=<span class="number">262145</span> comm=Thread<span class="number">-300</span> pid=<span class="number">5192</span> grp=<span class="number">1</span> res=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong>：其中一个app_d进程是由MSF进程，通过两次fork，然后父进程退出，从而成为了孤儿进程，然后托孤给init进程，这是Linux进程机制所保证的。 同理，另一个app_d进程是由Daemon进程所fork。到这里，那么总算是认清的app_d的由来。 app_d是由于cgroup关联所以可以得知Daemon进程的情况。 关于重启的原因是为了重新建立互动的关系</p>
+<p><code>问题7：</code>为何单杀daemon，会牵连app_d进程被杀，这是什么原理？</p>
+<p><strong>解答</strong>：从杀进程的日志上来是调用killProcessGroup()杀进程，可事实上adb只调用kill -9 pid的方式，单杀一个进程，怎么就牵连了app_d进程。 这是由于当daemon进程被杀后，死亡回调会回来后，在binderDied()的过程执行了killProcessGroup()。</p>
+<p>如果从Linux内核层面，研究过Binder死亡回调机制的童鞋，到这里还就会有想到一个新的疑问如下：</p>
+<p><code>问题8：</code>app_d是由daemon进程间接fork出来的， 会共享binder fd，所以即便daemon进程被杀，死亡回调也不会触发，这又是何触发的呢？</p>
+<p><strong>解答</strong>：由于app_d进程被fork后，马上执行了exec()系的函数， 而在ProcessState打开Binder驱动的时候， 有一个非常重要的flag, 那就是O_CLOEXEC。</p>
+<p>采用O_CLOEXEC方式打开的问题，当新创建的进程调用exec（）函数成功后，文件描述符会自动关闭， 代码如下：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim6_1.png" alt="tim6_1"></p>
+<h3 id="剖根问底"><a href="#剖根问底" class="headerlink" title="剖根问底"></a>剖根问底</h3><p><code>问题9</code>：TIM到底对Binder框架做了什么级别的修改？这4个互保进程，既然callingPid&#x3D;0，有没有办法知道到底是由谁拉起谁的？</p>
+<p>前面既然说了，TIM强行修改了ONEWAY的方式。可以去掉该flags, 为了调试，这里就针对TIM，并且code&#x3D;34(即START_SERVICE_TRANSACTION)， 并且修改flag的case下:</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim_6.png" alt="tim_6"></p>
+<p>从实验结果来看，通过修改IPCThreadState.cpp代码， 完成control住了 TIM的所有修改， 这里可以说明：</p>
+<p>TIM分别在Java层和Native层，主动向ServiceManager进程查询AMS后，获取BpActivityManager代理对象，然后继续使用框架中的IPCThreadState跟Binder驱动交互，并没有替换掉libbinder.so。</p>
+<p>其实，还可以更高级的玩法，连IPCThreadState这些框架通信代码也不使用， 彻底地去自定义Binder交互代码，类似于servicemanager的方式。可以自己封装ioctl()，直接talkWithDriver。TIM保活还有改进空间， 提供保活变种方案，这样的话，上面的调试代码也拦截不了其对flags修改为ONEWAY的过程。 即使如此，一切都在Control之中， 完全可以在Binder Driver中拦截再定位其策略， 玩得再高级也主要活动在用户态， 内核态的策略还是相对安全的， 此所谓“魔高一座，道高一尺”。</p>
+<p>另外，通过增加上面的临时代码，再次多次实验对比，可以得出如下关系图：</p>
+<p><img src="http://gityuan.com/images/app-keep-forever/tim.jpg" alt="tim"></p>
+<p>二度fork是指前面介绍了，fork后再fork，然后托孤，无论如何跟最初的进程都属于同一个group，有着级联被杀关系。</p>
+<ul>
+<li>杀掉Daemon进程，则MSF进程观察到会去拉起Daemon进程； 同时app_d1因为同一个group而被杀，则app_d2进程观察到也拉起Daemon进程，这就是双保险；</li>
+<li>杀掉app_d1进程， 则app_d2进程观察到会拉起MSF进程；</li>
+<li>直接force-stop进程， 则6个进程都会被杀，只是杀的过程并非所有进程同一时刻点被杀，而是有前后顺序，所以造成能自启。</li>
+</ul>
+<h3 id="分析思路归纳"><a href="#分析思路归纳" class="headerlink" title="分析思路归纳"></a>分析思路归纳</h3><ul>
+<li>先有了初步分析过程中对一些常规套路的可能性的排除，并嗅到callingPid&#x3D;0的异常举动</li>
+<li>沿着蛛丝马迹，不断反复尝试杀进程，从中寻找更多的规律，不断地向自己提出疑问</li>
+<li>结合signal，strace, traces，ps，binder，linux，kill等技能 不断地解答自己的疑惑</li>
+</ul>
+<p>解系统层的问题，更像是侦探破案的感觉，要有敏锐的嗅觉，抓住蛛丝马迹，加上”大胆猜想，小心验证“ , 终究能找到案件的真相。 此所谓”点动成线，线动成面，面动成体“， 从零星的点滴勾画出全方面立体化的真相。</p>
+<p>归纳下，主要提出过这些疑惑：<br>问题1：安全中心已配置了禁止TIM的自启动， 并且安全中心和Whetstone都有对进程自启动以及级联启动的严格限制， 为何会有漏网之鱼？<br>问题2：startService()的callingPid怎么可能等于0？<br>问题3：进程内的名叫“Thread-89”的线程具有什么特点，如何做到把进程杀掉？<br>问题4：为何需要4个indicator文件？<br>问题5：这4个进程到达是什么如何相互监听的呢？<br>问题6：app_d到底是如何创建出来？又是如何成为init进程的子进程的？<br>问题7：为何单杀daemon，会牵连app_d进程被杀，这是什么原理？<br>问题8：app_d是由daemon进程间接fork出来的， 会共享binder fd，所以即便daemon进程被杀，死亡回调也不会触发，这又是何触发的呢？<br>问题9：TIM到底对Binder框架做了什么级别的修改？这4个互保进程，既然callingPid&#x3D;0，有没有办法知道到底是由谁拉起谁的？</p>
+<h2 id="总结以上理论"><a href="#总结以上理论" class="headerlink" title="总结以上理论"></a>总结以上理论</h2><p><strong>保活技术点</strong></p>
+<ul>
+<li>通过flock的文件排它锁方式来监听进程存活状态</li>
+<li>先采用一对普通的进程Daemon和MSF相互监听文件的方式来获得对方进程是否存活的状态;</li>
+<li>同时再采用一对退孤给init进程的app_d进程相互监听文件的方式来获得对方进程是否存活的状态； 而这两个进程都有间接由Daemon和MSF进程所fork而来；双重保险</li>
+<li>不采用系统框架中startService的Binder框架代码，而是自身在Native层通过自己去查询获取BpActivityManager代理对象， 然后自己实现startService接口，并修改为ONEWAY的binder调用，既增加分析问题的难度，也进一步隐藏自身策略；</li>
+<li>当监听进程死亡，则通过自身实现的StartService的Binder call去拉起对方进程，系统对于这种方式启动进程并没有拦截机制。</li>
+</ul>
+<p>这种flock的方式至少比网上常说的通过循环监听的方式，要强很多；比往常的互保更厉害的是TIM共有6个进程（说明：使用过程也还会创建一些进程），其中4个进程，形成两组互动进程，其中一组利用Linux进程托孤原理，可谓是隐藏得很深来互保，进一步确保进程永生； 当然，进程收到signal信号后，如果恰巧这四个进程在同一个时刻点退出，那么还是有概率会被杀。 不走系统框架代码，自己去实现启动服务的binder call也是一大亮点，不过还有更高级的玩法，直接封装ioctl跟驱动交互。之前针对这个问题，做过反保活方案，后来为了某些功能缘故又放开对这个的限制，这里就不再继续展开了。</p>
+<h2 id="附录：有关IM-推送的进程保活-网络保活方成的文章汇总"><a href="#附录：有关IM-推送的进程保活-网络保活方成的文章汇总" class="headerlink" title="附录：有关IM&#x2F;推送的进程保活&#x2F;网络保活方成的文章汇总"></a>附录：有关IM&#x2F;推送的进程保活&#x2F;网络保活方成的文章汇总</h2><p>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1135-1-1.html">应用保活终极总结(一)：Android6.0以下的双进程守护保活实践</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1138-1-1.html">应用保活终极总结(二)：Android6.0及以上的保活实践(进程防杀篇)</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1140-1-1.html">应用保活终极总结(三)：Android6.0及以上的保活实践(被杀复活篇)</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-438-1-1.html">Android进程保活详解：一篇文章解决你的所有疑问</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-341-1-1.html">Android端消息推送总结：实现原理、心跳保活、遇到的问题等</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-771-1-1.html">深入的聊聊Android消息推送这件小事</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-281-1-1.html">为何基于TCP协议的移动端IM仍然需要心跳保活机制？</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-210-1-1.html">微信团队原创分享：Android版微信后台保活实战分享(进程保活篇)</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-209-1-1.html">微信团队原创分享：Android版微信后台保活实战分享(网络保活篇)</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-120-1-1.html">移动端IM实践：实现Android版微信的智能心跳机制</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-121-1-1.html">移动端IM实践：WhatsApp、Line、微信的心跳策略分析</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-1832-1-1.html">Android P正式版即将到来：后台应用保活、消息推送的真正噩梦</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2176-1-1.html">全面盘点当前Android后台保活方案的真实运行效果（截止2019年前）</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2697-1-1.html">一文读懂即时通讯应用中的网络心跳包机制：作用、原理、实现思路等</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2744-1-1.html">融云技术分享：融云安卓端IM产品的网络链路保活技术实践</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2799-1-1.html">正确理解IM长连接的心跳及重连机制，并动手实现（有完整IM源码）</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2881-1-1.html">2020年了，Android后台保活还有戏吗？看我如何优雅的实现！</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2893-1-1.html">史上最强Android保活思路：深入剖析腾讯TIM的进程永生技术</a>》<br>《<a target="_blank" rel="noopener" href="http://www.52im.net/thread-2921-1-1.html">Android进程永生技术终极揭密：进程被杀底层原理、APP对抗被杀技巧</a></p>
+<h2 id="实际实现"><a href="#实际实现" class="headerlink" title="实际实现"></a>实际实现</h2><h3 id="Java-层复活进程"><a href="#Java-层复活进程" class="headerlink" title="Java 层复活进程"></a>Java 层复活进程</h3><p>复活进程，其实就是启动指定的Service。当native层检测到有进程被杀时，为了能够快速启动新Service。我们可以通过反射，拿到ActivityManager的remote binder，直接通过这个binder发送数据，即可实现快速启动Service。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; amnCls = Class.forName(<span class="string">&quot;android.app.ActivityManagerNative&quot;</span>);</span><br><span class="line">amn = activityManagerNative.getMethod(<span class="string">&quot;getDefault&quot;</span>).invoke(amnCls);</span><br><span class="line"><span class="type">Field</span> <span class="variable">mRemoteField</span> <span class="operator">=</span> amn.getClass().getDeclaredField(<span class="string">&quot;mRemote&quot;</span>);</span><br><span class="line">mRemoteField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">mRemote = (IBinder) mRemoteField.get(amn);</span><br></pre></td></tr></table></figure>
+
+<p>启动Service的Intent:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line"><span class="type">ComponentName</span> <span class="variable">component</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ComponentName</span>(context.getPackageName(), serviceName);</span><br><span class="line">intent.setComponent(component);</span><br></pre></td></tr></table></figure>
+
+<p>封装启动Service的Parcel:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Parcel</span> <span class="variable">mServiceData</span> <span class="operator">=</span> Parcel.obtain();</span><br><span class="line">mServiceData.writeInterfaceToken(<span class="string">&quot;android.app.IActivityManager&quot;</span>);</span><br><span class="line">mServiceData.writeStrongBinder(<span class="literal">null</span>);</span><br><span class="line">mServiceData.writeInt(<span class="number">1</span>);</span><br><span class="line">intent.writeToParcel(mServiceData, <span class="number">0</span>);</span><br><span class="line">mServiceData.writeString(<span class="literal">null</span>); <span class="comment">// resolvedType</span></span><br><span class="line">mServiceData.writeInt(<span class="number">0</span>);</span><br><span class="line">mServiceData.writeString(context.getPackageName()); <span class="comment">// callingPackage</span></span><br><span class="line">mServiceData.writeInt(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>启动Service:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mRemote.transact(transactCode, mServiceData, <span class="literal">null</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="在-native-层进行-binder-通信"><a href="#在-native-层进行-binder-通信" class="headerlink" title="在 native 层进行 binder 通信"></a>在 native 层进行 binder 通信</h3><p>在Java层做进程复活的工作，这个方式是比较低效的，最好的方式是在 native 层使用纯 C&#x2F;C++来复活进程。方案有两个。</p>
+<p>** 其一 **，维术大佬给出的方案是利用libbinder.so, 利用Android提供的C++接口，跟ActivityManagerService通信，以唤醒新进程。</p>
+<ol>
+<li>Java 层创建 Parcel （含 Intent），拿到 Parcel 对象的 mNativePtr(native peer)，传到 Native 层。</li>
+<li>native 层直接把 mNativePtr 强转为结构体指针。</li>
+<li>fork 子进程，建立管道，准备传输 parcel 数据。</li>
+<li>子进程读管道，拿到二进制流，重组为 parcel。</li>
+</ol>
+<p>** 其二 **，Gityuan大佬则认为使用 ioctl 直接给 binder 驱动发送数据以唤醒进程，才是更高效的做法。然而，这个方法，大佬们并没有提供思路。</p>
+<p>通过实现在 native 层进行 Binder 调用的骚操作来实现进程保活。</p>
+<h4 id="方式一-利用-libbinder-so-与-ActivityManagerService-通信"><a href="#方式一-利用-libbinder-so-与-ActivityManagerService-通信" class="headerlink" title="方式一 利用 libbinder.so 与 ActivityManagerService 通信"></a>方式一 利用 libbinder.so 与 ActivityManagerService 通信</h4><p>在Java层是向ActivityManagerService发送特定的封装了Intent的Parcel包来实现唤醒进程。而在native层，没有Intent这个类。所以就需要在Java层创建好Intent，然后写到Parcel里，再传到Native层。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Parcel</span> <span class="variable">mServiceData</span> <span class="operator">=</span> Parcel.obtain();</span><br><span class="line">mServiceData.writeInterfaceToken(<span class="string">&quot;android.app.IActivityManager&quot;</span>);</span><br><span class="line">mServiceData.writeStrongBinder(<span class="literal">null</span>);</span><br><span class="line">mServiceData.writeInt(<span class="number">1</span>);</span><br><span class="line">intent.writeToParcel(mServiceData, <span class="number">0</span>);</span><br><span class="line">mServiceData.writeString(<span class="literal">null</span>); <span class="comment">// resolvedType</span></span><br><span class="line">mServiceData.writeInt(<span class="number">0</span>);</span><br><span class="line">mServiceData.writeString(context.getPackageName()); <span class="comment">// callingPackage</span></span><br><span class="line">mServiceData.writeInt(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/os/Parcel.java;l=336">Parcel的源码</a></p>
+<p>可以看到，Parcel类有一个mNativePtr变量：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">long</span> mNativePtr; <span class="comment">// used by native code</span></span><br><span class="line"><span class="comment">// android4.4 mNativePtr是int类型</span></span><br></pre></td></tr></table></figure>
+
+<p>可以通过反射得到这个变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="title function_">getNativePtr</span><span class="params">(Parcel parcel)</span> &#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="type">Field</span> <span class="variable">ptrField</span> <span class="operator">=</span> parcel.getClass().getDeclaredField(<span class="string">&quot;mNativePtr&quot;</span>);</span><br><span class="line">		ptrField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">		<span class="keyword">return</span> (<span class="type">long</span>) ptrField.get(parcel);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个变量对应了C++中 <a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Parcel.cpp">Parcel类</a> 的地址，因此可以强转得到Parcel指针：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parcel *parcel = (Parcel *) parcel_ptr;</span><br></pre></td></tr></table></figure>
+
+<p>然而，NDK中并没有提供binder这个模块，我们只能从Android源码中扒到binder相关的源码，再编译出libbinder.so。腾讯TIM应该就是魔改了binder相关的源码。</p>
+<h4 id="提取libbinder-so"><a href="#提取libbinder-so" class="headerlink" title="提取libbinder.so"></a>提取libbinder.so</h4><p>为了避免libbinder的版本兼容问题，这里我们可以采用一个更简单的方式，拿到binder相关的头文件，再从系统中拿到libbinder.so，当然binder模块还依赖了其它的几个so，要一起拿到，不然编译的时候会报链接错误。</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adb pull /system/lib/libbinder.so ./</span><br><span class="line">adb pull /system/lib/libcutils.so ./</span><br><span class="line">adb pull /system/lib/libc.so ./</span><br><span class="line">adb pull /system/lib/libutils.so ./</span><br></pre></td></tr></table></figure>
+
+<p>如果需要不同SDK版本，不同架构的系统so库，可以在 <a target="_blank" rel="noopener" href="https://developers.google.cn/android/images?h1=zh=cn#angler">Google Factory Images</a> 网页里找到适合的版本，下载相应的固件，然后解包system.img（需要在windows或linux中操作），提取出目标so。</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">osx下解压img</span></span><br><span class="line">brew install simg2img ext4fuse</span><br><span class="line">simg2img ./data.img ./data_raw.img</span><br><span class="line">ext4fuse data_raw.img ./data</span><br><span class="line">Windows下使用BrandZip或者好压即可</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ls -l binder_libs</span><br><span class="line">binder_libs</span><br><span class="line">├── arm64-v8a</span><br><span class="line">│   ├── libbinder.so</span><br><span class="line">│   ├── libc.so</span><br><span class="line">│   ├── libcutils.so</span><br><span class="line">│   └── libutils.so</span><br><span class="line">├── armeabi-v7a</span><br><span class="line">│   ├── ...</span><br><span class="line">├── x86</span><br><span class="line">│   ├── ...</span><br><span class="line">└── x86_64</span><br><span class="line">	├── ...</span><br></pre></td></tr></table></figure>
+
+<p>为了避免兼容问题，这里只让这些so参与了binder相关的头文件的链接，而没有实际使用这些so。这是利用了so的加载机制，如果应用lib目录没有相应的so，则会到system&#x2F;lib目录下查找。</p>
+<blockquote>
+<p>SDK24以上，系统禁止了从system中加载so的方式，所以使用这个方法务必保证targetApi &lt;24。</p>
+<p>否则，将会报找不到so的错误。可以把上面的so放到jniLibs目录解决这个问题，但这样就会有兼容问题了。</p>
+</blockquote>
+<p>CMake修改：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 链接binder_libs目录下的所有so库</span></span><br><span class="line"><span class="keyword">link_directories</span>(binder_libs/<span class="variable">$&#123;CMAKE_ANDROID_ARCH_ABI&#125;</span>)</span><br><span class="line"><span class="comment"># 引入binder相关的头文件</span></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/<span class="keyword">include</span>/)</span><br><span class="line"><span class="comment"># libbinder.so libcutils.so libutils.so libc.so等库链接到libkeep_alive.so</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(</span><br><span class="line">		keep_alive</span><br><span class="line">		<span class="variable">$&#123;log-lib&#125;</span> binder cutils utils c)</span><br></pre></td></tr></table></figure>
+
+<p><strong>进程间传输Parcel对象</strong></p>
+<p>Parcel能直接拿到数据地址，并提供了构造方法。所以我们可以通过管道把Parcel数据传输到其它进程。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Parcel *parcel = (Parcel *) parcel_ptr;</span><br><span class="line"><span class="type">size_t</span> data_size = parcel-&gt;<span class="built_in">dataSize</span>();</span><br><span class="line"><span class="type">int</span> fd[<span class="number">2</span>];</span><br><span class="line"><span class="comment">// 创建管道</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">pipe</span>(fd) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">pid_t</span> pid;</span><br><span class="line"><span class="comment">// 创建子进程</span></span><br><span class="line"><span class="keyword">if</span> ((pid = fork()) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;<span class="comment">//第一个子进程</span></span><br><span class="line">	<span class="keyword">if</span> ((pid = fork()) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// 托孤</span></span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">uint8_t</span> data[data_size];</span><br><span class="line">	<span class="comment">// 托孤的子进程，读取管道中的数据</span></span><br><span class="line">	<span class="type">int</span> result = <span class="built_in">read</span>(fd[<span class="number">0</span>], data, data_size);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 父进程向管道中写数据</span></span><br><span class="line"><span class="type">int</span> result = <span class="built_in">write</span>(fd[<span class="number">1</span>], parcel-&gt;<span class="built_in">data</span>(), data_size);</span><br></pre></td></tr></table></figure>
+
+<p>重新创建Parcel:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Parcel parcel;</span><br><span class="line">parcel.<span class="built_in">setData</span>(data, data_size);</span><br></pre></td></tr></table></figure>
+
+<p><strong>传输Parcel数据</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取ServiceManager</span></span><br><span class="line">sp&lt;IServiceManager&gt; sm = <span class="built_in">defaultServiceManager</span>();</span><br><span class="line"><span class="comment">// 获取ActivityManager binder</span></span><br><span class="line">sp&lt;IBinder&gt; binder = sm-&gt;<span class="built_in">getService</span>(<span class="built_in">String16</span>(<span class="string">&quot;activity&quot;</span>));</span><br><span class="line"><span class="comment">// 传输parcel</span></span><br><span class="line"><span class="type">int</span> result = binder.<span class="built_in">get</span>()-&gt;<span class="built_in">transact</span>(code, parcel, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="方式二-使用-ioctl-与-binder-驱动通信"><a href="#方式二-使用-ioctl-与-binder-驱动通信" class="headerlink" title="方式二 使用 ioctl 与 binder 驱动通信"></a>方式二 使用 ioctl 与 binder 驱动通信</h3><p>尝到了一点甜头，实现了大佬的思路，不禁让鄙人浮想联翩，感慨万千，鄙人的造诣已经如此之深，不久就会人在美国，刚下飞机，迎娶白富美，走向人生巅峰矣……<br>ioctl是一个linux标准方法，那么我们就直奔主题看看，binder是什么，ioctl怎么跟binder driver通信。</p>
+<h4 id="Binder介绍"><a href="#Binder介绍" class="headerlink" title="Binder介绍"></a>Binder介绍</h4><p>Binder是Android系统提供的一种IPC机制。每个Android的进程，都可以有一块用户空间和内核空间。用户空间在不同进程间不能共享，内核空间可以共享。Binder就是一个利用可以共享的内核空间，完成高性能的进程间通信的方案。</p>
+<p>Binder通信采用C&#x2F;S架构，从组件视角来说，包含Client、Server、ServiceManager以及binder驱动，其中ServiceManager用于管理系统中的各种服务。如图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/19956127-21ed577f4ce0562a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/921" alt="img"></p>
+<p>注册服务、获取服务、使用服务，都是需要经过binder通信的。</p>
+<ul>
+<li>Server通过注册服务的Binder通信把自己托管到ServiceManager</li>
+<li>Client端可以通过ServiceManager获取到Server</li>
+<li>Client端获取到Server后就可以使用Server的接口了</li>
+</ul>
+<p>Binder通信的代表类是BpBinder(客户端)和BBinder(服务端)。</p>
+<p><strong>ps</strong>：有关binder的详细知识，大家可以查看Gityuan大佬的文章。<br><a target="_blank" rel="noopener" href="http://gityuan.com/2015/10/31/binder-prepare/">Binder系列</a></p>
+<h4 id="ioctl函数"><a href="#ioctl函数" class="headerlink" title="ioctl函数"></a>ioctl函数</h4><p><strong>ioctl</strong>(input&#x2F;output control)是一个专用于设备输入输出操作的系统调用，它诞生在这样一个背景下：</p>
+<p>操作一个设备的IO的传统做法，是在设备驱动程序中实现write的时候检查一下是否有特殊约定的数据流通过，如果有的话，后面就跟着控制命令（socket编程中常常这样做）。但是这样做的话，会导致代码分工不明，程序结构混乱。所以就有了ioctl函数，专门向驱动层发送或接收指令。</p>
+<p>Linux操作系统分为了两层，用户层和内核层。我们的普通应用程序处于用户层，系统底层程序，比如网络栈、设备驱动程序，处于内核层。为了保证安全，操作系统要阻止用户态的程序直接访问内核资源。一个<strong>Ioctl</strong>接口是一个独立的系统调用，通过它用户空间可以跟设备驱动沟通了。函数原型：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">ioctl</span><span class="params">(<span class="type">int</span> fd, <span class="type">int</span> request, …)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>作用：通过IOCTL函数实现指令的传递</p>
+<ul>
+<li>fd 是用户程序打开设备时使用open函数返回的文件描述符</li>
+<li>request是用户程序对设备的控制命令</li>
+<li>后面的省略号是一些补充参数，和cmd的意义相关</li>
+</ul>
+<p>应用程序在调用<code>ioctl</code>进行设备控制时，最后会调用到设备注册<code>struct file_operations</code>结构体对象时的<code>unlocked_ioctl</code>或者<code>compat_ioctl</code>两个钩子上，例如Binder驱动的这两个钩子是挂到了binder_ioctl方法上：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">const</span> <span class="keyword">struct</span> <span class="title class_">file_operations</span> binder_fops = &#123;</span><br><span class="line">	.owner = THIS_MODULE,</span><br><span class="line">	.poll = binder_poll,</span><br><span class="line">	.unlocked_ioctl = binder_ioctl,</span><br><span class="line">	.compat_ioctl = binder_ioctl,</span><br><span class="line">	.mmap = binder_mmap,</span><br><span class="line">	.open = binder_open,</span><br><span class="line">	.flush = binder_flush,</span><br><span class="line">	.release = binder_release,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>它的实现如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">long</span> <span class="title">binder_ioctl</span><span class="params">(<span class="keyword">struct</span> file *filp, <span class="type">unsigned</span> <span class="type">int</span> cmd, <span class="type">unsigned</span> <span class="type">long</span> arg)</span></span>&#123;</span><br><span class="line">	<span class="comment">/*根据不同的命令，调用不同的处理函数进行处理*/</span></span><br><span class="line">	<span class="keyword">switch</span> (cmd) &#123;</span><br><span class="line">		<span class="keyword">case</span> BINDER_WRITE_READ:</span><br><span class="line">			<span class="comment">/*读写命令,数据传输,binder IPC通信的核心逻辑*/</span></span><br><span class="line">			ret = **binder_ioctl_write_read**(filp, cmd, arg, thread);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> BINDER_SET_MAX_THREADS:</span><br><span class="line">			<span class="comment">/*设置最大线程数，直接将值设置到proc结构的max_threads域中。*/</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> BINDER_SET_CONTEXT_MGR:</span><br><span class="line">			<span class="comment">/*设置Context manager，即将自己设置为ServiceManager，详见3.3*/</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> BINDER_THREAD_EXIT:</span><br><span class="line">			<span class="comment">/*binder线程退出命令，释放相关资源*/</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> BINDER_VERSION: &#123;</span><br><span class="line">			<span class="comment">/*获取binder驱动版本号，在kernel4.4版本中，32位该值为7，64位版本该值为8*/</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体内核层的实现，我们就不关心了。到这里我们了解到，Binder在Android系统中会有一个设备节点，调用ioctl控制这个节点时，实际上会调用到内核态的binder_ioctl方法。</p>
+<p>为了利用ioctl启动Android Service，必然是需要用ioctl向binder驱动写数据，而这个控制命令就是<code>BINDER_WRITE_READ</code>。binder驱动层的一些细节我们在这里就不关心了。那么在什么地方会用ioctl 向binder写数据呢？</p>
+<h3 id="IPCThreadState-talkWithDriver"><a href="#IPCThreadState-talkWithDriver" class="headerlink" title="IPCThreadState.talkWithDriver"></a>IPCThreadState.talkWithDriver</h3><p>阅读Gityuan的<br><a target="_blank" rel="noopener" href="http://gityuan.com/2015/11/15/binder-get-service/">Binder系列6—获取服务(getService)</a><br>一节，在binder模块下<br><a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/IPCThreadState.cpp">IPCThreadState.cpp</a><br>中有这样的实现(源码目录：frameworks&#x2F;native&#x2F;libs&#x2F;binder&#x2F;IPCThreadState.cpp)：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">status_t</span> <span class="title">IPCThreadState::talkWithDriver</span><span class="params">(<span class="type">bool</span> doReceive)</span> </span>&#123;</span><br><span class="line">		...</span><br><span class="line">		binder_write_read bwr;</span><br><span class="line">		bwr.write_buffer = (<span class="type">uintptr_t</span>)mOut.<span class="built_in">data</span>();</span><br><span class="line">		<span class="type">status_t</span> err;</span><br><span class="line">		<span class="keyword">do</span> &#123;</span><br><span class="line">			<span class="comment">//通过ioctl不停的读写操作，跟Binder Driver进行通信</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">ioctl</span>(mProcess-&gt;mDriverFD, BINDER_WRITE_READ, &amp;bwr) &gt;= <span class="number">0</span>)</span><br><span class="line">					err = NO_ERROR;</span><br><span class="line">				...</span><br><span class="line">		&#125; <span class="keyword">while</span> (err == -EINTR); <span class="comment">//当被中断，则继续执行</span></span><br><span class="line">		...</span><br><span class="line">		<span class="keyword">return</span> err;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到ioctl跟binder driver交互很简单，一个参数是mProcess-&gt;mDriverFD，一个参数是BINDER_WRITE_READ，另一个参数是binder_write_read结构体，很幸运的是，NDK中提供了<code>linux/android/binder.h</code>这个头文件，里面就有binder_write_read这个结构体，以及BINDER_WRITE_READ常量的定义。</p>
+<p>[惊不惊喜]<br>[意不意外]<br>[手动滑稽]</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;linux/android/binder.h&gt;</span></span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">binder_write_read</span> &#123;</span><br><span class="line">		<span class="type">binder_size_t</span> write_size;</span><br><span class="line">		<span class="type">binder_size_t</span> write_consumed;</span><br><span class="line">		<span class="type">binder_uintptr_t</span> write_buffer;</span><br><span class="line">		<span class="type">binder_size_t</span> read_size;</span><br><span class="line">		<span class="type">binder_size_t</span> read_consumed;</span><br><span class="line">		<span class="type">binder_uintptr_t</span> read_buffer;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BINDER_WRITE_READ _IOWR(<span class="string">&#x27;b&#x27;</span>, 1, struct binder_write_read)</span></span><br></pre></td></tr></table></figure>
+
+<p>这意味着，这些结构体和宏定义很可能是版本兼容的。那我们只需要到时候把数据揌到binder_write_read结构体里面，就可以进行ioctl系统调用了！</p>
+<h4 id="dev-binder"><a href="#dev-binder" class="headerlink" title="&#x2F;dev&#x2F;binder"></a>&#x2F;dev&#x2F;binder</h4><p>再来看看mProcess-&gt;mDriverFD是什么东西。mProcess也就是 <a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ProcessState.cpp">ProcessState.cpp</a></p>
+<p>(源码目录：frameworks&#x2F;native&#x2F;libs&#x2F;binder&#x2F;ProcessState.cpp)：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ProcessState::<span class="built_in">ProcessState</span>(<span class="type">const</span> <span class="type">char</span> *driver)</span><br><span class="line">		: <span class="built_in">mDriverName</span>(<span class="built_in">String8</span>(driver))</span><br><span class="line">		, <span class="built_in">mDriverFD</span>(<span class="built_in">open_driver</span>(driver))</span><br><span class="line">		, ... </span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从ProcessState的构造函数中得知，mDriverFD由open_driver方法初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">int</span> <span class="title">open_driver</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *driver)</span> </span>&#123;</span><br><span class="line">		<span class="type">int</span> fd = <span class="built_in">open</span>(driver, O_RDWR | O_CLOEXEC);</span><br><span class="line">		<span class="keyword">if</span> (fd &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="type">int</span> vers = <span class="number">0</span>;</span><br><span class="line">			<span class="type">status_t</span> result = <span class="built_in">ioctl</span>(fd, BINDER_VERSION, &amp;vers);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ProcessState在哪里实例化呢？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">sp&lt;ProcessState&gt; <span class="title">ProcessState::self</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (gProcess != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> gProcess;</span><br><span class="line">	&#125;</span><br><span class="line">	gProcess = <span class="keyword">new</span> <span class="built_in">ProcessState</span>(kDefaultDriver);</span><br><span class="line">	<span class="keyword">return</span> gProcess;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，ProcessState的gProcess是一个全局单例对象，这意味着，在当前进程中，open_driver只会执行一次，得到的 mDriverFD 会一直被使用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span>* kDefaultDriver = <span class="string">&quot;/dev/binder&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>而open函数操作的这个设备节点就是&#x2F;dev&#x2F;binder。</p>
+<p>纳尼？在应用层直接操作设备节点？Gityuan大佬不会骗我吧？一般来说，Android系统在集成SELinux的安全机制之后，普通应用甚至是系统应用，都不能直接操作一些设备节点，除非有SELinux规则，给应用所属的域或者角色赋予了那样的权限。</p>
+<p>看看文件权限：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">ls -l /dev/binder</span><br><span class="line">crw-rw-rw- 1 root root 10,  49 1972-07-03 18:46 /dev/binder</span><br></pre></td></tr></table></figure>
+<p>可以看到，&#x2F;dev&#x2F;binder设备对所有用户可读可写。<br>再看看，SELinux权限：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -Z /dev/binder</span><br><span class="line">u:object_r:binder_device:s0 /dev/binder</span><br></pre></td></tr></table></figure>
+<p>查看源码中对binder_device角色的SELinux规则描述：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow domain binder_device:chr_file rw_file_perms;</span><br></pre></td></tr></table></figure>
+
+<p>也就是所有domain对binder的字符设备有读写权限，而普通应用属于domain。<br>既然这样，*<strong>肝它！*</strong></p>
+<h3 id="写个Demo试一下"><a href="#写个Demo试一下" class="headerlink" title="写个Demo试一下"></a>写个Demo试一下</h3><p>验证一下上面的想法，看看ioctl给binder driver发数据好不好使。<br>1、打开设备</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fd = <span class="built_in">open</span>(<span class="string">&quot;/dev/binder&quot;</span>, O_RDWR | O_CLOEXEC);</span><br><span class="line"><span class="keyword">if</span> (fd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">	<span class="built_in">LOGE</span>(<span class="string">&quot;Opening &#x27;%s&#x27; failed: %s\n&quot;</span>, <span class="string">&quot;/dev/binder&quot;</span>, <span class="built_in">strerror</span>(errno));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="built_in">LOGD</span>(<span class="string">&quot;Opening &#x27;%s&#x27; success %d: %s\n&quot;</span>, <span class="string">&quot;/dev/binder&quot;</span>, fd, <span class="built_in">strerror</span>(errno));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、ioctl</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Parcel *parcel = <span class="keyword">new</span> Parcel;</span><br><span class="line">parcel-&gt;<span class="built_in">writeString16</span>(<span class="built_in">String16</span>(<span class="string">&quot;test&quot;</span>));</span><br><span class="line">binder_write_read bwr;</span><br><span class="line">bwr.write_size = parcel-&gt;<span class="built_in">dataSize</span>();</span><br><span class="line">bwr.write_buffer = (<span class="type">binder_uintptr_t</span>) parcel-&gt;<span class="built_in">data</span>();</span><br><span class="line"><span class="type">int</span> ret = <span class="built_in">ioctl</span>(fd, BINDER_WRITE_READ, bwr);</span><br><span class="line"><span class="built_in">LOGD</span>(<span class="string">&quot;ioctl result is %d: %s\n&quot;</span>, ret, <span class="built_in">strerror</span>(errno));</span><br></pre></td></tr></table></figure>
+<p>3、查看日志</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/KeepAlive: Opening &#x27;/dev/binder&#x27; success, fd is 35</span><br><span class="line">D/KeepAlive: ioctl result is -1: Invalid argument</span><br></pre></td></tr></table></figure>
+<p>打开设备节点成功了，耶✌️！但是ioctl失败了🤔，失败原因是<code>Invalid argument</code>，也就是说可以通信，但是Parcel数据有问题。来看看数据应该是什么样的。</p>
+<h3 id="binder-write-read结构体数据封装"><a href="#binder-write-read结构体数据封装" class="headerlink" title="binder_write_read结构体数据封装"></a>binder_write_read结构体数据封装</h3><p>IPCThreadState.talkWithDriver方法中，bwr.write_buffer指针指向了mOut.data()，显然mOut是一个Parcel对象。    </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">binder_write_read bwr;</span><br><span class="line">bwr.write_buffer = (<span class="type">uintptr_t</span>)mOut.<span class="built_in">data</span>();</span><br></pre></td></tr></table></figure>
+
+<p>再来看看什么时候会向mOut中写数据：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">status_t</span> <span class="title">IPCThreadState::writeTransactionData</span><span class="params">(<span class="type">int32_t</span> cmd, <span class="type">uint32_t</span> binderFlags,</span></span></span><br><span class="line"><span class="params"><span class="function">	<span class="type">int32_t</span> handle, <span class="type">uint32_t</span> code, <span class="type">const</span> Parcel&amp; data, <span class="type">status_t</span>* statusBuffer)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	binder_transaction_data tr;</span><br><span class="line">	tr.data.ptr.buffer = data.<span class="built_in">ipcData</span>();</span><br><span class="line">	...</span><br><span class="line">	mOut.<span class="built_in">writeInt32</span>(cmd);</span><br><span class="line">	mOut.<span class="built_in">write</span>(&amp;tr, <span class="built_in">sizeof</span>(tr));</span><br><span class="line">	<span class="keyword">return</span> NO_ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>writeTransactionData方法中，会往mOut中写入一个binder_transaction_data结构体数据，binder_transaction_data结构体中又包含了作为参数传进来的data Parcel对象。</p>
+<p>writeTransactionData方法会被transact方法调用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">status_t</span> <span class="title">IPCThreadState::transact</span><span class="params">(<span class="type">int32_t</span> handle, <span class="type">uint32_t</span> code, <span class="type">const</span> Parcel&amp; data, Parcel* reply, <span class="type">uint32_t</span> flags)</span> </span>&#123;</span><br><span class="line">	<span class="type">status_t</span> err = data.<span class="built_in">errorCheck</span>(); <span class="comment">// 数据错误检查</span></span><br><span class="line">	flags |= TF_ACCEPT_FDS;</span><br><span class="line">	<span class="keyword">if</span> (err == NO_ERROR) &#123;</span><br><span class="line">			<span class="comment">// 传输数据</span></span><br><span class="line">		err = <span class="built_in">writeTransactionData</span>(BC_TRANSACTION, flags, handle, code, data, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 默认情况下,都是采用非oneway的方式, 也就是需要等待服务端的返回结果</span></span><br><span class="line">	<span class="keyword">if</span> ((flags &amp; TF_ONE_WAY) == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (reply) &#123;</span><br><span class="line">			<span class="comment">//等待回应事件</span></span><br><span class="line">			err = <span class="built_in">waitForResponse</span>(reply);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			Parcel fakeReply;</span><br><span class="line">			err = <span class="built_in">waitForResponse</span>(&amp;fakeReply);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		err = <span class="built_in">waitForResponse</span>(<span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> err;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>IPCThreadState是跟binder driver真正进行交互的类。每个线程都有一个<code>IPCThreadState</code>，每个<code>IPCThreadState</code>中都有一个mIn、一个mOut。<br>成员变量mProcess保存了ProcessState变量(每个进程只有一个)。</p>
+<p>接着看一下一次Binder调用的时序图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/19956127-96bc0629f7998a27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1018" alt="img"></p>
+<p>Binder介绍一节中说过，BpBinder是Binder Client，上层想进行进程间Binder通信时，会调用到BpBinder的transact方法，进而调用到IPCThreadState的transact方法。<br>来看看BpBinder的transact方法的定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">status_t</span> <span class="title">BpBinder::transact</span><span class="params">(<span class="type">uint32_t</span> code, <span class="type">const</span> Parcel&amp; data, Parcel* reply, <span class="type">uint32_t</span> flags)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (mAlive) &#123;</span><br><span class="line">		<span class="type">status_t</span> status = IPCThreadState::<span class="built_in">self</span>()-&gt;<span class="built_in">transact</span>(mHandle, code, data, reply, flags);</span><br><span class="line">		<span class="keyword">if</span> (status == DEAD_OBJECT) mAlive = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> status;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> DEAD_OBJECT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>BpBinder::transact方法的code&#x2F;data&#x2F;reply&#x2F;flags这几个参数都是调用的地方传过来的，现在唯一不知道的就是mHandle是什么东西。<br>mHandle是BpBinder(也就是Binder Client)的一个int类型的局部变量（句柄），只要拿到了这个handle就相当于拿到了BpBinder。</p>
+<h4 id="ioctl启动Service分几步？"><a href="#ioctl启动Service分几步？" class="headerlink" title="ioctl启动Service分几步？"></a>ioctl启动Service分几步？</h4><p>下面是在依赖libbinder.so时，启动Service的步骤：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取ServiceManager</span></span><br><span class="line">sp&lt;IServiceManager&gt; sm = <span class="built_in">defaultServiceManager</span>();</span><br><span class="line"><span class="comment">// 获取ActivityManager binder</span></span><br><span class="line">sp&lt;IBinder&gt; binder = sm-&gt;<span class="built_in">getService</span>(<span class="built_in">String16</span>(<span class="string">&quot;activity&quot;</span>));</span><br><span class="line"><span class="comment">// 传输parcel</span></span><br><span class="line"><span class="type">int</span> result = binder.<span class="built_in">get</span>()-&gt;<span class="built_in">transact</span>(code, parcel, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>1、获取到IServiceManager Binder Client；<br>2、从ServiceManager中获取到ActivityManager Binder Client；<br>3、调用ActivityManager binder的transact方法传输Service的Parcel数据。</p>
+<p>通过ioctl启动Service也应该是类似的步骤：<br>1、获取到ServiceManager的mHandle句柄；<br>2、进行binder调用获取到ActivityManager的mHandle句柄；<br>3、进行binder调用传输启动Service的指令数据。</p>
+<p>这里有几个问题：<br>1、不依赖libbinder.so时，ndk中没有Parcel类的定义，parcel数据哪里来，怎么封装？<br>2、如何获取到BpBinder的mHandle句柄？</p>
+<h4 id="如何封装Parcel数据"><a href="#如何封装Parcel数据" class="headerlink" title="如何封装Parcel数据"></a>如何封装Parcel数据</h4><p>Parcel类是Binder进程间通信的一个基础的、必不可少的数据结构，往Parcel中写入的数据实际上是写入到了一块内部分配的内存上，最后把这个内存地址封装到binder_write_read结构体中。Parcel作为一个基础的数据结构，和Binder相关类是可以解耦的，可以直接拿过来使用，我们可以根据需要对有耦合性的一些方法进行裁剪。</p>
+<p>c++ Parcel类路径：<br><a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/">frameworks</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/">native</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/">libs</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/">binder</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Parcel.cpp">Parcel.cpp</a></p>
+<p>jni Parcel类路径：<br><a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/">frameworks</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/">base</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/">core</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/jni/">jni</a><br>&#x2F;<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/jni/android_os_Parcel.cpp">android_os_Parcel.cpp</a></p>
+<h4 id="如何获取到BpBinder的mHandle句柄"><a href="#如何获取到BpBinder的mHandle句柄" class="headerlink" title="如何获取到BpBinder的mHandle句柄"></a>如何获取到BpBinder的mHandle句柄</h4><p>具体流程参考<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://gityuan.com/2015/11/08/binder-get-sm/">Binder系列4—获取ServiceManager</a>。</p>
+<p><strong>1、获取ServiceManager的mHandle句柄</strong></p>
+<p>defaultServiceManager()方法用来获取<code>gDefaultServiceManager</code>对象，gDefaultServiceManager是ServiceManager的单例。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">sp&lt;IServiceManager&gt; <span class="title">defaultServiceManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (gDefaultServiceManager != <span class="literal">NULL</span>) <span class="keyword">return</span> gDefaultServiceManager;</span><br><span class="line"><span class="keyword">while</span> (gDefaultServiceManager == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		gDefaultServiceManager = <span class="built_in">interface_cast</span>&lt;IServiceManager&gt;(</span><br><span class="line">			ProcessState::<span class="built_in">self</span>()-&gt;<span class="built_in">getContextObject</span>(<span class="literal">NULL</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> gDefaultServiceManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>getContextObject方法用来获取BpServiceManager对象（BpBinder），查看其定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">sp&lt;IBinder&gt; <span class="title">ProcessState::getContextObject</span><span class="params">(<span class="type">const</span> sp&lt;IBinder&gt;&amp; <span class="comment">/*caller*/</span>)</span> </span>&#123;</span><br><span class="line">sp&lt;IBinder&gt; context = <span class="built_in">getStrongProxyForHandle</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">return</span> context;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，getStrongProxyForHandle是一个根据handle获取IBinder对象的方法，而这里handle的值为0，可以得知，<strong>ServiceManager的mHandle恒为0</strong>。</p>
+<p><strong>2、获取ActivityManager的mHandle句柄</strong></p>
+<p>获取ActivityManager的c++方法是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sp&lt;IBinder&gt; binder = serviceManager-&gt;<span class="built_in">getService</span>(<span class="built_in">String16</span>(<span class="string">&quot;activity&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>BpServiceManager.getService:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> sp&lt;IBinder&gt; <span class="title">getService</span><span class="params">(<span class="type">const</span> String16&amp; name)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">sp&lt;IBinder&gt; svc = <span class="built_in">checkService</span>(name);</span><br><span class="line"><span class="keyword">if</span> (svc != <span class="literal">NULL</span>) <span class="keyword">return</span> svc;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>BpServiceManager.checkService:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> sp&lt;IBinder&gt; <span class="title">checkService</span><span class="params">( <span class="type">const</span> String16&amp; name)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">Parcel data, reply;</span><br><span class="line"><span class="comment">//写入RPC头</span></span><br><span class="line">data.<span class="built_in">writeInterfaceToken</span>(IServiceManager::<span class="built_in">getInterfaceDescriptor</span>());</span><br><span class="line"><span class="comment">//写入服务名</span></span><br><span class="line">data.<span class="built_in">writeString16</span>(name);</span><br><span class="line"><span class="built_in">remote</span>()-&gt;<span class="built_in">transact</span>(CHECK_SERVICE_TRANSACTION, data, &amp;reply);</span><br><span class="line"><span class="keyword">return</span> reply.<span class="built_in">readStrongBinder</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，CHECK_SERVICE_TRANSACTION这个binder调用是有返回值的，返回值会写到reply中，通过reply.readStrongBinder()方法，即可从reply这个Parcel对象中读取到ActivityManager的IBinder。每个Binder对象必须要有它自己的mHandle句柄，不然，transact操作是没办法进行的。所以，很有可能，Binder的mHandle的值是写到reply这个Parcel里面的。<br>看看reply.readStrongBinder()方法搞了什么鬼：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">sp&lt;IBinder&gt; <span class="title">Parcel::readStrongBinder</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">sp&lt;IBinder&gt; val;</span><br><span class="line"><span class="built_in">readNullableStrongBinder</span>(&amp;val);</span><br><span class="line"><span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">status_t</span> <span class="title">Parcel::readNullableStrongBinder</span><span class="params">(sp&lt;IBinder&gt;* val)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">unflattenBinder</span>(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用到了Parcel::unflattenBinder方法，顾名思义，函数最终想要得到的是一个Binder对象，而Parcel中存放的是二进制的数据，unflattenBinder很可能是把Parcel中的一个结构体数据给转成Binder对象。<br>看看Parcel::unflattenBinder方法的定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">status_t</span> <span class="title">Parcel::unflattenBinder</span><span class="params">(sp&lt;IBinder&gt;* out)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line"><span class="type">const</span> flat_binder_object* flat = <span class="built_in">readObject</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">if</span> (flat) &#123;</span><br><span class="line">	...</span><br><span class="line">	sp&lt;IBinder&gt; binder =</span><br><span class="line">		ProcessState::<span class="built_in">self</span>()-&gt;<span class="built_in">getStrongProxyForHandle</span>(flat-&gt;handle);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> BAD_TYPE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>果然如此，从Parcel中可以得到一个flat_binder_object结构体，这个结构体重有一个handle变量，这个变量就是BpBinder中的mHandle句柄。<br>因此，在不依赖libbinder.so的情况下，我们可以自己组装数据发送给ServiceManager，进而获取到ActivityManager的mHandle句柄。<br>IPCThreadState是一个被Binder依赖的类，它是可以从源码中抽离出来为我们所用的。上一节中说到，Parcel类也是可以从源码中抽离出来的。<br>通过如下的操作，我们就可以实现ioctl获取到ActivityManager对应的Parcel对象reply：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Parcel data, reply;</span><br><span class="line"><span class="comment">// data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());</span></span><br><span class="line"><span class="comment">// IServiceManager::getInterfaceDescriptor()的值是android.app.IActivityManager</span></span><br><span class="line">data.<span class="built_in">writeInterfaceToken</span>(<span class="built_in">String16</span>(<span class="string">&quot;android.app.IActivityManager&quot;</span>));</span><br><span class="line">data.<span class="built_in">writeString16</span>(<span class="built_in">String16</span>(<span class="string">&quot;activity&quot;</span>));</span><br><span class="line">IPCThreadState::<span class="built_in">self</span>()-&gt;<span class="built_in">transact</span>(</span><br><span class="line"><span class="number">0</span><span class="comment">/*ServiceManger的mHandle句柄恒为0*/</span>, </span><br><span class="line">CHECK_SERVICE_TRANSACTION, data, reply, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>reply变量也就是我们想要的包含了flat_binder_object结构体的Parcel对象，再经过如下的操作就可以得到ActivityManager的mHandle句柄：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> flat_binder_object* flat = reply-&gt;<span class="built_in">readObject</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">return</span> flat-&gt;handle;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、传输启动指定Service的Parcel数据</strong><br>上一步已经拿到ActivityManger的mHandle句柄，比如值为1。这一步的过程和上一步类似，自己封装Parcel，然后调用IPCThreadState::transact方法传输数据，伪代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Parcel data;</span><br><span class="line"><span class="comment">// 把Service相关信息写到parcel中</span></span><br><span class="line"><span class="built_in">writeService</span>(data, packageName, serviceName, sdk_version);</span><br><span class="line">IPCThreadState::<span class="built_in">self</span>()-&gt;<span class="built_in">transact</span>(</span><br><span class="line"><span class="number">1</span><span class="comment">/*上一步获取的ActivityManger的mHandle句柄值是1*/</span>, </span><br><span class="line">CHECK_SERVICE_TRANSACTION, data, reply, </span><br><span class="line"><span class="number">1</span><span class="comment">/*TF_ONE_WAY*/</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>4、writeService方法需要做什么事情？</strong><br>下面这段代码是Java中封装Parcel对象的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> <span class="built_in">Intent</span>();</span><br><span class="line">ComponentName component = <span class="keyword">new</span> <span class="built_in">ComponentName</span>(context.<span class="built_in">getPackageName</span>(), serviceName);</span><br><span class="line">intent.<span class="built_in">setComponent</span>(component);</span><br><span class="line"></span><br><span class="line">Parcel mServiceData = Parcel.<span class="built_in">obtain</span>();</span><br><span class="line">mServiceData.<span class="built_in">writeInterfaceToken</span>(<span class="string">&quot;android.app.IActivityManager&quot;</span>);</span><br><span class="line">mServiceData.<span class="built_in">writeStrongBinder</span>(null);</span><br><span class="line">mServiceData.<span class="built_in">writeInt</span>(<span class="number">1</span>);</span><br><span class="line">intent.<span class="built_in">writeToParcel</span>(mServiceData, <span class="number">0</span>);</span><br><span class="line">mServiceData.<span class="built_in">writeString</span>(null); <span class="comment">// resolvedType</span></span><br><span class="line">mServiceData.<span class="built_in">writeInt</span>(<span class="number">0</span>);</span><br><span class="line">mServiceData.<span class="built_in">writeString</span>(context.<span class="built_in">getPackageName</span>()); <span class="comment">// callingPackage</span></span><br><span class="line">mServiceData.<span class="built_in">writeInt</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，有Intent类转Parcel，ComponentName类转Parcel，这些类在c++中是没有对应的类的。所以需要我们参考<code>intent.writeToParcel</code>&#x2F;<code>ComponentName.writeToParcel</code>等方法的源码的实现，自行封装数据。下面这段代码就是把启动Service的Intent写到Parcel中的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">writeIntent</span><span class="params">(Parcel &amp;out, <span class="type">const</span> <span class="type">char</span> *mPackage, <span class="type">const</span> <span class="type">char</span> *mClass)</span> </span>&#123;</span><br><span class="line"><span class="comment">// mAction</span></span><br><span class="line">out.<span class="built_in">writeString16</span>(<span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// uri mData</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// mType</span></span><br><span class="line">out.<span class="built_in">writeString16</span>(<span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//    // mIdentifier</span></span><br><span class="line">out.<span class="built_in">writeString16</span>(<span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// mFlags</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// mPackage</span></span><br><span class="line">out.<span class="built_in">writeString16</span>(<span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// mComponent</span></span><br><span class="line">out.<span class="built_in">writeString16</span>(<span class="built_in">String16</span>(mPackage));</span><br><span class="line">out.<span class="built_in">writeString16</span>(<span class="built_in">String16</span>(mClass));</span><br><span class="line"><span class="comment">// mSourceBounds</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// mCategories</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// mSelector</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// mClipData</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// mContentUserHint</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">-2</span>);</span><br><span class="line"><span class="comment">// mExtras</span></span><br><span class="line">out.<span class="built_in">writeInt32</span>(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="继续写Demo试一下"><a href="#继续写Demo试一下" class="headerlink" title="继续写Demo试一下"></a>继续写Demo试一下</h4><p>上面已经知道了怎么通过ioctl获取到ActivityManager，可以写demo试一下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开binder设备</span></span><br><span class="line"><span class="type">int</span> fd = <span class="built_in">open</span>(<span class="string">&quot;/dev/binder&quot;</span>, O_RDWR | O_CLOEXEC);</span><br><span class="line">Parcel data, reply;</span><br><span class="line"><span class="comment">// data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());</span></span><br><span class="line"><span class="comment">// IServiceManager::getInterfaceDescriptor()的值是android.app.IActivityManager</span></span><br><span class="line">data.<span class="built_in">writeInterfaceToken</span>(<span class="built_in">String16</span>(<span class="string">&quot;android.app.IActivityManager&quot;</span>));</span><br><span class="line">data.<span class="built_in">writeString16</span>(<span class="built_in">String16</span>(<span class="string">&quot;activity&quot;</span>));</span><br><span class="line">IPCThreadState::<span class="built_in">self</span>()-&gt;<span class="built_in">transact</span>(</span><br><span class="line"><span class="number">0</span><span class="comment">/*ServiceManger的mHandle句柄恒为0*/</span>, </span><br><span class="line">CHECK_SERVICE_TRANSACTION, data, reply, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> flat_binder_object *flat = reply-&gt;<span class="built_in">readObject</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">if</span> (flat) &#123;</span><br><span class="line"><span class="built_in">LOGD</span>(<span class="string">&quot;write_transact handle is:%llu&quot;</span>, flat-&gt;handle);</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">LOGD</span>(<span class="string">&quot;write_transact failed, error=%d&quot;</span>, status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>给IPCThreadState::transact加上一些日志，打印结果如下：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/KeepAlive: BR_DEAD_REPLY</span><br><span class="line">D/KeepAlive: write_transact failed, error=-32</span><br></pre></td></tr></table></figure>
+
+<p>reply中始终读不到数据。这是为什么？现在已经不报<code>Invalid argument</code>的错误了，说明Parcel数据格式可能没问题了。但是不能成功把数据写给ServiceManager，或者ServiceManager返回的数据不能成功写回来。<br>想到Binder是基于内存的一种IPC机制，数据都是对的，那问题就出在内存上了。这就要说到Binder基本原理以及Binder内存转移关系。</p>
+<p>Binder基本原理：<br><img src="https://upload-images.jianshu.io/upload_images/19956127-65b3da208f9fc38a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/643" alt="img"></p>
+<p>Binder的Client端和Server端位于不同的进程，它们的用户空间是相互隔离。而内核空间由Linux内核进程来维护，在安全性上是有保障的。所以，Binder的精髓就是在内核态开辟了一块共享内存。<br><img src="https://upload-images.jianshu.io/upload_images/19956127-9826c2c5fe95c3c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080" alt="img"></p>
+<p>数据发送方写数据时，内核态通过copy_from_user()方法把它的数据拷贝到数据接收方映射(mmap)到内核空间的地址上。这样，只需要一次数据拷贝过程，就可以完成进程间通信。<br>由此可知，没有这块内核空间是没办法完成IPC通信的。Demo失败的原因就是缺少了一个mmap过程，以映射一块内存到内核空间。修改如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BINDER_VM_SIZE ((1 * 1024 * 1024) - sysconf(_SC_PAGE_SIZE) * 2)</span></span><br><span class="line"><span class="type">int</span> mDriverFD = <span class="built_in">open</span>(<span class="string">&quot;/dev/binder&quot;</span>, O_RDWR | O_CLOEXEC);</span><br><span class="line"><span class="built_in">mmap</span>(<span class="number">0</span>, BINDER_VM_SIZE, PROT_READ, MAP_PRIVATE | MAP_NORESERVE, mDriverFD, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>日志：</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/KeepAlive: BR_REPLY</span><br><span class="line">D/KeepAlive: write_transact handle is:1</span><br></pre></td></tr></table></figure>
+
+<p>搞定！</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>当然，这个保活的办法虽然很强，但现在也<strong>只能活在模拟器和部分机型中</strong>了。<br>尤其是<strong>MIUI12挂了，最新的EMUI挂了</strong></p>
+<p>说一下我的方法论。</p>
+<p>1、确定问题和目标。</p>
+<p>研究一个比较复杂的东西的时候，我们比较难有一个大局观。这个时候，就需要明确自己需要什么？有问题，才能推动自己学习，然后顺腾摸瓜，最后弄清自己的模块在系统中的位置。</p>
+<p>确定了目标是直接通过ioctl进行Binder通信，进而确定Binder通信的关键是拿到mHandle句柄。同时也理清了Binder通信的一个基本流程。</p>
+<p>2、时序图很重要。</p>
+<p>大佬们画的时序图，可快帮助我们快速理清框架的思路。</p>
+<p>3、实践出真知。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

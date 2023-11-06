@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kotlin笔记 | Nathaniel</title>
+  <meta name="keywords" content=" Android , Kotlin ">
+  <meta name="description" content="Kotlin笔记 | Nathaniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Nathaniel">
+<meta property="og:description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/about.png">
+<meta property="article:published_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:modified_time" content="2023-11-06T14:59:19.000Z">
+<meta property="article:author" content="Nathaniel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/about.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Nathaniel</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具">
+            
+            工具
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="测试">
+            
+            测试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发规范">
+            
+            开发规范
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软技能">
+            
+            软技能
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android">
+            
+            Android
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="blog">
+            
+            blog
+            <small>(33)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Interview">
+            
+            Interview
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>架构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软技能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CentOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dart</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FFmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flutter</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Keep Live</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kotlin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MacOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mvx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nodejs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Optimistic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Powershell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Problem</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Q-A</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Raspbian</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>View</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/03/29/android-interview-addition/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="面试问题集锦">面试问题集锦</span>
+            <span class="post-date" title="2021-03-29 14:01:47">2021/03/29</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 blog "
+           href="/2021/03/01/kotlin-notes/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin学习笔记">Kotlin学习笔记</span>
+            <span class="post-date" title="2021-03-01 10:28:59">2021/03/01</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 软技能 "
+           href="/2021/02/22/keep-your-mind/"
+           data-tag="软技能"
+           data-author="" >
+            <span class="post-title" title="灵魂之力—自控力的强大威力">灵魂之力—自控力的强大威力</span>
+            <span class="post-date" title="2021-02-22 10:43:00">2021/02/22</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/01/27/android-interview/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android高级面试题">Android高级面试题</span>
+            <span class="post-date" title="2021-01-27 16:01:47">2021/01/27</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/04/18/android-knowledge/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-18 16:01:47">2021/04/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/20222/09/18/powershell-ohmyzsh/"
+           data-tag="Powershell"
+           data-author="" >
+            <span class="post-title" title="Powershell美化">Powershell美化</span>
+            <span class="post-date" title="20222-09-18 16:52:00">20222/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/11/20/flutter-interview/"
+           data-tag="Android,Flutter"
+           data-author="" >
+            <span class="post-title" title="Flutter 学习笔记">Flutter 学习笔记</span>
+            <span class="post-date" title="2022-11-20 15:28:59">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/10/05/git-config/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="git_config">git_config</span>
+            <span class="post-date" title="2022-10-05 07:15:36">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/09/28/Ubuntu-Using/"
+           data-tag="Ubuntu"
+           data-author="" >
+            <span class="post-title" title="Ubuntu日常使用">Ubuntu日常使用</span>
+            <span class="post-date" title="2022-09-28 13:10:27">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android扩展知识点">Android扩展知识点</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/C++%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="C++知识点汇总">C++知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Gradle%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Gradle知识点汇总">Gradle知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Kotlin%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Kotlin知识点汇总">Kotlin知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Java知识点汇总">Java知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E5%BC%80%E6%BA%90%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="开源源码库分析">开源源码库分析</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/android-view/"
+           data-tag="Android,View"
+           data-author="" >
+            <span class="post-title" title="View绘制流程">View绘制流程</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Framework%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Framework知识点汇总">Framework知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="网络知识汇总">网络知识汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见设计模式汇总">常见设计模式汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见算法汇总">常见算法汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="性能优化知识点汇总">性能优化知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="音视频知识点汇总">音视频知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/08/android-problem-collection/"
+           data-tag="Android,Problem,Q-A"
+           data-author="" >
+            <span class="post-title" title="Android问题集锦">Android问题集锦</span>
+            <span class="post-date" title="2021-04-08 11:04:47">2021/04/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/19/android-optimization/"
+           data-tag="Android,Optimistic"
+           data-author="" >
+            <span class="post-title" title="Android性能优化">Android性能优化</span>
+            <span class="post-date" title="2021-03-19 11:04:47">2021/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/08/update-git-shell-v2/"
+           data-tag="Shell,运维"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库 v2">shell 批量更新多个git仓库 v2</span>
+            <span class="post-date" title="2021-03-08 10:29:37">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/24/fragment-data-activity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Fragment和Activity通信">Fragment和Activity通信</span>
+            <span class="post-date" title="2021-02-24 11:40:28">2021/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/14/update-git-shell/"
+           data-tag="Shell,Git"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库">shell 批量更新多个git仓库</span>
+            <span class="post-date" title="2021-02-14 12:26:56">2021/02/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/20/ffmpeg-build/"
+           data-tag="Android,FFmpeg,MacOS"
+           data-author="" >
+            <span class="post-title" title="MacOS下基于NDK编译FFmpeg">MacOS下基于NDK编译FFmpeg</span>
+            <span class="post-date" title="2020-11-20 15:28:59">2020/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/android-mvx/"
+           data-tag="android,mvx"
+           data-author="" >
+            <span class="post-title" title="Android-UI架构演进">Android-UI架构演进</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/dart-gRPC/"
+           data-tag="dart,gRPC"
+           data-author="" >
+            <span class="post-title" title="Dart-gPRC">Dart-gPRC</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具 "
+           href="/2020/10/19/android-studio/"
+           data-tag="AndroidStudio"
+           data-author="" >
+            <span class="post-title" title="Android Studio 使用问题">Android Studio 使用问题</span>
+            <span class="post-date" title="2020-10-19 16:01:47">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/10/19/hexo-for-node/"
+           data-tag="hexo,nodejs"
+           data-author="" >
+            <span class="post-title" title="Node环境下Hexo的搭建">Node环境下Hexo的搭建</span>
+            <span class="post-date" title="2020-10-19 15:28:59">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/09/19/keep-app-alive/"
+           data-tag="Android,Keep Live"
+           data-author="" >
+            <span class="post-title" title="Android保活技术实现">Android保活技术实现</span>
+            <span class="post-date" title="2020-09-19 15:28:59">2020/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 测试 "
+           href="/2020/08/29/app-test-helper/"
+           data-tag="APP,测试"
+           data-author="" >
+            <span class="post-title" title="手机APP测试">手机APP测试</span>
+            <span class="post-date" title="2020-08-29 16:01:47">2020/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Android "
+           href="/2020/08/28/android-architecture/"
+           data-tag="Android,架构"
+           data-author="" >
+            <span class="post-title" title="Android 架构技术演进">Android 架构技术演进</span>
+            <span class="post-date" title="2020-08-28 14:01:47">2020/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/08/19/kotlin-learning/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
+            <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/07/19/MariaDB-on-CentOS/"
+           data-tag="CentOS,MariaDB"
+           data-author="" >
+            <span class="post-title" title="在CentOS7中安装MariaDB">在CentOS7中安装MariaDB</span>
+            <span class="post-date" title="2020-07-19 15:28:59">2020/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/05/19/markdown-note/"
+           data-tag="Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown编辑器语法指南">Markdown编辑器语法指南</span>
+            <span class="post-date" title="2020-05-19 15:28:59">2020/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/03/27/using-raspberry/"
+           data-tag="Linux,Raspbian"
+           data-author="" >
+            <span class="post-title" title="树莓派的使用笔记">树莓派的使用笔记</span>
+            <span class="post-date" title="2020-03-27 00:16:31">2020/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发规范 "
+           href="/2019/05/01/constraint-for-android/"
+           data-tag="Android,开发规范"
+           data-author="" >
+            <span class="post-title" title="关于Android的开发规范">关于Android的开发规范</span>
+            <span class="post-date" title="2019-05-01 15:29:59">2019/05/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-kotlin-learning" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Kotlin笔记</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="blog">blog</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Android</a>
+            
+            <a class="color2">Kotlin</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-11-06 22:59:19'>2020-08-19 15:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-text">基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%88Numbers%EF%BC%89"><span class="toc-text">数值类型（Numbers）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%EF%BC%88Characters%EF%BC%89"><span class="toc-text">字符类型（Characters）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%88Strings%EF%BC%89"><span class="toc-text">字符串类型（Strings）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B%EF%BC%88Boolean%EF%BC%89"><span class="toc-text">布尔类型（Boolean）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%88Arrays%EF%BC%89"><span class="toc-text">数组类型（Arrays）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E-%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-text">类的声明 &amp; 实例化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">主构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A1%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">次构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">类的属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">可见性修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-%E9%87%8D%E5%86%99"><span class="toc-text">继承 &amp; 重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-text">特殊类说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="toc-text">其他语法糖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Kotlin%E4%B8%AD%EF%BC%8C%E5%AD%98%E5%9C%A8%E7%BB%93%E6%9E%84%E7%9B%B8%E7%AD%89-%E5%BC%95%E7%94%A8%E7%9B%B8%E7%AD%89-%E4%B8%A4%E7%A7%8D%E7%9B%B8%E7%AD%89%E5%88%A4%E6%96%AD%E3%80%82"><span class="toc-text">在Kotlin中，存在结构相等 &amp; 引用相等 两种相等判断。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Java%E4%B8%AD%EF%BC%8CNullPointerException%E5%BC%82%E5%B8%B8%E5%8D%81%E5%88%86%E5%B8%B8%E8%A7%81"><span class="toc-text">在Java中，NullPointerException异常十分常见</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>简洁：相对于Java，代码量减少</li>
+<li>安全： 在编译期处理了可能出现空针的异常，若产生空针异常，编译不通过，避免了在运行时出现空针异常</li>
+<li>互操作性：因Kotlin是基于JVM的语言，所以可与Java互相调用，故在同一个项目中可以存在Java和Kotlin混编</li>
+<li>工具友好：可以使用任何Java IDE</li>
+</ol>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>在个IDE的插件库安装Kotlin插件即可，当然Jetbrains出品的IDE完美使用</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
+<li>操作对象：在Kotlin中，所有变量的成员方法和属性都是对象，若无返回值则返回Unit对象，大多数情况下Uint可以省略；Kotlin 中没有 new 关键字</li>
+<li>数据类型 &amp; 转换：在Java中通过装箱和拆箱在基本数据类型和包装类型之间相互转换；在Kotlin中，而不管是常量还是变量在声明是都必须具有类型注释或者初始化，如果在声明 &amp; 进行初始化时，会自行推导其数据类型。</li>
+<li>编译的角度：和Java一样，Kotlin同样基于JVM。区别在于：后者是静态类型语言，意味着所有变量和表达式类型在编译时已确定。</li>
+<li>撰写：在Kotlin中，一句代码结束后不用添加分号 “；”；而在Java中，使用分号“;”标志一句代码结束。</li>
+</ol>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>数值（Numbers）</li>
+<li>字符（Characters）</li>
+<li>字符串（Strings）</li>
+<li>布尔（Boolean）</li>
+<li>数组（Arrays）</li>
+</ul>
+<h4 id="数值类型（Numbers）"><a href="#数值类型（Numbers）" class="headerlink" title="数值类型（Numbers）"></a>数值类型（Numbers）</h4><ul>
+<li>Kotlin的基本数值类型有六种：Byte、Short、Int、Long、Float、Double</li>
+<li>位宽度 8bit，16bit，32bit，64bit，32bit，64bit</li>
+<li>备注 8bit&#x3D;1byte（字节）</li>
+<li>Java中的数值类型：bit，byte，char，short，int，long，float，double</li>
+<li>备注：Kotlin数值类型是没有char类型的它属于单独的数据类型</li>
+<li>数据类型转换方法：<br>  toByte()：Byte<br>  toShort()：Short<br>  toInt()：Int<br>  toLong()：Long<br>  toFloat()： Float<br>  toDouble()：Double<br>  toChar()：Char</li>
+</ul>
+<h4 id="字符类型（Characters）"><a href="#字符类型（Characters）" class="headerlink" title="字符类型（Characters）"></a>字符类型（Characters）</h4><pre><code>Kotlin中的字符类型采用 Char 表示，必须使用单引号’ &#39;包含起来使用 &amp; 不能直接和数字操作
+val ch :Char = 1 // 错误示范
+val ch :Char = &#39;1&#39; // 正确示范
+// 将字符类型转换成数字
+val ch :Char = &#39;8&#39;
+val a :Int = ch.toInt()
+</code></pre>
+<h4 id="字符串类型（Strings）"><a href="#字符串类型（Strings）" class="headerlink" title="字符串类型（Strings）"></a>字符串类型（Strings）</h4><pre><code>表示方式：String
+特点：不可变
+使用：通过索引访问的字符串中的字符：s [i]
+// 使用1：一个字符串可以用一个for循环迭代输出
+for (c in str) &#123;
+    println(c)
+&#125;
+
+// 使用2：可使用三个引号 &quot;&quot;&quot;拼接多行字符串
+fun main(args: Array&lt;String&gt;) &#123;
+    val text = &quot;&quot;&quot;
+    字符串1
+    字符串2
+    &quot;&quot;&quot;
+    println(text)   // 输出存在一些前置空格
+&#125;
+
+// 注：可通过 trimMargin()删除多余空白
+fun strSample() &#123;
+    val text = &quot;&quot;&quot;
+    | str1
+    |str2
+    |多行字符串
+    |bbbbbb
+    &quot;&quot;&quot;.trimMargin()
+    println(text)    // 删除了前置空格
+&#125;
+补充说明：字符串模版（String Templates）
+
+即在字符串内通过一些小段代码求值并把结果合并到字符串中。
+模板表达式以美元符（$）开头
+// $：表示一个变量名 / 变量值
+// 示例
+val i = 10
+val s = &quot;i = $i&quot; // 表示 &quot;i = 10&quot;
+
+// $&#123;varName.fun()&#125;：表示变量的方法返回值
+// 示例
+val s = &quot;abc&quot;
+val str = &quot;$s.length is $&#123;s.length&#125;&quot; //识别为 &quot;abc.length is 3&quot;
+</code></pre>
+<h4 id="布尔类型（Boolean）"><a href="#布尔类型（Boolean）" class="headerlink" title="布尔类型（Boolean）"></a>布尔类型（Boolean）</h4><pre><code>Kotlin的Boolean类似于Java的boolean类型，其值只有true 、false
+Boolean内置的函数逻辑运算包括：
+|| – 短路逻辑或
+&amp;&amp; – 短路逻辑与
+! - 逻辑非
+</code></pre>
+<h4 id="数组类型（Arrays）"><a href="#数组类型（Arrays）" class="headerlink" title="数组类型（Arrays）"></a>数组类型（Arrays）</h4><pre><code>实现方式：使用Array类
+使用方法：size 属性、get方法和set 方法。注：使用 [] 重载了 get 和 set 方法，可通过下标获取 / 设置数组值。
+创建方式：方式1 = 函数arrayOf()；方式2 = 工厂函数
+// 方式1：使用arrayOf创建1个数组：[1,2,3]
+val a = arrayOf(1, 2, 3)
+
+// 方式2：使用工厂函数创建1个数组[0,2,4]
+val b = Array(3, &#123; i -&gt; (i * 2) &#125;)
+// 工厂函数源码分析
+// 参数1 = 数组长度，花括号内是一个初始化值的代码块，给出数组下标 &amp; 初始化值
+public inline constructor(size: Int, init: (Int) -&gt; T)
+
+// 读取数组内容
+println(a[0])    // 输出结果：1
+println(b[1])    // 输出结果：2
+
+// 特别注意：除了类Array，还有ByteArray, ShortArray, IntArray用来表示各个类型的数组
+// 优点：省去了装箱操作，因此效率更高
+// 具体使用：同Array
+val x: IntArray = intArrayOf(1, 2, 3)
+注： 区别于Java，Kotlin中的数组是不型变的（invariant），即Kotlin 不允许将Array赋值给Array，以防止可能的运行时失败
+</code></pre>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><h4 id="类的声明-实例化"><a href="#类的声明-实例化" class="headerlink" title="类的声明 &amp; 实例化"></a>类的声明 &amp; 实例化</h4><pre><code>// 格式
+class 类名（参数名1：参数类型，参数名2：参数类型...）&#123;&#125;
+
+// 示例
+class User(userName: String, age: Int)&#123;&#125;
+
+// Kotlin支持默认参数，即在调用函数时可不指定参数，则使用默认函数
+class User(userName: String = &quot;hjc&quot;, age: Int = 26)&#123;
+&#125;
+// 在实例化类时不传入参数，userName默认 = hjc，age默认 = 26
+var user = User()
+// 在设置默认值后，若不想用默认值可在创建实例时传入参数
+var user = User(&quot;ABC&quot; , 123)
+// 命名参数：若一个默认参数在一个无默认值的参数前，那么该默认值只能通过使用命名参数调用该函数来使用
+class User(userName: String = &quot;hjc&quot;, age: Int)
+var  user = User(age = 26)
+
+// Kotlin没有new关键字，所以直接创建类的实例：
+User()
+对于构造函数，Kotlin中类可有一个主构造函数 &amp; 多个次构造函数，下面将详细说明。
+</code></pre>
+<h4 id="主构造函数"><a href="#主构造函数" class="headerlink" title="主构造函数"></a>主构造函数</h4><pre><code>属于类头的一部分 = 跟在类名后，采用 constructor 关键字
+不能包含任何的代码。初始化的代码放到以 init 关键字作为前缀的代码块中
+// 形式
+class 类名 constructor（参数名：参数类型）&#123;
+    init &#123;       
+    //...
+    &#125;
+&#125;
+// 示例
+class User constructor(userName: String) &#123;
+    init &#123;       
+    //...
+    &#125;
+&#125;
+注：若主构造函数无任何注解 / 可见性修饰符，可省略 constructor 关键字
+
+// 形式
+class 类名（参数名：参数类型）&#123;
+    init &#123;       
+    //...
+    &#125;
+&#125;
+// 示例
+class User (userName: String) &#123;
+    init &#123;       
+    //...
+    &#125;
+&#125;
+</code></pre>
+<h4 id="次构造函数"><a href="#次构造函数" class="headerlink" title="次构造函数"></a>次构造函数</h4><pre><code>必须加constructor关键字
+一个类中可存在多个次构造函数，传入参数不同
+// 形式
+constructor(参数名：参数类型) :&#123;函数体&#125;
+// 示例
+class User(userName: String) &#123;
+    // 主构造函数
+    init &#123;
+        println(userName)
+    &#125;
+
+    // 次构造函数1：可通过this调主构造函数
+    constructor() : this(&quot;hjc&quot;)
+
+    // 次构造函数2：可通过this调主构造函数
+    constructor(age: Int) : this(&quot;hjc&quot;) &#123;
+        println(age)
+    &#125;
+
+    // 次构造函数3：通过this调主构造函数
+    constructor(sex: String, age: Int) : this(&quot;hjc&quot;) &#123;
+        println(&quot;$sex$age&quot;)
+    &#125;
+&#125;
+
+// 实例化类
+User(&quot;hjc&quot;) // 调用主构造函数
+User()      // 调用次构造函数1
+User(2)     // 调用次构造函数2
+User(&quot;male&quot;,26) // 调用次构造函数3
+</code></pre>
+<h4 id="类的属性"><a href="#类的属性" class="headerlink" title="类的属性"></a>类的属性</h4><pre><code>Kotlin的类可以拥有属性：关键字var（读写） / 关键字val（只读）
+class User &#123;
+    var userName: String
+    val sex: String = &quot;男&quot;
+&#125;
+
+// 使用属性 = 名称 + 引用
+User().sex  // 使用该属性 = Java的getter方法
+User().userName = &quot;hjc&quot;  // 设置该属性 = Java的setter方法
+</code></pre>
+<h4 id="可见性修饰符"><a href="#可见性修饰符" class="headerlink" title="可见性修饰符"></a>可见性修饰符</h4><pre><code>private ：本类内部都可见
+protected ：本类内部 &amp; 子类中可见
+public：能见到类声明的任何客户端都可以见（public成员）
+internal：能见到类声明的本模块内的任何客户端都可见（public成员）
+区别于Java，Kotlin的可见修饰符少了default，多了internal：该成员只在相同模块内可见。（注：一个模块 = 编译在一起的一套 Kotlin 文件：
+一个 IntelliJ IDEA 模块；
+一个 Maven 项目；
+一个 Gradle 源集；
+一次 ＜kotlinc＞ Ant 任务执行所编译的一套文件。
+</code></pre>
+<h4 id="继承-重写"><a href="#继承-重写" class="headerlink" title="继承 &amp; 重写"></a>继承 &amp; 重写</h4><pre><code>类似于Java，Kotlin是单继承 = 只有一个父类
+区别：Kotlin使用冒号“ : ”继承 &amp; 默认不允许继承（若想让类可被继承，需用open关键字来标识）
+// 用open关键字标识该类允许被继承
+open class Food 
+
+// 类Fruits继承类Food
+class Fruits : Food()
+对于子类重写父类的方法，在Kotlin中，方法也是默认不可重写的
+若子类要重写父类中的方法，则需在父类的方法前面加open关键字，然后在子类重写的方法前加override关键字
+// 父类
+// 在类 &amp; 方法前都加了关键字open，为了被继承 &amp; 方法重写
+open class Food &#123;
+    open fun banana() &#123;&#125;
+&#125;
+
+// 子类 
+class Fruits : Food()&#123;
+    // 重写了父类的方法
+    override fun banana() &#123;
+        super.banana()
+    &#125;
+&#125;
+</code></pre>
+<h4 id="特殊类说明"><a href="#特殊类说明" class="headerlink" title="特殊类说明"></a>特殊类说明</h4><pre><code>下面将讲解一些特殊的类：
+嵌套类（内部类）
+接口
+数据类
+枚举类
+/**
+* 7.1. 嵌套类（内部类）
+* 标识：关键字inner
+* 使用：通过外部类的实例调用嵌套类
+*/
+class User &#123;
+    var age: Int = 0
+
+    inner class UserName &#123;
+    &#125;
+&#125;
+
+var userName: User.UserName  = User().UserName()
+
+/**
+* 7.2. 接口
+* 标识：关键字interface
+*/
+// 声明
+interface A&#123;&#125;
+interface B&#123;&#125;
+
+// 方法体
+// 接口中的方法可以有默认方法体，有默认方法体的方法可不重写
+// 区别于Java：Java不支持接口里的方法有方法体。
+interface UserImpl&#123;
+    fun getName(): String // 无默认方法体，必须重写
+    fun getAge(): Int&#123;    // 有默认方法体，可不重写
+        return 22
+    &#125;
+&#125;
+// 实现接口UserImpl：需重写getName() &amp; 可不重写getAge()
+class User :UserImpl&#123;
+    override fun getName(): String &#123;
+        return &quot;hjc&quot;
+    &#125;
+&#125;
+
+// 实现接口：冒号:
+class Food : A, B &#123;&#125; // Kotlin是多实现
+class Fruits: Food,A, B &#123;&#125; // 继承 + 实现接口
+
+/**
+* 7.3. 数据类
+* 作用：保存数据
+* 标识：关键字data
+*/
+// 使用：创建类时会自动创建以下方法：
+//      1. getter/setter方法；
+//      2. equals() / hashCode() 对；
+//      3. toString() ：输出&quot;类名(参数+参数值)&quot;；
+//      4. copy() 函数：复制一个对象&amp;改变它的一些属性，但其余部分保持不变
+
+// 示例：
+// 声明1个数据类
+data class User(var userName: String, var age: Int)
+// copy函数使用
+var user = User(&quot;hjc&quot;,26)
+var user1 = user.copy(age = 30)
+// 输出user1.toString()，结果是：User(userName=hjc,age=30)
+
+// 特别注意
+// 1. 主构造方法至少要有一个参数，且参数必须标记为val或var
+// 2. 数据类不能用open、abstract、sealed(封闭类)、inner标识
+
+/**
+* 7.4. 枚举类
+* 标识：关键字enum
+*/
+// 定义
+enum class Color &#123;
+    RED, GREEN, BLUE
+&#125;
+
+// 为枚举类指定值
+enum class Color(rgb: Int) &#123;
+    RED(0xFF0000), GREEN(0x00FF00), BLUE(0x0000FF)
+&#125;
+
+#### 变量 &amp; 常量
+// 变量
+    // 模板： var 变量名：数据类型 = 具体赋值数值
+    // 规则：
+    //      1. 采用 “var” 标识
+    //      2. 变量名跟在var后；数据类型在最后
+    //      3. 变量名与数据类型采用冒号 &quot;:&quot; 隔开
+    // 示例：
+            var a: Int = 1 
+            var a: Int 
+            a = 2
+
+// 常量
+    // 模板： val 常量名：数据类型 = 具体赋值数值
+    // 规则：
+    //      1. 采用 “val” 标识
+    //      2. 常量名跟在val后；数据类型在最后
+    //      3. 常量名与数据类型采用冒号 &quot;:&quot; 隔开
+    // 示例：
+            val a: Int // 声明一个不初始化的变量，必须显式指定类型
+            a = 2 // 常量值不能再次更改
+            val b: Int = 1 // 声明并显示指定数值
+
+// 特别注意：1. 自动类型转换 &amp; 判断数据类型
+    // 1. 自动类型转换
+    // 在定义变量 / 常量时，若直接赋值，可不指定其数据类型，则能自动进行类型转换。如：
+    var a = &quot;aaa&quot; // 此处a的数据类型是String类型
+    val b = 1 // 此处的b的数据类型是Int类型
+
+    // 2. 判断数据类型：运算符is
+    n is Int // 判断n是不是整型类型
+</code></pre>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
+<li>定义 &amp; 调用<br>&#x2F;&#x2F; 模板：<br>  fun 函数名（参数名：参数类型）：返回值类型{<br> 函数体<br> return 返回值<br>}</li>
+</ol>
+<p>&#x2F;&#x2F; 说明：<br>&#x2F;&#x2F;      1. 采用 “fun” 标识<br>&#x2F;&#x2F;      2. 括号里的是传入函数的参数值和类型</p>
+<p>&#x2F;&#x2F; 示例：一个函数名为“abc”的函数，传入参数的类型是Int，返回值的类型是String<br> fun abc(int: Int): String {<br>    return “carson_ho”<br>}</p>
+<p>&#x2F;&#x2F; 特别注意：存在简写方式，具体示例如下：<br>&#x2F;&#x2F; 正常写法<br>fun add(a: Int, b: Int): Int {<br>    return a + b<br>}<br>&#x2F;&#x2F; 简写：若函数体只有一条语句 &amp; 有返回值，那么可省略函数体的大括号，变成单表达式函数<br>fun add(a: Int, b: Int) &#x3D; a + b;</p>
+<p>&#x2F;&#x2F; 调用函数：假设一个类中有一个foo的函数方法<br>User().foo()</p>
+<ol start="2">
+<li>默认参数<br>&#x2F;&#x2F; 给int参数指定默认值为1<br>fun foo(str: String, int: Int &#x3D; 1) {<br> println(“$str  $i”)<br>}</li>
+</ol>
+<p>&#x2F;&#x2F; 调用该函数时可不传已经设置了默认值的参数，只传无设默认值的参数<br>foo(“abc”)<br>&#x2F;&#x2F; 结果： abc  1</p>
+<p>&#x2F;&#x2F; 注：若有默认值的参数在无默认值的参数前，要略过有默认值的参数去给无默认值的参数指定值，需用命名参数来指定值<br>&#x2F;&#x2F; 有默认值的参数（int）在无默认值的参数（str）前<br>fun foo(int: Int &#x3D; 1, str: String) {<br>    println(“$str  $i”)<br>}</p>
+<p>&#x2F;&#x2F; 调用<br>foo(str &#x3D; “hello”)  &#x2F;&#x2F; 使用参数的命名来指定值<br>&#x2F;&#x2F; 结果： hello  1</p>
+<p>foo(“hello”)  &#x2F;&#x2F; 出现编译错误</p>
+<ol start="3">
+<li>特别注意<br>一个函数，除了有传入参数 &amp; 有返回值的情况，还会存在：<br>有传入参数 &amp; 无返回值<br>无传入参数 &amp; 无返回值<br>&#x2F;&#x2F; 有传入参数 &amp; 无返回值<br> &#x2F;&#x2F; 模板：<br>   fun 函数名（参数名：参数类型）{<br> 函数体<br> }<br> &#x2F;&#x2F; 或返回Unit（类似Java的void，无意义）<br>   fun 函数名（参数名：参数类型）：Unit{<br> 函数体<br> }</li>
+</ol>
+<p>&#x2F;&#x2F; 无传入参数 &amp; 无返回值<br>    &#x2F;&#x2F; 模板：<br>      fun 函数名（）{<br>        函数体<br>    }<br>    &#x2F;&#x2F; 或返回Unit（类似Java的void，无意义）<br>      fun 函数名（）：Unit{<br>        函数体<br>    }</p>
+<h3 id="其他语法糖"><a href="#其他语法糖" class="headerlink" title="其他语法糖"></a>其他语法糖</h3><p>关于Kotlin的一些实用语法糖，主要包括：<br>控制流（if、when、for、 while）<br>范围使用（in、downTo、step、until）<br>类型检查 &amp; 转换（is、智能转换、as）<br>相等性（equals（）、&#x3D;、 &#x3D;&#x3D;）<br>空安全</p>
+<ol>
+<li>控制流语句<br>控制流语句主要包括：if、when、for 和 while。</li>
+</ol>
+<ul>
+<li>if语句<br>Kotlin中的if语句与Java用法类似<br>区别在于：Kotlin的if语句本身是一个表达式，存在返回值<br>var c &#x3D; if (a &gt; b) 3 else 4</li>
+</ul>
+<p>&#x2F;&#x2F; 若a &gt; b，则返回3给c<br>&#x2F;&#x2F; 若a &lt; b，则返回4给c<br>&#x2F;&#x2F; 类似Java中的三元表达式<br>c &#x3D; a &gt; b ? 3 : 4; &#x2F;&#x2F; 若a&gt;b，c&#x3D;3，否则c&#x3D;4</p>
+<p>&#x2F;&#x2F; 若if后面是代码块<br>var c &#x3D; if (a &gt; b) {<br>    代码块1<br>} else {<br>    代码块2<br>}<br>&#x2F;&#x2F; 若a &gt; b，则执行代码块1，否则执行代码块2</p>
+<ul>
+<li>when语句<br>类似Java中的switch-case语句</li>
+</ul>
+<p>&#x2F;&#x2F; Java中的Switch-case语句<br>int a &#x3D; 0;<br>switch (a) {<br>    case 0:<br>        break;<br>    case 1:<br>        break;<br>    default:<br>        break;<br>}</p>
+<p>&#x2F;&#x2F; Kotlin中的when语句<br>var a &#x3D; 0<br>when (a) {<br>    0 -&gt; {代码块1}<br>    1 -&gt; {代码块2}<br>    2,3 -&gt; {代码块3}<br>    else -&gt; {代码块4}<br>}<br>&#x2F;&#x2F; 说明：<br>&#x2F;&#x2F; 当a&#x3D;0时执行代码块1<br>&#x2F;&#x2F; 当a&#x3D;1时执行代码块2<br>&#x2F;&#x2F; 当a&#x3D;2，3时，执行代码块3<br>&#x2F;&#x2F; 当a&#x3D;其他值时，执行代码块4</p>
+<p>&#x2F;&#x2F; 注意：when语句在满足条件的分支执行后，会终止when语句执行</p>
+<ul>
+<li>for语句<br>类似Java中的for语句<br>&#x2F;&#x2F; 示例1：表达一个数字是否在目的范围内<br>&#x2F;&#x2F; Java中的for语句<br>for (int i &#x3D; 0; i &lt; 4; i++) {<br>  System.out.println(i);<br>}<br>&#x2F;&#x2F; Kotlin中的for语句<br>if (i in 1..4){<br>  println(i)<br>}<br>&#x2F;&#x2F; 注：关键字用于表示数字是否在目标范围内，上面的示例表示判断i是否在代表1-4范围内</li>
+</ul>
+<p>&#x2F;&#x2F; 示例2：通过索引遍历一个数组<br>&#x2F;&#x2F; Java中的for语句<br>for (int i &#x3D; 0; i &lt; 4; i++) {<br>    System.out.println(i);<br>}<br>&#x2F;&#x2F; Kotlin中的for语句<br>for (i in array.indices) {<br>    println(array[i])<br>}</p>
+<ul>
+<li>while语句<br>类似Java中的while语句，分为while 和 do…while语句：<br>var i &#x3D; 5<br>while(i in 1..4){<br> 代码块1<br>}</li>
+<li>do-while语句<br>do{ 代码块2<br>}while(i in 1..4){<br>}</li>
+</ul>
+<ol start="2">
+<li>范围使用<br>主要用于表示范围，主要包括：in、downTo、step、until<br>&#x2F;**</li>
+</ol>
+<ul>
+<li><ol>
+<li>in</li>
+</ol>
+</li>
+<li>作用：在…范围内<br> **&#x2F;<br>&#x2F;&#x2F; 表示：若i在1-5范围内，则执行下面代码<br>&#x2F;&#x2F; 注：闭区间，[1,5]<br>if (i in 1..5) {<br>println(“i 在 1-5 内”)<br>}</li>
+</ul>
+<p>&#x2F;&#x2F; 表示：若i不在1-5范围内，则执行下面代码<br>&#x2F;&#x2F; !in表示不在…范围内<br>if (i !in 1..5) {<br>    println(“i 不在 1-5 内”)<br>}</p>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="2">
+<li>until</li>
+</ol>
+</li>
+<li>作用：表示开区间<br> **&#x2F;<br>&#x2F;&#x2F; 输出1234<br>for (i in 1 until 5) {<br> println(i)<br>}</li>
+</ul>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="3">
+<li>downTo</li>
+</ol>
+</li>
+<li>作用：倒序判断<br> **&#x2F;<br> for (i in 5 downTo 1) {<br> println(i)<br> }</li>
+</ul>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="4">
+<li>step</li>
+</ol>
+</li>
+<li>作用：调整步长<br> **&#x2F;<br>&#x2F;&#x2F; 设置步长为2，顺序输出1、3、5<br>for (i in 1..5 step 2) println(i)</li>
+</ul>
+<p>&#x2F;&#x2F; 设置步长为2，倒序输出5、3、1<br>for (i in 1 downTo 5 step 2) println(i)<br>c. 类型检查 &amp; 转换</p>
+<p>&#x2F;**</p>
+<ul>
+<li><ol>
+<li>is</li>
+</ol>
+</li>
+<li>作用：判断一个对象与指定的类型是否一致<br> **&#x2F;<br>&#x2F;&#x2F; 判断变量a的数据类型是否是String<br>var a: Any &#x3D; “a”<br>if (a is String) {<br>println(“a是String类型”)<br>}<br>if (a !is Int) {<br>println(“a不是Int类型”)<br>}</li>
+</ul>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="2">
+<li>智能转换</li>
+</ol>
+</li>
+<li>说明： kotlin不必使用显式类型转换操作，因为编译器会跟踪不可变值的is检查以及显式转换，并在需要时自动插入（安全的）转换<br> **&#x2F;<br> var a: Any &#x3D; “a”<br>if (a is String) {<br>println(“a是String类型”)<br>println(a.length) &#x2F;&#x2F; a 自动转换为String类型<br>&#x2F;&#x2F;输出结果为：1<br>}</li>
+</ul>
+<p>&#x2F;&#x2F; 反向检查： a自动转换为String类型<br>if (a !is String) {<br>    print(a.length)<br>}</p>
+<p>&#x2F;&#x2F; 在 &amp;&amp; 和 || 的右侧也可以智能转换：<br>&#x2F;&#x2F; <code>&amp;&amp;</code> 右侧的 a 自动转换为String<br>if (a is String &amp;&amp; a.length &gt; 0)<br>&#x2F;&#x2F; <code>||</code> 右侧的 a 自动转换为String<br>if (a is String || a.length &gt; 0)</p>
+<p>&#x2F;&#x2F; 在when表达式和while循环里也能智能转换：<br>when(a){<br>    is String -&gt; a.length<br>    is Int -&gt; a + 1<br>}</p>
+<p>&#x2F;&#x2F; 需要注意：当编译器不能保证变量在检查和使用之间不可改变时，智能转换不能用。智能转换能否适用根据以下规则：<br>&#x2F;&#x2F; 1. val 局部变量——总是可以，局部委托属性除外；<br>&#x2F;&#x2F; 2. val 属性——如果属性是 private 或 internal，或者该检查在声明属性的同一模块中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；<br>&#x2F;&#x2F; 3. var 局部变量——如果变量在检查和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；<br>&#x2F;&#x2F; 4. var 属性——决不可能（因为该变量可以随时被其他代码修改）</p>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="3">
+<li>强制类型转换：as<br> **&#x2F;<br>var any: Any &#x3D; “abc”<br>var str: String &#x3D; any as String</li>
+</ol>
+</li>
+</ul>
+<p>&#x2F;&#x2F; 强制类型转换是不安全的，若类型不兼容则会抛出一个异常<br>var int: Int &#x3D; 123<br>var str: String &#x3D; int as String<br>&#x2F;&#x2F; 抛出ClassCastException</p>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="4">
+<li>可空转换操作符：as？</li>
+</ol>
+</li>
+<li>作用：null不能转换为String，因该类型不是可空的，此时使用可空转换操作符as?<br> **&#x2F;<br>var str &#x3D; null<br>var str2 &#x3D; str as String<br>&#x2F;&#x2F; 抛出TypeCastException</li>
+</ul>
+<p>&#x2F;&#x2F; 使用安全转换操作符as?可以在转换失败时返回null，避免了抛出异常。<br>var str &#x3D; null<br>var str2 &#x3D; str as? String<br>println(str2) &#x2F;&#x2F;输出结果为：null<br>d. 相等性判断</p>
+<h3 id="在Kotlin中，存在结构相等-引用相等-两种相等判断。"><a href="#在Kotlin中，存在结构相等-引用相等-两种相等判断。" class="headerlink" title="在Kotlin中，存在结构相等 &amp; 引用相等 两种相等判断。"></a>在Kotlin中，存在结构相等 &amp; 引用相等 两种相等判断。</h3><p>&#x2F;**</p>
+<ul>
+<li><ol>
+<li>结构相等：equals()或 &#x3D;&#x3D;</li>
+</ol>
+</li>
+<li>作用：判断两个结构是否相等<br> **&#x2F;<br>var a &#x3D; “1”<br>var b &#x3D; “1”<br>if (a.equals(b)) {<br>println(“a 和 b 结构相等”)<br>&#x2F;&#x2F; 输出结果为：a 和 b 结构相等<br>}</li>
+</ul>
+<p>var a &#x3D; 1<br>var b &#x3D; 1<br>if (a &#x3D;&#x3D; b) {<br>    println(“a 和 b 结构相等”)<br>    &#x2F;&#x2F; 输出结果为：a 和 b 结构相等<br>}</p>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="2">
+<li>引用相等：&#x3D;&#x3D;&#x3D;</li>
+</ol>
+</li>
+<li>作用：判断两个引用是否指向同一对象<br> *&#x2F;<br>&#x2F;&#x2F; 设置一个类如下<br>data class User(var name: String, var age: Int)</li>
+</ul>
+<p>&#x2F;&#x2F; 设置值<br>var a &#x3D; User(“Czh”, 22)<br>var b &#x3D; User(“Czh”, 22)<br>var c &#x3D; b<br>var d &#x3D; a</p>
+<p>&#x2F;&#x2F; 对比两个对象的结构<br>if (c &#x3D;&#x3D; d) {<br>    println(“a 和 b 结构相等”)<br>} else {<br>    println(“a 和 b 结构不相等”)<br>}</p>
+<p>&#x2F;&#x2F; 对比两个对象的的引用<br>if (c &#x3D;&#x3D;&#x3D; d) {<br>    println(“a 和 b 引用相等”)<br>} else {<br>    println(“a 和 b 引用不相等”)<br>}</p>
+<p>&#x2F;&#x2F; 输出结果：<br>a 和 b 结构相等<br>a 和 b 引用不相等<br>e. 空安全</p>
+<h3 id="在Java中，NullPointerException异常十分常见"><a href="#在Java中，NullPointerException异常十分常见" class="headerlink" title="在Java中，NullPointerException异常十分常见"></a>在Java中，NullPointerException异常十分常见</h3><p>而Kotlin的优点则是可以尽可能避免执行代码时出现的空指针异常<br>&#x2F;**</p>
+<ul>
+<li><ol>
+<li>可空类型与非空类型</li>
+</ol>
+</li>
+<li>在Kotlin中，有两种情况最可能导致出现NullPointerException<br> **&#x2F;</li>
+</ul>
+<p>&#x2F;&#x2F; 情况1：显式调用 throw NullPointerException()<br>&#x2F;&#x2F; 情况2：使用!! 操作符<br>&#x2F;&#x2F; 说明：!!操作符将任何值转换为非空类型，若该值为空则抛出异常<br>var a &#x3D; null<br>a!!<br>&#x2F;&#x2F; 抛出KotlinNullPointerException</p>
+<p>&#x2F;&#x2F; 情况3：数据类型不能为null<br>&#x2F;&#x2F; 在 Kotlin 中，类型系统区分一个引用可以容纳 null （可空引用） 和 不能容纳（非空引用）<br>&#x2F;&#x2F; 如：String类型变量不能容纳null<br>&#x2F;&#x2F; 若要允许为空，可声明一个变量为可空字符串：在字符串类型后面加一个问号?<br>对于String，则是写作：String?<br>var b: String? &#x3D; “b”<br>b &#x3D; null</p>
+<p>&#x2F;**</p>
+<ul>
+<li><ol start="2">
+<li>安全调用操作符</li>
+</ol>
+</li>
+<li>作用：表示如果若不为null才继续调用<br> **&#x2F;<br> b?.length<br> &#x2F;&#x2F; 表示：若b不为null，才调用b.length</li>
+</ul>
+<p> &#x2F;&#x2F; 注：安全调用符还可以链式调用<br> a?.b?.c?.d<br> &#x2F;&#x2F; 假设a不为null，才继续往下调用，以此类推<br> &#x2F;&#x2F; 若该链式调用中任何一个属性为null，整个表达式都会返回null。<br> &#x2F;&#x2F; 若只对非空值执行某个操作，可与let一起使用<br>a?.b?.let { println(it) }</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

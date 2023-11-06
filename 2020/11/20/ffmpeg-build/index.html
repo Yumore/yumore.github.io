@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MacOS下基于NDK编译FFmpeg | Nathaniel</title>
+  <meta name="keywords" content=" Android , FFmpeg , MacOS ">
+  <meta name="description" content="MacOS下基于NDK编译FFmpeg | Nathaniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于我">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="Nathaniel">
+<meta property="og:description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/about.png">
+<meta property="article:published_time" content="2020-12-21T09:21:33.000Z">
+<meta property="article:modified_time" content="2023-11-06T14:59:19.000Z">
+<meta property="article:author" content="Nathaniel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/about.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Nathaniel</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(41)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具">
+            
+            工具
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="测试">
+            
+            测试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发规范">
+            
+            开发规范
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软技能">
+            
+            软技能
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android">
+            
+            Android
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="blog">
+            
+            blog
+            <small>(33)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Interview">
+            
+            Interview
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="41">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>架构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软技能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CentOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>dart</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FFmpeg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flutter</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gRPC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Keep Live</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kotlin</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MacOS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Markdown</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mvx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nodejs</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Optimistic</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Powershell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Problem</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Q-A</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Raspbian</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ubuntu</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>View</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/03/29/android-interview-addition/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="面试问题集锦">面试问题集锦</span>
+            <span class="post-date" title="2021-03-29 14:01:47">2021/03/29</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 blog "
+           href="/2021/03/01/kotlin-notes/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin学习笔记">Kotlin学习笔记</span>
+            <span class="post-date" title="2021-03-01 10:28:59">2021/03/01</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 软技能 "
+           href="/2021/02/22/keep-your-mind/"
+           data-tag="软技能"
+           data-author="" >
+            <span class="post-title" title="灵魂之力—自控力的强大威力">灵魂之力—自控力的强大威力</span>
+            <span class="post-date" title="2021-02-22 10:43:00">2021/02/22</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/01/27/android-interview/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android高级面试题">Android高级面试题</span>
+            <span class="post-date" title="2021-01-27 16:01:47">2021/01/27</span>
+        </a>
+        
+        
+        <a id="top" class="全部文章 Interview "
+           href="/2021/04/18/android-knowledge/"
+           data-tag="Android,面试"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-18 16:01:47">2021/04/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/20222/09/18/powershell-ohmyzsh/"
+           data-tag="Powershell"
+           data-author="" >
+            <span class="post-title" title="Powershell美化">Powershell美化</span>
+            <span class="post-date" title="20222-09-18 16:52:00">20222/09/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/11/20/flutter-interview/"
+           data-tag="Android,Flutter"
+           data-author="" >
+            <span class="post-title" title="Flutter 学习笔记">Flutter 学习笔记</span>
+            <span class="post-date" title="2022-11-20 15:28:59">2022/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/10/05/git-config/"
+           data-tag="git"
+           data-author="" >
+            <span class="post-title" title="git_config">git_config</span>
+            <span class="post-date" title="2022-10-05 07:15:36">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2022/09/28/Ubuntu-Using/"
+           data-tag="Ubuntu"
+           data-author="" >
+            <span class="post-title" title="Ubuntu日常使用">Ubuntu日常使用</span>
+            <span class="post-date" title="2022-09-28 13:10:27">2022/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android扩展知识点">Android扩展知识点</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/C++%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="C++知识点汇总">C++知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android知识点汇总">Android知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Gradle%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Gradle知识点汇总">Gradle知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Kotlin%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Kotlin知识点汇总">Kotlin知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Java知识点汇总">Java知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Android%E5%BC%80%E6%BA%90%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="开源源码库分析">开源源码库分析</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/android-view/"
+           data-tag="Android,View"
+           data-author="" >
+            <span class="post-title" title="View绘制流程">View绘制流程</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/Framework%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Framework知识点汇总">Framework知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="网络知识汇总">网络知识汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见设计模式汇总">常见设计模式汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="常见算法汇总">常见算法汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="性能优化知识点汇总">性能优化知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/14/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="音视频知识点汇总">音视频知识点汇总</span>
+            <span class="post-date" title="2021-04-14 16:01:47">2021/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/04/08/android-problem-collection/"
+           data-tag="Android,Problem,Q-A"
+           data-author="" >
+            <span class="post-title" title="Android问题集锦">Android问题集锦</span>
+            <span class="post-date" title="2021-04-08 11:04:47">2021/04/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/19/android-optimization/"
+           data-tag="Android,Optimistic"
+           data-author="" >
+            <span class="post-title" title="Android性能优化">Android性能优化</span>
+            <span class="post-date" title="2021-03-19 11:04:47">2021/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/03/08/update-git-shell-v2/"
+           data-tag="Shell,运维"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库 v2">shell 批量更新多个git仓库 v2</span>
+            <span class="post-date" title="2021-03-08 10:29:37">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/24/fragment-data-activity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Fragment和Activity通信">Fragment和Activity通信</span>
+            <span class="post-date" title="2021-02-24 11:40:28">2021/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2021/02/14/update-git-shell/"
+           data-tag="Shell,Git"
+           data-author="" >
+            <span class="post-title" title="shell 批量更新多个git仓库">shell 批量更新多个git仓库</span>
+            <span class="post-date" title="2021-02-14 12:26:56">2021/02/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/20/ffmpeg-build/"
+           data-tag="Android,FFmpeg,MacOS"
+           data-author="" >
+            <span class="post-title" title="MacOS下基于NDK编译FFmpeg">MacOS下基于NDK编译FFmpeg</span>
+            <span class="post-date" title="2020-11-20 15:28:59">2020/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/android-mvx/"
+           data-tag="android,mvx"
+           data-author="" >
+            <span class="post-title" title="Android-UI架构演进">Android-UI架构演进</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/11/19/dart-gRPC/"
+           data-tag="dart,gRPC"
+           data-author="" >
+            <span class="post-title" title="Dart-gPRC">Dart-gPRC</span>
+            <span class="post-date" title="2020-11-19 15:28:59">2020/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具 "
+           href="/2020/10/19/android-studio/"
+           data-tag="AndroidStudio"
+           data-author="" >
+            <span class="post-title" title="Android Studio 使用问题">Android Studio 使用问题</span>
+            <span class="post-date" title="2020-10-19 16:01:47">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/10/19/hexo-for-node/"
+           data-tag="hexo,nodejs"
+           data-author="" >
+            <span class="post-title" title="Node环境下Hexo的搭建">Node环境下Hexo的搭建</span>
+            <span class="post-date" title="2020-10-19 15:28:59">2020/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/09/19/keep-app-alive/"
+           data-tag="Android,Keep Live"
+           data-author="" >
+            <span class="post-title" title="Android保活技术实现">Android保活技术实现</span>
+            <span class="post-date" title="2020-09-19 15:28:59">2020/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 测试 "
+           href="/2020/08/29/app-test-helper/"
+           data-tag="APP,测试"
+           data-author="" >
+            <span class="post-title" title="手机APP测试">手机APP测试</span>
+            <span class="post-date" title="2020-08-29 16:01:47">2020/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Android "
+           href="/2020/08/28/android-architecture/"
+           data-tag="Android,架构"
+           data-author="" >
+            <span class="post-title" title="Android 架构技术演进">Android 架构技术演进</span>
+            <span class="post-date" title="2020-08-28 14:01:47">2020/08/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/08/19/kotlin-learning/"
+           data-tag="Android,Kotlin"
+           data-author="" >
+            <span class="post-title" title="Kotlin笔记">Kotlin笔记</span>
+            <span class="post-date" title="2020-08-19 15:28:59">2020/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/07/19/MariaDB-on-CentOS/"
+           data-tag="CentOS,MariaDB"
+           data-author="" >
+            <span class="post-title" title="在CentOS7中安装MariaDB">在CentOS7中安装MariaDB</span>
+            <span class="post-date" title="2020-07-19 15:28:59">2020/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/05/19/markdown-note/"
+           data-tag="Markdown"
+           data-author="" >
+            <span class="post-title" title="Markdown编辑器语法指南">Markdown编辑器语法指南</span>
+            <span class="post-date" title="2020-05-19 15:28:59">2020/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 blog "
+           href="/2020/03/27/using-raspberry/"
+           data-tag="Linux,Raspbian"
+           data-author="" >
+            <span class="post-title" title="树莓派的使用笔记">树莓派的使用笔记</span>
+            <span class="post-date" title="2020-03-27 00:16:31">2020/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发规范 "
+           href="/2019/05/01/constraint-for-android/"
+           data-tag="Android,开发规范"
+           data-author="" >
+            <span class="post-title" title="关于Android的开发规范">关于Android的开发规范</span>
+            <span class="post-date" title="2019-05-01 15:29:59">2019/05/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ffmpeg-build" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">MacOS下基于NDK编译FFmpeg</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="blog">blog</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Android</a>
+            
+            <a class="color2">FFmpeg</a>
+            
+            <a class="color1">MacOS</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-11-06 22:59:18'>2020-11-20 15:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85ffmpeg%E5%92%8C%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0ffmpeg%E6%BA%90%E7%A0%81%E5%8C%85"><span class="toc-text">1.安装ffmpeg和下载最新ffmpeg源码包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BDffmpeg%E6%BA%90%E7%A0%81%E5%8C%85%E5%B0%86%E6%BA%90%E7%A0%81%E5%8C%85%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">2.下载ffmpeg源码包将源码包解压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6-build-android-sh"><span class="toc-text">3.编写脚本文件 build-android.sh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-env-sh"><span class="toc-text">4. 编写配置文件 config-env.sh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-text">5.执行脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B8%8B%E8%BD%BDEpMedia%E6%BA%90%E7%A0%81"><span class="toc-text">6.下载EpMedia源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BC%96%E5%86%99ndk-build-sh"><span class="toc-text">7.编写ndk-build.sh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%89%A7%E8%A1%8Cndk-build-sh"><span class="toc-text">8.执行ndk-build.sh</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装ffmpeg和下载最新ffmpeg源码包"><a href="#1-安装ffmpeg和下载最新ffmpeg源码包" class="headerlink" title="1.安装ffmpeg和下载最新ffmpeg源码包"></a>1.安装ffmpeg和下载最新ffmpeg源码包</h2><p>brew install ffmpeg</p>
+<h2 id="2-下载ffmpeg源码包将源码包解压缩"><a href="#2-下载ffmpeg源码包将源码包解压缩" class="headerlink" title="2.下载ffmpeg源码包将源码包解压缩"></a>2.下载ffmpeg源码包将源码包解压缩</h2><p><a target="_blank" rel="noopener" href="https://ffmpeg.org/releases/ffmpeg-4.3.1.tar.gz">ffmpeg源码包</a></p>
+<h2 id="3-编写脚本文件-build-android-sh"><a href="#3-编写脚本文件-build-android-sh" class="headerlink" title="3.编写脚本文件 build-android.sh"></a>3.编写脚本文件 build-android.sh</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br></pre></td><td class="code"><pre><span class="line">cd &#123;ffmpeg&#125;</span><br><span class="line">nano build-android.sh</span><br><span class="line"></span><br><span class="line">-----------------------</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">make clean</span><br><span class="line"></span><br><span class="line">NDK=~/Library/Android/sdk/ndk-r21b</span><br><span class="line">TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64</span><br><span class="line">CONFIG_SHELL=config-env.sh</span><br><span class="line">API=29</span><br><span class="line"></span><br><span class="line">function build_android() &#123;</span><br><span class="line">    echo &quot;Compiling FFmpeg for $CPU&quot;</span><br><span class="line">    ./configure \</span><br><span class="line">        --prefix=$PREFIX \</span><br><span class="line">        --disable-static \</span><br><span class="line">        --disable-doc \</span><br><span class="line">        --disable-ffmpeg \</span><br><span class="line">        --disable-ffplay \</span><br><span class="line">        --disable-ffprobe \</span><br><span class="line">        --disable-doc \</span><br><span class="line">        --disable-symver \</span><br><span class="line">        --enable-nonfree \</span><br><span class="line">        --enable-gpl \</span><br><span class="line">        --enable-small \</span><br><span class="line">        --enable-neon \</span><br><span class="line">        --enable-hwaccels \</span><br><span class="line">        --enable-avdevice \</span><br><span class="line">        --enable-postproc \</span><br><span class="line">        --enable-avresample \</span><br><span class="line">        --enable-shared \</span><br><span class="line">        --enable-jni \</span><br><span class="line">        --enable-mediacodec \</span><br><span class="line">        --enable-decoder=h264_mediacodec \</span><br><span class="line">        --cross-prefix=$CROSS_PREFIX \</span><br><span class="line">        --target-os=android \</span><br><span class="line">        --arch=$ARCH \</span><br><span class="line">        --cpu=$CPU \</span><br><span class="line">        --nm=$NM \</span><br><span class="line">        --strip=$STRIP \</span><br><span class="line">        --cc=$CC \</span><br><span class="line">        --cxx=$CXX \</span><br><span class="line">        --enable-cross-compile \</span><br><span class="line">        --sysroot=$SYSROOT \</span><br><span class="line">        --extra-cflags=&quot;-Os -fpic $OPTIMIZE_CFLAGS&quot; \</span><br><span class="line">        --extra-ldflags=&quot;$ADDI_LDFLAGS&quot; \</span><br><span class="line">        $ADDITIONAL_CONFIGURE_FLAG</span><br><span class="line">    make clean</span><br><span class="line">    make -j8</span><br><span class="line">    make install</span><br><span class="line">    echo &quot;The Compilation of FFmpeg for $CPU is completed&quot;</span><br><span class="line">    echo &quot;Output library : $LIB_DIR&quot;</span><br><span class="line">    echo &quot;Current dir is $&#123;PWD&#125;&quot;</span><br><span class="line">    # cd ..</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">交叉编译工具目录,对应关系如下</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">armv8a -&gt; arm64 -&gt; aarch64-linux-android-</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">armv7a -&gt; arm -&gt; arm-linux-androideabi-</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">x86 -&gt; x86 -&gt; i686-linux-android-</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">x86_64 -&gt; x86_64 -&gt; x86_64-linux-android-</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># armv8-a</span></span></span><br><span class="line">function v8() &#123;</span><br><span class="line">    source &quot;$&#123;CONFIG_SHELL&#125;&quot;</span><br><span class="line">    OUTPUT_FOLDER=&quot;arm64-v8a&quot;</span><br><span class="line">    ARCH=arm64</span><br><span class="line">    CPU=&quot;armv8-a&quot;</span><br><span class="line">    TOOL_CPU_NAME=aarch64</span><br><span class="line">    TOOL_PREFIX=&quot;$TOOLCHAIN/bin/$TOOL_CPU_NAME-linux-android&quot;</span><br><span class="line"></span><br><span class="line">    CC=&quot;$TOOL_PREFIX$API-clang&quot;</span><br><span class="line">    CXX=&quot;$TOOL_PREFIX$API-clang++&quot;</span><br><span class="line">    SYSROOT=&quot;$NDK/toolchains/llvm/prebuilt/darwin-x86_64/sysroot&quot;</span><br><span class="line">    PREFIX=&quot;android/$OUTPUT_FOLDER&quot;</span><br><span class="line">    LIB_DIR=&quot;android/libs/$OUTPUT_FOLDER&quot;</span><br><span class="line">    OPTIMIZE_CFLAGS=&quot;-march=$CPU&quot;</span><br><span class="line">    build_android</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># armv7-a</span></span></span><br><span class="line">function v7() &#123;</span><br><span class="line">    source &quot;$&#123;CONFIG_SHELL&#125;&quot;</span><br><span class="line">    OUTPUT_FOLDER=&quot;armeabi-v7a&quot;</span><br><span class="line">    ARCH=&quot;arm&quot;</span><br><span class="line">    CPU=&quot;armv7-a&quot;</span><br><span class="line">    TOOL_CPU_NAME=armv7a</span><br><span class="line">    TOOL_PREFIX=&quot;$TOOLCHAIN/bin/arm-linux-androideabi&quot;</span><br><span class="line"></span><br><span class="line">    CC=&quot;$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang&quot;</span><br><span class="line">    CXX=&quot;$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang++&quot;</span><br><span class="line">    SYSROOT=&quot;$NDK/toolchains/llvm/prebuilt/darwin-x86_64/sysroot&quot;</span><br><span class="line">    PREFIX=&quot;android/$OUTPUT_FOLDER&quot;</span><br><span class="line">    LIB_DIR=&quot;android/libs/$OUTPUT_FOLDER&quot;</span><br><span class="line">    OPTIMIZE_CFLAGS=&quot;-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU&quot;</span><br><span class="line">    build_android</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># x86</span></span></span><br><span class="line">function x86() &#123;</span><br><span class="line">    source &quot;$&#123;CONFIG_SHELL&#125;&quot;</span><br><span class="line">    OUTPUT_FOLDER=&quot;x86&quot;</span><br><span class="line">    ARCH=&quot;x86&quot;</span><br><span class="line">    CPU=&quot;x86&quot;</span><br><span class="line">    TOOL_CPU_NAME=&quot;i686&quot;</span><br><span class="line">    TOOL_PREFIX=&quot;$TOOLCHAIN/bin/$&#123;TOOL_CPU_NAME&#125;-linux-android&quot;</span><br><span class="line"></span><br><span class="line">    CC=&quot;$TOOL_PREFIX$API-clang&quot;</span><br><span class="line">    CXX=&quot;$TOOL_PREFIX$API-clang++&quot;</span><br><span class="line">    SYSROOT=&quot;$NDK/toolchains/llvm/prebuilt/darwin-x86_64/sysroot&quot;</span><br><span class="line">    PREFIX=&quot;android/$OUTPUT_FOLDER&quot;</span><br><span class="line">    LIB_DIR=&quot;android/libs/$OUTPUT_FOLDER&quot;</span><br><span class="line">    OPTIMIZE_CFLAGS=&quot;-march=i686 -mtune=intel -mssse3 -mfpmath=sse -m32&quot;</span><br><span class="line">    build_android</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># x86_64</span></span></span><br><span class="line">function x86_64() &#123;</span><br><span class="line">    source &quot;$&#123;CONFIG_SHELL&#125;&quot;</span><br><span class="line">    OUTPUT_FOLDER=&quot;x86_64&quot;</span><br><span class="line">    ARCH=&quot;x86_64&quot;</span><br><span class="line">    CPU=&quot;x86-64&quot;</span><br><span class="line">    TOOL_CPU_NAME=&quot;x86_64&quot;</span><br><span class="line">    TOOL_PREFIX=&quot;$TOOLCHAIN/bin/$&#123;TOOL_CPU_NAME&#125;-linux-android&quot;</span><br><span class="line"></span><br><span class="line">    CC=&quot;$TOOL_PREFIX$API-clang&quot;</span><br><span class="line">    CXX=&quot;$TOOL_PREFIX$API-clang++&quot;</span><br><span class="line">    SYSROOT=&quot;$NDK/toolchains/llvm/prebuilt/darwin-x86_64/sysroot&quot;</span><br><span class="line">    PREFIX=&quot;android/$OUTPUT_FOLDER&quot;</span><br><span class="line">    LIB_DIR=&quot;android/libs/$OUTPUT_FOLDER&quot;</span><br><span class="line">    OPTIMIZE_CFLAGS=&quot;-march=$CPU -msse4.2 -mpopcnt -m64 -mtune=intel&quot;</span><br><span class="line">    build_android</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">简单使用说明</span></span><br><span class="line"></span><br><span class="line">if [ -z $1 ]; then</span><br><span class="line">    echo &quot;Usage:&quot;</span><br><span class="line">    echo &quot;  $0 all&quot;</span><br><span class="line">    echo &quot;  $0 armv8&quot;</span><br><span class="line">    echo &quot;    all support cpu :armv7 armv8 x86 x86_64&quot;</span><br><span class="line">    exit -1</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检测构建全部</span></span><br><span class="line"></span><br><span class="line">HAVE_ALL=0</span><br><span class="line"></span><br><span class="line">for arg in $@; do</span><br><span class="line"></span><br><span class="line">    if [ &quot;$arg&quot; == &#x27;all&#x27; ]; then</span><br><span class="line">        HAVE_ALL=1</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ $HAVE_ALL -eq 1 ]; then</span><br><span class="line"></span><br><span class="line">    x86</span><br><span class="line">    x86_64</span><br><span class="line">    v8</span><br><span class="line">    v7</span><br><span class="line">    exit 0</span><br><span class="line"></span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">根据输入参数检测构建哪种cpu</span></span><br><span class="line"></span><br><span class="line">for arg in $@; do</span><br><span class="line"></span><br><span class="line">    if [ &quot;$arg&quot; == &#x27;x86&#x27; ]; then</span><br><span class="line">        x86</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">    if [ &quot;$arg&quot; == &#x27;x86_64&#x27; ]; then</span><br><span class="line">        x86_64</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">    if [ &quot;$arg&quot; == &#x27;armv8&#x27; ]; then</span><br><span class="line">        v8</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">    if [ &quot;$arg&quot; == &#x27;armv7&#x27; ]; then</span><br><span class="line">        v7</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">done</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当前NDK版本为r21b, ffmpeg版本为4.3.1</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在原作者基础上有修改</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. API等级是21</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 4.3.1 版本并不需要手动修改ffmpeg的configure文件,因为打出来的so文件是没有版本号的</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. ffmpeg 目录结构有修改, 所以有一个<span class="built_in">cd</span>的过程</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">目录结构</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">tree -L 1</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">├── android <span class="comment"># 输出目录</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">├── build_ffmpeg_android.sh <span class="comment"># 脚本</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">├── config-env.sh <span class="comment"># 选项</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">└── ffmpeg-4.3.1 <span class="comment"># ffmpeg 目录</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译选项可以使用 ./configure -h 查看, 可以根据自己的需求开启或关闭编解码支持, 会显著降低so大小</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本选项编译出的文件文件尺寸如下:</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">ll android/libs/arm64-v8a</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">total 11624</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-rwxr-xr-x  1 caijinglong  staff   3.9M  7 26 16:28 libavcodec.so</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-rwxr-xr-x  1 caijinglong  staff   106K  7 26 16:28 libavfilter.so</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-rwxr-xr-x  1 caijinglong  staff   771K  7 26 16:28 libavformat.so</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-rwxr-xr-x  1 caijinglong  staff   443K  7 26 16:28 libavutil.so</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-rwxr-xr-x  1 caijinglong  staff    82K  7 26 16:28 libswresample.so</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-rwxr-xr-x  1 caijinglong  staff   398K  7 26 16:28 libswscale.so</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果想要和ijkplayer那样将所有so合并为一个libffmpeg.so库,可以看下面的说明</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">说是合并,实际上so是不支持合并的, 需要编译出.a静态库而不是so动态库, 然后将多个静态库合并为一个so, 然后用TOOLCHAIN中的gcc命令进行合并</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gcc -shared -o -Wl --whole-archive avcodec.a avfilter.a other.a -Wl,--no-whole-archive</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-编写配置文件-config-env-sh"><a href="#4-编写配置文件-config-env-sh" class="headerlink" title="4. 编写配置文件 config-env.sh"></a>4. 编写配置文件 config-env.sh</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br></pre></td><td class="code"><pre><span class="line">nano config-env.sh</span><br><span class="line"></span><br><span class="line">-------------------</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">! /usr/bin/env bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">shell/config.sh</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这个来自ijkplayer的ffmpeg配置, 会在上面的build脚本中被引入</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--------------------</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Standard options:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --prefix=PREFIX&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Licensing options:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-gpl&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-version3&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-nonfree&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Configuration options:</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-static&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-shared&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-small&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-runtime-cpudetect&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-gray&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-swscale-alpha&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Program options:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-programs&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-ffmpeg&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-ffplay&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-ffprobe&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-ffserver&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Documentation options:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-doc&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-htmlpages&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-manpages&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-podpages&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-txtpages&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Component options:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-avdevice&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-avcodec&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-avformat&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-avutil&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-swresample&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-swscale&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-postproc&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-avfilter&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-avresample&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-pthreads&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-w32threads&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-os2threads&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-network&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-dct&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-dwt&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-lsp&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-lzo&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mdct&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-rdft&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-fft&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Hardware accelerators:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-d3d11va&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-dxva2&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-vaapi&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-vda&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-vdpau&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-videotoolbox&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Individual component options:</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-everything&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-encoders&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-encoder=png&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-encoder=mjpeg&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-encoder=jpeg2000&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">./configure --list-decoders</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-decoders&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=aac&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=aac_latm&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=flv&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=h264&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mp3*&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=vp6f&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=flac&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=hevc&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=vp8&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=vp9&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=h263&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=h263i&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=h263p&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mpeg4&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mjpeg&quot;</span><br><span class="line"></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-hwaccels&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">./configure --list-muxers</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-muxers&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-muxer=mp4&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-muxer=mjpeg&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">./configure --list-demuxers</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-demuxers&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=aac&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=concat&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=data&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=flv&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=hls&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=live_flv&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mov&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mp3&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mpegps&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mpegts&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mpegvideo&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=flac&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=hevc&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=webm_dash_manifest&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mpeg4&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mjpeg&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=avi&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">./configure --list-parsers</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-parsers&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=aac&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=aac_latm&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=h264&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=flac&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=hevc&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=mpeg4&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=mpeg4video&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-parser=mpegvideo&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">./configure --list-bsf</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-bsfs&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=chomp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=dca_core&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=dump_extradata&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=hevc_mp4toannexb&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=imx_dump_header&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=mjpeg2jpeg&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=mjpega_dump_header&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=mov2textsub&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=mp3_header_decompress&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=mpeg4_unpack_bframes&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=noise&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=remove_extradata&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=text2movsub&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bsf=vp9_superframe&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">./configure --list-protocols</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocols&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=async&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=bluray&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=concat&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=crypto&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=ffrtmpcrypt&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=ffrtmphttp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=gopher&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=icecast&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=librtmp*&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=libssh&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=md5&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=mmsh&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=mmst&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=rtmp*&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=rtmp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=rtmpt&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=rtp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=sctp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=srtp&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=subfile&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=unix&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-devices&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-filters&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">External library support:</span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-iconv&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-audiotoolbox&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-videotoolbox&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">...</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Advanced options (experts only):</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --cross-prefix=<span class="variable">$&#123;FF_CROSS_PREFIX&#125;</span>-&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-cross-compile&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --sysroot=PATH&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --sysinclude=PATH&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --target-os=TAGET_OS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --target-exec=CMD&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --target-path=DIR&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --toolchain=NAME&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --nm=NM&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --ar=AR&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --as=AS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --yasmexe=EXE&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --cc=CC&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --cxx=CXX&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --dep-cc=DEPCC&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --ld=LD&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-cc=HOSTCC&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-cflags=HCFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-cppflags=HCPPFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-ld=HOSTLD&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-ldflags=HLDFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-libs=HLIBS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --host-os=OS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --extra-cflags=ECFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --extra-cxxflags=ECFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --extra-ldflags=ELDFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --extra-libs=ELIBS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --extra-version=STRING&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --optflags=OPTFLAGS&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --build-suffix=SUFFIX&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --malloc-prefix=PREFIX&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --progs-suffix=SUFFIX&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --arch=ARCH&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --cpu=CPU&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-pic&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-sram&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-thumb&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-symver&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-hardcoded-tables&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-safe-bitstream-reader&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-memalign-hack&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-lto&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Optimization options (experts only):</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-asm&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-altivec&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-amd3dnow&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-amd3dnowext&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mmx&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mmxext&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-sse&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-sse2&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-sse3&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-ssse3&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-sse4&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-sse42&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-avx&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-fma4&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-armv5te&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-armv6&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-armv6t2&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-vfp&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-neon&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-vis&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-inline-asm&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-yasm&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mips32r2&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mipsdspr1&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mipsdspr2&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-mipsfpu&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-fast-unaligned&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Developer options (useful when working on FFmpeg itself):</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-coverage&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-debug&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-debug=LEVEL&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-optimizations&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-extra-warnings&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-stripping&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --assert-level=level&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-memory-poisoning&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --valgrind=VALGRIND&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-ftrapv&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --samples=PATH&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-xmm-clobber-test&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-random&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-random&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --enable-random=LIST&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --disable-random=LIST&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> COMMON_FF_CFG_FLAGS=<span class="string">&quot;<span class="variable">$COMMON_FF_CFG_FLAGS</span> --random-seed=VALUE&quot;</span></span></span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-linux-perf&quot;</span><br><span class="line">export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bzlib&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>直接借用Ubuntu下的脚本工具修改对应的参数</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5ab3204e0bc3">参考链接1</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CLinuxF/article/details/108018203">参考链接2</a></p>
+<h2 id="5-执行脚本"><a href="#5-执行脚本" class="headerlink" title="5.执行脚本"></a>5.执行脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x build-android.sh</span><br><span class="line">./build-android.sh all</span><br></pre></td></tr></table></figure>
+
+<p>5.编译后的目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br><span class="line">727</span><br><span class="line">728</span><br><span class="line">729</span><br><span class="line">730</span><br><span class="line">731</span><br><span class="line">732</span><br><span class="line">733</span><br><span class="line">734</span><br><span class="line">735</span><br><span class="line">736</span><br><span class="line">737</span><br><span class="line">738</span><br><span class="line">739</span><br><span class="line">740</span><br><span class="line">741</span><br><span class="line">742</span><br><span class="line">743</span><br><span class="line">744</span><br><span class="line">745</span><br><span class="line">746</span><br><span class="line">747</span><br><span class="line">748</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── arm64-v8a</span><br><span class="line">│   ├── include</span><br><span class="line">│   │   ├── libavcodec</span><br><span class="line">│   │   │   ├── ac3_parser.h</span><br><span class="line">│   │   │   ├── adts_parser.h</span><br><span class="line">│   │   │   ├── avcodec.h</span><br><span class="line">│   │   │   ├── avdct.h</span><br><span class="line">│   │   │   ├── avfft.h</span><br><span class="line">│   │   │   ├── bsf.h</span><br><span class="line">│   │   │   ├── codec.h</span><br><span class="line">│   │   │   ├── codec_desc.h</span><br><span class="line">│   │   │   ├── codec_id.h</span><br><span class="line">│   │   │   ├── codec_par.h</span><br><span class="line">│   │   │   ├── d3d11va.h</span><br><span class="line">│   │   │   ├── dirac.h</span><br><span class="line">│   │   │   ├── dv_profile.h</span><br><span class="line">│   │   │   ├── dxva2.h</span><br><span class="line">│   │   │   ├── jni.h</span><br><span class="line">│   │   │   ├── mediacodec.h</span><br><span class="line">│   │   │   ├── packet.h</span><br><span class="line">│   │   │   ├── qsv.h</span><br><span class="line">│   │   │   ├── vaapi.h</span><br><span class="line">│   │   │   ├── vdpau.h</span><br><span class="line">│   │   │   ├── version.h</span><br><span class="line">│   │   │   ├── videotoolbox.h</span><br><span class="line">│   │   │   ├── vorbis_parser.h</span><br><span class="line">│   │   │   └── xvmc.h</span><br><span class="line">│   │   ├── libavdevice</span><br><span class="line">│   │   │   ├── avdevice.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavfilter</span><br><span class="line">│   │   │   ├── avfilter.h</span><br><span class="line">│   │   │   ├── buffersink.h</span><br><span class="line">│   │   │   ├── buffersrc.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavformat</span><br><span class="line">│   │   │   ├── avformat.h</span><br><span class="line">│   │   │   ├── avio.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavresample</span><br><span class="line">│   │   │   ├── avresample.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavutil</span><br><span class="line">│   │   │   ├── adler32.h</span><br><span class="line">│   │   │   ├── aes.h</span><br><span class="line">│   │   │   ├── aes_ctr.h</span><br><span class="line">│   │   │   ├── attributes.h</span><br><span class="line">│   │   │   ├── audio_fifo.h</span><br><span class="line">│   │   │   ├── avassert.h</span><br><span class="line">│   │   │   ├── avconfig.h</span><br><span class="line">│   │   │   ├── avstring.h</span><br><span class="line">│   │   │   ├── avutil.h</span><br><span class="line">│   │   │   ├── base64.h</span><br><span class="line">│   │   │   ├── blowfish.h</span><br><span class="line">│   │   │   ├── bprint.h</span><br><span class="line">│   │   │   ├── bswap.h</span><br><span class="line">│   │   │   ├── buffer.h</span><br><span class="line">│   │   │   ├── camellia.h</span><br><span class="line">│   │   │   ├── cast5.h</span><br><span class="line">│   │   │   ├── channel_layout.h</span><br><span class="line">│   │   │   ├── common.h</span><br><span class="line">│   │   │   ├── cpu.h</span><br><span class="line">│   │   │   ├── crc.h</span><br><span class="line">│   │   │   ├── des.h</span><br><span class="line">│   │   │   ├── dict.h</span><br><span class="line">│   │   │   ├── display.h</span><br><span class="line">│   │   │   ├── dovi_meta.h</span><br><span class="line">│   │   │   ├── downmix_info.h</span><br><span class="line">│   │   │   ├── encryption_info.h</span><br><span class="line">│   │   │   ├── error.h</span><br><span class="line">│   │   │   ├── eval.h</span><br><span class="line">│   │   │   ├── ffversion.h</span><br><span class="line">│   │   │   ├── fifo.h</span><br><span class="line">│   │   │   ├── file.h</span><br><span class="line">│   │   │   ├── frame.h</span><br><span class="line">│   │   │   ├── hash.h</span><br><span class="line">│   │   │   ├── hdr_dynamic_metadata.h</span><br><span class="line">│   │   │   ├── hmac.h</span><br><span class="line">│   │   │   ├── hwcontext.h</span><br><span class="line">│   │   │   ├── hwcontext_cuda.h</span><br><span class="line">│   │   │   ├── hwcontext_d3d11va.h</span><br><span class="line">│   │   │   ├── hwcontext_drm.h</span><br><span class="line">│   │   │   ├── hwcontext_dxva2.h</span><br><span class="line">│   │   │   ├── hwcontext_mediacodec.h</span><br><span class="line">│   │   │   ├── hwcontext_opencl.h</span><br><span class="line">│   │   │   ├── hwcontext_qsv.h</span><br><span class="line">│   │   │   ├── hwcontext_vaapi.h</span><br><span class="line">│   │   │   ├── hwcontext_vdpau.h</span><br><span class="line">│   │   │   ├── hwcontext_videotoolbox.h</span><br><span class="line">│   │   │   ├── hwcontext_vulkan.h</span><br><span class="line">│   │   │   ├── imgutils.h</span><br><span class="line">│   │   │   ├── intfloat.h</span><br><span class="line">│   │   │   ├── intreadwrite.h</span><br><span class="line">│   │   │   ├── lfg.h</span><br><span class="line">│   │   │   ├── log.h</span><br><span class="line">│   │   │   ├── lzo.h</span><br><span class="line">│   │   │   ├── macros.h</span><br><span class="line">│   │   │   ├── mastering_display_metadata.h</span><br><span class="line">│   │   │   ├── mathematics.h</span><br><span class="line">│   │   │   ├── md5.h</span><br><span class="line">│   │   │   ├── mem.h</span><br><span class="line">│   │   │   ├── motion_vector.h</span><br><span class="line">│   │   │   ├── murmur3.h</span><br><span class="line">│   │   │   ├── opt.h</span><br><span class="line">│   │   │   ├── parseutils.h</span><br><span class="line">│   │   │   ├── pixdesc.h</span><br><span class="line">│   │   │   ├── pixelutils.h</span><br><span class="line">│   │   │   ├── pixfmt.h</span><br><span class="line">│   │   │   ├── random_seed.h</span><br><span class="line">│   │   │   ├── rational.h</span><br><span class="line">│   │   │   ├── rc4.h</span><br><span class="line">│   │   │   ├── replaygain.h</span><br><span class="line">│   │   │   ├── ripemd.h</span><br><span class="line">│   │   │   ├── samplefmt.h</span><br><span class="line">│   │   │   ├── sha.h</span><br><span class="line">│   │   │   ├── sha512.h</span><br><span class="line">│   │   │   ├── spherical.h</span><br><span class="line">│   │   │   ├── stereo3d.h</span><br><span class="line">│   │   │   ├── tea.h</span><br><span class="line">│   │   │   ├── threadmessage.h</span><br><span class="line">│   │   │   ├── time.h</span><br><span class="line">│   │   │   ├── timecode.h</span><br><span class="line">│   │   │   ├── timestamp.h</span><br><span class="line">│   │   │   ├── tree.h</span><br><span class="line">│   │   │   ├── twofish.h</span><br><span class="line">│   │   │   ├── tx.h</span><br><span class="line">│   │   │   ├── version.h</span><br><span class="line">│   │   │   ├── video_enc_params.h</span><br><span class="line">│   │   │   └── xtea.h</span><br><span class="line">│   │   ├── libpostproc</span><br><span class="line">│   │   │   ├── postprocess.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libswresample</span><br><span class="line">│   │   │   ├── swresample.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   └── libswscale</span><br><span class="line">│   │       ├── swscale.h</span><br><span class="line">│   │       └── version.h</span><br><span class="line">│   ├── lib</span><br><span class="line">│   │   ├── libavcodec.so</span><br><span class="line">│   │   ├── libavdevice.so</span><br><span class="line">│   │   ├── libavfilter.so</span><br><span class="line">│   │   ├── libavformat.so</span><br><span class="line">│   │   ├── libavresample.so</span><br><span class="line">│   │   ├── libavutil.so</span><br><span class="line">│   │   ├── libpostproc.so</span><br><span class="line">│   │   ├── libswresample.so</span><br><span class="line">│   │   ├── libswscale.so</span><br><span class="line">│   │   └── pkgconfig</span><br><span class="line">│   │       ├── libavcodec.pc</span><br><span class="line">│   │       ├── libavdevice.pc</span><br><span class="line">│   │       ├── libavfilter.pc</span><br><span class="line">│   │       ├── libavformat.pc</span><br><span class="line">│   │       ├── libavresample.pc</span><br><span class="line">│   │       ├── libavutil.pc</span><br><span class="line">│   │       ├── libpostproc.pc</span><br><span class="line">│   │       ├── libswresample.pc</span><br><span class="line">│   │       └── libswscale.pc</span><br><span class="line">│   └── share</span><br><span class="line">│       └── ffmpeg</span><br><span class="line">│           └── examples</span><br><span class="line">│               ├── Makefile</span><br><span class="line">│               ├── README</span><br><span class="line">│               ├── avio_list_dir.c</span><br><span class="line">│               ├── avio_reading.c</span><br><span class="line">│               ├── decode_audio.c</span><br><span class="line">│               ├── decode_video.c</span><br><span class="line">│               ├── demuxing_decoding.c</span><br><span class="line">│               ├── encode_audio.c</span><br><span class="line">│               ├── encode_video.c</span><br><span class="line">│               ├── extract_mvs.c</span><br><span class="line">│               ├── filter_audio.c</span><br><span class="line">│               ├── filtering_audio.c</span><br><span class="line">│               ├── filtering_video.c</span><br><span class="line">│               ├── http_multiclient.c</span><br><span class="line">│               ├── hw_decode.c</span><br><span class="line">│               ├── metadata.c</span><br><span class="line">│               ├── muxing.c</span><br><span class="line">│               ├── qsvdec.c</span><br><span class="line">│               ├── remuxing.c</span><br><span class="line">│               ├── resampling_audio.c</span><br><span class="line">│               ├── scaling_video.c</span><br><span class="line">│               ├── transcode_aac.c</span><br><span class="line">│               ├── transcoding.c</span><br><span class="line">│               ├── vaapi_encode.c</span><br><span class="line">│               └── vaapi_transcode.c</span><br><span class="line">├── armeabi-v7a</span><br><span class="line">│   ├── include</span><br><span class="line">│   │   ├── libavcodec</span><br><span class="line">│   │   │   ├── ac3_parser.h</span><br><span class="line">│   │   │   ├── adts_parser.h</span><br><span class="line">│   │   │   ├── avcodec.h</span><br><span class="line">│   │   │   ├── avdct.h</span><br><span class="line">│   │   │   ├── avfft.h</span><br><span class="line">│   │   │   ├── bsf.h</span><br><span class="line">│   │   │   ├── codec.h</span><br><span class="line">│   │   │   ├── codec_desc.h</span><br><span class="line">│   │   │   ├── codec_id.h</span><br><span class="line">│   │   │   ├── codec_par.h</span><br><span class="line">│   │   │   ├── d3d11va.h</span><br><span class="line">│   │   │   ├── dirac.h</span><br><span class="line">│   │   │   ├── dv_profile.h</span><br><span class="line">│   │   │   ├── dxva2.h</span><br><span class="line">│   │   │   ├── jni.h</span><br><span class="line">│   │   │   ├── mediacodec.h</span><br><span class="line">│   │   │   ├── packet.h</span><br><span class="line">│   │   │   ├── qsv.h</span><br><span class="line">│   │   │   ├── vaapi.h</span><br><span class="line">│   │   │   ├── vdpau.h</span><br><span class="line">│   │   │   ├── version.h</span><br><span class="line">│   │   │   ├── videotoolbox.h</span><br><span class="line">│   │   │   ├── vorbis_parser.h</span><br><span class="line">│   │   │   └── xvmc.h</span><br><span class="line">│   │   ├── libavdevice</span><br><span class="line">│   │   │   ├── avdevice.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavfilter</span><br><span class="line">│   │   │   ├── avfilter.h</span><br><span class="line">│   │   │   ├── buffersink.h</span><br><span class="line">│   │   │   ├── buffersrc.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavformat</span><br><span class="line">│   │   │   ├── avformat.h</span><br><span class="line">│   │   │   ├── avio.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavresample</span><br><span class="line">│   │   │   ├── avresample.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavutil</span><br><span class="line">│   │   │   ├── adler32.h</span><br><span class="line">│   │   │   ├── aes.h</span><br><span class="line">│   │   │   ├── aes_ctr.h</span><br><span class="line">│   │   │   ├── attributes.h</span><br><span class="line">│   │   │   ├── audio_fifo.h</span><br><span class="line">│   │   │   ├── avassert.h</span><br><span class="line">│   │   │   ├── avconfig.h</span><br><span class="line">│   │   │   ├── avstring.h</span><br><span class="line">│   │   │   ├── avutil.h</span><br><span class="line">│   │   │   ├── base64.h</span><br><span class="line">│   │   │   ├── blowfish.h</span><br><span class="line">│   │   │   ├── bprint.h</span><br><span class="line">│   │   │   ├── bswap.h</span><br><span class="line">│   │   │   ├── buffer.h</span><br><span class="line">│   │   │   ├── camellia.h</span><br><span class="line">│   │   │   ├── cast5.h</span><br><span class="line">│   │   │   ├── channel_layout.h</span><br><span class="line">│   │   │   ├── common.h</span><br><span class="line">│   │   │   ├── cpu.h</span><br><span class="line">│   │   │   ├── crc.h</span><br><span class="line">│   │   │   ├── des.h</span><br><span class="line">│   │   │   ├── dict.h</span><br><span class="line">│   │   │   ├── display.h</span><br><span class="line">│   │   │   ├── dovi_meta.h</span><br><span class="line">│   │   │   ├── downmix_info.h</span><br><span class="line">│   │   │   ├── encryption_info.h</span><br><span class="line">│   │   │   ├── error.h</span><br><span class="line">│   │   │   ├── eval.h</span><br><span class="line">│   │   │   ├── ffversion.h</span><br><span class="line">│   │   │   ├── fifo.h</span><br><span class="line">│   │   │   ├── file.h</span><br><span class="line">│   │   │   ├── frame.h</span><br><span class="line">│   │   │   ├── hash.h</span><br><span class="line">│   │   │   ├── hdr_dynamic_metadata.h</span><br><span class="line">│   │   │   ├── hmac.h</span><br><span class="line">│   │   │   ├── hwcontext.h</span><br><span class="line">│   │   │   ├── hwcontext_cuda.h</span><br><span class="line">│   │   │   ├── hwcontext_d3d11va.h</span><br><span class="line">│   │   │   ├── hwcontext_drm.h</span><br><span class="line">│   │   │   ├── hwcontext_dxva2.h</span><br><span class="line">│   │   │   ├── hwcontext_mediacodec.h</span><br><span class="line">│   │   │   ├── hwcontext_opencl.h</span><br><span class="line">│   │   │   ├── hwcontext_qsv.h</span><br><span class="line">│   │   │   ├── hwcontext_vaapi.h</span><br><span class="line">│   │   │   ├── hwcontext_vdpau.h</span><br><span class="line">│   │   │   ├── hwcontext_videotoolbox.h</span><br><span class="line">│   │   │   ├── hwcontext_vulkan.h</span><br><span class="line">│   │   │   ├── imgutils.h</span><br><span class="line">│   │   │   ├── intfloat.h</span><br><span class="line">│   │   │   ├── intreadwrite.h</span><br><span class="line">│   │   │   ├── lfg.h</span><br><span class="line">│   │   │   ├── log.h</span><br><span class="line">│   │   │   ├── lzo.h</span><br><span class="line">│   │   │   ├── macros.h</span><br><span class="line">│   │   │   ├── mastering_display_metadata.h</span><br><span class="line">│   │   │   ├── mathematics.h</span><br><span class="line">│   │   │   ├── md5.h</span><br><span class="line">│   │   │   ├── mem.h</span><br><span class="line">│   │   │   ├── motion_vector.h</span><br><span class="line">│   │   │   ├── murmur3.h</span><br><span class="line">│   │   │   ├── opt.h</span><br><span class="line">│   │   │   ├── parseutils.h</span><br><span class="line">│   │   │   ├── pixdesc.h</span><br><span class="line">│   │   │   ├── pixelutils.h</span><br><span class="line">│   │   │   ├── pixfmt.h</span><br><span class="line">│   │   │   ├── random_seed.h</span><br><span class="line">│   │   │   ├── rational.h</span><br><span class="line">│   │   │   ├── rc4.h</span><br><span class="line">│   │   │   ├── replaygain.h</span><br><span class="line">│   │   │   ├── ripemd.h</span><br><span class="line">│   │   │   ├── samplefmt.h</span><br><span class="line">│   │   │   ├── sha.h</span><br><span class="line">│   │   │   ├── sha512.h</span><br><span class="line">│   │   │   ├── spherical.h</span><br><span class="line">│   │   │   ├── stereo3d.h</span><br><span class="line">│   │   │   ├── tea.h</span><br><span class="line">│   │   │   ├── threadmessage.h</span><br><span class="line">│   │   │   ├── time.h</span><br><span class="line">│   │   │   ├── timecode.h</span><br><span class="line">│   │   │   ├── timestamp.h</span><br><span class="line">│   │   │   ├── tree.h</span><br><span class="line">│   │   │   ├── twofish.h</span><br><span class="line">│   │   │   ├── tx.h</span><br><span class="line">│   │   │   ├── version.h</span><br><span class="line">│   │   │   ├── video_enc_params.h</span><br><span class="line">│   │   │   └── xtea.h</span><br><span class="line">│   │   ├── libpostproc</span><br><span class="line">│   │   │   ├── postprocess.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libswresample</span><br><span class="line">│   │   │   ├── swresample.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   └── libswscale</span><br><span class="line">│   │       ├── swscale.h</span><br><span class="line">│   │       └── version.h</span><br><span class="line">│   ├── lib</span><br><span class="line">│   │   ├── libavcodec.so</span><br><span class="line">│   │   ├── libavdevice.so</span><br><span class="line">│   │   ├── libavfilter.so</span><br><span class="line">│   │   ├── libavformat.so</span><br><span class="line">│   │   ├── libavresample.so</span><br><span class="line">│   │   ├── libavutil.so</span><br><span class="line">│   │   ├── libpostproc.so</span><br><span class="line">│   │   ├── libswresample.so</span><br><span class="line">│   │   ├── libswscale.so</span><br><span class="line">│   │   └── pkgconfig</span><br><span class="line">│   │       ├── libavcodec.pc</span><br><span class="line">│   │       ├── libavdevice.pc</span><br><span class="line">│   │       ├── libavfilter.pc</span><br><span class="line">│   │       ├── libavformat.pc</span><br><span class="line">│   │       ├── libavresample.pc</span><br><span class="line">│   │       ├── libavutil.pc</span><br><span class="line">│   │       ├── libpostproc.pc</span><br><span class="line">│   │       ├── libswresample.pc</span><br><span class="line">│   │       └── libswscale.pc</span><br><span class="line">│   └── share</span><br><span class="line">│       └── ffmpeg</span><br><span class="line">│           └── examples</span><br><span class="line">│               ├── Makefile</span><br><span class="line">│               ├── README</span><br><span class="line">│               ├── avio_list_dir.c</span><br><span class="line">│               ├── avio_reading.c</span><br><span class="line">│               ├── decode_audio.c</span><br><span class="line">│               ├── decode_video.c</span><br><span class="line">│               ├── demuxing_decoding.c</span><br><span class="line">│               ├── encode_audio.c</span><br><span class="line">│               ├── encode_video.c</span><br><span class="line">│               ├── extract_mvs.c</span><br><span class="line">│               ├── filter_audio.c</span><br><span class="line">│               ├── filtering_audio.c</span><br><span class="line">│               ├── filtering_video.c</span><br><span class="line">│               ├── http_multiclient.c</span><br><span class="line">│               ├── hw_decode.c</span><br><span class="line">│               ├── metadata.c</span><br><span class="line">│               ├── muxing.c</span><br><span class="line">│               ├── qsvdec.c</span><br><span class="line">│               ├── remuxing.c</span><br><span class="line">│               ├── resampling_audio.c</span><br><span class="line">│               ├── scaling_video.c</span><br><span class="line">│               ├── transcode_aac.c</span><br><span class="line">│               ├── transcoding.c</span><br><span class="line">│               ├── vaapi_encode.c</span><br><span class="line">│               └── vaapi_transcode.c</span><br><span class="line">├── tree.log</span><br><span class="line">├── x86</span><br><span class="line">│   ├── include</span><br><span class="line">│   │   ├── libavcodec</span><br><span class="line">│   │   │   ├── ac3_parser.h</span><br><span class="line">│   │   │   ├── adts_parser.h</span><br><span class="line">│   │   │   ├── avcodec.h</span><br><span class="line">│   │   │   ├── avdct.h</span><br><span class="line">│   │   │   ├── avfft.h</span><br><span class="line">│   │   │   ├── bsf.h</span><br><span class="line">│   │   │   ├── codec.h</span><br><span class="line">│   │   │   ├── codec_desc.h</span><br><span class="line">│   │   │   ├── codec_id.h</span><br><span class="line">│   │   │   ├── codec_par.h</span><br><span class="line">│   │   │   ├── d3d11va.h</span><br><span class="line">│   │   │   ├── dirac.h</span><br><span class="line">│   │   │   ├── dv_profile.h</span><br><span class="line">│   │   │   ├── dxva2.h</span><br><span class="line">│   │   │   ├── jni.h</span><br><span class="line">│   │   │   ├── mediacodec.h</span><br><span class="line">│   │   │   ├── packet.h</span><br><span class="line">│   │   │   ├── qsv.h</span><br><span class="line">│   │   │   ├── vaapi.h</span><br><span class="line">│   │   │   ├── vdpau.h</span><br><span class="line">│   │   │   ├── version.h</span><br><span class="line">│   │   │   ├── videotoolbox.h</span><br><span class="line">│   │   │   ├── vorbis_parser.h</span><br><span class="line">│   │   │   └── xvmc.h</span><br><span class="line">│   │   ├── libavdevice</span><br><span class="line">│   │   │   ├── avdevice.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavfilter</span><br><span class="line">│   │   │   ├── avfilter.h</span><br><span class="line">│   │   │   ├── buffersink.h</span><br><span class="line">│   │   │   ├── buffersrc.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavformat</span><br><span class="line">│   │   │   ├── avformat.h</span><br><span class="line">│   │   │   ├── avio.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavresample</span><br><span class="line">│   │   │   ├── avresample.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libavutil</span><br><span class="line">│   │   │   ├── adler32.h</span><br><span class="line">│   │   │   ├── aes.h</span><br><span class="line">│   │   │   ├── aes_ctr.h</span><br><span class="line">│   │   │   ├── attributes.h</span><br><span class="line">│   │   │   ├── audio_fifo.h</span><br><span class="line">│   │   │   ├── avassert.h</span><br><span class="line">│   │   │   ├── avconfig.h</span><br><span class="line">│   │   │   ├── avstring.h</span><br><span class="line">│   │   │   ├── avutil.h</span><br><span class="line">│   │   │   ├── base64.h</span><br><span class="line">│   │   │   ├── blowfish.h</span><br><span class="line">│   │   │   ├── bprint.h</span><br><span class="line">│   │   │   ├── bswap.h</span><br><span class="line">│   │   │   ├── buffer.h</span><br><span class="line">│   │   │   ├── camellia.h</span><br><span class="line">│   │   │   ├── cast5.h</span><br><span class="line">│   │   │   ├── channel_layout.h</span><br><span class="line">│   │   │   ├── common.h</span><br><span class="line">│   │   │   ├── cpu.h</span><br><span class="line">│   │   │   ├── crc.h</span><br><span class="line">│   │   │   ├── des.h</span><br><span class="line">│   │   │   ├── dict.h</span><br><span class="line">│   │   │   ├── display.h</span><br><span class="line">│   │   │   ├── dovi_meta.h</span><br><span class="line">│   │   │   ├── downmix_info.h</span><br><span class="line">│   │   │   ├── encryption_info.h</span><br><span class="line">│   │   │   ├── error.h</span><br><span class="line">│   │   │   ├── eval.h</span><br><span class="line">│   │   │   ├── ffversion.h</span><br><span class="line">│   │   │   ├── fifo.h</span><br><span class="line">│   │   │   ├── file.h</span><br><span class="line">│   │   │   ├── frame.h</span><br><span class="line">│   │   │   ├── hash.h</span><br><span class="line">│   │   │   ├── hdr_dynamic_metadata.h</span><br><span class="line">│   │   │   ├── hmac.h</span><br><span class="line">│   │   │   ├── hwcontext.h</span><br><span class="line">│   │   │   ├── hwcontext_cuda.h</span><br><span class="line">│   │   │   ├── hwcontext_d3d11va.h</span><br><span class="line">│   │   │   ├── hwcontext_drm.h</span><br><span class="line">│   │   │   ├── hwcontext_dxva2.h</span><br><span class="line">│   │   │   ├── hwcontext_mediacodec.h</span><br><span class="line">│   │   │   ├── hwcontext_opencl.h</span><br><span class="line">│   │   │   ├── hwcontext_qsv.h</span><br><span class="line">│   │   │   ├── hwcontext_vaapi.h</span><br><span class="line">│   │   │   ├── hwcontext_vdpau.h</span><br><span class="line">│   │   │   ├── hwcontext_videotoolbox.h</span><br><span class="line">│   │   │   ├── hwcontext_vulkan.h</span><br><span class="line">│   │   │   ├── imgutils.h</span><br><span class="line">│   │   │   ├── intfloat.h</span><br><span class="line">│   │   │   ├── intreadwrite.h</span><br><span class="line">│   │   │   ├── lfg.h</span><br><span class="line">│   │   │   ├── log.h</span><br><span class="line">│   │   │   ├── lzo.h</span><br><span class="line">│   │   │   ├── macros.h</span><br><span class="line">│   │   │   ├── mastering_display_metadata.h</span><br><span class="line">│   │   │   ├── mathematics.h</span><br><span class="line">│   │   │   ├── md5.h</span><br><span class="line">│   │   │   ├── mem.h</span><br><span class="line">│   │   │   ├── motion_vector.h</span><br><span class="line">│   │   │   ├── murmur3.h</span><br><span class="line">│   │   │   ├── opt.h</span><br><span class="line">│   │   │   ├── parseutils.h</span><br><span class="line">│   │   │   ├── pixdesc.h</span><br><span class="line">│   │   │   ├── pixelutils.h</span><br><span class="line">│   │   │   ├── pixfmt.h</span><br><span class="line">│   │   │   ├── random_seed.h</span><br><span class="line">│   │   │   ├── rational.h</span><br><span class="line">│   │   │   ├── rc4.h</span><br><span class="line">│   │   │   ├── replaygain.h</span><br><span class="line">│   │   │   ├── ripemd.h</span><br><span class="line">│   │   │   ├── samplefmt.h</span><br><span class="line">│   │   │   ├── sha.h</span><br><span class="line">│   │   │   ├── sha512.h</span><br><span class="line">│   │   │   ├── spherical.h</span><br><span class="line">│   │   │   ├── stereo3d.h</span><br><span class="line">│   │   │   ├── tea.h</span><br><span class="line">│   │   │   ├── threadmessage.h</span><br><span class="line">│   │   │   ├── time.h</span><br><span class="line">│   │   │   ├── timecode.h</span><br><span class="line">│   │   │   ├── timestamp.h</span><br><span class="line">│   │   │   ├── tree.h</span><br><span class="line">│   │   │   ├── twofish.h</span><br><span class="line">│   │   │   ├── tx.h</span><br><span class="line">│   │   │   ├── version.h</span><br><span class="line">│   │   │   ├── video_enc_params.h</span><br><span class="line">│   │   │   └── xtea.h</span><br><span class="line">│   │   ├── libpostproc</span><br><span class="line">│   │   │   ├── postprocess.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   ├── libswresample</span><br><span class="line">│   │   │   ├── swresample.h</span><br><span class="line">│   │   │   └── version.h</span><br><span class="line">│   │   └── libswscale</span><br><span class="line">│   │       ├── swscale.h</span><br><span class="line">│   │       └── version.h</span><br><span class="line">│   ├── lib</span><br><span class="line">│   │   ├── libavcodec.so</span><br><span class="line">│   │   ├── libavdevice.so</span><br><span class="line">│   │   ├── libavfilter.so</span><br><span class="line">│   │   ├── libavformat.so</span><br><span class="line">│   │   ├── libavresample.so</span><br><span class="line">│   │   ├── libavutil.so</span><br><span class="line">│   │   ├── libpostproc.so</span><br><span class="line">│   │   ├── libswresample.so</span><br><span class="line">│   │   ├── libswscale.so</span><br><span class="line">│   │   └── pkgconfig</span><br><span class="line">│   │       ├── libavcodec.pc</span><br><span class="line">│   │       ├── libavdevice.pc</span><br><span class="line">│   │       ├── libavfilter.pc</span><br><span class="line">│   │       ├── libavformat.pc</span><br><span class="line">│   │       ├── libavresample.pc</span><br><span class="line">│   │       ├── libavutil.pc</span><br><span class="line">│   │       ├── libpostproc.pc</span><br><span class="line">│   │       ├── libswresample.pc</span><br><span class="line">│   │       └── libswscale.pc</span><br><span class="line">│   └── share</span><br><span class="line">│       └── ffmpeg</span><br><span class="line">│           └── examples</span><br><span class="line">│               ├── Makefile</span><br><span class="line">│               ├── README</span><br><span class="line">│               ├── avio_list_dir.c</span><br><span class="line">│               ├── avio_reading.c</span><br><span class="line">│               ├── decode_audio.c</span><br><span class="line">│               ├── decode_video.c</span><br><span class="line">│               ├── demuxing_decoding.c</span><br><span class="line">│               ├── encode_audio.c</span><br><span class="line">│               ├── encode_video.c</span><br><span class="line">│               ├── extract_mvs.c</span><br><span class="line">│               ├── filter_audio.c</span><br><span class="line">│               ├── filtering_audio.c</span><br><span class="line">│               ├── filtering_video.c</span><br><span class="line">│               ├── http_multiclient.c</span><br><span class="line">│               ├── hw_decode.c</span><br><span class="line">│               ├── metadata.c</span><br><span class="line">│               ├── muxing.c</span><br><span class="line">│               ├── qsvdec.c</span><br><span class="line">│               ├── remuxing.c</span><br><span class="line">│               ├── resampling_audio.c</span><br><span class="line">│               ├── scaling_video.c</span><br><span class="line">│               ├── transcode_aac.c</span><br><span class="line">│               ├── transcoding.c</span><br><span class="line">│               ├── vaapi_encode.c</span><br><span class="line">│               └── vaapi_transcode.c</span><br><span class="line">└── x86_64</span><br><span class="line">    ├── include</span><br><span class="line">    │   ├── libavcodec</span><br><span class="line">    │   │   ├── ac3_parser.h</span><br><span class="line">    │   │   ├── adts_parser.h</span><br><span class="line">    │   │   ├── avcodec.h</span><br><span class="line">    │   │   ├── avdct.h</span><br><span class="line">    │   │   ├── avfft.h</span><br><span class="line">    │   │   ├── bsf.h</span><br><span class="line">    │   │   ├── codec.h</span><br><span class="line">    │   │   ├── codec_desc.h</span><br><span class="line">    │   │   ├── codec_id.h</span><br><span class="line">    │   │   ├── codec_par.h</span><br><span class="line">    │   │   ├── d3d11va.h</span><br><span class="line">    │   │   ├── dirac.h</span><br><span class="line">    │   │   ├── dv_profile.h</span><br><span class="line">    │   │   ├── dxva2.h</span><br><span class="line">    │   │   ├── jni.h</span><br><span class="line">    │   │   ├── mediacodec.h</span><br><span class="line">    │   │   ├── packet.h</span><br><span class="line">    │   │   ├── qsv.h</span><br><span class="line">    │   │   ├── vaapi.h</span><br><span class="line">    │   │   ├── vdpau.h</span><br><span class="line">    │   │   ├── version.h</span><br><span class="line">    │   │   ├── videotoolbox.h</span><br><span class="line">    │   │   ├── vorbis_parser.h</span><br><span class="line">    │   │   └── xvmc.h</span><br><span class="line">    │   ├── libavdevice</span><br><span class="line">    │   │   ├── avdevice.h</span><br><span class="line">    │   │   └── version.h</span><br><span class="line">    │   ├── libavfilter</span><br><span class="line">    │   │   ├── avfilter.h</span><br><span class="line">    │   │   ├── buffersink.h</span><br><span class="line">    │   │   ├── buffersrc.h</span><br><span class="line">    │   │   └── version.h</span><br><span class="line">    │   ├── libavformat</span><br><span class="line">    │   │   ├── avformat.h</span><br><span class="line">    │   │   ├── avio.h</span><br><span class="line">    │   │   └── version.h</span><br><span class="line">    │   ├── libavresample</span><br><span class="line">    │   │   ├── avresample.h</span><br><span class="line">    │   │   └── version.h</span><br><span class="line">    │   ├── libavutil</span><br><span class="line">    │   │   ├── adler32.h</span><br><span class="line">    │   │   ├── aes.h</span><br><span class="line">    │   │   ├── aes_ctr.h</span><br><span class="line">    │   │   ├── attributes.h</span><br><span class="line">    │   │   ├── audio_fifo.h</span><br><span class="line">    │   │   ├── avassert.h</span><br><span class="line">    │   │   ├── avconfig.h</span><br><span class="line">    │   │   ├── avstring.h</span><br><span class="line">    │   │   ├── avutil.h</span><br><span class="line">    │   │   ├── base64.h</span><br><span class="line">    │   │   ├── blowfish.h</span><br><span class="line">    │   │   ├── bprint.h</span><br><span class="line">    │   │   ├── bswap.h</span><br><span class="line">    │   │   ├── buffer.h</span><br><span class="line">    │   │   ├── camellia.h</span><br><span class="line">    │   │   ├── cast5.h</span><br><span class="line">    │   │   ├── channel_layout.h</span><br><span class="line">    │   │   ├── common.h</span><br><span class="line">    │   │   ├── cpu.h</span><br><span class="line">    │   │   ├── crc.h</span><br><span class="line">    │   │   ├── des.h</span><br><span class="line">    │   │   ├── dict.h</span><br><span class="line">    │   │   ├── display.h</span><br><span class="line">    │   │   ├── dovi_meta.h</span><br><span class="line">    │   │   ├── downmix_info.h</span><br><span class="line">    │   │   ├── encryption_info.h</span><br><span class="line">    │   │   ├── error.h</span><br><span class="line">    │   │   ├── eval.h</span><br><span class="line">    │   │   ├── ffversion.h</span><br><span class="line">    │   │   ├── fifo.h</span><br><span class="line">    │   │   ├── file.h</span><br><span class="line">    │   │   ├── frame.h</span><br><span class="line">    │   │   ├── hash.h</span><br><span class="line">    │   │   ├── hdr_dynamic_metadata.h</span><br><span class="line">    │   │   ├── hmac.h</span><br><span class="line">    │   │   ├── hwcontext.h</span><br><span class="line">    │   │   ├── hwcontext_cuda.h</span><br><span class="line">    │   │   ├── hwcontext_d3d11va.h</span><br><span class="line">    │   │   ├── hwcontext_drm.h</span><br><span class="line">    │   │   ├── hwcontext_dxva2.h</span><br><span class="line">    │   │   ├── hwcontext_mediacodec.h</span><br><span class="line">    │   │   ├── hwcontext_opencl.h</span><br><span class="line">    │   │   ├── hwcontext_qsv.h</span><br><span class="line">    │   │   ├── hwcontext_vaapi.h</span><br><span class="line">    │   │   ├── hwcontext_vdpau.h</span><br><span class="line">    │   │   ├── hwcontext_videotoolbox.h</span><br><span class="line">    │   │   ├── hwcontext_vulkan.h</span><br><span class="line">    │   │   ├── imgutils.h</span><br><span class="line">    │   │   ├── intfloat.h</span><br><span class="line">    │   │   ├── intreadwrite.h</span><br><span class="line">    │   │   ├── lfg.h</span><br><span class="line">    │   │   ├── log.h</span><br><span class="line">    │   │   ├── lzo.h</span><br><span class="line">    │   │   ├── macros.h</span><br><span class="line">    │   │   ├── mastering_display_metadata.h</span><br><span class="line">    │   │   ├── mathematics.h</span><br><span class="line">    │   │   ├── md5.h</span><br><span class="line">    │   │   ├── mem.h</span><br><span class="line">    │   │   ├── motion_vector.h</span><br><span class="line">    │   │   ├── murmur3.h</span><br><span class="line">    │   │   ├── opt.h</span><br><span class="line">    │   │   ├── parseutils.h</span><br><span class="line">    │   │   ├── pixdesc.h</span><br><span class="line">    │   │   ├── pixelutils.h</span><br><span class="line">    │   │   ├── pixfmt.h</span><br><span class="line">    │   │   ├── random_seed.h</span><br><span class="line">    │   │   ├── rational.h</span><br><span class="line">    │   │   ├── rc4.h</span><br><span class="line">    │   │   ├── replaygain.h</span><br><span class="line">    │   │   ├── ripemd.h</span><br><span class="line">    │   │   ├── samplefmt.h</span><br><span class="line">    │   │   ├── sha.h</span><br><span class="line">    │   │   ├── sha512.h</span><br><span class="line">    │   │   ├── spherical.h</span><br><span class="line">    │   │   ├── stereo3d.h</span><br><span class="line">    │   │   ├── tea.h</span><br><span class="line">    │   │   ├── threadmessage.h</span><br><span class="line">    │   │   ├── time.h</span><br><span class="line">    │   │   ├── timecode.h</span><br><span class="line">    │   │   ├── timestamp.h</span><br><span class="line">    │   │   ├── tree.h</span><br><span class="line">    │   │   ├── twofish.h</span><br><span class="line">    │   │   ├── tx.h</span><br><span class="line">    │   │   ├── version.h</span><br><span class="line">    │   │   ├── video_enc_params.h</span><br><span class="line">    │   │   └── xtea.h</span><br><span class="line">    │   ├── libpostproc</span><br><span class="line">    │   │   ├── postprocess.h</span><br><span class="line">    │   │   └── version.h</span><br><span class="line">    │   ├── libswresample</span><br><span class="line">    │   │   ├── swresample.h</span><br><span class="line">    │   │   └── version.h</span><br><span class="line">    │   └── libswscale</span><br><span class="line">    │       ├── swscale.h</span><br><span class="line">    │       └── version.h</span><br><span class="line">    ├── lib</span><br><span class="line">    │   ├── libavcodec.so</span><br><span class="line">    │   ├── libavdevice.so</span><br><span class="line">    │   ├── libavfilter.so</span><br><span class="line">    │   ├── libavformat.so</span><br><span class="line">    │   ├── libavresample.so</span><br><span class="line">    │   ├── libavutil.so</span><br><span class="line">    │   ├── libpostproc.so</span><br><span class="line">    │   ├── libswresample.so</span><br><span class="line">    │   ├── libswscale.so</span><br><span class="line">    │   └── pkgconfig</span><br><span class="line">    │       ├── libavcodec.pc</span><br><span class="line">    │       ├── libavdevice.pc</span><br><span class="line">    │       ├── libavfilter.pc</span><br><span class="line">    │       ├── libavformat.pc</span><br><span class="line">    │       ├── libavresample.pc</span><br><span class="line">    │       ├── libavutil.pc</span><br><span class="line">    │       ├── libpostproc.pc</span><br><span class="line">    │       ├── libswresample.pc</span><br><span class="line">    │       └── libswscale.pc</span><br><span class="line">    └── share</span><br><span class="line">        └── ffmpeg</span><br><span class="line">            └── examples</span><br><span class="line">                ├── Makefile</span><br><span class="line">                ├── README</span><br><span class="line">                ├── avio_list_dir.c</span><br><span class="line">                ├── avio_reading.c</span><br><span class="line">                ├── decode_audio.c</span><br><span class="line">                ├── decode_video.c</span><br><span class="line">                ├── demuxing_decoding.c</span><br><span class="line">                ├── encode_audio.c</span><br><span class="line">                ├── encode_video.c</span><br><span class="line">                ├── extract_mvs.c</span><br><span class="line">                ├── filter_audio.c</span><br><span class="line">                ├── filtering_audio.c</span><br><span class="line">                ├── filtering_video.c</span><br><span class="line">                ├── http_multiclient.c</span><br><span class="line">                ├── hw_decode.c</span><br><span class="line">                ├── metadata.c</span><br><span class="line">                ├── muxing.c</span><br><span class="line">                ├── qsvdec.c</span><br><span class="line">                ├── remuxing.c</span><br><span class="line">                ├── resampling_audio.c</span><br><span class="line">                ├── scaling_video.c</span><br><span class="line">                ├── transcode_aac.c</span><br><span class="line">                ├── transcoding.c</span><br><span class="line">                ├── vaapi_encode.c</span><br><span class="line">                └── vaapi_transcode.c</span><br><span class="line"></span><br><span class="line">64 directories, 681 files</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-下载EpMedia源码"><a href="#6-下载EpMedia源码" class="headerlink" title="6.下载EpMedia源码"></a>6.下载EpMedia源码</h2><p><a target="_blank" rel="noopener" href="https://github.com/yangjie10930/EpMedia">EpMedia源码</a></p>
+<p>新建jni-x86目录</p>
+<p>将EpMedia工程的以下文件拷贝到jni-x86目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Android.mk</span><br><span class="line">Application.mk</span><br><span class="line">android_log.h</span><br><span class="line">cmdutils.h</span><br><span class="line">config.h</span><br><span class="line">ffmpeg_thread.h</span><br><span class="line">ffmpeg.h</span><br><span class="line">Jni_FFmpegCmd.h</span><br><span class="line">cmdutils.c</span><br><span class="line">ffmpeg_filter.c</span><br><span class="line">ffmpeg_hw.c</span><br><span class="line">ffmpeg_opt.c</span><br><span class="line">ffmpeg_thread.c</span><br><span class="line">ffmpeg.c</span><br><span class="line">Jni_FFmpegCmd.c</span><br></pre></td></tr></table></figure>
+
+<p>如果缺少对应的文件请到对应的源码目录拷贝(fftools&#x2F;ffmpeg_hw.c)</p>
+<h2 id="7-编写ndk-build-sh"><a href="#7-编写ndk-build-sh" class="headerlink" title="7.编写ndk-build.sh"></a>7.编写ndk-build.sh</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd jni-x86</span><br><span class="line">nano ndk-build.sh</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">ANDROID_NDK/ndk-build NDK_PROJECT_PATH=. NDK_APPLICATION_MK=Application.mk APP_BUILD_SCRIPT=Android.mk%</span> </span><br></pre></td></tr></table></figure>
+
+<p>修改Application.mk</p>
+<p>APP_ABI :&#x3D; arm64-v8a</p>
+<h2 id="8-执行ndk-build-sh"><a href="#8-执行ndk-build-sh" class="headerlink" title="8.执行ndk-build.sh"></a>8.执行ndk-build.sh</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x ndk-build.sh</span><br><span class="line">./ndk-build.sh</span><br></pre></td></tr></table></figure>
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
