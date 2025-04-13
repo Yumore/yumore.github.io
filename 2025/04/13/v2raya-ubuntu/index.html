@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>framework-jar-for-android | Nathaniel</title>
-  <meta name="keywords" content=" -Framework -AndroidStudio ">
-  <meta name="description" content="framework-jar-for-android | Nathaniel">
+  <title>v2raya-ubuntu | Nathaniel</title>
+  <meta name="keywords" content=" v2ray xray v2raya ">
+  <meta name="description" content="v2raya-ubuntu | Nathaniel">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
 <meta property="og:type" content="website">
@@ -1020,9 +1020,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-framework-jar-for-android" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-v2raya-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">framework-jar-for-android</h1>
+        <h1 class="article-title">v2raya-ubuntu</h1>
     
     <div class="article-meta">
         
@@ -1032,19 +1032,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">-Framework -AndroidStudio</a>
+            <a class="color3">v2ray xray v2raya</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-01-03 23:55:28'>2025-01-03 23:48</time>
+            发布时间 : <time class="date" title='最后更新: 2025-04-13 20:07:45'>2025-04-13 19:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.2k</span>
+        <span>字数:255</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1063,7 +1063,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC-AndroidStudio-%E5%BC%95%E5%85%A5-Framework"><span class="toc-text">不同版本 AndroidStudio 引入 Framework</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%BB%93%E5%BA%93"><span class="toc-text">添加仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85v2ray-core"><span class="toc-text">安装v2ray-core</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%9B%B4%E6%8F%90%E7%A4%BA%E6%A3%80%E6%B5%8B%E4%B8%AD"><span class="toc-text">一直提示检测中</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1079,95 +1079,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="不同版本-AndroidStudio-引入-Framework"><a href="#不同版本-AndroidStudio-引入-Framework" class="headerlink" title="不同版本 AndroidStudio 引入 Framework"></a>不同版本 AndroidStudio 引入 Framework</h1><p>配置生成*.iml文件</p>
-<p>在File &gt;&gt; Settings &gt;&gt; Build… &gt;&gt; Build Tools &gt;&gt; Gradle 中勾选generate *.iml，否则项目中将没有Application.app.main.iml这个文件</p>
-<p>将framework.jar放入app&#x2F;libs中</p>
-<p>build.gradle(:app)中添加framework.jar依赖</p>
-<p>build.gradle(:app)中添加framwork.jar依赖</p>
-<p>dependencies {<br>compileOnly files(“libs&#x2F;framework.jar”)<br>}<br>gradle.projectsEvaluated {<br>tasks.withType(JavaCompile) {<br>options.compilerArgs.add(“-Xbootclasspath&#x2F;p:$rootProject.rootDir&#x2F;app&#x2F;libs&#x2F;framework.jar”)<br>}<br>}<br>preBuild {<br>doLast {<br>&#x2F;&#x2F;测试版本 Android Studio Giraffe | 2022.3.1 Patch 1<br>&#x2F;&#x2F;需要先在File &gt;&gt; Settings &gt;&gt; Build… &gt;&gt; Build Tools &gt;&gt; Gradle 中勾选generate *.iml,<br>&#x2F;&#x2F;否则项目中将没有My_Application.app.main.iml这个文件<br>def imlFile &#x3D; file(“$rootProject.rootDir&#x2F;.idea&#x2F;modules&#x2F;app&#x2F;My_Application.app.main.iml”)<br>try {<br>def parsedXml &#x3D; (new XmlParser()).parse(imlFile)<br>def jdkNode &#x3D; parsedXml.component[1].orderEntry.find { it.‘@type’ &#x3D;&#x3D; ‘jdk’ }<br>parsedXml.component[1].remove(jdkNode)<br>def sdkString &#x3D; “Android API 30 Platform”<br>new Node(parsedXml.component[1], ‘orderEntry’, [‘type’: ‘jdk’, ‘jdkName’: sdkString, ‘jdkType’: ‘Android SDK’])<br>groovy.xml.XmlUtil.serialize(parsedXml, new FileOutputStream(imlFile))<br>} catch (FileNotFoundException e) {<br>e.printStackTrace()<br>}<br>}<br>}<br>至此，MainActivity中framework.jar的测试代码将不再报红</p>
-<p>—————————-我是分割线—————————-<br>2023-11-15 更新<br>上次更新的是单独模块引用framework.jar的配置方法，今天带来的是全局所有模块引用framework.jar的配置方法</p>
-<p>2 全局模块引用framework.jar配置方法<br>2.1 同上</p>
-<p>2.2 同上</p>
-<p>2.3 将framework.jar放入项目根目录下的libs中</p>
-<p>2.4 build.gradle(:app)中添加framwork.jar依赖</p>
-<p>dependencies {<br>compileOnly files(“..&#x2F;libs&#x2F;framework.jar”)<br>}</p>
-<p>2.5 修改项目级build.gradle文件</p>
-<p>subprojects {<br>gradle.projectsEvaluated {<br>tasks.withType(JavaCompile) {<br>options.compilerArgs.add(“-Xbootclasspath&#x2F;p:$rootProject.rootDir&#x2F;libs&#x2F;framework.jar”)<br>}<br>preBuild {<br>doLast {<br>def rootProjectName &#x3D; rootProject.name.replace(“ “, “<em>“)<br>def projectName &#x3D; project.name.replace(“ “, “</em>“)<br>def iml_path &#x3D; “$rootProject.rootDir\.idea\modules\“ + projectName + “\“ + rootProjectName + “.” + projectName + “.main.iml”<br>def imlFile &#x3D; file(iml_path)<br>try {<br>def parsedXml &#x3D; (new XmlParser()).parse(imlFile)<br>def jdkNode &#x3D; parsedXml.component[1].orderEntry.find { it.‘@type’ &#x3D;&#x3D; ‘jdk’ }<br>def sdkString &#x3D; jdkNode.‘@jdkName’<br>parsedXml.component[1].remove(jdkNode)<br>new Node(parsedXml.component[1], ‘orderEntry’, [‘type’: ‘jdk’, ‘jdkName’: sdkString, ‘jdkType’: ‘Android SDK’])<br>groovy.xml.XmlUtil.serialize(parsedXml, new FileOutputStream(imlFile))<br>} catch (FileNotFoundException e) {<br>e.printStackTrace()<br>}<br>}<br>}<br>}<br>}</p>
-<p>修改完成后，点击Build-&gt;Make Project使配置生效，framework.jar中隐藏api或者系统级api将可正常调用并且不会报红，测试结果如下图所示：</p>
-<p>—————————-我是分割线—————————-<br>2024-01-20 更新<br>上述使用的framework.jar一定是从以下路径获得，否则可能无法在android studio中编译通过，并且正常运行，android 12 版本</p>
-<p>out\target\common\obj\JAVA_LIBRARIES\framework-minus-apex_intermediates\classes.jar</p>
-<p>—————————-我是分割线—————————-<br>2024-12-26 更新<br>测试Android Studio版本为–&gt;Android Studio Ladybug Feature Drop | 2024.2.2 Beta 1</p>
-<p>app&#x2F;build.gradle</p>
-<p>dependencies {<br>&#x2F;&#x2F;必须添加<br>compileOnly files(‘libs&#x2F;framework.jar’)</p>
-<pre><code>implementation libs.appcompat
-implementation libs.material
-implementation libs.activity
-implementation libs.constraintlayout
-</code></pre>
-<p>}</p>
-<p>build.gradle</p>
-<p>&#x2F;&#x2F;测试的AS版本【Android Studio Ladybug Feature Drop | 2024.2.2 Beta 1】<br>subprojects {<br>&#x2F;&#x2F;所有project配置完成后调用<br>gradle.projectsEvaluated {<br>&#x2F;**</p>
-<ul>
-<li><p>1、解决编译失败问题<br><em>&#x2F;<br>getTasks().configureEach {<br>&#x2F;</em>*</p>
-</li>
-<li><p>compileDebugAndroidTestJavaWithJavac</p>
-</li>
-<li><p>compileDebugJavaWithJavac</p>
-</li>
-<li><p>compileDebugUnitTestJavaWithJavac</p>
-</li>
-<li><p>compileReleaseJavaWithJavac</p>
-</li>
-<li><p>compileReleaseUnitTestJavaWithJavac<br><em>&#x2F;<br>if (it.name.endsWith(‘JavaWithJavac’)) {<br>it.dependsOn(‘processDebugResources’)<br>}<br>}<br>getTasks().withType(JavaCompile.class).configureEach {<br>def newFiles &#x3D; new ArrayList&lt;&gt;()<br>newFiles.add(0, file(‘app&#x2F;libs&#x2F;framework.jar’))<br>newFiles.addAll(it.classpath.files)<br>&#x2F;&#x2F;解决‘找不到符号’问题<br>it.classpath &#x3D; files(newFiles.toArray())<br>}<br>&#x2F;</em>*</p>
-</li>
-<li><p>2、以下内容不添加不影响编译，但是在代码中会存在方法调用报红现象，同样也就没有代码提示功能，要想实现方法调用不</p>
-</li>
-<li><p>报红，需添加compileOnly files(‘libs&#x2F;framework.jar’)到对应模块dependencies中，并且在当前文件当前</p>
-</li>
-<li><p>位置下方添加以下内容<br>*&#x2F;<br>&#x2F;&#x2F;为什么是prepareKotlinBuildScriptModel任务而不是网上其他版本的preBuild任务，因为执行Sync Now操作就是执<br>&#x2F;&#x2F;行prepareKotlinBuildScriptModel任务，在Build小锤子日志窗口中有显示，而preBuild基本上要手动去执行，所<br>&#x2F;&#x2F;以这里用其代替preBuild任务，如果Sync Now还是有报红，手动打开xxx.app.main.iml然后再关闭应该就可以了<br>prepareKotlinBuildScriptModel {<br>doLast(new Action<Task>() {<br>@Override<br>void execute(Task task) {<br>println(‘开始执行xxx.app.main.iml依赖重排序逻辑’)</p>
-<pre><code>              //在【File | Settings | Build, Execution, Deployment | Build Tools | Gradle】位置
-              //勾选generate *.iml files for modules imported from Gradle选项，如不这样操作项目中将
-              //不会生成xxx.app.main.iml这个文件
-              def imlFilePath = String.format(&quot;%1s/.idea/modules/app/%2s.app.main.iml&quot;
-                      , rootProject.rootDir
-                      , rootProject.name)
-              if (!new File(imlFilePath).exists()) &#123;
-                  println(&#39;要重排序的iml文件【&#39; + imlFilePath + &#39;】不存在&#39;)
-                  return
-              &#125;
-              def document = DocumentBuilderFactory.newInstance()
-                      .newDocumentBuilder()
-                      .parse(imlFilePath)
-              def root = document.getDocumentElement()
-
-              //删除带jdk属性的orderEntry节点
-              def jdkNode = (root.getElementsByTagName(&#39;orderEntry&#39;).item(0) as Element)
-              if (jdkNode.getAttribute(&#39;type&#39;) != &#39;jdk&#39;) &#123;
-                  println(&#39;首个orderEntry不是jdk，不用重新排序&#39;)
-                  return
-              &#125;
-              def parentNode = jdkNode.getParentNode()
-              //移除第一个jdk节点
-              parentNode.removeChild(jdkNode)
-              //将jdk节点添加到最后
-              parentNode.appendChild(jdkNode)
-
-              def transformer = TransformerFactory.newInstance().newTransformer()
-              transformer.setOutputProperty(OutputKeys.ENCODING, &quot;UTF-8&quot;)
-              //解决调用报红问题
-              transformer.transform(new DOMSource(root), new StreamResult(new FileOutputStream(imlFilePath)))
-
-              println(&#39;iml依赖重排序完成&#39;)
-          &#125;
-      &#125;)
-  &#125;
-</code></pre>
-<p>  }</p>
-</li>
-</ul>
-<p>}</p>
-<p>部分内容参考自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014175785/article/details/116235760">https://blog.csdn.net/u014175785/article/details/116235760</a></p>
-<p>测试用Android 14源码编译framework.jar下载链接：<br><a target="_blank" rel="noopener" href="https://download.csdn.net/download/lmjssjj/89107722">https://download.csdn.net/download/lmjssjj/89107722</a></p>
+        <h2 id="添加仓库"><a href="#添加仓库" class="headerlink" title="添加仓库"></a>添加仓库</h2><blockquote>
+<p>wget -qO - <a target="_blank" rel="noopener" href="https://apt.v2raya.org/key/public-key.asc">https://apt.v2raya.org/key/public-key.asc</a> | sudo tee &#x2F;etc&#x2F;apt&#x2F;keyrings&#x2F;v2raya.asc</p>
+</blockquote>
+<blockquote>
+<p>echo “deb [signed-by&#x3D;&#x2F;etc&#x2F;apt&#x2F;keyrings&#x2F;v2raya.asc] <a target="_blank" rel="noopener" href="https://apt.v2raya.org/">https://apt.v2raya.org/</a> v2raya main” | sudo tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;v2raya.list</p>
+</blockquote>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><blockquote>
+<p>sudo apt update</p>
+</blockquote>
+<p>如果需要开启负载均衡就需要安装 v2ray-core</p>
+<blockquote>
+<p>sudo apt install v2raya v2ray</p>
+</blockquote>
+<p>如果不需要开启负载均衡可以增加 xray</p>
+<blockquote>
+<p>sudo apt install v2raya v2ray xray</p>
+</blockquote>
+<p>开启服务</p>
+<blockquote>
+<p>sudo systemctl start v2raya.service</p>
+</blockquote>
+<h2 id="安装v2ray-core"><a href="#安装v2ray-core" class="headerlink" title="安装v2ray-core"></a>安装v2ray-core</h2><p>下载安装包 <a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">https://github.com/v2fly/v2ray-core/releases</a></p>
+<p>或者下载 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f0bbc4a219f4">https://pan.quark.cn/s/f0bbc4a219f4</a> 提取码：PRy5</p>
+<p>然后执行下面脚本<br>unzip v2ray-linux-64.zip &amp;&amp; sudo mkdir &#x2F;opt&#x2F;v2ray &amp;&amp; sudo cp v2ray *.dat &#x2F;opt&#x2F;v2ray&#x2F;</p>
+<p>如果想替换安装的则执行如下脚本<br>unzip v2ray-linux-64.zip &amp;&amp; sudo mkdir &#x2F;opt&#x2F;v2ray &amp;&amp; sudo mv v2ray &#x2F;usr&#x2F;bin&#x2F; &amp;&amp; sudo mv *.dat &#x2F;usr&#x2F;share&#x2F;v2ray&#x2F;</p>
+<h2 id="一直提示检测中"><a href="#一直提示检测中" class="headerlink" title="一直提示检测中"></a>一直提示检测中</h2><blockquote>
+<p>su<br>cd &#x2F;etc&#x2F;v2raya<br>rm -rf *.db</p>
+</blockquote>
+<p>然后重新导入对应的节点</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nathanwriting@126.com </span>
@@ -1181,12 +1121,12 @@ implementation libs.constraintlayout
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>framework-jar-for-android</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">1.2k</span></p>
+    <p><span class="copy-title">文章标题:</span>v2raya-ubuntu</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">255</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Nathaniel">Nathaniel</a></p>
-    <p><span class="copy-title">发布时间:</span>2025-01-03, 23:48:12</p>
-    <p><span class="copy-title">最后更新:</span>2025-01-03, 23:55:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2025/01/03/framework-jar-for-android/" title="framework-jar-for-android">http://example.com/2025/01/03/framework-jar-for-android/</a>
+    <p><span class="copy-title">发布时间:</span>2025-04-13, 19:54:44</p>
+    <p><span class="copy-title">最后更新:</span>2025-04-13, 20:07:45</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2025/04/13/v2raya-ubuntu/" title="v2raya-ubuntu">http://example.com/2025/04/13/v2raya-ubuntu/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
