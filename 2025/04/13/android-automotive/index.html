@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Android-UI架构演进 | Nathaniel</title>
-  <meta name="keywords" content=" android , mvx ">
-  <meta name="description" content="Android-UI架构演进 | Nathaniel">
+  <title>android-automotive | Nathaniel</title>
+  <meta name="keywords" content=" -Android -Automotive ">
+  <meta name="description" content="android-automotive | Nathaniel">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="WeChat加我微信 QQ448216285  EmailContact me 开不开心 意不意外 惊不惊喜 啪叽没了">
 <meta property="og:type" content="website">
@@ -1033,41 +1033,31 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-android-mvx" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-android-automotive" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Android-UI架构演进</h1>
+        <h1 class="article-title">android-automotive</h1>
     
     <div class="article-meta">
         
         
-        
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="blog">blog</a>
-            
-        </span>
         
         
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">android</a>
-            
-            <a class="color4">mvx</a>
+            <a class="color1">-Android -Automotive</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-11-06 22:59:18'>2020-11-19 15:28</time>
+            发布时间 : <time class="date" title='最后更新: 2025-04-13 20:27:41'>2025-04-13 20:27</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2k</span>
+        <span>字数:0</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1086,7 +1076,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-UI%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B"><span class="toc-text">Android-UI架构演进</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-MVC"><span class="toc-text">1. MVC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-MVP"><span class="toc-text">2. MVP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-MVVM"><span class="toc-text">3. MVVM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-MVI"><span class="toc-text">4. MVI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-MVP%E3%80%81MVVM-%E5%92%8C-MVI-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">5. MVP、MVVM 和 MVI 的对比</span></a>
+        
     
 <style>
     .left-col .switch-btn,
@@ -1102,89 +1092,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Android-UI架构演进"><a href="#Android-UI架构演进" class="headerlink" title="Android-UI架构演进"></a>Android-UI架构演进</h2><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为了优化代码设计，业界先后提出了 MVC、MVP、MVVM 和 MVI 等架构设计。这四个模式讨论是 “如何管理 UI” 这个话题，采用的手段都是 “关注点分离”，只是实现的细节不同。最开始是没有采用任何模式的状态，不管是视图代码还是表现逻辑全都写在 Activity 里面，很明显这样的代码耦合度非常高，难以进行维护和测试，可读性也不好。</p>
-<blockquote>
-<p>  提示：耦合度高是现象，关注点分离是手段，易维护性和易测试性是结果，模式是可复用的经验。</p>
-</blockquote>
-<h1 id="1-MVC"><a href="#1-MVC" class="headerlink" title="1. MVC"></a>1. MVC</h1><p>MVC 其实是 Android 默认的设计，MVC 里将代码分为三个部分：</p>
-<ul>
-<li><strong>View：</strong> Layout XML 文件；</li>
-<li><strong>Model：</strong> 负责管理业务数据逻辑，如网络请求、数据库处理；</li>
-<li><strong>Controller：</strong> Activity 负责处理表现逻辑。</li>
-</ul>
-<p>MVC 初步解决了 Activity 代码太多的问题，但也有缺点：我们的初衷 Activity &#x2F; Fragment 是只处理表现逻辑的部分 ，但现实是 Activity 天然不可避免要处理 UI，也要处理用户交互，说明 Activity 本身天然承担了 View 的角色。那么这个架构就会造成 Activity 里糅合了视图和业务的代码，分离程度不够。</p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2de76425e6f041e19f7ab971592ee2a2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img"></p>
-<hr>
-<h1 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2. MVP"></a>2. MVP</h1><p>为了将 Activity 中的表现逻辑彻底分离出来，业界提出了 MVP 的设计。MVP 同样将代码划分为三个部分：</p>
-<ul>
-<li><strong>View：</strong> Activity 和 Layout XML 文件；</li>
-<li><strong>Model：</strong> 负责管理业务数据逻辑，如网络请求、数据库处理；</li>
-<li><strong>Presenter：</strong> 负责处理表现逻辑。</li>
-</ul>
-<p>在实现细节上，View 和 Presenter 中间会定义一个协议接口 Contract，这个接口会约定 View 如何向 Presenter 发指令和 Presenter 如何 Callback 给 View。这样的架构里 Activity 不再有表现逻辑的部分，Activity 作为 View 的角色只处理和 UI 有关的事情。但还是存在一些缺点：</p>
-<ul>
-<li><strong>双向依赖：</strong> View 和 Presenter 是双向依赖的，一旦 View 层做出改变，相应地 Presenter 也需要做出调整。在业务语境下，View 层变化是大概率事件；</li>
-<li><strong>内存泄漏风险：</strong> Presenter 持有 View 层的引用，当用户关闭了 View 层，但 Model 层仍然在进行耗时操作，就会有内存泄漏风险。虽然有解决办法，但还是存在风险点和复杂度（弱引用 &#x2F; onDestroy() 回收 Presenter）。</li>
-<li><strong>协议接口类膨胀：</strong> View 层和 Presenter 层的交互需要定义接口方法，当交互非常复杂时，需要定义很多接口方法和回调方法，也不好维护。</li>
-</ul>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d7521d3d3d024b56b7f71e7716d03199~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img"></p>
-<hr>
-<h1 id="3-MVVM"><a href="#3-MVVM" class="headerlink" title="3. MVVM"></a>3. MVVM</h1><p>MVVM 模式改动在于中间的 Presenter 改为 ViewModel，MVVM 同样将代码划分为三个部分：</p>
-<ul>
-<li><strong>View：</strong> Activity 和 Layout XML 文件，与 MVP 中 View 的概念相同；</li>
-<li><strong>Model：</strong> 负责管理业务数据逻辑，如网络请求、数据库处理，与 MVP 中 Model 的概念相同；</li>
-<li><strong>ViewModel：</strong> 存储视图状态，负责处理表现逻辑，并将数据设置给可观察数据容器。</li>
-</ul>
-<p>在实现细节上，View 和 Presenter 从双向依赖变成 View 可以向 ViewModel 发指令，但 ViewModel 不会直接向 View 回调，而是让 View 通过观察者的模式去监听数据的变化，有效规避了 MVP 双向依赖的缺点。但 MVVM 本身也存在一些缺点：</p>
-<ul>
-<li><strong>多数据流：</strong> View 与 ViewModel 的交互分散，缺少唯一修改源，不易于追踪；</li>
-<li><strong>LiveData 膨胀：</strong> 复杂的页面需要定义多个 MutableLiveData，并且都需要暴露为不可变的 LiveData。</li>
-</ul>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7732993ca97b48b486a47ad331898a2e~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img"></p>
-<blockquote>
-<p>  DataBinding、ViewModel 和 LiveData 等组件是 Google 为了帮助我们实现 MVVM 模式提供的架构组件，它们并不是 MVVM 的本质，只是实现上的工具。</p>
-<ul>
-<li><strong>Lifecycle：</strong> 生命周期状态回调；</li>
-<li><strong>LiveData：</strong> 可观察的数据存储类；</li>
-<li><strong>databinding：</strong> 可以自动同步 UI 和 data，不用再 findviewById()；</li>
-<li><strong>ViewModel：</strong> 存储界面相关的数据，这些数据不会在手机旋转等配置改变时丢失。</li>
-</ul>
-</blockquote>
-<hr>
-<h1 id="4-MVI"><a href="#4-MVI" class="headerlink" title="4. MVI"></a>4. MVI</h1><p>MVI 模式的改动在于将 View 和 ViewModel 之间的多数据流改为基于 ViewState 的单数据流。MVI 将代码分为以下四个部分：</p>
-<ul>
-<li><strong>View：</strong> Activity 和 Layout XML 文件，与 MVVM 中 View 的概念相同；</li>
-<li><strong>Intent：</strong> 定义数据操作，是将数据传到 Model 的唯一来源，相比 MVVM 是新的概念；</li>
-<li><strong>ViewModel：</strong> 存储视图状态，负责处理表现逻辑，并将 ViewState 设置给可观察数据容器；</li>
-<li><strong>ViewState：</strong> 一个数据类，包含页面状态和对应的数据。</li>
-</ul>
-<p>在实现细节上，View 和 ViewModel 之间的多个交互（多 LiveData 数据流）变成了单数据流。无论 View 有多少个视图状态，只需要订阅一个 ViewState 便可以获取所有状态，再根据 ViewState 去响应。当然，实践中应该根据状态之间的关联程度来决定数据流的个数，不应该为了使用 MVI 模式而强行将多个无关的状态压缩在同一个数据流中。</p>
-<ul>
-<li><strong>唯一可信源：</strong> 数据只有一个来源（ViewModel），与 MVVM 的思想相同；</li>
-<li><strong>单数据流：</strong> View 和 ViewModel 之间只有一个数据流，只有一个地方可以修改数据，确保数据是安全稳定的。并且 View 只需要订阅一个 ViewState 就可以获取所有状态和数据，相比 MVVM 是新的特性；</li>
-<li><strong>响应式：</strong> ViewState 包含页面当前的状态和数据，View 通过订阅 ViewState 就可以完成页面刷新，相比于 MVVM 是新的特性。</li>
-</ul>
-<p>但 MVI 本身也存在一些缺点：</p>
-<ul>
-<li><strong>State 膨胀：</strong> 所有视图变化都转换为 ViewState，还需要管理不同状态下对应的数据。实践中应该根据状态之间的关联程度来决定使用单流还是多流；</li>
-<li><strong>内存开销：</strong> ViewState 是不可变类，状态变更时需要创建新的对象，存在一定内存开销；</li>
-<li><strong>局部刷新：</strong> View 根据 ViewState 响应，不易实现局部 Diff 刷新，可以使用 Flow#distinctUntilChanged() 来刷新来减少不必要的刷新。</li>
-</ul>
-<p>不过，MVI 并不是一个全新的设计模式，其背后设计理念与 Redux 模式如出一辙。在 Redux 里完全可以找到与 MVI 相同的各个要素，而且明显 Redux 的命名方式更加清晰无歧义，小伙伴们知道 Model - View - Intent 这个命名方式的原始出处的话，可以告诉我一声。</p>
-<ul>
-<li>View - View</li>
-<li>Action - Intent</li>
-<li>Store - ViewModel</li>
-<li>State - ViewState</li>
-<li>Reducer - Model</li>
-</ul>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c38cf4320d2f40429ccf4d0d04ff77d3~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img"></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、ViewModel</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainViewModel</span>: <span class="type">ViewModel</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mModel = MainModel()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> mIntent = Channel&lt;MainIntent&gt;(Channel.UNLIMITED)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _state = MutableStateFlow&lt;MainViewState&gt;(MainViewState.Idle)</span><br><span class="line">    <span class="keyword">val</span> state: StateFlow&lt;MainViewState&gt;</span><br><span class="line">        <span class="keyword">get</span>() = _state</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            mIntent.consumeAsFlow().collect &#123;</span><br><span class="line">                <span class="keyword">when</span> (it) &#123;</span><br><span class="line">                    <span class="keyword">is</span> MainIntent.FetchNew -&gt; fetchNews()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">fetchNews</span><span class="params">()</span></span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            _state.value = MainViewState.Loading</span><br><span class="line">            _state.value = <span class="keyword">try</span> &#123;</span><br><span class="line">                MainViewState.News(mModel.fetchNews())</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">                MainViewState.Error(e.localizedMessage)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2、ViewState</span></span><br><span class="line"><span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title class_">MainViewState</span> &#123;</span><br><span class="line">    <span class="keyword">object</span> Idle : MainViewState()</span><br><span class="line">    <span class="keyword">object</span> Loading : MainViewState()</span><br><span class="line">    <span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">News</span>(<span class="keyword">val</span> news: List&lt;New&gt;) : MainViewState()</span><br><span class="line">    <span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Error</span>(<span class="keyword">val</span> error: String?) : MainViewState()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 3、Intent</span></span><br><span class="line"><span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title class_">MainIntent</span> &#123;</span><br><span class="line">    <span class="keyword">object</span> FetchNew : MainIntent()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 4、View</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mainViewModel: MainViewModel</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">observeViewModel</span><span class="params">()</span></span> &#123;</span><br><span class="line">        lifecycleScope.launch &#123;</span><br><span class="line">            mainViewModel.state.collect &#123;</span><br><span class="line">                <span class="keyword">when</span> (it) &#123;</span><br><span class="line">                    <span class="keyword">is</span> MainViewState.Idle -&gt; &#123;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">is</span> MainViewState.Loading -&gt; &#123;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">is</span> MainViewState.News -&gt; &#123;</span><br><span class="line">                        renderList(it.news)</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">is</span> MainViewState.Error -&gt; &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">renderList</span><span class="params">(news: <span class="type">List</span>&lt;<span class="type">New</span>&gt;)</span></span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="5-MVP、MVVM-和-MVI-的对比"><a href="#5-MVP、MVVM-和-MVI-的对比" class="headerlink" title="5. MVP、MVVM 和 MVI 的对比"></a>5. MVP、MVVM 和 MVI 的对比</h1><p>MVVM 和 MVP 的思想是相同的，最本质的概念就是 Activity 里做的事情太多了，所以要把 Activity 中与 UI 无关的部分抽离出来，交给别人做。这个 “别人” 在 MVP 里叫作 Presenter，在 MVVM 里叫作 ViewModel。而不论是 MVP 中的约定接口，还是 ViewModel 里的观察者模式，这些都是实现上的细节而已。</p>
-<p>MVI 与前者的主要区别不在于强调严格的单向数据流，而在于从命令式的开发模式，转变为响应式的开发模式。我们并不是说越新潮，越复杂的架构就是最好的，只有合适的架构才是最好的。但是不可否认，从 React 到 Flutter，从 MVI 到 Compose，响应式编程似乎有一统天下的趋势。未来会怎么样，我们拭目以待。</p>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 nathanwriting@126.com </span>
     </div>
@@ -1197,12 +1105,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Android-UI架构演进</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2k</span></p>
+    <p><span class="copy-title">文章标题:</span>android-automotive</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">0</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Nathaniel">Nathaniel</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-11-19, 15:28:59</p>
-    <p><span class="copy-title">最后更新:</span>2023-11-06, 22:59:18</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/11/19/android-mvx/" title="Android-UI架构演进">http://example.com/2020/11/19/android-mvx/</a>
+    <p><span class="copy-title">发布时间:</span>2025-04-13, 20:27:10</p>
+    <p><span class="copy-title">最后更新:</span>2025-04-13, 20:27:41</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2025/04/13/android-automotive/" title="android-automotive">http://example.com/2025/04/13/android-automotive/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
